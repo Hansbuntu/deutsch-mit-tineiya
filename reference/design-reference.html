@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deutsch mit Milan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #182635;
+    --ink-soft: #47566A;
+    --paper: #EDE7D8;
+    --paper-deep: #E3DCC8;
+    --card: #FBF8F1;
+    --gold: #C9963C;
+    --gold-deep: #8F6A26;
+    --sage: #46685C;
+    --sage-deep: #2E463D;
+    --line: #C9BFA8;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    font-family: 'IBM Plex Sans', sans-serif;
+    color: var(--ink);
+    display: flex;
+    justify-content: center;
+    padding: 48px 20px;
+  }
+  .page {
+    width: 100%;
+    max-width: 1040px;
+  }
+  .masthead {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 20px;
+    margin-bottom: 36px;
+  }
+  .wordmark {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 30px;
+    letter-spacing: -0.01em;
+  }
+  .wordmark span {
+    color: var(--sage-deep);
+  }
+  .tagline {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 4px;
+  }
+  .day-note {
+    text-align: right;
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+  .day-note strong {
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .layout {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 36px;
+  }
+  .topics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 22px;
+  }
+  .topic {
+    font-size: 13px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    color: var(--ink-soft);
+    background: transparent;
+  }
+  .topic.active {
+    background: var(--sage-deep);
+    border-color: var(--sage-deep);
+    color: var(--paper);
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 28px;
+    position: relative;
+  }
+  .card::before {
+    content: "";
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 20px;
+    height: 20px;
+    border-top: 1px solid var(--line);
+    border-right: 1px solid var(--line);
+  }
+  .scene {
+    aspect-ratio: 4 / 3;
+    background: var(--sage);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 22px;
+    overflow: hidden;
+  }
+  .scene svg { width: 46%; height: 46%; }
+  .word-row {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+  .gender {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--gold-deep);
+  }
+  .word {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 34px;
+  }
+  .sound {
+    margin-left: auto;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--sage-deep);
+    flex-shrink: 0;
+  }
+  .sentence {
+    font-size: 16px;
+    color: var(--ink);
+    margin: 0 0 4px;
+  }
+  .sentence-en {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin: 0 0 22px;
+  }
+  .progress-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .progress-track {
+    flex: 1;
+    height: 3px;
+    background: var(--paper-deep);
+    position: relative;
+  }
+  .progress-fill {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 34%;
+    background: var(--gold);
+  }
+  .progress-label {
+    font-size: 12px;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+  .side-card {
+    margin-bottom: 20px;
+  }
+  .side-card h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 17px;
+    margin: 0 0 12px;
+  }
+  .pattern-line {
+    font-size: 16px;
+    margin: 0 0 16px;
+  }
+  .blank {
+    border-bottom: 2px solid var(--gold);
+    padding: 0 6px;
+    color: var(--gold-deep);
+    font-weight: 500;
+  }
+  .options {
+    display: grid;
+    gap: 8px;
+  }
+  .option {
+    text-align: left;
+    padding: 10px 14px;
+    border: 1px solid var(--line);
+    background: transparent;
+    border-radius: 2px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 14px;
+    color: var(--ink);
+  }
+  .option.correct {
+    border-color: var(--sage-deep);
+    background: rgba(70, 104, 92, 0.08);
+    color: var(--sage-deep);
+  }
+  .note {
+    font-size: 12px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    padding-top: 4px;
+    border-top: 1px solid var(--line);
+    margin-top: 4px;
+  }
+  .stack-label {
+    font-size: 11px;
+    text-transform: lowercase;
+    color: var(--ink-soft);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+  .stack-label::before {
+    content: "";
+    width: 14px;
+    height: 1px;
+    background: var(--line);
+  }
+  .section-gap {
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid var(--line);
+  }
+  .screen-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 20px;
+    margin: 0 0 22px;
+  }
+  .topic-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+  .tile {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 18px;
+  }
+  .tile.featured {
+    border-color: var(--sage-deep);
+  }
+  .tile-name {
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    margin: 0 0 4px;
+  }
+  .tile-count {
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+  .stat {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 18px;
+  }
+  .stat-num {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .stat-label {
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+  @media (max-width: 720px) {
+    .layout { grid-template-columns: 1fr; }
+    .masthead { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .day-note { text-align: left; }
+    .topic-grid { grid-template-columns: repeat(2, 1fr); }
+    .stat-row { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="masthead">
+    <div>
+      <div class="wordmark">Deutsch mit <span>Milan</span></div>
+      <div class="tagline">gebaut aus eigenen Karten &middot; A1 auf dem Weg zu A2</div>
+    </div>
+    <div class="day-note">
+      <strong>Tag 41</strong>
+      12 Karten heute &middot; Thema: im caf&eacute;
+    </div>
+  </div>
+
+  <div class="stack-label">heutige sitzung</div>
+  <div class="layout">
+    <div>
+      <div class="topics">
+        <button class="topic active">trennbare Verben</button>
+        <button class="topic">im caf&eacute;</button>
+        <button class="topic">Alltag</button>
+        <button class="topic">Zahlen</button>
+        <button class="topic">aus meinem Heft</button>
+      </div>
+
+      <div class="card">
+        <div class="scene">
+          <svg viewBox="0 0 64 64" fill="none" stroke="#FBF8F1" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="32" cy="34" r="18"/>
+            <path d="M32 24v10l7 6"/>
+            <path d="M22 10l-6 6"/>
+            <path d="M42 10l6 6"/>
+          </svg>
+        </div>
+
+        <div class="word-row">
+          <span class="gender">trennbar</span>
+          <span class="word">auf&shy;stehen</span>
+          <div class="sound">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <path d="M15.5 8.5a5 5 0 0 1 0 7"></path>
+            </svg>
+          </div>
+        </div>
+
+        <p class="sentence">Ich stehe jeden Morgen fr&uuml;h <strong>auf</strong>.</p>
+        <p class="sentence-en">I get up early every morning.</p>
+
+        <div class="progress-row">
+          <div class="progress-track"><div class="progress-fill"></div></div>
+          <div class="progress-label">Karte 1 von 15</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="side-card">
+        <div class="stack-label">satzmuster</div>
+        <h3>Trennbare Verben &mdash; Pr&auml;sens</h3>
+        <p class="pattern-line">Der Film <span class="blank">f&auml;ngt</span> um 8 Uhr an.</p>
+        <div class="options">
+          <button class="option correct">f&auml;ngt</button>
+          <button class="option">f&auml;ngst</button>
+          <button class="option">fangen</button>
+        </div>
+        <p class="note" style="margin-top:14px">fangen &rarr; f&auml;ngst / f&auml;ngt, wie in deiner Notiz zu Karte 3.</p>
+      </div>
+
+      <div class="side-card">
+        <div class="stack-label">aus deinem heft</div>
+        <p class="note">Alle 15 trennbaren Verben aus deinem Notizbuch sind jetzt digitalisiert &mdash; aufstehen, anrufen, einkaufen, absteigen und mehr, jede mit eigenem Bild und Beispielsatz.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-gap">
+    <div class="stack-label">start &amp; themen</div>
+    <h2 class="screen-title">Wo m&ouml;chtest du weitermachen?</h2>
+    <div class="topic-grid">
+      <div class="tile featured">
+        <p class="tile-name">trennbare Verben</p>
+        <span class="tile-count">15 Karten &middot; aus deinem Heft</span>
+      </div>
+      <div class="tile">
+        <p class="tile-name">Nomen &amp; Artikel</p>
+        <span class="tile-count">32 Karten</span>
+      </div>
+      <div class="tile">
+        <p class="tile-name">Alltag &amp; Zeit</p>
+        <span class="tile-count">18 Karten</span>
+      </div>
+      <div class="tile">
+        <p class="tile-name">im caf&eacute;</p>
+        <span class="tile-count">9 Karten</span>
+      </div>
+      <div class="tile">
+        <p class="tile-name">Zahlen</p>
+        <span class="tile-count">14 Karten</span>
+      </div>
+      <div class="tile">
+        <p class="tile-name">die 1000 h&auml;ufigsten W&ouml;rter</p>
+        <span class="tile-count">64 von 1000 gelernt</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-gap">
+    <div class="stack-label">nomen mit bild</div>
+    <div class="layout">
+      <div>
+        <div class="card">
+          <div class="scene">
+            <svg viewBox="0 0 64 64" fill="none" stroke="#FBF8F1" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="14" y="14" width="36" height="26" rx="2"/>
+              <path d="M14 20h36"/>
+              <path d="M20 28h10"/>
+              <path d="M20 33h16"/>
+            </svg>
+          </div>
+          <div class="word-row">
+            <span class="gender">die</span>
+            <span class="word">Zeitung</span>
+            <div class="sound">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                <path d="M15.5 8.5a5 5 0 0 1 0 7"></path>
+              </svg>
+            </div>
+          </div>
+          <p class="sentence">Ich lese die Zeitung am Morgen.</p>
+          <p class="sentence-en">I read the newspaper in the morning.</p>
+          <div class="progress-row">
+            <div class="progress-track"><div class="progress-fill" style="width:58%"></div></div>
+            <div class="progress-label">Karte 7 von 32</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="side-card">
+          <div class="stack-label">artikel-drill</div>
+          <h3>Der, die oder das?</h3>
+          <p class="pattern-line"><span class="blank">Die</span> Zeitung liegt auf dem Tisch.</p>
+          <div class="options">
+            <button class="option">der</button>
+            <button class="option correct">die</button>
+            <button class="option">das</button>
+          </div>
+          <p class="note" style="margin-top:14px">Bilder helfen dir, dir den Artikel zusammen mit dem Wort zu merken, nicht getrennt davon.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-gap">
+    <div class="stack-label">dein fortschritt</div>
+    <div class="stat-row">
+      <div class="stat">
+        <span class="stat-num">41</span>
+        <span class="stat-label">Tage dabei</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">88</span>
+        <span class="stat-label">Karten insgesamt</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">15</span>
+        <span class="stat-label">Heftseiten digitalisiert</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">64</span>
+        <span class="stat-label">von 1000 h&auml;ufigsten W&ouml;rtern</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
