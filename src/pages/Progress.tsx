@@ -10,29 +10,29 @@ export function Progress() {
     <div className="page">
       <Masthead />
 
-      <div className="stack-label">dein fortschritt</div>
-      <h2 className="screen-title">Wie weit du gekommen bist</h2>
+      <div className="stack-label">your progress</div>
+      <h2 className="screen-title">How far you've come</h2>
       <div className="stat-row">
         <div className="stat">
           <span className="stat-num">{daysActive}</span>
-          <span className="stat-label">Tage dabei</span>
+          <span className="stat-label">days active</span>
         </div>
         <div className="stat">
           <span className="stat-num">{allCards.length}</span>
-          <span className="stat-label">Karten insgesamt</span>
+          <span className="stat-label">cards total</span>
         </div>
         <div className="stat">
           <span className="stat-num">{notebookPagesDigitized}</span>
-          <span className="stat-label">Heftseiten digitalisiert</span>
+          <span className="stat-label">notebook pages digitized</span>
         </div>
         <div className="stat">
           <span className="stat-num">{frequencyListLearned}</span>
-          <span className="stat-label">von {FREQUENCY_LIST_TARGET} häufigsten Wörtern</span>
+          <span className="stat-label">of {FREQUENCY_LIST_TARGET} most common words</span>
         </div>
       </div>
 
       <div className="section-gap">
-        <div className="stack-label">nach thema</div>
+        <div className="stack-label">by topic</div>
         <div className="topic-grid">
           {topics.map((topic) => {
             const cards = cardsForTopic(topic.id);
@@ -41,7 +41,7 @@ export function Progress() {
               <div key={topic.id} className="tile">
                 <p className="tile-name">{topic.name}</p>
                 <span className="tile-count">
-                  {learned} von {cards.length} gelernt
+                  {learned} of {cards.length} learned
                 </span>
               </div>
             );
@@ -50,8 +50,8 @@ export function Progress() {
       </div>
 
       <p className="empty-state" style={{ marginTop: 28 }}>
-        Eine Karte gilt als „gelernt“, sobald du sie zweimal richtig in einer Übung beantwortet hast. Kein Streak-Zwang —
-        schau einfach vorbei, wenn du Lust hast.
+        A card counts as "learned" once you've answered it correctly twice in a drill. No streak pressure — just stop by
+        whenever you feel like it.
       </p>
     </div>
   );

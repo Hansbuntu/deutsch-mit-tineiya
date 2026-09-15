@@ -51,7 +51,7 @@ export function Flashcard({
 
       <div className="word-row">
         {card.type === 'noun' && <span className="gender">{card.article}</span>}
-        {card.type === 'verb' && card.separable && <span className="gender">trennbar</span>}
+        {card.type === 'verb' && card.separable && <span className="gender">separable</span>}
         <span className="word">{word}</span>
         <SoundButton text={word} label={word} />
       </div>
@@ -76,7 +76,7 @@ export function Flashcard({
           <div className="progress-fill" style={{ width: `${((index + 1) / total) * 100}%` }} />
         </div>
         <div className="progress-label">
-          Karte {index + 1} von {total}
+          Card {index + 1} of {total}
         </div>
       </div>
     </div>

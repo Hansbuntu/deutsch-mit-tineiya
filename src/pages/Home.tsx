@@ -11,18 +11,18 @@ export function Home() {
     <div className="page">
       <Masthead />
 
-      <div className="stack-label">start &amp; themen</div>
-      <h2 className="screen-title">Wo möchtest du weitermachen?</h2>
+      <div className="stack-label">start &amp; topics</div>
+      <h2 className="screen-title">Where do you want to pick up?</h2>
       <div className="topic-grid">
         {topics.map((topic) => {
           const cards = cardsForTopic(topic.id);
           const isFrequencyList = topic.id === 'wortschatz-1000';
           const learnedCount = cards.filter((c) => isLearned(c.id)).length;
           const countLabel = isFrequencyList
-            ? `${learnedCount} von ${FREQUENCY_LIST_TARGET} gelernt`
+            ? `${learnedCount} of ${FREQUENCY_LIST_TARGET} learned`
             : topic.tagline
-              ? `${cards.length} Karten · ${topic.tagline}`
-              : `${cards.length} Karten`;
+              ? `${cards.length} cards · ${topic.tagline}`
+              : `${cards.length} cards`;
 
           return (
             <Link key={topic.id} to={`/thema/${topic.id}`} className={`tile${topic.featured ? ' featured' : ''}`}>

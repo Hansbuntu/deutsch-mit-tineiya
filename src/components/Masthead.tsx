@@ -11,19 +11,19 @@ export function Masthead() {
         <Link to="/" className="wordmark">
           Deutsch mit <span>Milan</span>
         </Link>
-        <div className="tagline">gebaut aus eigenen Karten · A1 auf dem Weg zu A2</div>
+        <div className="tagline">built from my own cards · A1 on the way to A2</div>
         <nav className="nav-links">
           <Link to="/" className={`nav-link${location.pathname === '/' ? ' active' : ''}`}>
-            Start
+            Home
           </Link>
           <Link to="/fortschritt" className={`nav-link${location.pathname === '/fortschritt' ? ' active' : ''}`}>
-            Fortschritt
+            Progress
           </Link>
         </nav>
       </div>
       <div className="day-note">
-        <strong>Tag {Math.max(daysActive, 1)}</strong>
-        dein Tempo, keine Serie
+        <strong>Day {Math.max(daysActive, 1)}</strong>
+        your pace, no streak
       </div>
     </div>
   );
