@@ -114,6 +114,25 @@ is tracked quietly for the progress screen only.
 
 ## Pronunciation
 
-The sound button uses the browser's built-in `speechSynthesis` (German
-voice, `de-DE`) — no audio files, no backend. It's a no-op on browsers
-without speech synthesis support.
+Every sound button plays a **pre-generated MP3** from `public/audio/`,
+recorded once at build time with a real neural German voice (Microsoft's
+free "Read aloud" engine — the same one behind Edge, no API key, no
+account) via `npm run generate-audio`. This is what makes pronunciation
+consistent for every visitor once deployed: it doesn't depend on what
+voices happen to be installed on their OS or browser.
+
+- **How the lookup works**: `lib/text.ts`'s `audioKeyForText()` hashes the
+  spoken text (FNV-1a, pure JS, no crypto API) to a filename —
+  `public/audio/<hash>.mp3` — so there's no separate manifest to keep in
+  sync; the same function runs in both the generation script and the app.
+- **Regenerating**: `npm run generate-audio` walks every card, skips any
+  `<hash>.mp3` that already exists, and only fetches what's missing — so
+  it's cheap to re-run after adding a handful of new cards. The full corpus
+  (~740 unique words/sentences) takes a few minutes the first time.
+- **Fallback**: if a clip is missing (new card, generation script not yet
+  run), the sound button falls back to the browser's built-in
+  `speechSynthesis` — lower quality and dependent on the visitor's own
+  German voice, but never silent.
+- **Changing the voice**: edit `VOICE` in `scripts/generate-audio.mjs`
+  (any `de-DE-*Neural` voice works) and delete `public/audio/` before
+  re-running to regenerate everything with the new voice.
