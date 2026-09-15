@@ -1,14 +1,8 @@
 import type { Card } from '../data/types';
 import { SceneIcon } from './SceneIcon';
 import { SoundButton } from './SoundButton';
-import { splitOnWord } from '../lib/text';
+import { splitOnWord, speakableText } from '../lib/text';
 import { seenBeforeInfo } from '../lib/repeats';
-
-function headword(card: Card): string {
-  if (card.type === 'verb') return card.infinitive;
-  if (card.type === 'sentence') return card.de;
-  return card.word;
-}
 
 function translation(card: Card): string {
   if (card.type === 'sentence') return card.en;
@@ -39,7 +33,7 @@ export function Flashcard({
   index: number;
   total: number;
 }) {
-  const word = headword(card);
+  const word = speakableText(card);
   const highlight =
     card.type === 'verb' && card.separable ? card.prefix : card.type === 'sentence' ? card.emphasis : undefined;
   const isSentence = card.type === 'sentence';
@@ -69,7 +63,7 @@ export function Flashcard({
         ) : (
           <span className="word">{word}</span>
         )}
-        <SoundButton text={isSentence ? card.de : word} label={word} />
+        <SoundButton text={word} label={word} />
       </div>
 
       {!isSentence && translation(card) && (
