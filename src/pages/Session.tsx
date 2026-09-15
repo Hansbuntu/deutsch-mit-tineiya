@@ -46,7 +46,7 @@ export function Session() {
     return (
       <div className="page">
         <Masthead />
-        <p className="empty-state">Dieses Thema gibt es nicht.</p>
+        <p className="empty-state">That topic doesn't exist.</p>
       </div>
     );
   }
@@ -55,7 +55,7 @@ export function Session() {
     return (
       <div className="page">
         <Masthead />
-        <p className="empty-state">Für dieses Thema gibt es noch keine Karten.</p>
+        <p className="empty-state">There are no cards for this topic yet.</p>
       </div>
     );
   }
@@ -66,7 +66,7 @@ export function Session() {
     <div className="page">
       <Masthead />
 
-      <div className="stack-label">heutige sitzung</div>
+      <div className="stack-label">today's session</div>
       <div className="topics">
         {topics.map((t) => (
           <Link key={t.id} to={`/thema/${t.id}`} className={`topic${t.id === topicId ? ' active' : ''}`}>
@@ -77,14 +77,14 @@ export function Session() {
 
       {finished ? (
         <div className="card session-done">
-          <h2>Geschafft — {cards.length} Karten aus {topic.name}.</h2>
-          <p>Wähle ein neues Thema oder wiederhole dieses noch einmal.</p>
+          <h2>Done — {cards.length} cards from {topic.name}.</h2>
+          <p>Pick a new topic, or go through this one again.</p>
           <div className="card-nav" style={{ justifyContent: 'center' }}>
             <button type="button" className="btn" onClick={() => { setCards(shuffle(cardsForTopic(topicId))); setIndex(0); }}>
-              Nochmal
+              Again
             </button>
             <button type="button" className="btn btn-primary" onClick={() => navigate('/')}>
-              Zur Übersicht
+              Back to overview
             </button>
           </div>
         </div>
@@ -94,10 +94,10 @@ export function Session() {
             <Flashcard card={currentCard} index={index} total={cards.length} />
             <div className="card-nav">
               <button type="button" className="btn" onClick={() => setIndex((i) => Math.max(0, i - 1))} disabled={index === 0}>
-                Zurück
+                Back
               </button>
               <button type="button" className="btn btn-primary" onClick={() => setIndex((i) => i + 1)}>
-                Weiter
+                Next
               </button>
             </div>
           </div>
@@ -107,20 +107,20 @@ export function Session() {
               <DrillPanel key={drill.id} drill={drill} onAnswer={(correct) => markAnswer(currentCard.id, correct)} />
             ) : (
               <div className="side-card">
-                <div className="stack-label">merken</div>
+                <div className="stack-label">good to know</div>
                 <p className="note">
-                  Für diesen Kartentyp gibt es noch keine Übung — Bild und Wort reichen fürs Erste. Karte weiter für das
-                  nächste Wort.
+                  There's no drill for this card type yet — the picture and word are enough for now. Hit next for the
+                  next word.
                 </p>
               </div>
             )}
 
             {topicId === 'trennbare-verben' && (
               <div className="side-card">
-                <div className="stack-label">aus deinem heft</div>
+                <div className="stack-label">from your notebook</div>
                 <p className="note">
-                  Alle {notebookPagesDigitized} trennbaren Verben aus deinem Notizbuch sind jetzt digitalisiert — jede mit
-                  eigenem Bild, Beispielsatz und voller Konjugation.
+                  All {notebookPagesDigitized} separable verbs from your notebook are now digitized — each with its own
+                  picture, example sentence, and full conjugation.
                 </p>
               </div>
             )}

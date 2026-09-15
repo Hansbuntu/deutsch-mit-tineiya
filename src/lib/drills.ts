@@ -48,7 +48,7 @@ function buildSeparablePositionDrill(card: VerbCard, prefixPool: string[]): Dril
     promptParts: split,
     options: shuffle([card.prefix, ...otherPrefixes]).map((label) => ({ id: label, label })),
     correctOptionId: card.prefix,
-    note: 'Das trennbare Präfix steht am Satzende.',
+    note: 'The separable prefix goes at the end of the sentence.',
   };
 }
 

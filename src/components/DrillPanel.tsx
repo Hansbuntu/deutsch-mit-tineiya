@@ -2,9 +2,9 @@ import { useState } from 'react';
 import type { Drill, DrillKind } from '../data/types';
 
 const titleByKind: Record<DrillKind, string> = {
-  conjugation: 'Konjugation',
-  'separable-position': 'Satzstellung',
-  article: 'Der, die oder das?',
+  conjugation: 'Conjugation',
+  'separable-position': 'Word order',
+  article: 'Der, die, or das?',
 };
 
 export function DrillPanel({ drill, onAnswer }: { drill: Drill; onAnswer: (correct: boolean) => void }) {
@@ -20,7 +20,7 @@ export function DrillPanel({ drill, onAnswer }: { drill: Drill; onAnswer: (corre
 
   return (
     <div className="side-card">
-      <div className="stack-label">satzmuster</div>
+      <div className="stack-label">sentence pattern</div>
       <h3>{titleByKind[drill.kind]}</h3>
       <p className="pattern-line">
         {drill.promptParts[0]}
@@ -42,7 +42,7 @@ export function DrillPanel({ drill, onAnswer }: { drill: Drill; onAnswer: (corre
       </div>
       {selectedId && (
         <p className={`drill-feedback${answeredCorrectly ? '' : ' incorrect'}`}>
-          {answeredCorrectly ? 'Richtig!' : `Nicht ganz — richtig ist "${drill.correctOptionId}".`}
+          {answeredCorrectly ? 'Correct!' : `Not quite — it's "${drill.correctOptionId}".`}
         </p>
       )}
       {drill.note && <p className="note" style={{ marginTop: 14 }}>{drill.note}</p>}
