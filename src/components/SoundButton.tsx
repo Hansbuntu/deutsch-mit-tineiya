@@ -5,7 +5,7 @@ export function SoundButton({ text, label }: { text: string; label: string }) {
     <button
       type="button"
       className="sound"
-      aria-label={`${label} anhören`}
+      aria-label={`Listen to ${label}`}
       onClick={() => speakGerman(text)}
     >
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
