@@ -1,6 +1,9 @@
-// Pronunciation via the browser's built-in speech synthesis — free, no
-// backend, works offline once the voice is downloaded. Silently does
-// nothing on browsers without support (button stays visible but inert).
+// Pronunciation: the primary path is a pre-generated MP3 (see
+// scripts/generate-audio.mjs) — a real neural German voice baked into the
+// deploy at build time, so every visitor hears the same quality regardless
+// of what's installed on their machine. The browser's speechSynthesis is
+// only a fallback, for text that has no pre-generated clip (e.g. a new card
+// added without re-running the audio script).
 //
 // getVoices() returns an empty list on the very first call in most browsers
 // (the list loads asynchronously) — calling it synchronously, like a naive
@@ -9,6 +12,22 @@
 // German text read with English phoneme rules, which is why it can sound
 // "wrong" rather than simply low-quality. We wait for the real voice list
 // before ever speaking.
+
+import { audioKeyForText } from './text';
+
+/** Play the pre-generated clip for `text`, falling back to speechSynthesis if it's missing. */
+export function playPronunciation(text: string) {
+  const src = `${import.meta.env.BASE_URL}audio/${audioKeyForText(text)}.mp3`;
+  let fellBack = false;
+  const fallback = () => {
+    if (fellBack) return;
+    fellBack = true;
+    speakGerman(text);
+  };
+  const audio = new Audio(src);
+  audio.addEventListener('error', fallback, { once: true });
+  audio.play().catch(fallback);
+}
 
 let voicesPromise: Promise<SpeechSynthesisVoice[]> | null = null;
 
