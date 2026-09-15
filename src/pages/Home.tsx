@@ -33,6 +33,7 @@ export function Home() {
                     ? `${cards.length} cards · ${topic.tagline}`
                     : `${cards.length} cards`;
                 const passage = passageForTopic(topic.id);
+                const hasSpeakingPractice = cards.some((c) => c.type === 'sentence');
 
                 return (
                   <div key={topic.id} className={`tile tile-with-extra${topic.featured ? ' featured' : ''}`}>
@@ -43,6 +44,11 @@ export function Home() {
                     {passage && (
                       <Link to={`/thema/${topic.id}/passage`} className="tile-extra-link">
                         Read full passage →
+                      </Link>
+                    )}
+                    {hasSpeakingPractice && (
+                      <Link to={`/thema/${topic.id}/sprechen`} className="tile-extra-link">
+                        Practice speaking →
                       </Link>
                     )}
                   </div>
