@@ -100,10 +100,10 @@ Any static host works — pick whichever is easiest:
 - **Real photos instead of icons**: `CardImage` already supports a `photo`
   variant (`{ kind: 'photo', src, alt }`) alongside `icon` — swap a card's
   `image` field, no schema change needed.
-- **Voice input (phase 2)**: not built yet. The data model doesn't assume
-  multiple-choice-only, so a new `DrillKind` (e.g. `'speak'`) with a
-  `SpeechRecognition`-backed screen can be added later without reshaping
-  existing cards.
+- **More speaking-practice topics**: `SpeakSession.tsx` already works for
+  any topic — it just filters that topic's cards down to `SentenceCard`s.
+  Add `SentenceCard`s to any topic and a "Practice speaking →" link appears
+  for it automatically (see `hasSpeakingPractice` in `Home.tsx`/`Session.tsx`).
 
 ## Progress tracking
 
@@ -136,3 +136,30 @@ voices happen to be installed on their OS or browser.
 - **Changing the voice**: edit `VOICE` in `scripts/generate-audio.mjs`
   (any `de-DE-*Neural` voice works) and delete `public/audio/` before
   re-running to regenerate everything with the new voice.
+
+## Speaking practice (`SpeakSession.tsx`, `lib/voice.ts`)
+
+Phase 2 from the brief: a "say this in German" mode for `SentenceCard`s
+(currently the TikTok core sentences and the A1 sentence bank — see
+`hasSpeakingPractice` in `Home.tsx`), reachable via a "Practice speaking →"
+link wherever a topic has sentence cards.
+
+- **How it works**: the browser's free built-in `SpeechRecognition` API
+  transcribes what's said (no backend, no API key), which is then compared
+  against the target sentence with a normalized Levenshtein similarity
+  score (`textSimilarity()` in `lib/voice.ts`, threshold
+  `SPOKEN_MATCH_THRESHOLD` = 0.82) — a text/grammar check, not a
+  pronunciation score. Seeing the raw transcript next to the target still
+  gives indirect pronunciation feedback: if speech recognition mis-hears a
+  word, that's usually a sign it wasn't said clearly.
+- **Browser support**: solid in Chrome and Edge, unsupported in Firefox and
+  inconsistent in Safari. `speechRecognitionSupported()` gates the mic UI;
+  unsupported browsers get a "reveal the sentence" self-check instead of a
+  dead end.
+- **Requires HTTPS** (or localhost) — a Web Speech API / secure-context
+  requirement, satisfied automatically by GitHub Pages/Vercel/Netlify and
+  by `npm run dev`.
+- **Pronunciation scoring** (actually grading how *well* something was
+  said, not just what was said) would need a paid API like Azure
+  Pronunciation Assessment — out of scope for a free static site unless
+  Tineiya brings her own key later.
