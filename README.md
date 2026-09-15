@@ -1,4 +1,4 @@
-# Deutsch mit Milan
+# Deutsch mit Tineiya
 
 A personal German flashcard and drill app — image-led vocabulary cards, pattern
 drills for conjugation/separable verbs/articles, and a quiet progress view.
@@ -43,9 +43,9 @@ Any static host works — pick whichever is easiest:
 ## Data model (`src/data/`)
 
 - `types.ts` — the card/topic/drill shapes. `Card` is a discriminated union
-  (`NounCard | VerbCard | VocabCard`) so new card types can be added without
-  touching existing ones.
-- `verbs.ts` — the 15 separable verbs digitized from Milan's notebook, each
+  (`NounCard | VerbCard | VocabCard | SentenceCard`) so new card types can be
+  added without touching existing ones.
+- `verbs.ts` — the 15 separable verbs digitized from Tineiya's notebook, each
   with a full present-tense conjugation (used by the conjugation and
   separable-position drills).
 - `nouns.ts` — curated cards for the Nomen & Artikel / Alltag & Zeit / im
@@ -55,20 +55,48 @@ Any static host works — pick whichever is easiest:
   curated topics above. The progress screen displays this against a fixed
   target of 1000 (`FREQUENCY_LIST_TARGET` in `cards.ts`) — the list is meant
   to keep growing toward that; see below.
-- `topics.ts` — the topic list shown on the home screen.
+- `passages.ts` — the full text of Tineiya's four TikTok scripts (Mein Tag,
+  Mein Zuhause, Über mich, Mein Leben), kept verbatim for the "read full
+  passage" view — separate from the flashcards pulled from them.
+- `tiktokVocab.ts` — vocabulary and two extra separable verbs
+  (`nachdenken`, `rausgehen`) extracted from those four scripts, one topic
+  per script. Words that recur across scripts (malen, Musik hören, Ideen,
+  Zimmer, Kunst, Deutsch lernen, Freizeit, YouTube-Videos schauen, …) are
+  deliberately re-added as their own card per topic — `lib/repeats.ts`
+  flags the later ones as "you've seen this before" rather than
+  deduplicating them away.
+- `coreSentences.ts` — 2-3 `SentenceCard`s per TikTok topic worth
+  memorizing as a whole sentence, mixed into that topic's session.
+- `grammarDrills.ts` — hand-authored `'word-order'` drills (pick the
+  correctly-ordered sentence) for the grammar point each script actually
+  demonstrates (verb-second order, dative case, weil-clauses, indirect
+  questions). Keyed by the core-sentence card id they attach to; looked up
+  before the generic per-card-type drill logic in `lib/drills.ts`.
+- `a1Sentences.ts` — a generic ~100-sentence A1 bank (greetings, time,
+  questions, shopping, directions), independent of the personal TikTok
+  content, one topic per category.
+- `topics.ts` — the topic list shown on the home screen, grouped into
+  sections (`TopicGroup`: notebook / tiktok / grammar / a1-sentences) for
+  display.
 
 ### Extending it
 
-- **New topic**: add an entry to `topics.ts`, then add cards with that
-  `topicId` anywhere in `data/`.
+- **New topic**: add an entry to `topics.ts` (with a `group`), then add
+  cards with that `topicId` anywhere in `data/`.
 - **New card type**: add a variant to the `Card` union in `types.ts`, teach
   `Flashcard.tsx` how to render it, and (optionally) `drills.ts` how to quiz
   it.
-- **New drill kind**: add to `DrillKind` in `types.ts` and add a generator
-  function in `lib/drills.ts`.
+- **New drill kind**: add to `DrillKind` in `types.ts` and either add a
+  generator function in `lib/drills.ts` (mechanical, derived from card
+  data) or hand-author entries in `grammarDrills.ts` (bespoke, keyed by
+  card id) — see the `'word-order'` kind for an example of the latter.
 - **Grow the 1000-word list**: append more `NounCard | VocabCard` entries to
   `frequencyWords.ts` (same shape as the existing ones). Check new words
   against the curated topic files first to avoid duplicates.
+- **New TikTok script**: add its text to `passages.ts`, extracted cards to
+  `tiktokVocab.ts`, 2-3 `SentenceCard`s to `coreSentences.ts`, and its topic
+  id to `TRACKED_TOPIC_ORDER` in `lib/repeats.ts` (in posting order) so
+  repeat-word detection includes it.
 - **Real photos instead of icons**: `CardImage` already supports a `photo`
   variant (`{ kind: 'photo', src, alt }`) alongside `icon` — swap a card's
   `image` field, no schema change needed.
@@ -80,7 +108,7 @@ Any static host works — pick whichever is easiest:
 ## Progress tracking
 
 `src/lib/progress.tsx` is a small React context backed by `localStorage`
-(`deutsch-mit-milan:progress:v1`). A card counts as "learned" after two
+(`deutsch-mit-tineiya:progress:v1`). A card counts as "learned" after two
 correct drill answers. There's no streak mechanic by design — `daysActive`
 is tracked quietly for the progress screen only.
 

@@ -1,5 +1,6 @@
 import type { Article, Card, Drill, DrillOption, NounCard, VerbCard } from '../data/types';
 import { verbs as allVerbs } from '../data/verbs';
+import { grammarDrillsByCardId } from '../data/grammarDrills';
 import { escapeRegExp, splitOnWord, shuffle } from './text';
 
 function toOptions(labels: string[]): DrillOption[] {
@@ -71,6 +72,8 @@ function buildArticleDrill(card: NounCard): Drill {
  * full verb set when the session hasn't seen enough yet).
  */
 export function generateDrillForCard(card: Card, sessionSeenVerbs: VerbCard[]): Drill | null {
+  const handAuthored = grammarDrillsByCardId[card.id];
+  if (handAuthored) return handAuthored;
   if (card.type === 'verb') {
     const prefixSource = sessionSeenVerbs.length >= 3 ? sessionSeenVerbs : allVerbs;
     const prefixPool = prefixSource.filter((v) => v.separable && v.prefix).map((v) => v.prefix!);
