@@ -64,6 +64,7 @@ export function Session() {
   const finished = index >= cards.length;
   const relatedTopics = topics.filter((t) => t.group === topic.group);
   const passage = passageForTopic(topicId);
+  const hasSpeakingPractice = cards.some((c) => c.type === 'sentence');
 
   return (
     <div className="page">
@@ -78,11 +79,18 @@ export function Session() {
         ))}
       </div>
 
-      {passage && (
-        <p style={{ marginTop: -10, marginBottom: 20 }}>
-          <Link to={`/thema/${topicId}/passage`} style={{ fontSize: 13, color: 'var(--sage-deep)' }}>
-            Read the full passage →
-          </Link>
+      {(passage || hasSpeakingPractice) && (
+        <p style={{ marginTop: -10, marginBottom: 20, display: 'flex', gap: 18 }}>
+          {passage && (
+            <Link to={`/thema/${topicId}/passage`} style={{ fontSize: 13, color: 'var(--sage-deep)' }}>
+              Read the full passage →
+            </Link>
+          )}
+          {hasSpeakingPractice && (
+            <Link to={`/thema/${topicId}/sprechen`} style={{ fontSize: 13, color: 'var(--sage-deep)' }}>
+              Practice speaking →
+            </Link>
+          )}
         </p>
       )}
 

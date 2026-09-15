@@ -4,6 +4,7 @@ import { Home } from './pages/Home';
 import { Session } from './pages/Session';
 import { Progress } from './pages/Progress';
 import { PassagePage } from './pages/Passage';
+import { SpeakSession } from './pages/SpeakSession';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/thema/:topicId" element={<Session />} />
             <Route path="/thema/:topicId/passage" element={<PassagePage />} />
+            <Route path="/thema/:topicId/sprechen" element={<SpeakSession />} />
             <Route path="/fortschritt" element={<Progress />} />
           </Routes>
         </div>
