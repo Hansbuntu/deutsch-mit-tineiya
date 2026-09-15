@@ -251,6 +251,28 @@ button {
   color: var(--gold-deep);
 }
 
+.seen-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 11px;
+  color: var(--gold-deep);
+  background: rgba(201, 150, 60, 0.12);
+  border: 1px solid rgba(201, 150, 60, 0.35);
+  border-radius: 999px;
+  padding: 4px 12px;
+  margin-bottom: 14px;
+}
+
+.core-sentence-text {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1.4;
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
 .sound {
   margin-left: auto;
   width: 38px;
@@ -307,6 +329,21 @@ button {
   font-size: 12px;
   color: var(--ink-soft);
   white-space: nowrap;
+}
+
+.passage-card {
+  max-width: 640px;
+}
+
+.passage-paragraph {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--ink);
+  margin: 0 0 18px;
+}
+
+.passage-paragraph:last-child {
+  margin-bottom: 0;
 }
 
 .card-nav {
@@ -432,6 +469,27 @@ button {
 .tile-count {
   font-size: 12px;
   color: var(--ink-soft);
+}
+
+.tile-with-extra {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.tile-link {
+  display: block;
+  padding: 18px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.tile-extra-link {
+  display: block;
+  padding: 0 18px 16px;
+  margin-top: -6px;
+  font-size: 12px;
+  color: var(--sage-deep);
 }
 
 /* ---------- stats (progress) ---------- */

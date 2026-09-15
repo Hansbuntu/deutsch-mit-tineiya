@@ -2,13 +2,16 @@ import type { Card } from '../data/types';
 import { SceneIcon } from './SceneIcon';
 import { SoundButton } from './SoundButton';
 import { splitOnWord } from '../lib/text';
+import { seenBeforeInfo } from '../lib/repeats';
 
 function headword(card: Card): string {
   if (card.type === 'verb') return card.infinitive;
+  if (card.type === 'sentence') return card.de;
   return card.word;
 }
 
 function translation(card: Card): string {
+  if (card.type === 'sentence') return card.en;
   return card.type === 'verb' || card.type === 'noun' || card.type === 'vocab' ? card.translation : '';
 }
 
@@ -37,7 +40,10 @@ export function Flashcard({
   total: number;
 }) {
   const word = headword(card);
-  const highlight = card.type === 'verb' && card.separable ? card.prefix : undefined;
+  const highlight =
+    card.type === 'verb' && card.separable ? card.prefix : card.type === 'sentence' ? card.emphasis : undefined;
+  const isSentence = card.type === 'sentence';
+  const seenBefore = seenBeforeInfo(card);
 
   return (
     <div className="card">
@@ -49,20 +55,32 @@ export function Flashcard({
         )}
       </div>
 
+      {seenBefore && (
+        <div className="seen-badge">you've seen this before · {seenBefore.topicName}</div>
+      )}
+
       <div className="word-row">
         {card.type === 'noun' && <span className="gender">{card.article}</span>}
         {card.type === 'verb' && card.separable && <span className="gender">separable</span>}
-        <span className="word">{word}</span>
-        <SoundButton text={word} label={word} />
+        {isSentence ? (
+          <p className="sentence core-sentence-text">
+            <HighlightedSentence text={word} highlight={highlight} />
+          </p>
+        ) : (
+          <span className="word">{word}</span>
+        )}
+        <SoundButton text={isSentence ? card.de : word} label={word} />
       </div>
 
-      {card.type !== 'verb' && translation(card) && (
+      {!isSentence && translation(card) && (
         <p className="sentence-en" style={{ marginBottom: 14 }}>
           {translation(card)}
         </p>
       )}
 
-      {card.example && (
+      {isSentence && <p className="sentence-en">{translation(card)}</p>}
+
+      {!isSentence && card.example && (
         <>
           <p className="sentence">
             <HighlightedSentence text={card.example.de} highlight={highlight} />

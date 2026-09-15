@@ -5,6 +5,7 @@ import { Flashcard } from '../components/Flashcard';
 import { DrillPanel } from '../components/DrillPanel';
 import { topics, topicById } from '../data/topics';
 import { cardsForTopic } from '../data/cards';
+import { passageForTopic } from '../data/passages';
 import { useProgress } from '../lib/progress';
 import { generateDrillForCard } from '../lib/drills';
 import { shuffle } from '../lib/text';
@@ -61,6 +62,8 @@ export function Session() {
   }
 
   const finished = index >= cards.length;
+  const relatedTopics = topics.filter((t) => t.group === topic.group);
+  const passage = passageForTopic(topicId);
 
   return (
     <div className="page">
@@ -68,12 +71,20 @@ export function Session() {
 
       <div className="stack-label">today's session</div>
       <div className="topics">
-        {topics.map((t) => (
+        {relatedTopics.map((t) => (
           <Link key={t.id} to={`/thema/${t.id}`} className={`topic${t.id === topicId ? ' active' : ''}`}>
             {t.name}
           </Link>
         ))}
       </div>
+
+      {passage && (
+        <p style={{ marginTop: -10, marginBottom: 20 }}>
+          <Link to={`/thema/${topicId}/passage`} style={{ fontSize: 13, color: 'var(--sage-deep)' }}>
+            Read the full passage →
+          </Link>
+        </p>
+      )}
 
       {finished ? (
         <div className="card session-done">
@@ -109,8 +120,8 @@ export function Session() {
               <div className="side-card">
                 <div className="stack-label">good to know</div>
                 <p className="note">
-                  There's no drill for this card type yet — the picture and word are enough for now. Hit next for the
-                  next word.
+                  There's no drill for this card yet — the picture and text are enough for now. Hit next to keep
+                  going.
                 </p>
               </div>
             )}

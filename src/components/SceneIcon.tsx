@@ -393,6 +393,13 @@ const paths: Record<IconName, ReactElement> = {
       <path d="M32 12l6 14 15 2-11 11 3 15-13-7-13 7 3-15-11-11 15-2z" />
     </>
   ),
+  'category-music': (
+    <>
+      <circle cx="22" cy="46" r="6" />
+      <circle cx="44" cy="42" r="6" />
+      <path d="M28 46V16l22-4v30" />
+    </>
+  ),
 };
 
 export function SceneIcon({ name, className }: { name: IconName; className?: string }) {
