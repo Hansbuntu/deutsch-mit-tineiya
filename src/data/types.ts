@@ -1,4 +1,4 @@
-// Core data model for Deutsch mit Milan.
+// Core data model for Deutsch mit Tineiya.
 // Kept intentionally extensible: new card types, drill kinds, and topics
 // can be added without touching the screens that consume them.
 
@@ -27,7 +27,7 @@ export type CardImage =
   | { kind: 'icon'; icon: IconName }
   | { kind: 'photo'; src: string; alt: string };
 
-export type CardSource = 'notebook' | 'curated' | 'frequency-list';
+export type CardSource = 'notebook' | 'curated' | 'frequency-list' | 'tiktok' | 'a1-bank';
 
 interface CardBase {
   id: string;
@@ -79,20 +79,46 @@ export interface VocabCard extends CardBase {
   translation: string;
 }
 
-export type Card = NounCard | VerbCard | VocabCard;
+/**
+ * A full sentence to memorize as a unit — a "core sentence" pulled from a
+ * TikTok passage, or an entry in the generic A1 sentence bank. Rendered
+ * differently from single-word cards (no giant headword).
+ */
+export interface SentenceCard extends CardBase {
+  type: 'sentence';
+  partOfSpeech: 'phrase';
+  de: string;
+  en: string;
+  /** Substring of `de` to highlight — the grammar point this sentence demonstrates. */
+  emphasis?: string;
+}
+
+export type Card = NounCard | VerbCard | VocabCard | SentenceCard;
+
+/** A full passage (a TikTok script) kept as continuous text for reading/memorization,
+ * separate from the flashcards extracted from it. */
+export interface Passage {
+  id: string;
+  topicId: string;
+  title: string;
+  paragraphs: string[];
+}
+
+export type TopicGroup = 'notebook' | 'tiktok' | 'grammar' | 'a1-sentences';
 
 export interface Topic {
   id: string;
   name: string;
   tagline?: string;
   featured?: boolean;
+  group: TopicGroup;
 }
 
 // ---------------------------------------------------------------------
 // Drills
 // ---------------------------------------------------------------------
 
-export type DrillKind = 'conjugation' | 'separable-position' | 'article';
+export type DrillKind = 'conjugation' | 'separable-position' | 'article' | 'word-order';
 
 export interface DrillOption {
   id: string;
@@ -103,7 +129,12 @@ export interface Drill {
   id: string;
   kind: DrillKind;
   cardId: string;
-  /** Sentence split around the blank: [textBeforeBlank, textAfterBlank]. */
+  /**
+   * Sentence split around the blank: [textBeforeBlank, textAfterBlank].
+   * For 'word-order' drills there's no blank — promptParts[0] holds the
+   * instruction text instead and promptParts[1] is empty; options hold
+   * full sentence variants rather than single words.
+   */
   promptParts: [string, string];
   options: DrillOption[];
   correctOptionId: string;
@@ -174,4 +205,5 @@ export type IconName =
   | 'category-place'
   | 'category-action'
   | 'category-object'
-  | 'category-quality';
+  | 'category-quality'
+  | 'category-music';

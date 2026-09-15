@@ -9,7 +9,7 @@ export function Masthead() {
     <div className="masthead">
       <div className="masthead-left">
         <Link to="/" className="wordmark">
-          Deutsch mit <span>Milan</span>
+          Deutsch mit <span>Tineiya</span>
         </Link>
         <div className="tagline">built from my own cards · A1 on the way to A2</div>
         <nav className="nav-links">

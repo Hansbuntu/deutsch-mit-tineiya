@@ -1,6 +1,6 @@
 import type { VerbCard } from './types';
 
-// The 15 separable verbs digitized from Milan's own handwritten flashcards.
+// The 15 separable verbs digitized from Tineiya's own handwritten flashcards.
 // Conjugation forms store the finite verb WITHOUT the prefix — in a main
 // clause the prefix always moves to the end of the sentence regardless of
 // person, so drills built from `conjugation` only ever need the stem form.

@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
 import { allCards } from '../data/cards';
 
-const STORAGE_KEY = 'deutsch-mit-milan:progress:v1';
+const STORAGE_KEY = 'deutsch-mit-tineiya:progress:v1';
 
 export interface CardProgress {
   seenCount: number;

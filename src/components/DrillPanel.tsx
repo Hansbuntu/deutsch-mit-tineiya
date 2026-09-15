@@ -5,6 +5,7 @@ const titleByKind: Record<DrillKind, string> = {
   conjugation: 'Conjugation',
   'separable-position': 'Word order',
   article: 'Der, die, or das?',
+  'word-order': 'Word order',
 };
 
 export function DrillPanel({ drill, onAnswer }: { drill: Drill; onAnswer: (correct: boolean) => void }) {
@@ -17,16 +18,22 @@ export function DrillPanel({ drill, onAnswer }: { drill: Drill; onAnswer: (corre
   };
 
   const answeredCorrectly = selectedId === drill.correctOptionId;
+  const correctLabel = drill.options.find((o) => o.id === drill.correctOptionId)?.label ?? drill.correctOptionId;
+  const isFillInBlank = drill.kind !== 'word-order';
 
   return (
     <div className="side-card">
       <div className="stack-label">sentence pattern</div>
       <h3>{titleByKind[drill.kind]}</h3>
-      <p className="pattern-line">
-        {drill.promptParts[0]}
-        <span className="blank">{selectedId ?? '____'}</span>
-        {drill.promptParts[1]}
-      </p>
+      {isFillInBlank ? (
+        <p className="pattern-line">
+          {drill.promptParts[0]}
+          <span className="blank">{selectedId ?? '____'}</span>
+          {drill.promptParts[1]}
+        </p>
+      ) : (
+        <p className="pattern-line">{drill.promptParts[0]}</p>
+      )}
       <div className="options">
         {drill.options.map((option) => {
           const isSelected = selectedId === option.id;
@@ -42,7 +49,7 @@ export function DrillPanel({ drill, onAnswer }: { drill: Drill; onAnswer: (corre
       </div>
       {selectedId && (
         <p className={`drill-feedback${answeredCorrectly ? '' : ' incorrect'}`}>
-          {answeredCorrectly ? 'Correct!' : `Not quite — it's "${drill.correctOptionId}".`}
+          {answeredCorrectly ? 'Correct!' : `Not quite — it's "${correctLabel}".`}
         </p>
       )}
       {drill.note && <p className="note" style={{ marginTop: 14 }}>{drill.note}</p>}

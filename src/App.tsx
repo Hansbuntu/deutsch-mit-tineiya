@@ -3,6 +3,7 @@ import { ProgressProvider } from './lib/progress';
 import { Home } from './pages/Home';
 import { Session } from './pages/Session';
 import { Progress } from './pages/Progress';
+import { PassagePage } from './pages/Passage';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/thema/:topicId" element={<Session />} />
+            <Route path="/thema/:topicId/passage" element={<PassagePage />} />
             <Route path="/fortschritt" element={<Progress />} />
           </Routes>
         </div>
