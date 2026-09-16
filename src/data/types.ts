@@ -29,6 +29,13 @@ export type CardImage =
 
 export type CardSource = 'notebook' | 'curated' | 'frequency-list' | 'tiktok' | 'a1-bank';
 
+/** CEFR level. Not stored per-card — derived (see lib/level.ts) from
+ * existing signals (frequencyRank, source) so there's nothing to keep in
+ * sync as content grows. Only A1/A2 are ever produced today, matching the
+ * app's actual content; the wider union is here so B1+ content can slot in
+ * later without a schema change. */
+export type CefrLevel = 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2';
+
 interface CardBase {
   id: string;
   topicIds: string[];

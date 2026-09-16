@@ -137,6 +137,36 @@ voices happen to be installed on their OS or browser.
   (any `de-DE-*Neural` voice works) and delete `public/audio/` before
   re-running to regenerate everything with the new voice.
 
+## Practice generator (`Generator.tsx`, `/generieren`)
+
+A "generate random practice" tool inspired by terminal-lingo.com, reusing
+the entire existing card pool (767 cards across every topic) rather than a
+separate dataset:
+
+- **Level** (All / A1 / A2) and **source** (All / notebook / TikTok
+  scripts / grammar & vocab / A1 bank) filters narrow the pool; **count**
+  (1/3/5/10) samples that many at random. Level isn't a stored field —
+  `lib/level.ts`'s `cardLevel()` derives it from `frequencyRank` for the
+  frequency-word pool (rank ≤250 → A1, else A2) and from `source` for
+  everything else (all currently A1). Source reuses the existing `Topic.group`
+  — picking "Your TikTok scripts" is exactly how you generate sentences from
+  Tineiya's own TikTok texts specifically.
+- **Direction** (EN→DE / DE→EN) and **mode** (Flip / Type) control how the
+  sampled batch is presented — Flip reuses the existing `Flashcard`
+  component as-is; Type is a new `TypeCheckCard` with a text input plus the
+  same speech input as the speaking-practice screen, graded with
+  `lib/practice.ts`: a lenient overall verdict (`isCloseEnough`, Levenshtein
+  similarity ≥0.9) plus an exact word-by-word diff (`wordDiff`, LCS over
+  normalized tokens) showing which words matched, which were missed, and
+  what was said/typed instead.
+- Changing level/source/count draws a fresh random sample automatically;
+  the "↻ Generate" button re-rolls the same filters. Direction/mode just
+  change how the current batch is displayed.
+- Visually distinct from the rest of the app on purpose (dark
+  `.terminal-panel` control bar, IBM Plex Mono, `// LABEL` style tags) while
+  staying inside the existing color system (ink/sage/gold) rather than
+  copying the reference site's black/neon look wholesale.
+
 ## Speaking practice (`SpeakSession.tsx`, `lib/voice.ts`)
 
 Phase 2 from the brief: a "say this in German" mode for `SentenceCard`s
