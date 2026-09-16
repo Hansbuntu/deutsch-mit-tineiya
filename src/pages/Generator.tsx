@@ -10,13 +10,10 @@ import { shuffle } from '../lib/text';
 import { useProgress } from '../lib/progress';
 import { sentenceOf, type PracticeDirection } from '../lib/practice';
 
-const FALLBACK_ICON = 'category-communication' as const;
-
 type LevelFilter = 'all' | CefrLevel;
 type SourceFilter = 'all' | TopicGroup;
 type Mode = 'flip' | 'type';
 
-const COUNT_OPTIONS = [1, 3, 5, 10];
 const LEVEL_OPTIONS: LevelFilter[] = ['all', 'A1', 'A2'];
 
 function groupForCard(card: Card): TopicGroup | undefined {
@@ -33,8 +30,7 @@ export function Generator() {
   const [source, setSource] = useState<SourceFilter>('all');
   const [direction, setDirection] = useState<PracticeDirection>('en-to-de');
   const [mode, setMode] = useState<Mode>('flip');
-  const [count, setCount] = useState(5);
-  const [batch, setBatch] = useState<Card[]>([]);
+  const [current, setCurrent] = useState<Card | null>(null);
 
   const pool = useMemo(() => {
     return allCards.filter((card) => {
@@ -46,15 +42,22 @@ export function Generator() {
   }, [level, source]);
 
   const generate = () => {
-    const sample = shuffle(pool).slice(0, count);
-    setBatch(sample);
-    if (mode === 'flip') sample.forEach((c) => markSeen(c.id));
+    if (pool.length === 0) {
+      setCurrent(null);
+      return;
+    }
+    const [next] = shuffle(pool);
+    setCurrent(next);
+    if (mode === 'flip') markSeen(next.id);
   };
 
   useEffect(() => {
     generate();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [level, source, count]);
+  }, [level, source]);
+
+  const sentence = current ? sentenceOf(current) : null;
+  const topicLabel = current ? (topicById(current.topicIds[0])?.name ?? '') : '';
 
   return (
     <div className="page">
@@ -91,20 +94,6 @@ export function Generator() {
               </option>
             ))}
           </select>
-
-          <span className="terminal-label">// COUNT</span>
-          <div className="terminal-group">
-            {COUNT_OPTIONS.map((n) => (
-              <button
-                key={n}
-                type="button"
-                className={`terminal-option${count === n ? ' active' : ''}`}
-                onClick={() => setCount(n)}
-              >
-                {n}
-              </button>
-            ))}
-          </div>
         </div>
 
         <div className="terminal-row">
@@ -142,45 +131,20 @@ export function Generator() {
         </div>
       </div>
 
-      <p className="pool-note">
-        {pool.length} card{pool.length === 1 ? '' : 's'} match these filters
-        {pool.length < count && pool.length > 0 ? ` — showing all ${pool.length}` : ''}
-      </p>
+      <p className="pool-note">{pool.length} card{pool.length === 1 ? '' : 's'} match these filters</p>
 
-      {batch.length === 0 ? (
+      {!current || !sentence ? (
         <p className="empty-state">No full-sentence cards match these filters yet — try a different level or source.</p>
+      ) : mode === 'flip' ? (
+        <SentenceFlipCard key={current.id} sentence={sentence} topicLabel={topicLabel} direction={direction} />
       ) : (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-          {batch.map((card, i) => {
-            const sentence = sentenceOf(card);
-            if (!sentence) return null; // pool is already pre-filtered; guards TS
-            const icon = card.image.kind === 'icon' ? card.image.icon : FALLBACK_ICON;
-            const topicLabel = topicById(card.topicIds[0])?.name ?? '';
-
-            return mode === 'flip' ? (
-              <SentenceFlipCard
-                key={card.id}
-                sentence={sentence}
-                icon={icon}
-                topicLabel={topicLabel}
-                direction={direction}
-                index={i}
-                total={batch.length}
-              />
-            ) : (
-              <TypeCheckCard
-                key={card.id}
-                sentence={sentence}
-                icon={icon}
-                topicLabel={topicLabel}
-                direction={direction}
-                index={i}
-                total={batch.length}
-                onGraded={(correct) => markAnswer(card.id, correct)}
-              />
-            );
-          })}
-        </div>
+        <TypeCheckCard
+          key={current.id}
+          sentence={sentence}
+          topicLabel={topicLabel}
+          direction={direction}
+          onGraded={(correct) => markAnswer(current.id, correct)}
+        />
       )}
     </div>
   );
