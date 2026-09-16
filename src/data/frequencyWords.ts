@@ -3597,6 +3597,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 251,
     "source": "frequency-list",
+    "example": {
+      "de": "Ich bin schon fertig.",
+      "en": "I am already finished."
+    },
     "word": "schon",
     "translation": "already"
   },
@@ -3613,6 +3617,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 252,
     "source": "frequency-list",
+    "example": {
+      "de": "Ich bin noch müde.",
+      "en": "I am still tired."
+    },
     "word": "noch",
     "translation": "still, yet"
   },
@@ -3629,6 +3637,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 253,
     "source": "frequency-list",
+    "example": {
+      "de": "Er kommt immer pünktlich.",
+      "en": "He always arrives on time."
+    },
     "word": "immer",
     "translation": "always"
   },
@@ -3645,6 +3657,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 254,
     "source": "frequency-list",
+    "example": {
+      "de": "Wir gehen oft ins Kino.",
+      "en": "We often go to the cinema."
+    },
     "word": "oft",
     "translation": "often"
   },
@@ -3661,6 +3677,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 255,
     "source": "frequency-list",
+    "example": {
+      "de": "Manchmal regnet es hier.",
+      "en": "Sometimes it rains here."
+    },
     "word": "manchmal",
     "translation": "sometimes"
   },
@@ -3677,6 +3697,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 256,
     "source": "frequency-list",
+    "example": {
+      "de": "Sie ist selten krank.",
+      "en": "She is rarely sick."
+    },
     "word": "selten",
     "translation": "rarely"
   },
@@ -3693,6 +3717,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 257,
     "source": "frequency-list",
+    "example": {
+      "de": "Ich rauche nie.",
+      "en": "I never smoke."
+    },
     "word": "nie",
     "translation": "never"
   },
@@ -3709,6 +3737,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 258,
     "source": "frequency-list",
+    "example": {
+      "de": "Ich komme gleich.",
+      "en": "I'm coming right away."
+    },
     "word": "gleich",
     "translation": "right away; the same"
   },
@@ -3725,6 +3757,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 259,
     "source": "frequency-list",
+    "example": {
+      "de": "Komm sofort nach Hause!",
+      "en": "Come home immediately!"
+    },
     "word": "sofort",
     "translation": "immediately"
   },
@@ -3741,6 +3777,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 260,
     "source": "frequency-list",
+    "example": {
+      "de": "Zuerst esse ich Frühstück.",
+      "en": "First I eat breakfast."
+    },
     "word": "zuerst",
     "translation": "first, at first"
   },
@@ -3757,6 +3797,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 261,
     "source": "frequency-list",
+    "example": {
+      "de": "Danach gehe ich zur Arbeit.",
+      "en": "Afterwards I go to work."
+    },
     "word": "danach",
     "translation": "afterwards"
   },
@@ -3773,6 +3817,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 262,
     "source": "frequency-list",
+    "example": {
+      "de": "Dann trinken wir Kaffee.",
+      "en": "Then we drink coffee."
+    },
     "word": "dann",
     "translation": "then"
   },
@@ -3789,6 +3837,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 263,
     "source": "frequency-list",
+    "example": {
+      "de": "Heute Abend kochen wir zusammen.",
+      "en": "This evening we cook together."
+    },
     "word": "heute Abend",
     "translation": "this evening"
   },
@@ -3805,6 +3857,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 264,
     "source": "frequency-list",
+    "example": {
+      "de": "Das Essen schmeckt gut.",
+      "en": "The food tastes good."
+    },
     "word": "gut",
     "translation": "good"
   },
@@ -3821,6 +3877,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 265,
     "source": "frequency-list",
+    "example": {
+      "de": "Mir geht es heute schlecht.",
+      "en": "I feel bad today."
+    },
     "word": "schlecht",
     "translation": "bad"
   },
@@ -3837,6 +3897,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 266,
     "source": "frequency-list",
+    "example": {
+      "de": "Das Haus ist sehr groß.",
+      "en": "The house is very big."
+    },
     "word": "groß",
     "translation": "big, tall"
   },
@@ -3853,6 +3917,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 267,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Wohnung ist klein.",
+      "en": "The apartment is small."
+    },
     "word": "klein",
     "translation": "small"
   },
@@ -3869,6 +3937,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 268,
     "source": "frequency-list",
+    "example": {
+      "de": "Ich habe ein neues Auto.",
+      "en": "I have a new car."
+    },
     "word": "neu",
     "translation": "new"
   },
@@ -3885,6 +3957,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 269,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Mann ist sehr alt.",
+      "en": "The man is very old."
+    },
     "word": "alt",
     "translation": "old"
   },
@@ -3901,6 +3977,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 270,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Lehrerin ist noch jung.",
+      "en": "The teacher is still young."
+    },
     "word": "jung",
     "translation": "young"
   },
@@ -3917,6 +3997,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 271,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Garten ist schön.",
+      "en": "The garden is beautiful."
+    },
     "word": "schön",
     "translation": "beautiful"
   },
@@ -3933,6 +4017,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 272,
     "source": "frequency-list",
+    "example": {
+      "de": "Das Bild ist hässlich.",
+      "en": "The picture is ugly."
+    },
     "word": "hässlich",
     "translation": "ugly"
   },
@@ -3949,6 +4037,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 273,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Weg ist sehr lang.",
+      "en": "The way is very long."
+    },
     "word": "lang",
     "translation": "long"
   },
@@ -3965,6 +4057,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 274,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Pause ist kurz.",
+      "en": "The break is short."
+    },
     "word": "kurz",
     "translation": "short"
   },
@@ -3981,6 +4077,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 275,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Berg ist sehr hoch.",
+      "en": "The mountain is very high."
+    },
     "word": "hoch",
     "translation": "high, tall"
   },
@@ -3997,6 +4097,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 276,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Miete ist niedrig.",
+      "en": "The rent is low."
+    },
     "word": "niedrig",
     "translation": "low"
   },
@@ -4013,6 +4117,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 277,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Straße ist breit.",
+      "en": "The street is wide."
+    },
     "word": "breit",
     "translation": "wide"
   },
@@ -4029,6 +4137,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 278,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Tisch ist schmal.",
+      "en": "The table is narrow."
+    },
     "word": "schmal",
     "translation": "narrow"
   },
@@ -4045,6 +4157,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 279,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Koffer ist schwer.",
+      "en": "The suitcase is heavy."
+    },
     "word": "schwer",
     "translation": "heavy; difficult"
   },
@@ -4061,6 +4177,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 280,
     "source": "frequency-list",
+    "example": {
+      "de": "Das Frühstück ist leicht.",
+      "en": "The breakfast is light."
+    },
     "word": "leicht",
     "translation": "light; easy"
   },
@@ -4077,6 +4197,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 281,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Zug ist sehr schnell.",
+      "en": "The train is very fast."
+    },
     "word": "schnell",
     "translation": "fast"
   },
@@ -4093,6 +4217,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 282,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Bus fährt langsam.",
+      "en": "The bus drives slowly."
+    },
     "word": "langsam",
     "translation": "slow"
   },
@@ -4109,6 +4237,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 283,
     "source": "frequency-list",
+    "example": {
+      "de": "Er ist sehr stark.",
+      "en": "He is very strong."
+    },
     "word": "stark",
     "translation": "strong"
   },
@@ -4125,6 +4257,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 284,
     "source": "frequency-list",
+    "example": {
+      "de": "Ich fühle mich schwach.",
+      "en": "I feel weak."
+    },
     "word": "schwach",
     "translation": "weak"
   },
@@ -4141,6 +4277,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 285,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Musik ist zu laut.",
+      "en": "The music is too loud."
+    },
     "word": "laut",
     "translation": "loud"
   },
@@ -4157,6 +4297,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 286,
     "source": "frequency-list",
+    "example": {
+      "de": "Sprich bitte leise!",
+      "en": "Please speak quietly!"
+    },
     "word": "leise",
     "translation": "quiet"
   },
@@ -4173,6 +4317,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 287,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Schrank ist voll.",
+      "en": "The closet is full."
+    },
     "word": "voll",
     "translation": "full"
   },
@@ -4189,6 +4337,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 288,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Kühlschrank ist leer.",
+      "en": "The refrigerator is empty."
+    },
     "word": "leer",
     "translation": "empty"
   },
@@ -4205,6 +4357,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 289,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Küche ist sauber.",
+      "en": "The kitchen is clean."
+    },
     "word": "sauber",
     "translation": "clean"
   },
@@ -4221,6 +4377,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 290,
     "source": "frequency-list",
+    "example": {
+      "de": "Meine Schuhe sind schmutzig.",
+      "en": "My shoes are dirty."
+    },
     "word": "schmutzig",
     "translation": "dirty"
   },
@@ -4237,6 +4397,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 291,
     "source": "frequency-list",
+    "example": {
+      "de": "Deine Antwort ist richtig.",
+      "en": "Your answer is correct."
+    },
     "word": "richtig",
     "translation": "correct, right"
   },
@@ -4253,6 +4417,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 292,
     "source": "frequency-list",
+    "example": {
+      "de": "Diese Zahl ist falsch.",
+      "en": "This number is wrong."
+    },
     "word": "falsch",
     "translation": "wrong"
   },
@@ -4269,6 +4437,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 293,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Übung ist einfach.",
+      "en": "The exercise is simple."
+    },
     "word": "einfach",
     "translation": "simple, easy"
   },
@@ -4285,6 +4457,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 294,
     "source": "frequency-list",
+    "example": {
+      "de": "Deutsch ist manchmal schwierig.",
+      "en": "German is sometimes difficult."
+    },
     "word": "schwierig",
     "translation": "difficult"
   },
@@ -4301,6 +4477,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 295,
     "source": "frequency-list",
+    "example": {
+      "de": "Familie ist mir wichtig.",
+      "en": "Family is important to me."
+    },
     "word": "wichtig",
     "translation": "important"
   },
@@ -4317,6 +4497,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 296,
     "source": "frequency-list",
+    "example": {
+      "de": "Das Buch ist interessant.",
+      "en": "The book is interesting."
+    },
     "word": "interessant",
     "translation": "interesting"
   },
@@ -4333,6 +4517,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 297,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Film war langweilig.",
+      "en": "The movie was boring."
+    },
     "word": "langweilig",
     "translation": "boring"
   },
@@ -4349,6 +4537,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 298,
     "source": "frequency-list",
+    "example": {
+      "de": "Das Hotel ist zu teuer.",
+      "en": "The hotel is too expensive."
+    },
     "word": "teuer",
     "translation": "expensive"
   },
@@ -4365,6 +4557,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 299,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Fahrkarte ist billig.",
+      "en": "The ticket is cheap."
+    },
     "word": "billig",
     "translation": "cheap"
   },
@@ -4381,6 +4577,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 300,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Supermarkt ist günstig.",
+      "en": "The supermarket is affordable."
+    },
     "word": "günstig",
     "translation": "affordable, favorable"
   },
@@ -4397,6 +4597,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 301,
     "source": "frequency-list",
+    "example": {
+      "de": "Das Kind ist sehr neugierig.",
+      "en": "The child is very curious."
+    },
     "word": "neugierig",
     "translation": "curious"
   },
@@ -4413,6 +4617,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 302,
     "source": "frequency-list",
+    "example": {
+      "de": "Unser Nachbar ist freundlich.",
+      "en": "Our neighbor is friendly."
+    },
     "word": "freundlich",
     "translation": "friendly"
   },
@@ -4429,6 +4637,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 303,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Verkäuferin ist nett.",
+      "en": "The saleswoman is nice."
+    },
     "word": "nett",
     "translation": "nice"
   },
@@ -4445,6 +4657,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 304,
     "source": "frequency-list",
+    "example": {
+      "de": "Wir sind sehr glücklich.",
+      "en": "We are very happy."
+    },
     "word": "glücklich",
     "translation": "happy"
   },
@@ -4461,6 +4677,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 305,
     "source": "frequency-list",
+    "example": {
+      "de": "Sie ist traurig.",
+      "en": "She is sad."
+    },
     "word": "traurig",
     "translation": "sad"
   },
@@ -4477,6 +4697,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 306,
     "source": "frequency-list",
+    "example": {
+      "de": "Ich bin heute müde.",
+      "en": "I am tired today."
+    },
     "word": "müde",
     "translation": "tired"
   },
@@ -4493,6 +4717,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 307,
     "source": "frequency-list",
+    "example": {
+      "de": "Das Baby ist wach.",
+      "en": "The baby is awake."
+    },
     "word": "wach",
     "translation": "awake"
   },
@@ -4509,6 +4737,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 308,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Kinder sind hungrig.",
+      "en": "The children are hungry."
+    },
     "word": "hungrig",
     "translation": "hungry"
   },
@@ -4525,6 +4757,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 309,
     "source": "frequency-list",
+    "example": {
+      "de": "Nach dem Sport bin ich durstig.",
+      "en": "After sports I am thirsty."
+    },
     "word": "durstig",
     "translation": "thirsty"
   },
@@ -4541,6 +4777,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 310,
     "source": "frequency-list",
+    "example": {
+      "de": "Mein Bruder ist krank.",
+      "en": "My brother is sick."
+    },
     "word": "krank",
     "translation": "sick"
   },
@@ -4557,6 +4797,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 311,
     "source": "frequency-list",
+    "example": {
+      "de": "Gemüse ist gesund.",
+      "en": "Vegetables are healthy."
+    },
     "word": "gesund",
     "translation": "healthy"
   },
@@ -4573,6 +4817,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 312,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Chef ist wütend.",
+      "en": "The boss is angry."
+    },
     "word": "wütend",
     "translation": "angry"
   },
@@ -4589,6 +4837,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 313,
     "source": "frequency-list",
+    "example": {
+      "de": "Vor der Prüfung bin ich nervös.",
+      "en": "Before the exam I am nervous."
+    },
     "word": "nervös",
     "translation": "nervous"
   },
@@ -4605,6 +4857,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 314,
     "source": "frequency-list",
+    "example": {
+      "de": "Das Kind ist ängstlich.",
+      "en": "The child is fearful."
+    },
     "word": "ängstlich",
     "translation": "anxious, fearful"
   },
@@ -4621,6 +4877,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 315,
     "source": "frequency-list",
+    "example": {
+      "de": "Ich bin mit der Arbeit zufrieden.",
+      "en": "I am satisfied with the work."
+    },
     "word": "zufrieden",
     "translation": "satisfied"
   },
@@ -4637,6 +4897,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 316,
     "source": "frequency-list",
+    "example": {
+      "de": "Meine Schwester ist verheiratet.",
+      "en": "My sister is married."
+    },
     "word": "verheiratet",
     "translation": "married"
   },
@@ -4653,6 +4917,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 317,
     "source": "frequency-list",
+    "example": {
+      "de": "Er ist noch ledig.",
+      "en": "He is still single."
+    },
     "word": "ledig",
     "translation": "single (unmarried)"
   },
@@ -4669,6 +4937,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 318,
     "source": "frequency-list",
+    "example": {
+      "de": "Das Wasser ist kalt.",
+      "en": "The water is cold."
+    },
     "word": "kalt",
     "translation": "cold"
   },
@@ -4685,6 +4957,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 319,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Tee ist warm.",
+      "en": "The tea is warm."
+    },
     "word": "warm",
     "translation": "warm"
   },
@@ -4701,6 +4977,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 320,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Kaffee ist heiß.",
+      "en": "The coffee is hot."
+    },
     "word": "heiß",
     "translation": "hot"
   },
@@ -4717,6 +4997,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 321,
     "source": "frequency-list",
+    "example": {
+      "de": "Meine Kleidung ist nass.",
+      "en": "My clothes are wet."
+    },
     "word": "nass",
     "translation": "wet"
   },
@@ -4733,6 +5017,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 322,
     "source": "frequency-list",
+    "example": {
+      "de": "Das Handtuch ist trocken.",
+      "en": "The towel is dry."
+    },
     "word": "trocken",
     "translation": "dry"
   },
@@ -4749,6 +5037,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 323,
     "source": "frequency-list",
+    "example": {
+      "de": "Heute ist es sonnig.",
+      "en": "Today it is sunny."
+    },
     "word": "sonnig",
     "translation": "sunny"
   },
@@ -4765,6 +5057,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 324,
     "source": "frequency-list",
+    "example": {
+      "de": "Es ist sehr windig.",
+      "en": "It is very windy."
+    },
     "word": "windig",
     "translation": "windy"
   },
@@ -4781,6 +5077,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 325,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Himmel ist wolkig.",
+      "en": "The sky is cloudy."
+    },
     "word": "wolkig",
     "translation": "cloudy"
   },
@@ -4797,6 +5097,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 326,
     "source": "frequency-list",
+    "example": {
+      "de": "Im Zimmer ist es dunkel.",
+      "en": "It is dark in the room."
+    },
     "word": "dunkel",
     "translation": "dark"
   },
@@ -4813,6 +5117,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 327,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Küche ist hell.",
+      "en": "The kitchen is bright."
+    },
     "word": "hell",
     "translation": "bright, light"
   },
@@ -4829,6 +5137,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 328,
     "source": "frequency-list",
+    "example": {
+      "de": "Das Kleid ist rot.",
+      "en": "The dress is red."
+    },
     "word": "rot",
     "translation": "red"
   },
@@ -4845,6 +5157,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 329,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Himmel ist blau.",
+      "en": "The sky is blue."
+    },
     "word": "blau",
     "translation": "blue"
   },
@@ -4861,6 +5177,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 330,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Baum ist grün.",
+      "en": "The tree is green."
+    },
     "word": "grün",
     "translation": "green"
   },
@@ -4877,6 +5197,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 331,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Blume ist gelb.",
+      "en": "The flower is yellow."
+    },
     "word": "gelb",
     "translation": "yellow"
   },
@@ -4893,6 +5217,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 332,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Katze ist schwarz.",
+      "en": "The cat is black."
+    },
     "word": "schwarz",
     "translation": "black"
   },
@@ -4909,6 +5237,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 333,
     "source": "frequency-list",
+    "example": {
+      "de": "Das Hemd ist weiß.",
+      "en": "The shirt is white."
+    },
     "word": "weiß",
     "translation": "white"
   },
@@ -4925,6 +5257,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 334,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Himmel ist grau.",
+      "en": "The sky is gray."
+    },
     "word": "grau",
     "translation": "gray"
   },
@@ -4941,6 +5277,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 335,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Tisch ist braun.",
+      "en": "The table is brown."
+    },
     "word": "braun",
     "translation": "brown"
   },
@@ -4957,6 +5297,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 336,
     "source": "frequency-list",
+    "example": {
+      "de": "Ihr Zimmer ist rosa.",
+      "en": "Her room is pink."
+    },
     "word": "rosa",
     "translation": "pink"
   },
@@ -4973,6 +5317,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 337,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Jacke ist orange.",
+      "en": "The jacket is orange."
+    },
     "word": "orange",
     "translation": "orange"
   },
@@ -4989,6 +5337,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 338,
     "source": "frequency-list",
+    "example": {
+      "de": "Das Buch ist sehr dick.",
+      "en": "The book is very thick."
+    },
     "word": "dick",
     "translation": "thick, fat"
   },
@@ -5005,6 +5357,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 339,
     "source": "frequency-list",
+    "example": {
+      "de": "Das Papier ist dünn.",
+      "en": "The paper is thin."
+    },
     "word": "dünn",
     "translation": "thin"
   },
@@ -5021,6 +5377,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 340,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Platz ist frei.",
+      "en": "The seat is free."
+    },
     "word": "frei",
     "translation": "free"
   },
@@ -5037,6 +5397,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 341,
     "source": "frequency-list",
+    "example": {
+      "de": "Bist du schon fertig?",
+      "en": "Are you finished already?"
+    },
     "word": "fertig",
     "translation": "finished, ready"
   },
@@ -5053,6 +5417,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 342,
     "source": "frequency-list",
+    "example": {
+      "de": "Mein Handy ist kaputt.",
+      "en": "My phone is broken."
+    },
     "word": "kaputt",
     "translation": "broken"
   },
@@ -5069,6 +5437,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 343,
     "source": "frequency-list",
+    "example": {
+      "de": "Ich brauche eine andere Idee.",
+      "en": "I need a different idea."
+    },
     "word": "andere",
     "translation": "other, different"
   },
@@ -5085,6 +5457,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 344,
     "source": "frequency-list",
+    "example": {
+      "de": "Der nächste Zug kommt bald.",
+      "en": "The next train is coming soon."
+    },
     "word": "nächste",
     "translation": "next"
   },
@@ -5101,6 +5477,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 345,
     "source": "frequency-list",
+    "example": {
+      "de": "Sie hat ein eigenes Zimmer.",
+      "en": "She has her own room."
+    },
     "word": "eigen",
     "translation": "own"
   },
@@ -5117,6 +5497,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 346,
     "source": "frequency-list",
+    "example": {
+      "de": "Ich habe den ganzen Tag gearbeitet.",
+      "en": "I worked the whole day."
+    },
     "word": "ganz",
     "translation": "whole, entire; quite"
   },
@@ -5133,6 +5517,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 347,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Kuchen schmeckt lecker.",
+      "en": "The cake tastes delicious."
+    },
     "word": "lecker",
     "translation": "delicious"
   },
@@ -5149,6 +5537,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 348,
     "source": "frequency-list",
+    "example": {
+      "de": "Das Brot ist frisch.",
+      "en": "The bread is fresh."
+    },
     "word": "frisch",
     "translation": "fresh"
   },
@@ -5165,6 +5557,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 349,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Kuchen ist süß.",
+      "en": "The cake is sweet."
+    },
     "word": "süß",
     "translation": "sweet"
   },
@@ -5181,6 +5577,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 350,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Milch ist sauer.",
+      "en": "The milk is sour."
+    },
     "word": "sauer",
     "translation": "sour"
   },
@@ -5197,6 +5597,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 351,
     "source": "frequency-list",
+    "example": {
+      "de": "Das Essen ist sehr scharf.",
+      "en": "The food is very spicy."
+    },
     "word": "scharf",
     "translation": "spicy, sharp"
   },
@@ -5213,6 +5617,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 352,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Kaffee schmeckt bitter.",
+      "en": "The coffee tastes bitter."
+    },
     "word": "bitter",
     "translation": "bitter"
   },
@@ -5229,6 +5637,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 353,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Suppe ist zu salzig.",
+      "en": "The soup is too salty."
+    },
     "word": "salzig",
     "translation": "salty"
   },
@@ -5245,6 +5657,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 354,
     "source": "frequency-list",
+    "example": {
+      "de": "Ich bin sehr müde.",
+      "en": "I am very tired."
+    },
     "word": "sehr",
     "translation": "very"
   },
@@ -5261,6 +5677,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 355,
     "source": "frequency-list",
+    "example": {
+      "de": "Ich komme auch mit.",
+      "en": "I'm coming along too."
+    },
     "word": "auch",
     "translation": "also"
   },
@@ -5277,6 +5697,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 356,
     "source": "frequency-list",
+    "example": {
+      "de": "Ich habe nur zehn Euro.",
+      "en": "I only have ten euros."
+    },
     "word": "nur",
     "translation": "only"
   },
@@ -5293,6 +5717,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 357,
     "source": "frequency-list",
+    "example": {
+      "de": "Wir sind fast da.",
+      "en": "We are almost there."
+    },
     "word": "fast",
     "translation": "almost"
   },
@@ -5309,6 +5737,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 358,
     "source": "frequency-list",
+    "example": {
+      "de": "Wir haben genug Zeit.",
+      "en": "We have enough time."
+    },
     "word": "genug",
     "translation": "enough"
   },
@@ -5325,6 +5757,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 359,
     "source": "frequency-list",
+    "example": {
+      "de": "Vielleicht regnet es morgen.",
+      "en": "Maybe it will rain tomorrow."
+    },
     "word": "vielleicht",
     "translation": "maybe"
   },
@@ -5341,6 +5777,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 360,
     "source": "frequency-list",
+    "example": {
+      "de": "Das ist wirklich schön.",
+      "en": "That is really beautiful."
+    },
     "word": "wirklich",
     "translation": "really"
   },
@@ -5357,6 +5797,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 361,
     "source": "frequency-list",
+    "example": {
+      "de": "Natürlich helfe ich dir.",
+      "en": "Of course I'll help you."
+    },
     "word": "natürlich",
     "translation": "naturally, of course"
   },
@@ -5373,6 +5817,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 362,
     "source": "frequency-list",
+    "example": {
+      "de": "Leider habe ich keine Zeit.",
+      "en": "Unfortunately I have no time."
+    },
     "word": "leider",
     "translation": "unfortunately"
   },
@@ -5389,6 +5837,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 363,
     "source": "frequency-list",
+    "example": {
+      "de": "Wir wohnen zusammen.",
+      "en": "We live together."
+    },
     "word": "zusammen",
     "translation": "together"
   },
@@ -5405,6 +5857,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 364,
     "source": "frequency-list",
+    "example": {
+      "de": "Er wohnt allein.",
+      "en": "He lives alone."
+    },
     "word": "allein",
     "translation": "alone"
   },
@@ -5421,6 +5877,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 365,
     "source": "frequency-list",
+    "example": {
+      "de": "Ich trinke gern Kaffee.",
+      "en": "I like drinking coffee."
+    },
     "word": "gern",
     "translation": "gladly, with pleasure"
   },
@@ -5437,6 +5897,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 366,
     "source": "frequency-list",
+    "example": {
+      "de": "Hier ist mein Zimmer.",
+      "en": "Here is my room."
+    },
     "word": "hier",
     "translation": "here"
   },
@@ -5453,6 +5917,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 367,
     "source": "frequency-list",
+    "example": {
+      "de": "Dort steht ein Baum.",
+      "en": "A tree stands there."
+    },
     "word": "dort",
     "translation": "there"
   },
@@ -5469,6 +5937,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 368,
     "source": "frequency-list",
+    "example": {
+      "de": "Da ist meine Tasche.",
+      "en": "There is my bag."
+    },
     "word": "da",
     "translation": "there, then"
   },
@@ -5485,6 +5957,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 369,
     "source": "frequency-list",
+    "example": {
+      "de": "Das Bad ist oben.",
+      "en": "The bathroom is upstairs."
+    },
     "word": "oben",
     "translation": "above, upstairs"
   },
@@ -5501,6 +5977,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 370,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Küche ist unten.",
+      "en": "The kitchen is downstairs."
+    },
     "word": "unten",
     "translation": "below, downstairs"
   },
@@ -5517,6 +5997,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 371,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Bank ist links.",
+      "en": "The bank is on the left."
+    },
     "word": "links",
     "translation": "left"
   },
@@ -5533,6 +6017,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 372,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Apotheke ist rechts.",
+      "en": "The pharmacy is on the right."
+    },
     "word": "rechts",
     "translation": "right"
   },
@@ -5549,6 +6037,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 373,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Kinder spielen drinnen.",
+      "en": "The children are playing inside."
+    },
     "word": "drinnen",
     "translation": "inside"
   },
@@ -5565,6 +6057,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 374,
     "source": "frequency-list",
+    "example": {
+      "de": "Es ist kalt draußen.",
+      "en": "It is cold outside."
+    },
     "word": "draußen",
     "translation": "outside"
   },
@@ -5581,6 +6077,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 375,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Mann arbeitet im Büro.",
+      "en": "The man works in the office."
+    },
     "word": "Mann",
     "article": "der",
     "plural": "Männer",
@@ -5599,6 +6099,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 376,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Frau liest ein Buch.",
+      "en": "The woman is reading a book."
+    },
     "word": "Frau",
     "article": "die",
     "plural": "Frauen",
@@ -5617,6 +6121,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 377,
     "source": "frequency-list",
+    "example": {
+      "de": "Das Kind spielt im Garten.",
+      "en": "The child is playing in the garden."
+    },
     "word": "Kind",
     "article": "das",
     "plural": "Kinder",
@@ -5635,6 +6143,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 378,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Junge lernt Deutsch.",
+      "en": "The boy is learning German."
+    },
     "word": "Junge",
     "article": "der",
     "plural": "Jungen",
@@ -5653,6 +6165,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 379,
     "source": "frequency-list",
+    "example": {
+      "de": "Das Mädchen singt gern.",
+      "en": "The girl likes to sing."
+    },
     "word": "Mädchen",
     "article": "das",
     "plural": "Mädchen",
@@ -5671,6 +6187,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 380,
     "source": "frequency-list",
+    "example": {
+      "de": "Meine Familie ist groß.",
+      "en": "My family is big."
+    },
     "word": "Familie",
     "article": "die",
     "plural": "Familien",
@@ -5689,6 +6209,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 381,
     "source": "frequency-list",
+    "example": {
+      "de": "Meine Mutter kocht gern.",
+      "en": "My mother likes to cook."
+    },
     "word": "Mutter",
     "article": "die",
     "plural": "Mütter",
@@ -5707,6 +6231,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 382,
     "source": "frequency-list",
+    "example": {
+      "de": "Mein Vater arbeitet viel.",
+      "en": "My father works a lot."
+    },
     "word": "Vater",
     "article": "der",
     "plural": "Väter",
@@ -5725,6 +6253,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 383,
     "source": "frequency-list",
+    "example": {
+      "de": "Meine Eltern wohnen in Berlin.",
+      "en": "My parents live in Berlin."
+    },
     "word": "Eltern",
     "article": "die",
     "plural": "Eltern",
@@ -5743,6 +6275,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 384,
     "source": "frequency-list",
+    "example": {
+      "de": "Ihr Sohn ist zehn Jahre alt.",
+      "en": "Her son is ten years old."
+    },
     "word": "Sohn",
     "article": "der",
     "plural": "Söhne",
@@ -5761,6 +6297,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 385,
     "source": "frequency-list",
+    "example": {
+      "de": "Seine Tochter studiert Medizin.",
+      "en": "His daughter studies medicine."
+    },
     "word": "Tochter",
     "article": "die",
     "plural": "Töchter",
@@ -5779,6 +6319,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 386,
     "source": "frequency-list",
+    "example": {
+      "de": "Mein Bruder wohnt in München.",
+      "en": "My brother lives in Munich."
+    },
     "word": "Bruder",
     "article": "der",
     "plural": "Brüder",
@@ -5797,6 +6341,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 387,
     "source": "frequency-list",
+    "example": {
+      "de": "Meine Schwester ist Lehrerin.",
+      "en": "My sister is a teacher."
+    },
     "word": "Schwester",
     "article": "die",
     "plural": "Schwestern",
@@ -5815,6 +6363,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 388,
     "source": "frequency-list",
+    "example": {
+      "de": "Meine Großmutter backt Kuchen.",
+      "en": "My grandmother bakes cake."
+    },
     "word": "Großmutter",
     "article": "die",
     "plural": "Großmütter",
@@ -5833,6 +6385,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 389,
     "source": "frequency-list",
+    "example": {
+      "de": "Mein Großvater erzählt gern Geschichten.",
+      "en": "My grandfather likes telling stories."
+    },
     "word": "Großvater",
     "article": "der",
     "plural": "Großväter",
@@ -5851,6 +6407,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 390,
     "source": "frequency-list",
+    "example": {
+      "de": "Mein Onkel wohnt auf dem Land.",
+      "en": "My uncle lives in the countryside."
+    },
     "word": "Onkel",
     "article": "der",
     "plural": "Onkel",
@@ -5869,6 +6429,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 391,
     "source": "frequency-list",
+    "example": {
+      "de": "Meine Tante besucht uns oft.",
+      "en": "My aunt visits us often."
+    },
     "word": "Tante",
     "article": "die",
     "plural": "Tanten",
@@ -5887,6 +6451,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 392,
     "source": "frequency-list",
+    "example": {
+      "de": "Mein Freund kommt heute vorbei.",
+      "en": "My friend is coming by today."
+    },
     "word": "Freund",
     "article": "der",
     "plural": "Freunde",
@@ -5905,6 +6473,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 393,
     "source": "frequency-list",
+    "example": {
+      "de": "Meine Freundin wohnt in Wien.",
+      "en": "My friend lives in Vienna."
+    },
     "word": "Freundin",
     "article": "die",
     "plural": "Freundinnen",
@@ -5923,6 +6495,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 394,
     "source": "frequency-list",
+    "example": {
+      "de": "Das Baby schläft im Bett.",
+      "en": "The baby is sleeping in the bed."
+    },
     "word": "Baby",
     "article": "das",
     "plural": "Babys",
@@ -5941,6 +6517,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 395,
     "source": "frequency-list",
+    "example": {
+      "de": "Ihr Ehemann arbeitet bei einer Firma.",
+      "en": "Her husband works at a company."
+    },
     "word": "Ehemann",
     "article": "der",
     "plural": "Ehemänner",
@@ -5959,6 +6539,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 396,
     "source": "frequency-list",
+    "example": {
+      "de": "Seine Ehefrau ist Ärztin.",
+      "en": "His wife is a doctor."
+    },
     "word": "Ehefrau",
     "article": "die",
     "plural": "Ehefrauen",
@@ -5977,6 +6561,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 397,
     "source": "frequency-list",
+    "example": {
+      "de": "Unser Nachbar hat einen Hund.",
+      "en": "Our neighbor has a dog."
+    },
     "word": "Nachbar",
     "article": "der",
     "plural": "Nachbarn",
@@ -5995,6 +6583,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 398,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Leute warten am Bahnhof.",
+      "en": "The people are waiting at the train station."
+    },
     "word": "Leute",
     "article": "die",
     "plural": "Leute",
@@ -6013,6 +6605,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 399,
     "source": "frequency-list",
+    "example": {
+      "de": "Diese Person kenne ich nicht.",
+      "en": "I don't know this person."
+    },
     "word": "Person",
     "article": "die",
     "plural": "Personen",
@@ -6031,6 +6627,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 400,
     "source": "frequency-list",
+    "example": {
+      "de": "Wie ist dein Name?",
+      "en": "What is your name?"
+    },
     "word": "Name",
     "article": "der",
     "plural": "Namen",
@@ -6049,6 +6649,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 402,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Wohnung hat zwei Zimmer.",
+      "en": "The apartment has two rooms."
+    },
     "word": "Wohnung",
     "article": "die",
     "plural": "Wohnungen",
@@ -6067,6 +6671,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 403,
     "source": "frequency-list",
+    "example": {
+      "de": "Das Zimmer ist sehr hell.",
+      "en": "The room is very bright."
+    },
     "word": "Zimmer",
     "article": "das",
     "plural": "Zimmer",
@@ -6085,6 +6693,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 404,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Küche ist klein aber schön.",
+      "en": "The kitchen is small but nice."
+    },
     "word": "Küche",
     "article": "die",
     "plural": "Küchen",
@@ -6103,6 +6715,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 405,
     "source": "frequency-list",
+    "example": {
+      "de": "Das Bad ist im ersten Stock.",
+      "en": "The bathroom is on the first floor."
+    },
     "word": "Bad",
     "article": "das",
     "plural": "Bäder",
@@ -6121,6 +6737,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 406,
     "source": "frequency-list",
+    "example": {
+      "de": "Das Schlafzimmer liegt oben.",
+      "en": "The bedroom is upstairs."
+    },
     "word": "Schlafzimmer",
     "article": "das",
     "plural": "Schlafzimmer",
@@ -6139,6 +6759,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 407,
     "source": "frequency-list",
+    "example": {
+      "de": "Wir sitzen im Wohnzimmer.",
+      "en": "We sit in the living room."
+    },
     "word": "Wohnzimmer",
     "article": "das",
     "plural": "Wohnzimmer",
@@ -6157,6 +6781,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 410,
     "source": "frequency-list",
+    "example": {
+      "de": "An der Wand hängt ein Bild.",
+      "en": "A picture hangs on the wall."
+    },
     "word": "Wand",
     "article": "die",
     "plural": "Wände",
@@ -6175,6 +6803,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 411,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Boden ist aus Holz.",
+      "en": "The floor is made of wood."
+    },
     "word": "Boden",
     "article": "der",
     "plural": "Böden",
@@ -6193,6 +6825,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 412,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Garten ist voller Blumen.",
+      "en": "The garden is full of flowers."
+    },
     "word": "Garten",
     "article": "der",
     "plural": "Gärten",
@@ -6211,6 +6847,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 413,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Stuhl steht am Tisch.",
+      "en": "The chair stands at the table."
+    },
     "word": "Stuhl",
     "article": "der",
     "plural": "Stühle",
@@ -6229,6 +6869,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 414,
     "source": "frequency-list",
+    "example": {
+      "de": "Wir sitzen auf dem Sofa.",
+      "en": "We sit on the sofa."
+    },
     "word": "Sofa",
     "article": "das",
     "plural": "Sofas",
@@ -6247,6 +6891,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 415,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Lampe steht auf dem Tisch.",
+      "en": "The lamp stands on the table."
+    },
     "word": "Lampe",
     "article": "die",
     "plural": "Lampen",
@@ -6265,6 +6913,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 416,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Spiegel hängt im Bad.",
+      "en": "The mirror hangs in the bathroom."
+    },
     "word": "Spiegel",
     "article": "der",
     "plural": "Spiegel",
@@ -6283,6 +6935,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 417,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Kleidung ist im Schrank.",
+      "en": "The clothes are in the closet."
+    },
     "word": "Schrank",
     "article": "der",
     "plural": "Schränke",
@@ -6301,6 +6957,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 418,
     "source": "frequency-list",
+    "example": {
+      "de": "Ich stelle die Milch in den Kühlschrank.",
+      "en": "I put the milk in the refrigerator."
+    },
     "word": "Kühlschrank",
     "article": "der",
     "plural": "Kühlschränke",
@@ -6319,6 +6979,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 419,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Suppe kocht auf dem Herd.",
+      "en": "The soup is cooking on the stove."
+    },
     "word": "Herd",
     "article": "der",
     "plural": "Herde",
@@ -6337,6 +7001,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 420,
     "source": "frequency-list",
+    "example": {
+      "de": "Das Handtuch hängt im Bad.",
+      "en": "The towel hangs in the bathroom."
+    },
     "word": "Handtuch",
     "article": "das",
     "plural": "Handtücher",
@@ -6355,6 +7023,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 421,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Decke liegt auf dem Bett.",
+      "en": "The blanket lies on the bed."
+    },
     "word": "Decke",
     "article": "die",
     "plural": "Decken",
@@ -6373,6 +7045,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 422,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Miete ist jeden Monat fällig.",
+      "en": "The rent is due every month."
+    },
     "word": "Miete",
     "article": "die",
     "plural": "Mieten",
@@ -6391,6 +7067,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 423,
     "source": "frequency-list",
+    "example": {
+      "de": "Ich esse gern Brot mit Butter.",
+      "en": "I like eating bread with butter."
+    },
     "word": "Brot",
     "article": "das",
     "plural": "Brote",
@@ -6409,6 +7089,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 424,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Butter ist im Kühlschrank.",
+      "en": "The butter is in the fridge."
+    },
     "word": "Butter",
     "article": "die",
     "translation": "butter"
@@ -6426,6 +7110,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 425,
     "source": "frequency-list",
+    "example": {
+      "de": "Ich esse gern Käse.",
+      "en": "I like eating cheese."
+    },
     "word": "Käse",
     "article": "der",
     "plural": "Käse",
@@ -6444,6 +7132,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 426,
     "source": "frequency-list",
+    "example": {
+      "de": "Zum Frühstück esse ich ein Ei.",
+      "en": "For breakfast I eat an egg."
+    },
     "word": "Ei",
     "article": "das",
     "plural": "Eier",
@@ -6462,6 +7154,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 428,
     "source": "frequency-list",
+    "example": {
+      "de": "Ich nehme keinen Zucker.",
+      "en": "I don't take sugar."
+    },
     "word": "Zucker",
     "article": "der",
     "translation": "sugar"
@@ -6479,6 +7175,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 429,
     "source": "frequency-list",
+    "example": {
+      "de": "Gib mir bitte das Salz.",
+      "en": "Please pass me the salt."
+    },
     "word": "Salz",
     "article": "das",
     "translation": "salt"
@@ -6496,6 +7196,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 430,
     "source": "frequency-list",
+    "example": {
+      "de": "Sie isst kein Fleisch.",
+      "en": "She doesn't eat meat."
+    },
     "word": "Fleisch",
     "article": "das",
     "translation": "meat"
@@ -6513,6 +7217,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 431,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Fisch schmeckt frisch.",
+      "en": "The fish tastes fresh."
+    },
     "word": "Fisch",
     "article": "der",
     "plural": "Fische",
@@ -6531,6 +7239,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 432,
     "source": "frequency-list",
+    "example": {
+      "de": "Ich esse jeden Tag Gemüse.",
+      "en": "I eat vegetables every day."
+    },
     "word": "Gemüse",
     "article": "das",
     "plural": "Gemüse",
@@ -6549,6 +7261,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 433,
     "source": "frequency-list",
+    "example": {
+      "de": "Obst ist sehr gesund.",
+      "en": "Fruit is very healthy."
+    },
     "word": "Obst",
     "article": "das",
     "translation": "fruit"
@@ -6566,6 +7282,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 434,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Apfel ist rot und süß.",
+      "en": "The apple is red and sweet."
+    },
     "word": "Apfel",
     "article": "der",
     "plural": "Äpfel",
@@ -6584,6 +7304,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 435,
     "source": "frequency-list",
+    "example": {
+      "de": "Wir kochen Kartoffeln.",
+      "en": "We are cooking potatoes."
+    },
     "word": "Kartoffel",
     "article": "die",
     "plural": "Kartoffeln",
@@ -6602,6 +7326,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 436,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Suppe ist noch heiß.",
+      "en": "The soup is still hot."
+    },
     "word": "Suppe",
     "article": "die",
     "plural": "Suppen",
@@ -6620,6 +7348,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 437,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Kinder lieben Nudeln.",
+      "en": "The children love pasta."
+    },
     "word": "Nudeln",
     "article": "die",
     "plural": "Nudeln",
@@ -6638,6 +7370,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 439,
     "source": "frequency-list",
+    "example": {
+      "de": "Das Frühstück ist fertig.",
+      "en": "Breakfast is ready."
+    },
     "word": "Frühstück",
     "article": "das",
     "plural": "Frühstücke",
@@ -6656,6 +7392,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 440,
     "source": "frequency-list",
+    "example": {
+      "de": "Wir essen um zwölf Mittagessen.",
+      "en": "We eat lunch at twelve."
+    },
     "word": "Mittagessen",
     "article": "das",
     "plural": "Mittagessen",
@@ -6674,6 +7414,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 441,
     "source": "frequency-list",
+    "example": {
+      "de": "Das Abendessen kocht mein Vater.",
+      "en": "My father is cooking dinner."
+    },
     "word": "Abendessen",
     "article": "das",
     "plural": "Abendessen",
@@ -6692,6 +7436,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 442,
     "source": "frequency-list",
+    "example": {
+      "de": "Ich trinke viel Wasser.",
+      "en": "I drink a lot of water."
+    },
     "word": "Wasser",
     "article": "das",
     "translation": "water"
@@ -6709,6 +7457,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 445,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Saft schmeckt süß.",
+      "en": "The juice tastes sweet."
+    },
     "word": "Saft",
     "article": "der",
     "plural": "Säfte",
@@ -6727,6 +7479,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 446,
     "source": "frequency-list",
+    "example": {
+      "de": "Er trinkt gern Bier.",
+      "en": "He likes drinking beer."
+    },
     "word": "Bier",
     "article": "das",
     "plural": "Biere",
@@ -6745,6 +7501,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 447,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Wein kommt aus Italien.",
+      "en": "The wine comes from Italy."
+    },
     "word": "Wein",
     "article": "der",
     "plural": "Weine",
@@ -6763,6 +7523,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 448,
     "source": "frequency-list",
+    "example": {
+      "de": "Wir essen heute im Restaurant.",
+      "en": "We're eating at the restaurant today."
+    },
     "word": "Restaurant",
     "article": "das",
     "plural": "Restaurants",
@@ -6781,6 +7545,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 449,
     "source": "frequency-list",
+    "example": {
+      "de": "Ich brauche einen Löffel.",
+      "en": "I need a spoon."
+    },
     "word": "Löffel",
     "article": "der",
     "plural": "Löffel",
@@ -6799,6 +7567,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 450,
     "source": "frequency-list",
+    "example": {
+      "de": "Das Messer liegt auf dem Tisch.",
+      "en": "The knife lies on the table."
+    },
     "word": "Messer",
     "article": "das",
     "plural": "Messer",
@@ -6817,6 +7589,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 452,
     "source": "frequency-list",
+    "example": {
+      "de": "Das Glas ist voller Wasser.",
+      "en": "The glass is full of water."
+    },
     "word": "Glas",
     "article": "das",
     "plural": "Gläser",
@@ -6835,6 +7611,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 453,
     "source": "frequency-list",
+    "example": {
+      "de": "Mein Kopf tut weh.",
+      "en": "My head hurts."
+    },
     "word": "Kopf",
     "article": "der",
     "plural": "Köpfe",
@@ -6853,6 +7633,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 454,
     "source": "frequency-list",
+    "example": {
+      "de": "Sein Haar ist braun.",
+      "en": "His hair is brown."
+    },
     "word": "Haar",
     "article": "das",
     "plural": "Haare",
@@ -6871,6 +7655,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 455,
     "source": "frequency-list",
+    "example": {
+      "de": "Ihr Gesicht ist rund.",
+      "en": "Her face is round."
+    },
     "word": "Gesicht",
     "article": "das",
     "plural": "Gesichter",
@@ -6889,6 +7677,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 456,
     "source": "frequency-list",
+    "example": {
+      "de": "Das Auge ist grün.",
+      "en": "The eye is green."
+    },
     "word": "Auge",
     "article": "das",
     "plural": "Augen",
@@ -6907,6 +7699,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 457,
     "source": "frequency-list",
+    "example": {
+      "de": "Er hört mit dem Ohr.",
+      "en": "He hears with his ear."
+    },
     "word": "Ohr",
     "article": "das",
     "plural": "Ohren",
@@ -6925,6 +7721,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 458,
     "source": "frequency-list",
+    "example": {
+      "de": "Seine Nase ist rot.",
+      "en": "His nose is red."
+    },
     "word": "Nase",
     "article": "die",
     "plural": "Nasen",
@@ -6943,6 +7743,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 459,
     "source": "frequency-list",
+    "example": {
+      "de": "Mach den Mund auf.",
+      "en": "Open your mouth."
+    },
     "word": "Mund",
     "article": "der",
     "plural": "Münder",
@@ -6961,6 +7765,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 460,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Zahn tut weh.",
+      "en": "The tooth hurts."
+    },
     "word": "Zahn",
     "article": "der",
     "plural": "Zähne",
@@ -6979,6 +7787,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 461,
     "source": "frequency-list",
+    "example": {
+      "de": "Ich habe Halsschmerzen.",
+      "en": "I have a sore throat."
+    },
     "word": "Hals",
     "article": "der",
     "plural": "Hälse",
@@ -6997,6 +7809,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 462,
     "source": "frequency-list",
+    "example": {
+      "de": "Mein Arm ist gebrochen.",
+      "en": "My arm is broken."
+    },
     "word": "Arm",
     "article": "der",
     "plural": "Arme",
@@ -7015,6 +7831,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 463,
     "source": "frequency-list",
+    "example": {
+      "de": "Gib mir deine Hand.",
+      "en": "Give me your hand."
+    },
     "word": "Hand",
     "article": "die",
     "plural": "Hände",
@@ -7033,6 +7853,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 464,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Finger ist verletzt.",
+      "en": "The finger is injured."
+    },
     "word": "Finger",
     "article": "der",
     "plural": "Finger",
@@ -7051,6 +7875,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 465,
     "source": "frequency-list",
+    "example": {
+      "de": "Sie hat lange Beine.",
+      "en": "She has long legs."
+    },
     "word": "Bein",
     "article": "das",
     "plural": "Beine",
@@ -7069,6 +7897,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 466,
     "source": "frequency-list",
+    "example": {
+      "de": "Mein Fuß ist kalt.",
+      "en": "My foot is cold."
+    },
     "word": "Fuß",
     "article": "der",
     "plural": "Füße",
@@ -7087,6 +7919,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 467,
     "source": "frequency-list",
+    "example": {
+      "de": "Mein Bauch tut weh.",
+      "en": "My stomach hurts."
+    },
     "word": "Bauch",
     "article": "der",
     "plural": "Bäuche",
@@ -7105,6 +7941,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 468,
     "source": "frequency-list",
+    "example": {
+      "de": "Ich trage die Tasche auf dem Rücken.",
+      "en": "I carry the bag on my back."
+    },
     "word": "Rücken",
     "article": "der",
     "plural": "Rücken",
@@ -7123,6 +7963,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 469,
     "source": "frequency-list",
+    "example": {
+      "de": "Ihr Herz schlägt schnell.",
+      "en": "Her heart beats fast."
+    },
     "word": "Herz",
     "article": "das",
     "plural": "Herzen",
@@ -7141,6 +7985,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 470,
     "source": "frequency-list",
+    "example": {
+      "de": "Sport ist gut für den Körper.",
+      "en": "Sports are good for the body."
+    },
     "word": "Körper",
     "article": "der",
     "plural": "Körper",
@@ -7159,6 +8007,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 471,
     "source": "frequency-list",
+    "example": {
+      "de": "Ich ziehe meine Kleidung an.",
+      "en": "I put on my clothes."
+    },
     "word": "Kleidung",
     "article": "die",
     "translation": "clothing"
@@ -7176,6 +8028,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 472,
     "source": "frequency-list",
+    "example": {
+      "de": "Das Hemd ist zu groß.",
+      "en": "The shirt is too big."
+    },
     "word": "Hemd",
     "article": "das",
     "plural": "Hemden",
@@ -7194,6 +8050,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 473,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Hose ist zu lang.",
+      "en": "The trousers are too long."
+    },
     "word": "Hose",
     "article": "die",
     "plural": "Hosen",
@@ -7212,6 +8072,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 474,
     "source": "frequency-list",
+    "example": {
+      "de": "Sie trägt ein neues Kleid.",
+      "en": "She is wearing a new dress."
+    },
     "word": "Kleid",
     "article": "das",
     "plural": "Kleider",
@@ -7230,6 +8094,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 475,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Rock ist neu.",
+      "en": "The skirt is new."
+    },
     "word": "Rock",
     "article": "der",
     "plural": "Röcke",
@@ -7248,6 +8116,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 476,
     "source": "frequency-list",
+    "example": {
+      "de": "Zieh deine Jacke an.",
+      "en": "Put on your jacket."
+    },
     "word": "Jacke",
     "article": "die",
     "plural": "Jacken",
@@ -7266,6 +8138,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 477,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Mantel ist warm.",
+      "en": "The coat is warm."
+    },
     "word": "Mantel",
     "article": "der",
     "plural": "Mäntel",
@@ -7284,6 +8160,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 478,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Schuh ist kaputt.",
+      "en": "The shoe is broken."
+    },
     "word": "Schuh",
     "article": "der",
     "plural": "Schuhe",
@@ -7302,6 +8182,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 479,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Socke ist nass.",
+      "en": "The sock is wet."
+    },
     "word": "Socke",
     "article": "die",
     "plural": "Socken",
@@ -7320,6 +8204,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 480,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Hut passt gut.",
+      "en": "The hat fits well."
+    },
     "word": "Hut",
     "article": "der",
     "plural": "Hüte",
@@ -7338,6 +8226,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 481,
     "source": "frequency-list",
+    "example": {
+      "de": "Im Winter trage ich eine Mütze.",
+      "en": "In winter I wear a beanie."
+    },
     "word": "Mütze",
     "article": "die",
     "plural": "Mützen",
@@ -7356,6 +8248,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 482,
     "source": "frequency-list",
+    "example": {
+      "de": "Wo ist mein Handschuh?",
+      "en": "Where is my glove?"
+    },
     "word": "Handschuh",
     "article": "der",
     "plural": "Handschuhe",
@@ -7374,6 +8270,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 483,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Stadt ist sehr alt.",
+      "en": "The city is very old."
+    },
     "word": "Stadt",
     "article": "die",
     "plural": "Städte",
@@ -7392,6 +8292,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 484,
     "source": "frequency-list",
+    "example": {
+      "de": "Welches Land besuchst du?",
+      "en": "Which country are you visiting?"
+    },
     "word": "Land",
     "article": "das",
     "plural": "Länder",
@@ -7410,6 +8314,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 485,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Straße ist sehr laut.",
+      "en": "The street is very loud."
+    },
     "word": "Straße",
     "article": "die",
     "plural": "Straßen",
@@ -7428,6 +8336,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 486,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Platz ist in der Stadtmitte.",
+      "en": "The square is in the city center."
+    },
     "word": "Platz",
     "article": "der",
     "plural": "Plätze",
@@ -7446,6 +8358,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 487,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Weg zur Schule ist kurz.",
+      "en": "The way to school is short."
+    },
     "word": "Weg",
     "article": "der",
     "plural": "Wege",
@@ -7464,6 +8380,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 489,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Bus kommt gleich.",
+      "en": "The bus is coming soon."
+    },
     "word": "Bus",
     "article": "der",
     "plural": "Busse",
@@ -7482,6 +8402,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 490,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Zug fährt um acht.",
+      "en": "The train leaves at eight."
+    },
     "word": "Zug",
     "article": "der",
     "plural": "Züge",
@@ -7500,6 +8424,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 491,
     "source": "frequency-list",
+    "example": {
+      "de": "Ich fahre mit dem Fahrrad.",
+      "en": "I ride my bicycle."
+    },
     "word": "Fahrrad",
     "article": "das",
     "plural": "Fahrräder",
@@ -7518,6 +8446,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 492,
     "source": "frequency-list",
+    "example": {
+      "de": "Das Flugzeug fliegt nach Berlin.",
+      "en": "The airplane flies to Berlin."
+    },
     "word": "Flugzeug",
     "article": "das",
     "plural": "Flugzeuge",
@@ -7536,6 +8468,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 493,
     "source": "frequency-list",
+    "example": {
+      "de": "Wir nehmen ein Taxi.",
+      "en": "We take a taxi."
+    },
     "word": "Taxi",
     "article": "das",
     "plural": "Taxis",
@@ -7554,6 +8490,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 494,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Bahnhof ist nicht weit.",
+      "en": "The train station is not far."
+    },
     "word": "Bahnhof",
     "article": "der",
     "plural": "Bahnhöfe",
@@ -7572,6 +8512,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 495,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Flughafen ist groß.",
+      "en": "The airport is big."
+    },
     "word": "Flughafen",
     "article": "der",
     "plural": "Flughäfen",
@@ -7590,6 +8534,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 496,
     "source": "frequency-list",
+    "example": {
+      "de": "Ich kaufe eine Fahrkarte.",
+      "en": "I buy a ticket."
+    },
     "word": "Fahrkarte",
     "article": "die",
     "plural": "Fahrkarten",
@@ -7608,6 +8556,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 497,
     "source": "frequency-list",
+    "example": {
+      "de": "Ich packe meinen Koffer.",
+      "en": "I'm packing my suitcase."
+    },
     "word": "Koffer",
     "article": "der",
     "plural": "Koffer",
@@ -7626,6 +8578,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 498,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Reise war lang.",
+      "en": "The trip was long."
+    },
     "word": "Reise",
     "article": "die",
     "plural": "Reisen",
@@ -7644,6 +8600,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 499,
     "source": "frequency-list",
+    "example": {
+      "de": "Wir fahren in den Urlaub.",
+      "en": "We're going on vacation."
+    },
     "word": "Urlaub",
     "article": "der",
     "plural": "Urlaube",
@@ -7662,6 +8622,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 500,
     "source": "frequency-list",
+    "example": {
+      "de": "Das Geschäft öffnet um neun.",
+      "en": "The shop opens at nine."
+    },
     "word": "Geschäft",
     "article": "das",
     "plural": "Geschäfte",
@@ -7680,6 +8644,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 501,
     "source": "frequency-list",
+    "example": {
+      "de": "Ich kaufe im Supermarkt ein.",
+      "en": "I shop at the supermarket."
+    },
     "word": "Supermarkt",
     "article": "der",
     "plural": "Supermärkte",
@@ -7698,6 +8666,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 502,
     "source": "frequency-list",
+    "example": {
+      "de": "Das Krankenhaus ist in der Nähe.",
+      "en": "The hospital is nearby."
+    },
     "word": "Krankenhaus",
     "article": "das",
     "plural": "Krankenhäuser",
@@ -7716,6 +8688,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 503,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Apotheke ist geschlossen.",
+      "en": "The pharmacy is closed."
+    },
     "word": "Apotheke",
     "article": "die",
     "plural": "Apotheken",
@@ -7734,6 +8710,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 504,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Kirche ist sehr alt.",
+      "en": "The church is very old."
+    },
     "word": "Kirche",
     "article": "die",
     "plural": "Kirchen",
@@ -7752,6 +8732,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 505,
     "source": "frequency-list",
+    "example": {
+      "de": "Wir spazieren im Park.",
+      "en": "We walk in the park."
+    },
     "word": "Park",
     "article": "der",
     "plural": "Parks",
@@ -7770,6 +8754,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 506,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Bank schließt um fünf.",
+      "en": "The bank closes at five."
+    },
     "word": "Bank",
     "article": "die",
     "plural": "Banken",
@@ -7788,6 +8776,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 507,
     "source": "frequency-list",
+    "example": {
+      "de": "Ich gehe zur Post.",
+      "en": "I'm going to the post office."
+    },
     "word": "Post",
     "article": "die",
     "translation": "post office; mail"
@@ -7805,6 +8797,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 508,
     "source": "frequency-list",
+    "example": {
+      "de": "Das Hotel liegt am Meer.",
+      "en": "The hotel is by the sea."
+    },
     "word": "Hotel",
     "article": "das",
     "plural": "Hotels",
@@ -7823,6 +8819,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 509,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Flasche steht auf dem Tisch.",
+      "en": "The bottle is on the table."
+    },
     "word": "Flasche",
     "article": "die",
     "plural": "Flaschen",
@@ -7841,6 +8841,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 511,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Arbeit macht Spaß.",
+      "en": "The work is fun."
+    },
     "word": "Arbeit",
     "article": "die",
     "plural": "Arbeiten",
@@ -7859,6 +8863,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 512,
     "source": "frequency-list",
+    "example": {
+      "de": "Was ist dein Beruf?",
+      "en": "What is your profession?"
+    },
     "word": "Beruf",
     "article": "der",
     "plural": "Berufe",
@@ -7877,6 +8885,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 513,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Firma sucht neue Mitarbeiter.",
+      "en": "The company is looking for new employees."
+    },
     "word": "Firma",
     "article": "die",
     "plural": "Firmen",
@@ -7895,6 +8907,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 514,
     "source": "frequency-list",
+    "example": {
+      "de": "Ich arbeite im Büro.",
+      "en": "I work in the office."
+    },
     "word": "Büro",
     "article": "das",
     "plural": "Büros",
@@ -7913,6 +8929,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 515,
     "source": "frequency-list",
+    "example": {
+      "de": "Mein Chef ist aus Berlin.",
+      "en": "My boss is from Berlin."
+    },
     "word": "Chef",
     "article": "der",
     "plural": "Chefs",
@@ -7931,6 +8951,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 516,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Schule beginnt um acht.",
+      "en": "School starts at eight."
+    },
     "word": "Schule",
     "article": "die",
     "plural": "Schulen",
@@ -7949,6 +8973,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 517,
     "source": "frequency-list",
+    "example": {
+      "de": "Sie studiert an der Universität.",
+      "en": "She studies at the university."
+    },
     "word": "Universität",
     "article": "die",
     "plural": "Universitäten",
@@ -7967,6 +8995,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 518,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Lehrer erklärt die Grammatik.",
+      "en": "The teacher explains the grammar."
+    },
     "word": "Lehrer",
     "article": "der",
     "plural": "Lehrer",
@@ -7985,6 +9017,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 519,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Schüler lernt fleißig.",
+      "en": "The pupil studies diligently."
+    },
     "word": "Schüler",
     "article": "der",
     "plural": "Schüler",
@@ -8003,6 +9039,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 520,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Student wohnt im Wohnheim.",
+      "en": "The student lives in the dorm."
+    },
     "word": "Student",
     "article": "der",
     "plural": "Studenten",
@@ -8021,6 +9061,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 521,
     "source": "frequency-list",
+    "example": {
+      "de": "Unsere Klasse ist groß.",
+      "en": "Our class is big."
+    },
     "word": "Klasse",
     "article": "die",
     "plural": "Klassen",
@@ -8039,6 +9083,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 522,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Prüfung war schwierig.",
+      "en": "The exam was difficult."
+    },
     "word": "Prüfung",
     "article": "die",
     "plural": "Prüfungen",
@@ -8057,6 +9105,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 523,
     "source": "frequency-list",
+    "example": {
+      "de": "Das ist eine gute Frage.",
+      "en": "That is a good question."
+    },
     "word": "Frage",
     "article": "die",
     "plural": "Fragen",
@@ -8075,6 +9127,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 524,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Antwort ist falsch.",
+      "en": "The answer is wrong."
+    },
     "word": "Antwort",
     "article": "die",
     "plural": "Antworten",
@@ -8093,6 +9149,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 525,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Computer ist langsam.",
+      "en": "The computer is slow."
+    },
     "word": "Computer",
     "article": "der",
     "plural": "Computer",
@@ -8111,6 +9171,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 526,
     "source": "frequency-list",
+    "example": {
+      "de": "Ich habe einen Termin um drei.",
+      "en": "I have an appointment at three."
+    },
     "word": "Termin",
     "article": "der",
     "plural": "Termine",
@@ -8129,6 +9193,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 527,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Pause dauert zehn Minuten.",
+      "en": "The break lasts ten minutes."
+    },
     "word": "Pause",
     "article": "die",
     "plural": "Pausen",
@@ -8147,6 +9215,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 528,
     "source": "frequency-list",
+    "example": {
+      "de": "Das Wetter ist heute schön.",
+      "en": "The weather is nice today."
+    },
     "word": "Wetter",
     "article": "das",
     "translation": "weather"
@@ -8164,6 +9236,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 529,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Sonne scheint.",
+      "en": "The sun is shining."
+    },
     "word": "Sonne",
     "article": "die",
     "plural": "Sonnen",
@@ -8182,6 +9258,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 530,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Regen hört bald auf.",
+      "en": "The rain will stop soon."
+    },
     "word": "Regen",
     "article": "der",
     "translation": "rain"
@@ -8199,6 +9279,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 531,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Schnee ist weiß.",
+      "en": "The snow is white."
+    },
     "word": "Schnee",
     "article": "der",
     "translation": "snow"
@@ -8216,6 +9300,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 532,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Wind ist sehr stark.",
+      "en": "The wind is very strong."
+    },
     "word": "Wind",
     "article": "der",
     "plural": "Winde",
@@ -8234,6 +9322,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 533,
     "source": "frequency-list",
+    "example": {
+      "de": "Eine Wolke verdeckt die Sonne.",
+      "en": "A cloud covers the sun."
+    },
     "word": "Wolke",
     "article": "die",
     "plural": "Wolken",
@@ -8252,6 +9344,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 534,
     "source": "frequency-list",
+    "example": {
+      "de": "Am Himmel sind viele Sterne.",
+      "en": "There are many stars in the sky."
+    },
     "word": "Himmel",
     "article": "der",
     "plural": "Himmel",
@@ -8270,6 +9366,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 535,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Baum ist sehr alt.",
+      "en": "The tree is very old."
+    },
     "word": "Baum",
     "article": "der",
     "plural": "Bäume",
@@ -8288,6 +9388,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 536,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Blume riecht gut.",
+      "en": "The flower smells nice."
+    },
     "word": "Blume",
     "article": "die",
     "plural": "Blumen",
@@ -8306,6 +9410,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 537,
     "source": "frequency-list",
+    "example": {
+      "de": "Wir gehen in den Wald.",
+      "en": "We're going into the forest."
+    },
     "word": "Wald",
     "article": "der",
     "plural": "Wälder",
@@ -8324,6 +9432,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 538,
     "source": "frequency-list",
+    "example": {
+      "de": "Wir wandern auf den Berg.",
+      "en": "We hike up the mountain."
+    },
     "word": "Berg",
     "article": "der",
     "plural": "Berge",
@@ -8342,6 +9454,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 539,
     "source": "frequency-list",
+    "example": {
+      "de": "Der See ist ruhig.",
+      "en": "The lake is calm."
+    },
     "word": "See",
     "article": "der",
     "plural": "Seen",
@@ -8360,6 +9476,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 540,
     "source": "frequency-list",
+    "example": {
+      "de": "Das Meer ist blau.",
+      "en": "The sea is blue."
+    },
     "word": "Meer",
     "article": "das",
     "plural": "Meere",
@@ -8378,6 +9498,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 541,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Luft ist frisch.",
+      "en": "The air is fresh."
+    },
     "word": "Luft",
     "article": "die",
     "translation": "air"
@@ -8395,6 +9519,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 542,
     "source": "frequency-list",
+    "example": {
+      "de": "Das Feuer brennt hell.",
+      "en": "The fire burns brightly."
+    },
     "word": "Feuer",
     "article": "das",
     "plural": "Feuer",
@@ -8413,6 +9541,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 543,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Hund bellt laut.",
+      "en": "The dog barks loudly."
+    },
     "word": "Hund",
     "article": "der",
     "plural": "Hunde",
@@ -8431,6 +9563,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 544,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Katze schläft viel.",
+      "en": "The cat sleeps a lot."
+    },
     "word": "Katze",
     "article": "die",
     "plural": "Katzen",
@@ -8449,6 +9585,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 545,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Vogel singt morgens.",
+      "en": "The bird sings in the morning."
+    },
     "word": "Vogel",
     "article": "der",
     "plural": "Vögel",
@@ -8467,6 +9607,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 546,
     "source": "frequency-list",
+    "example": {
+      "de": "Das Pferd läuft schnell.",
+      "en": "The horse runs fast."
+    },
     "word": "Pferd",
     "article": "das",
     "plural": "Pferde",
@@ -8485,6 +9629,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 547,
     "source": "frequency-list",
+    "example": {
+      "de": "Ich habe kein Geld.",
+      "en": "I have no money."
+    },
     "word": "Geld",
     "article": "das",
     "translation": "money"
@@ -8502,6 +9650,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 548,
     "source": "frequency-list",
+    "example": {
+      "de": "Das kostet zehn Euro.",
+      "en": "That costs ten euros."
+    },
     "word": "Euro",
     "article": "der",
     "plural": "Euro",
@@ -8520,6 +9672,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 549,
     "source": "frequency-list",
+    "example": {
+      "de": "Der Preis ist hoch.",
+      "en": "The price is high."
+    },
     "word": "Preis",
     "article": "der",
     "plural": "Preise",
@@ -8538,6 +9694,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 550,
     "source": "frequency-list",
+    "example": {
+      "de": "Das Telefon klingelt.",
+      "en": "The telephone is ringing."
+    },
     "word": "Telefon",
     "article": "das",
     "plural": "Telefone",
@@ -8556,6 +9716,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 552,
     "source": "frequency-list",
+    "example": {
+      "de": "Ich schreibe dir eine Nachricht.",
+      "en": "I'll write you a message."
+    },
     "word": "Nachricht",
     "article": "die",
     "plural": "Nachrichten",
@@ -8574,6 +9738,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 553,
     "source": "frequency-list",
+    "example": {
+      "de": "Ich schreibe einen Brief.",
+      "en": "I'm writing a letter."
+    },
     "word": "Brief",
     "article": "der",
     "plural": "Briefe",
@@ -8592,6 +9760,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 554,
     "source": "frequency-list",
+    "example": {
+      "de": "Ich schicke dir eine E-Mail.",
+      "en": "I'll send you an email."
+    },
     "word": "E-Mail",
     "article": "die",
     "plural": "E-Mails",
@@ -8610,6 +9782,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 557,
     "source": "frequency-list",
+    "example": {
+      "de": "Deutsch ist eine schöne Sprache.",
+      "en": "German is a beautiful language."
+    },
     "word": "Sprache",
     "article": "die",
     "plural": "Sprachen",
@@ -8628,6 +9804,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 558,
     "source": "frequency-list",
+    "example": {
+      "de": "Das ist eine gute Idee.",
+      "en": "That's a good idea."
+    },
     "word": "Idee",
     "article": "die",
     "plural": "Ideen",
@@ -8646,6 +9826,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 559,
     "source": "frequency-list",
+    "example": {
+      "de": "Wir haben ein Problem.",
+      "en": "We have a problem."
+    },
     "word": "Problem",
     "article": "das",
     "plural": "Probleme",
@@ -8664,6 +9848,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 560,
     "source": "frequency-list",
+    "example": {
+      "de": "Das Leben ist schön.",
+      "en": "Life is beautiful."
+    },
     "word": "Leben",
     "article": "das",
     "plural": "Leben",
@@ -8682,6 +9870,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 561,
     "source": "frequency-list",
+    "example": {
+      "de": "Die Welt ist groß.",
+      "en": "The world is big."
+    },
     "word": "Welt",
     "article": "die",
     "plural": "Welten",
@@ -8700,6 +9892,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 562,
     "source": "frequency-list",
+    "example": {
+      "de": "Ich höre gern Musik.",
+      "en": "I like listening to music."
+    },
     "word": "Musik",
     "article": "die",
     "translation": "music"
@@ -8717,6 +9913,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 563,
     "source": "frequency-list",
+    "example": {
+      "de": "Das Foto ist sehr schön.",
+      "en": "The photo is very nice."
+    },
     "word": "Foto",
     "article": "das",
     "plural": "Fotos",
@@ -8735,6 +9935,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 564,
     "source": "frequency-list",
+    "example": {
+      "de": "Welche Farbe magst du?",
+      "en": "Which color do you like?"
+    },
     "word": "Farbe",
     "article": "die",
     "plural": "Farben",
@@ -8753,6 +9957,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 565,
     "source": "frequency-list",
+    "example": {
+      "de": "Mach bitte das Licht an.",
+      "en": "Please turn on the light."
+    },
     "word": "Licht",
     "article": "das",
     "plural": "Lichter",
@@ -8771,6 +9979,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 567,
     "source": "frequency-list",
+    "example": {
+      "de": "Das Geschenk ist für dich.",
+      "en": "The gift is for you."
+    },
     "word": "Geschenk",
     "article": "das",
     "plural": "Geschenke",
@@ -8789,6 +10001,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 568,
     "source": "frequency-list",
+    "example": {
+      "de": "Ich habe ein gutes Gefühl.",
+      "en": "I have a good feeling."
+    },
     "word": "Gefühl",
     "article": "das",
     "plural": "Gefühle",
@@ -8807,6 +10023,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 569,
     "source": "frequency-list",
+    "example": {
+      "de": "Ich habe keine Angst.",
+      "en": "I'm not afraid."
+    },
     "word": "Angst",
     "article": "die",
     "plural": "Ängste",
@@ -8825,6 +10045,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 570,
     "source": "frequency-list",
+    "example": {
+      "de": "Liebe ist wichtig.",
+      "en": "Love is important."
+    },
     "word": "Liebe",
     "article": "die",
     "translation": "love"
@@ -8842,6 +10066,10 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     },
     "frequencyRank": 571,
     "source": "frequency-list",
+    "example": {
+      "de": "Ich wünsche dir viel Glück.",
+      "en": "I wish you lots of luck."
+    },
     "word": "Glück",
     "article": "das",
     "translation": "luck, happiness"
