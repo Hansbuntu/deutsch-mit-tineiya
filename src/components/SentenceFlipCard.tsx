@@ -1,23 +1,15 @@
 import { useEffect, useState } from 'react';
-import { SceneIcon } from './SceneIcon';
 import { SoundButton } from './SoundButton';
-import type { IconName } from '../data/types';
 import type { PracticeDirection, Sentence } from '../lib/practice';
 
 export function SentenceFlipCard({
   sentence,
-  icon,
   topicLabel,
   direction,
-  index,
-  total,
 }: {
   sentence: Sentence;
-  icon: IconName;
   topicLabel: string;
   direction: PracticeDirection;
-  index: number;
-  total: number;
 }) {
   const [revealed, setRevealed] = useState(false);
 
@@ -35,15 +27,8 @@ export function SentenceFlipCard({
 
   return (
     <div className="card">
-      <div className="scene">
-        <SceneIcon name={icon} />
-      </div>
-
       <div className="word-row" style={{ marginBottom: 8 }}>
         <span className="source-tag">{topicLabel}</span>
-        <span className="generated-card-index" style={{ marginLeft: 'auto' }}>
-          {String(index + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
-        </span>
       </div>
 
       <div className="word-row" style={{ alignItems: 'flex-start' }}>
