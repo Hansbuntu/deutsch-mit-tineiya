@@ -1,18 +1,32 @@
 import type { Card } from '../data/types';
-import { speakableText } from './text';
 import { normalizeText, textSimilarity } from './voice';
 
 export type PracticeDirection = 'en-to-de' | 'de-to-en';
 
-function englishOf(card: Card): string {
-  return card.type === 'sentence' ? card.en : card.translation;
+export interface Sentence {
+  de: string;
+  en: string;
 }
 
-/** The prompt shown and the answer expected, given a practice direction. */
-export function promptAndAnswer(card: Card, direction: PracticeDirection): { prompt: string; answer: string } {
-  const de = speakableText(card);
-  const en = englishOf(card);
-  return direction === 'en-to-de' ? { prompt: en, answer: de } : { prompt: de, answer: en };
+/**
+ * The full German/English sentence pair for a card, if it has one —
+ * SentenceCards trivially do; a Noun/Verb/Vocab card counts only if it
+ * carries a hand-written `example` (the bare word + translation don't
+ * count as a "sentence"). Cards without either (most of the bulk
+ * frequency-word pool) return null and should be excluded anywhere a full
+ * sentence is required, e.g. the practice generator.
+ */
+export function sentenceOf(card: Card): Sentence | null {
+  if (card.type === 'sentence') return { de: card.de, en: card.en };
+  if (card.example) return { de: card.example.de, en: card.example.en };
+  return null;
+}
+
+/** The prompt shown and the answer expected, given a practice direction — always a full sentence. */
+export function promptAndAnswer(card: Card, direction: PracticeDirection): { prompt: string; answer: string } | null {
+  const sentence = sentenceOf(card);
+  if (!sentence) return null;
+  return direction === 'en-to-de' ? { prompt: sentence.en, answer: sentence.de } : { prompt: sentence.de, answer: sentence.en };
 }
 
 export const TYPE_MATCH_THRESHOLD = 0.9;

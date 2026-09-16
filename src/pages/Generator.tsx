@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Masthead } from '../components/Masthead';
-import { Flashcard } from '../components/Flashcard';
+import { SentenceFlipCard } from '../components/SentenceFlipCard';
 import { TypeCheckCard } from '../components/TypeCheckCard';
 import { allCards } from '../data/cards';
 import { topicById, TOPIC_GROUP_LABELS, TOPIC_GROUP_ORDER } from '../data/topics';
@@ -8,7 +8,9 @@ import type { Card, CefrLevel, TopicGroup } from '../data/types';
 import { cardLevel } from '../lib/level';
 import { shuffle } from '../lib/text';
 import { useProgress } from '../lib/progress';
-import type { PracticeDirection } from '../lib/practice';
+import { sentenceOf, type PracticeDirection } from '../lib/practice';
+
+const FALLBACK_ICON = 'category-communication' as const;
 
 type LevelFilter = 'all' | CefrLevel;
 type SourceFilter = 'all' | TopicGroup;
@@ -36,6 +38,7 @@ export function Generator() {
 
   const pool = useMemo(() => {
     return allCards.filter((card) => {
+      if (!sentenceOf(card)) return false; // generator only ever shows full sentences
       if (level !== 'all' && cardLevel(card) !== level) return false;
       if (source !== 'all' && groupForCard(card) !== source) return false;
       return true;
@@ -145,23 +148,38 @@ export function Generator() {
       </p>
 
       {batch.length === 0 ? (
-        <p className="empty-state">No cards match these filters yet — try a different source.</p>
+        <p className="empty-state">No full-sentence cards match these filters yet — try a different level or source.</p>
       ) : (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-          {batch.map((card, i) =>
-            mode === 'flip' ? (
-              <Flashcard key={card.id} card={card} index={i} total={batch.length} />
+          {batch.map((card, i) => {
+            const sentence = sentenceOf(card);
+            if (!sentence) return null; // pool is already pre-filtered; guards TS
+            const icon = card.image.kind === 'icon' ? card.image.icon : FALLBACK_ICON;
+            const topicLabel = topicById(card.topicIds[0])?.name ?? '';
+
+            return mode === 'flip' ? (
+              <SentenceFlipCard
+                key={card.id}
+                sentence={sentence}
+                icon={icon}
+                topicLabel={topicLabel}
+                direction={direction}
+                index={i}
+                total={batch.length}
+              />
             ) : (
               <TypeCheckCard
                 key={card.id}
-                card={card}
+                sentence={sentence}
+                icon={icon}
+                topicLabel={topicLabel}
                 direction={direction}
                 index={i}
                 total={batch.length}
                 onGraded={(correct) => markAnswer(card.id, correct)}
               />
-            ),
-          )}
+            );
+          })}
         </div>
       )}
     </div>
