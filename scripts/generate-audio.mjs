@@ -16,6 +16,7 @@ import path from 'path';
 
 import { allCards } from '../src/data/cards.ts';
 import { speakableText, audioKeyForText } from '../src/lib/text.ts';
+import { sentenceOf } from '../src/lib/practice.ts';
 
 const VOICE = 'de-DE-KatjaNeural';
 const CONCURRENCY = 6;
@@ -25,11 +26,18 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const outDir = path.join(__dirname, '..', 'public', 'audio');
 mkdirSync(outDir, { recursive: true });
 
+// Two things can be spoken per card: the headword/infinitive/sentence
+// (speakableText — what the flashcard's own sound button plays) and, for
+// cards with an `example`, the full German example sentence (what the
+// practice generator's sound button plays in sentence mode). Both need a
+// pre-generated clip.
 const uniqueTexts = new Map(); // key -> text
 for (const card of allCards) {
   const text = speakableText(card).trim();
-  if (!text) continue;
-  uniqueTexts.set(audioKeyForText(text), text);
+  if (text) uniqueTexts.set(audioKeyForText(text), text);
+
+  const sentence = sentenceOf(card);
+  if (sentence?.de.trim()) uniqueTexts.set(audioKeyForText(sentence.de), sentence.de.trim());
 }
 
 const jobs = [...uniqueTexts.entries()].filter(([key]) => !existsSync(path.join(outDir, `${key}.mp3`)));
