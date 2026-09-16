@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { SceneIcon } from './SceneIcon';
 import { SoundButton } from './SoundButton';
 import type { IconName } from '../data/types';
@@ -18,8 +19,19 @@ export function SentenceFlipCard({
   index: number;
   total: number;
 }) {
+  const [revealed, setRevealed] = useState(false);
+
+  // A new prompt (different sentence, or the direction flipped) should
+  // always start hidden again — don't let a stale reveal carry over.
+  useEffect(() => {
+    setRevealed(false);
+  }, [sentence.de, direction]);
+
   const headline = direction === 'en-to-de' ? sentence.en : sentence.de;
   const sub = direction === 'en-to-de' ? sentence.de : sentence.en;
+  // Only ever offer audio for the German text, and only once it's actually
+  // on screen — never let the sound button give away an unrevealed answer.
+  const headlineIsGerman = direction === 'de-to-en';
 
   return (
     <div className="card">
@@ -38,11 +50,21 @@ export function SentenceFlipCard({
         <p className="core-sentence-text" style={{ margin: 0 }}>
           {headline}
         </p>
-        <SoundButton text={sentence.de} label={sentence.de} />
+        {headlineIsGerman && <SoundButton text={sentence.de} label={sentence.de} />}
       </div>
-      <p className="sentence-en" style={{ marginTop: 8 }}>
-        {sub}
-      </p>
+
+      {revealed ? (
+        <div className="word-row" style={{ marginTop: 10, alignItems: 'flex-start' }}>
+          <p className="sentence-en" style={{ margin: 0 }}>
+            {sub}
+          </p>
+          {!headlineIsGerman && <SoundButton text={sentence.de} label={sentence.de} />}
+        </div>
+      ) : (
+        <button type="button" className="reveal-btn" onClick={() => setRevealed(true)}>
+          ▶ Reveal translation
+        </button>
+      )}
     </div>
   );
 }
