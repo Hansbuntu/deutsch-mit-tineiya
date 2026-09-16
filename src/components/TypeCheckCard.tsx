@@ -1,7 +1,5 @@
 import { useState } from 'react';
-import { SceneIcon } from './SceneIcon';
 import { SoundButton } from './SoundButton';
-import type { IconName } from '../data/types';
 import { wordDiff, isCloseEnough, type PracticeDirection, type Sentence } from '../lib/practice';
 import { listenOnce, speechRecognitionSupported } from '../lib/voice';
 
@@ -18,19 +16,13 @@ function MicIcon() {
 
 export function TypeCheckCard({
   sentence,
-  icon,
   topicLabel,
   direction,
-  index,
-  total,
   onGraded,
 }: {
   sentence: Sentence;
-  icon: IconName;
   topicLabel: string;
   direction: PracticeDirection;
-  index: number;
-  total: number;
   onGraded?: (correct: boolean) => void;
 }) {
   const prompt = direction === 'en-to-de' ? sentence.en : sentence.de;
@@ -61,15 +53,8 @@ export function TypeCheckCard({
 
   return (
     <div className="card">
-      <div className="scene">
-        <SceneIcon name={icon} />
-      </div>
-
       <div className="word-row" style={{ marginBottom: 8 }}>
         <span className="source-tag">{topicLabel}</span>
-        <span className="generated-card-index" style={{ marginLeft: 'auto' }}>
-          {String(index + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
-        </span>
       </div>
 
       <p className="core-sentence-text" style={{ marginBottom: 18 }}>
