@@ -16,6 +16,9 @@ export function Masthead() {
           <Link to="/" className={`nav-link${location.pathname === '/' ? ' active' : ''}`}>
             Home
           </Link>
+          <Link to="/generieren" className={`nav-link${location.pathname === '/generieren' ? ' active' : ''}`}>
+            Generate
+          </Link>
           <Link to="/fortschritt" className={`nav-link${location.pathname === '/fortschritt' ? ' active' : ''}`}>
             Progress
           </Link>
