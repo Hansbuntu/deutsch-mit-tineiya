@@ -49,6 +49,9 @@ export const topics: Topic[] = [
 
 export const topicById = (id: string): Topic | undefined => topics.find((t) => t.id === id);
 
+/** Which section (notebook/tiktok/grammar/a1-sentences) a card's first topic belongs to. */
+export const groupForTopicId = (topicId: string): TopicGroup | undefined => topicById(topicId)?.group;
+
 export const TOPIC_GROUP_LABELS: Record<TopicGroup, string> = {
   notebook: 'From your notebook',
   tiktok: 'Your TikTok scripts',

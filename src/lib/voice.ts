@@ -52,7 +52,7 @@ export function listenOnce(): Promise<ListenResult> {
   });
 }
 
-function normalize(text: string): string {
+export function normalizeText(text: string): string {
   return text
     .toLowerCase()
     .replace(/[.,!?;:'"„“‚‘]/g, '')
@@ -77,8 +77,8 @@ function levenshtein(a: string, b: string): number {
 
 /** 0..1 similarity between two strings (1 = identical after normalizing). */
 export function textSimilarity(a: string, b: string): number {
-  const na = normalize(a);
-  const nb = normalize(b);
+  const na = normalizeText(a);
+  const nb = normalizeText(b);
   if (na === nb) return 1;
   const maxLen = Math.max(na.length, nb.length, 1);
   return 1 - levenshtein(na, nb) / maxLen;
