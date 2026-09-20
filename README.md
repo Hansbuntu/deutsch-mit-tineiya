@@ -1,15 +1,69 @@
 # Deutsch mit Tineiya
 
-A personal German flashcard and drill app — image-led vocabulary cards, pattern
-drills for conjugation/separable verbs/articles, and a quiet progress view.
-Static frontend, no backend: all progress is stored in the browser's
-`localStorage`.
+A personal German-learning web app for Tineiya (A1, working toward A2). It is
+not a Duolingo replacement — it covers what Duolingo doesn't: sentence
+structure, conjugation patterns, and content built from her own study
+material (a handwritten notebook of separable verbs and the four German
+scripts she has posted on TikTok).
+
+- **Live:** https://hansbuntu.github.io/deutsch-mit-tineiya/
+- **Repo:** https://github.com/Hansbuntu/deutsch-mit-tineiya
+
+It is a static site — no backend, no database, no API keys. Progress lives in
+the browser's `localStorage`; content lives in `src/data/*.ts`; pronunciation
+audio is pre-generated MP3 files served alongside the app. It is free to host
+and deploys to GitHub Pages on every push to `main`.
+
+## What's in it
+
+| Screen | Route | What it does |
+|---|---|---|
+| Home | `/` | Topic tiles in four sections (your notebook, your TikTok scripts, grammar & vocabulary, common A1 sentences) with card counts and progress. Tiles link out to "Read full passage →" and "Practice speaking →" where they apply. |
+| Flashcard session | `/thema/:topicId` | Image-first cards (noun article badge, separable-verb prefix highlighted in the example sentence, DE + EN example, sound button). Verbs, nouns, and the core sentences with a grammar drill also get a multiple-choice drill built from the card just shown; other cards show the card alone. |
+| Full passage | `/thema/:topicId/passage` | One of the four TikTok scripts as continuous text, for reading and memorizing the way it's practiced for posting. |
+| Speaking practice | `/thema/:topicId/sprechen` | Shows an English prompt, you say the German sentence, and it's checked against the target. |
+| Practice generator | `/generieren` | Random full-sentence practice filtered by level and source, in Flip or Type mode. |
+| Progress | `/fortschritt` | Quiet stats: days active, cards total, notebook pages digitized, progress through the frequency list, and per-topic learned counts. |
+
+There is deliberately no streak mechanic — the app is meant to be dipped into
+casually, not a daily obligation.
+
+### Drills
+
+Multiple choice, never typing. Four kinds:
+
+- **conjugation** — fill in the conjugated verb form (regular and stem-changing:
+  fangen → fängst/fängt, fahren → fährst/fährt, nehmen → nimmst/nimmt)
+- **separable-position** — fill in the separated prefix at the end of the sentence
+- **article** — der / die / das
+- **word-order** — pick the correctly ordered sentence (verb-second, dative
+  after prepositions, `weil` clauses, indirect questions)
+
+A card counts as "learned" after two correct answers.
+
+## Content
+
+767 cards in 15 topics:
+
+| Group | Topics | Cards |
+|---|---|---|
+| From your notebook | Separable Verbs | 15 |
+| Your TikTok scripts | Mein Tag, Mein Zuhause, Über mich, Mein Leben | 63 vocabulary cards + 12 core sentences |
+| Grammar & vocabulary | Nouns & Articles, Everyday & Time, At the Café, Numbers, Top 1000 Words | 50 curated + 527 frequency-list words |
+| Common A1 sentences | Greetings & Introductions, Time & Daily Life, Asking Questions, Shopping & Ordering, Directions | 100 sentences (20 each) |
+
+527 of the 767 cards carry a full example sentence, which is the pool the
+practice generator draws from (220 at A1, 307 at A2 — see
+[Practice generator](#practice-generator)).
 
 ## Stack
 
-Vite + React + TypeScript, `react-router-dom` (`HashRouter`, so routing works
-on static hosts with no server-side rewrites). No database, no API — content
-lives in `src/data/*.ts` and progress lives in `localStorage`.
+Vite + React + TypeScript, `react-router-dom` with `HashRouter` (so routing
+works on static hosts with no server-side rewrites). Fonts: Fraunces (German
+words and headings), IBM Plex Sans (everything else), IBM Plex Mono (generator
+controls). Design follows `reference/design-reference.html`: warm parchment
+background, ink-navy text, sage green as the structural accent, mustard gold
+as the single highlight.
 
 ## Running locally
 
@@ -18,178 +72,196 @@ npm install
 npm run dev
 ```
 
-## Building
+| Script | Does |
+|---|---|
+| `npm run dev` | Vite dev server |
+| `npm run build` | Type-check (`tsc -b`) then build static files to `dist/` |
+| `npm run preview` | Serve the production build locally |
+| `npm run lint` | oxlint |
+| `npm run generate-audio` | Generate any missing pronunciation clips (needs internet; see [Pronunciation](#pronunciation)) |
 
-```bash
-npm run build
-```
-
-Outputs static files to `dist/`. `vite.config.ts` sets `base: './'` so the
-build works when served from any subpath (a GitHub Pages project page, a
-Vercel/Netlify root, or opened straight from disk).
+`vite.config.ts` sets `base: './'` so the build works from any subpath (a
+GitHub Pages project page, a Vercel/Netlify root, or straight from disk).
 
 ## Deploying
 
-Any static host works — pick whichever is easiest:
+Live on GitHub Pages. `.github/workflows/deploy-pages.yml` builds and deploys
+on every push to `main` (Pages source is set to "GitHub Actions"). Any static
+host also works: import the repo, framework preset "Vite", build command
+`npm run build`, output directory `dist`, no environment variables.
 
-- **GitHub Pages**: push this repo to GitHub, enable Pages → "GitHub
-  Actions" as the source (Settings → Pages). The included workflow at
-  `.github/workflows/deploy-pages.yml` builds and deploys on every push to
-  `main`.
-- **Vercel / Netlify**: import the repo, framework preset "Vite", build
-  command `npm run build`, output directory `dist`. No environment
-  variables needed.
+## Project structure
+
+```
+src/
+  App.tsx, main.tsx        routes + providers
+  index.css                the whole design system (one global stylesheet)
+  data/                    all content and the data model (see below)
+  lib/
+    progress.tsx           localStorage-backed progress context
+    drills.ts              builds multiple-choice drills from cards
+    repeats.ts             "you've seen this before" across TikTok topics
+    speech.ts              plays pre-generated audio, falls back to speechSynthesis
+    voice.ts               SpeechRecognition wrapper + text similarity
+    practice.ts            sentenceOf(), word-level diff, answer checking
+    level.ts               derives an A1/A2 level for a card
+    text.ts                shared helpers (shuffle, audio filename hash, ...)
+  components/              Flashcard, DrillPanel, SentenceFlipCard, TypeCheckCard,
+                           SoundButton, SceneIcon (hand-drawn SVG icons), Masthead
+  pages/                   Home, Session, Passage, SpeakSession, Generator, Progress
+public/audio/              1,130 pre-generated MP3 pronunciation clips (~16 MB)
+scripts/generate-audio.mjs builds those clips
+reference/                 original build brief + design reference (archived)
+.github/workflows/         GitHub Pages deploy
+```
 
 ## Data model (`src/data/`)
 
-- `types.ts` — the card/topic/drill shapes. `Card` is a discriminated union
+- `types.ts` — the shapes. `Card` is a discriminated union
   (`NounCard | VerbCard | VocabCard | SentenceCard`) so new card types can be
-  added without touching existing ones.
-- `verbs.ts` — the 15 separable verbs digitized from Tineiya's notebook, each
-  with a full present-tense conjugation (used by the conjugation and
-  separable-position drills).
-- `nouns.ts` — curated cards for the Nomen & Artikel / Alltag & Zeit / im
-  Café / Zahlen topics.
-- `frequencyWords.ts` — a curated ~500-word A1/A2 frequency-ranked pool
-  (bulk everyday vocabulary), excluding anything already covered by the
-  curated topics above. The progress screen displays this against a fixed
-  target of 1000 (`FREQUENCY_LIST_TARGET` in `cards.ts`) — the list is meant
-  to keep growing toward that; see below.
-- `passages.ts` — the full text of Tineiya's four TikTok scripts (Mein Tag,
-  Mein Zuhause, Über mich, Mein Leben), kept verbatim for the "read full
-  passage" view — separate from the flashcards pulled from them.
-- `tiktokVocab.ts` — vocabulary and two extra separable verbs
-  (`nachdenken`, `rausgehen`) extracted from those four scripts, one topic
-  per script. Words that recur across scripts (malen, Musik hören, Ideen,
-  Zimmer, Kunst, Deutsch lernen, Freizeit, YouTube-Videos schauen, …) are
-  deliberately re-added as their own card per topic — `lib/repeats.ts`
-  flags the later ones as "you've seen this before" rather than
-  deduplicating them away.
-- `coreSentences.ts` — 2-3 `SentenceCard`s per TikTok topic worth
-  memorizing as a whole sentence, mixed into that topic's session.
-- `grammarDrills.ts` — hand-authored `'word-order'` drills (pick the
-  correctly-ordered sentence) for the grammar point each script actually
-  demonstrates (verb-second order, dative case, weil-clauses, indirect
-  questions). Keyed by the core-sentence card id they attach to; looked up
-  before the generic per-card-type drill logic in `lib/drills.ts`.
-- `a1Sentences.ts` — a generic ~100-sentence A1 bank (greetings, time,
-  questions, shopping, directions), independent of the personal TikTok
-  content, one topic per category.
-- `topics.ts` — the topic list shown on the home screen, grouped into
-  sections (`TopicGroup`: notebook / tiktok / grammar / a1-sentences) for
-  display.
+  added without touching existing ones. `Drill`, `Topic`, `Passage`, and the
+  `CefrLevel` type live here too.
+- `verbs.ts` — the 15 separable verbs from Tineiya's notebook, each with a full
+  present-tense conjugation (feeds the conjugation and separable-position
+  drills).
+- `nouns.ts` — curated cards for Nouns & Articles, Everyday & Time, At the Café,
+  and Numbers.
+- `frequencyWords.ts` — 527 A1/A2 everyday words ranked by frequency, minus
+  anything already in the curated topics. Words ranked 251+ (the A2 tier)
+  each carry a hand-written example sentence; the top 250 are bare words. The
+  progress screen measures this against a fixed target of 1000
+  (`FREQUENCY_LIST_TARGET` in `cards.ts`).
+- `passages.ts` — the four TikTok scripts, verbatim, for the passage view.
+- `tiktokVocab.ts` — vocabulary extracted from those scripts, one topic per
+  script, plus two extra separable verbs (`nachdenken`, `rausgehen`). Words that
+  recur across scripts (malen, Musik hören, Ideen, Zimmer, Kunst, Deutsch
+  lernen, Freizeit, YouTube-Videos schauen, …) are deliberately kept as their
+  own card in each topic; `lib/repeats.ts` flags the later ones as "you've seen
+  this before" rather than deduplicating them.
+- `coreSentences.ts` — 2–3 whole sentences per script worth memorizing,
+  mixed into that topic's session.
+- `grammarDrills.ts` — hand-authored `word-order` drills for the grammar each
+  script demonstrates, keyed by the core-sentence card they attach to and
+  looked up before the generic drill logic in `lib/drills.ts`.
+- `a1Sentences.ts` — 100 generic A1 sentences in five categories, independent
+  of the personal TikTok content.
+- `topics.ts` — the topic list, grouped into the four home-screen sections.
+- `cards.ts` — assembles everything into `allCards` and exposes lookups.
 
 ### Extending it
 
-- **New topic**: add an entry to `topics.ts` (with a `group`), then add
-  cards with that `topicId` anywhere in `data/`.
-- **New card type**: add a variant to the `Card` union in `types.ts`, teach
-  `Flashcard.tsx` how to render it, and (optionally) `drills.ts` how to quiz
-  it.
-- **New drill kind**: add to `DrillKind` in `types.ts` and either add a
-  generator function in `lib/drills.ts` (mechanical, derived from card
-  data) or hand-author entries in `grammarDrills.ts` (bespoke, keyed by
-  card id) — see the `'word-order'` kind for an example of the latter.
-- **Grow the 1000-word list**: append more `NounCard | VocabCard` entries to
-  `frequencyWords.ts` (same shape as the existing ones). Check new words
-  against the curated topic files first to avoid duplicates.
-- **New TikTok script**: add its text to `passages.ts`, extracted cards to
-  `tiktokVocab.ts`, 2-3 `SentenceCard`s to `coreSentences.ts`, and its topic
-  id to `TRACKED_TOPIC_ORDER` in `lib/repeats.ts` (in posting order) so
-  repeat-word detection includes it.
-- **Real photos instead of icons**: `CardImage` already supports a `photo`
-  variant (`{ kind: 'photo', src, alt }`) alongside `icon` — swap a card's
-  `image` field, no schema change needed.
-- **More speaking-practice topics**: `SpeakSession.tsx` already works for
-  any topic — it just filters that topic's cards down to `SentenceCard`s.
-  Add `SentenceCard`s to any topic and a "Practice speaking →" link appears
-  for it automatically (see `hasSpeakingPractice` in `Home.tsx`/`Session.tsx`).
+- **New topic:** add it to `topics.ts` (with a `group`), then add cards that
+  reference its id anywhere in `data/`.
+- **New card type:** add a variant to the `Card` union, teach `Flashcard.tsx` to
+  render it, and optionally `drills.ts` to quiz it.
+- **New drill kind:** add to `DrillKind`, then either write a generator in
+  `lib/drills.ts` (mechanical, derived from card data) or hand-author entries
+  in `grammarDrills.ts` (bespoke, keyed by card id).
+- **More words:** append `NounCard | VocabCard` entries to `frequencyWords.ts`
+  and check them against the curated files for duplicates. Give a card an
+  `example` and it automatically joins the generator's pool.
+- **New TikTok script:** add the text to `passages.ts`, extracted cards to
+  `tiktokVocab.ts`, 2–3 `SentenceCard`s to `coreSentences.ts`, and its topic id
+  to `TRACKED_TOPIC_ORDER` in `lib/repeats.ts` (in posting order).
+- **After adding any cards:** run `npm run generate-audio` so their
+  pronunciation is pre-generated.
+- **Real photos instead of icons:** `CardImage` already has a
+  `{ kind: 'photo', src, alt }` variant — swap a card's `image`, no schema
+  change.
+- **Speaking practice for a new topic:** add `SentenceCard`s to it; the
+  "Practice speaking →" link appears automatically.
 
 ## Progress tracking
 
-`src/lib/progress.tsx` is a small React context backed by `localStorage`
-(`deutsch-mit-tineiya:progress:v1`). A card counts as "learned" after two
-correct drill answers. There's no streak mechanic by design — `daysActive`
-is tracked quietly for the progress screen only.
+`lib/progress.tsx` is a small React context over `localStorage` (key
+`deutsch-mit-tineiya:progress:v1`). It records cards seen, correct drill
+answers, and the dates the app was opened (`daysActive`, shown quietly — never
+as a streak). Nothing leaves the device.
 
 ## Pronunciation
 
-Every sound button plays a **pre-generated MP3** from `public/audio/`,
-recorded once at build time with a real neural German voice (Microsoft's
-free "Read aloud" engine — the same one behind Edge, no API key, no
-account) via `npm run generate-audio`. This is what makes pronunciation
-consistent for every visitor once deployed: it doesn't depend on what
-voices happen to be installed on their OS or browser.
+Every sound button plays a **pre-generated MP3** from `public/audio/`, made
+once with a neural German voice (Microsoft's free "Read aloud" engine via
+`npm run generate-audio` — no API key, no account). That's what keeps
+pronunciation identical for every visitor: it doesn't depend on which voices
+happen to be installed on their device.
 
-- **How the lookup works**: `lib/text.ts`'s `audioKeyForText()` hashes the
-  spoken text (FNV-1a, pure JS, no crypto API) to a filename —
-  `public/audio/<hash>.mp3` — so there's no separate manifest to keep in
-  sync; the same function runs in both the generation script and the app.
-- **Regenerating**: `npm run generate-audio` walks every card, skips any
-  `<hash>.mp3` that already exists, and only fetches what's missing — so
-  it's cheap to re-run after adding a handful of new cards. The full corpus
-  (~740 unique words/sentences) takes a few minutes the first time.
-- **Fallback**: if a clip is missing (new card, generation script not yet
-  run), the sound button falls back to the browser's built-in
-  `speechSynthesis` — lower quality and dependent on the visitor's own
-  German voice, but never silent.
-- **Changing the voice**: edit `VOICE` in `scripts/generate-audio.mjs`
-  (any `de-DE-*Neural` voice works) and delete `public/audio/` before
-  re-running to regenerate everything with the new voice.
-
-## Practice generator (`Generator.tsx`, `/generieren`)
-
-A "generate random practice" tool inspired by terminal-lingo.com, reusing
-the entire existing card pool (767 cards across every topic) rather than a
-separate dataset:
-
-- **Level** (All / A1 / A2) and **source** (All / notebook / TikTok
-  scripts / grammar & vocab / A1 bank) filters narrow the pool; **count**
-  (1/3/5/10) samples that many at random. Level isn't a stored field —
-  `lib/level.ts`'s `cardLevel()` derives it from `frequencyRank` for the
-  frequency-word pool (rank ≤250 → A1, else A2) and from `source` for
-  everything else (all currently A1). Source reuses the existing `Topic.group`
-  — picking "Your TikTok scripts" is exactly how you generate sentences from
-  Tineiya's own TikTok texts specifically.
-- **Direction** (EN→DE / DE→EN) and **mode** (Flip / Type) control how the
-  sampled batch is presented — Flip reuses the existing `Flashcard`
-  component as-is; Type is a new `TypeCheckCard` with a text input plus the
-  same speech input as the speaking-practice screen, graded with
-  `lib/practice.ts`: a lenient overall verdict (`isCloseEnough`, Levenshtein
-  similarity ≥0.9) plus an exact word-by-word diff (`wordDiff`, LCS over
-  normalized tokens) showing which words matched, which were missed, and
-  what was said/typed instead.
-- Changing level/source/count draws a fresh random sample automatically;
-  the "↻ Generate" button re-rolls the same filters. Direction/mode just
-  change how the current batch is displayed.
-- Visually distinct from the rest of the app on purpose (dark
-  `.terminal-panel` control bar, IBM Plex Mono, `// LABEL` style tags) while
-  staying inside the existing color system (ink/sage/gold) rather than
-  copying the reference site's black/neon look wholesale.
+- **What's covered:** every card's headword/infinitive/sentence *and* its full
+  example sentence (the generator plays those) — 1,130 clips, about 16 MB.
+- **Lookup:** `audioKeyForText()` in `lib/text.ts` hashes the spoken text
+  (FNV-1a, pure JS) to a filename, `public/audio/<hash>.mp3`. The same function
+  runs in the generation script and in the app, so there's no manifest to keep
+  in sync.
+- **Regenerating:** the script skips clips that already exist and only fetches
+  what's missing, so re-running after adding cards is quick.
+- **Fallback:** if a clip is missing, the sound button falls back to the
+  browser's built-in `speechSynthesis` — lower quality and dependent on the
+  visitor's own German voice, but never silent.
+- **Changing the voice:** edit `VOICE` in `scripts/generate-audio.mjs` (any
+  `de-DE-*Neural` voice), delete `public/audio/`, and re-run.
 
 ## Speaking practice (`SpeakSession.tsx`, `lib/voice.ts`)
 
-Phase 2 from the brief: a "say this in German" mode for `SentenceCard`s
-(currently the TikTok core sentences and the A1 sentence bank — see
-`hasSpeakingPractice` in `Home.tsx`), reachable via a "Practice speaking →"
-link wherever a topic has sentence cards.
+A "say this in German" mode for `SentenceCard`s (the TikTok core sentences and
+the A1 sentence bank).
 
-- **How it works**: the browser's free built-in `SpeechRecognition` API
-  transcribes what's said (no backend, no API key), which is then compared
-  against the target sentence with a normalized Levenshtein similarity
-  score (`textSimilarity()` in `lib/voice.ts`, threshold
-  `SPOKEN_MATCH_THRESHOLD` = 0.82) — a text/grammar check, not a
-  pronunciation score. Seeing the raw transcript next to the target still
-  gives indirect pronunciation feedback: if speech recognition mis-hears a
-  word, that's usually a sign it wasn't said clearly.
-- **Browser support**: solid in Chrome and Edge, unsupported in Firefox and
-  inconsistent in Safari. `speechRecognitionSupported()` gates the mic UI;
-  unsupported browsers get a "reveal the sentence" self-check instead of a
-  dead end.
-- **Requires HTTPS** (or localhost) — a Web Speech API / secure-context
-  requirement, satisfied automatically by GitHub Pages/Vercel/Netlify and
-  by `npm run dev`.
-- **Pronunciation scoring** (actually grading how *well* something was
-  said, not just what was said) would need a paid API like Azure
-  Pronunciation Assessment — out of scope for a free static site unless
-  Tineiya brings her own key later.
+- The browser's built-in `SpeechRecognition` transcribes what's said (free, no
+  backend), and the transcript is compared to the target with a normalized
+  Levenshtein similarity (`SPOKEN_MATCH_THRESHOLD` = 0.82). This checks the
+  words and grammar, not pronunciation quality — though a mis-heard word in the
+  transcript is a useful hint that something wasn't said clearly.
+- **Support:** solid in Chrome and Edge, missing in Firefox, patchy in Safari.
+  Unsupported browsers get a "reveal the sentence" self-check instead of a dead
+  end. Needs HTTPS or localhost (GitHub Pages and `npm run dev` both qualify).
+- Real pronunciation *scoring* would need a paid API (e.g. Azure Pronunciation
+  Assessment) — out of scope for a free static site.
+
+## Practice generator
+
+`/generieren`, inspired by terminal-lingo.com. It shows **one full sentence at
+a time**, text only (no image), drawn from the same card pool as everything
+else — no separate dataset.
+
+- **Pool:** only cards that have a real sentence — a `SentenceCard`, or any
+  card with a hand-written `example` (`sentenceOf()` in `lib/practice.ts`).
+  Bare words never appear. That's 527 cards today.
+- **Level (All / A1 / A2):** derived, not stored — `cardLevel()` in
+  `lib/level.ts` uses `frequencyRank` for the frequency list (rank ≤250 → A1,
+  otherwise A2) and treats all other content as A1. This is an approximation,
+  not a formal CEFR audit.
+- **Source:** All, or one of the four topic groups. "Your TikTok scripts"
+  generates sentences from Tineiya's own texts.
+- **Direction:** EN → DE or DE → EN.
+- **Mode:**
+  - *Flip* shows only the prompt; "▶ Reveal translation" shows the answer so
+    you can check yourself. The sound button only appears once the German text
+    is on screen, so audio can't give away an unrevealed answer.
+  - *Type* takes a typed or spoken answer (same mic as speaking practice) and
+    grades it two ways: a lenient overall verdict (`isCloseEnough`, similarity
+    ≥ 0.9) plus an exact word-by-word diff (`wordDiff`, longest common
+    subsequence) showing which words matched, which were missed, and what was
+    written instead.
+- **Generate** picks the next random card; changing level or source also draws
+  a fresh one. Changing direction or mode re-presents the current card.
+- Flip records a card as seen; Type records correct answers toward "learned".
+- Styling is intentionally a little different from the rest of the app (dark
+  terminal-style control bar, monospace type, `// LABEL` tags) but stays inside
+  the ink/sage/gold palette.
+
+## Known gaps
+
+- The frequency list is 527 words, not the 1,000 the progress screen counts
+  against.
+- Level tagging is a heuristic; there is no B1+ content (the `CefrLevel` type
+  allows it).
+- The 220 top-ranked frequency words have no example sentences, so they aren't
+  in the generator's pool.
+- Bulk vocabulary shares category icons (star, clock, house, …) rather than
+  having a picture per word.
+- No pronunciation scoring, and speech recognition is Chrome/Edge only.
+
+## Reference
+
+`reference/` archives the original build brief and the design reference HTML.
+The brief there predates the Tineiya-specific TikTok and A1-sentence sections;
+this README describes the app as it currently stands.
