@@ -1,5 +1,6 @@
 import type { Card } from '../data/types';
 import { normalizeText, textSimilarity } from './voice';
+import { spellOutNumbers, type NumberLang } from './numbers';
 
 export type PracticeDirection = 'en-to-de' | 'de-to-en';
 
@@ -49,11 +50,12 @@ export interface WordDiff {
  * shows which words landed, which were missed, and what was said instead,
  * independent of the (more lenient) overall correct/incorrect verdict.
  */
-export function wordDiff(expectedRaw: string, typedRaw: string): WordDiff {
+export function wordDiff(expectedRaw: string, typedRaw: string, lang: NumberLang = 'de'): WordDiff {
   const expectedDisplay = expectedRaw.trim().split(/\s+/).filter(Boolean);
-  const typedDisplay = typedRaw.trim().split(/\s+/).filter(Boolean);
-  const expectedNorm = expectedDisplay.map((w) => normalizeText(w));
-  const typedNorm = typedDisplay.map((w) => normalizeText(w));
+  // Digits in the answer ("7:00") become words first, so each spoken word lines up with its own token.
+  const typedDisplay = spellOutNumbers(typedRaw, lang).trim().split(/\s+/).filter(Boolean);
+  const expectedNorm = expectedDisplay.map((w) => normalizeText(w, lang));
+  const typedNorm = typedDisplay.map((w) => normalizeText(w, lang));
 
   const n = expectedNorm.length;
   const m = typedNorm.length;
@@ -89,6 +91,11 @@ export function wordDiff(expectedRaw: string, typedRaw: string): WordDiff {
 }
 
 /** Overall verdict for a typed/spoken answer — lenient (small typos/omissions still pass). */
-export function isCloseEnough(expected: string, actual: string, threshold = TYPE_MATCH_THRESHOLD): boolean {
-  return textSimilarity(expected, actual) >= threshold;
+export function isCloseEnough(
+  expected: string,
+  actual: string,
+  lang: NumberLang = 'de',
+  threshold = TYPE_MATCH_THRESHOLD,
+): boolean {
+  return textSimilarity(expected, actual, lang) >= threshold;
 }

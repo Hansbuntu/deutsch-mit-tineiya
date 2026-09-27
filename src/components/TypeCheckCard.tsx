@@ -22,13 +22,14 @@ export function TypeCheckCard({
   const toGerman = direction === 'en-to-de';
   const prompt = toGerman ? sentence.en : sentence.de;
   const answer = toGerman ? sentence.de : sentence.en;
+  const answerLang = toGerman ? 'de' : 'en';
   const [value, setValue] = useState('');
   const [checked, setChecked] = useState(false);
   const [listening, setListening] = useState(false);
   const micSupported = speechRecognitionSupported();
 
-  const diff = checked ? wordDiff(answer, value) : null;
-  const correct = checked ? isCloseEnough(answer, value) : false;
+  const diff = checked ? wordDiff(answer, value, answerLang) : null;
+  const correct = checked ? isCloseEnough(answer, value, answerLang) : false;
 
   // After a miss the learner answers again until it's right; only the first try counts toward progress.
   const [isRetry, setIsRetry] = useState(false);
@@ -37,7 +38,7 @@ export function TypeCheckCard({
   const check = (finalValue: string) => {
     if (!finalValue.trim()) return;
     setChecked(true);
-    if (!isRetry) onGraded?.(isCloseEnough(answer, finalValue));
+    if (!isRetry) onGraded?.(isCloseEnough(answer, finalValue, answerLang));
   };
 
   const tryAgain = () => {

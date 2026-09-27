@@ -3,6 +3,8 @@
 // absent in Firefox, patchy in Safari), so every caller must check
 // `speechRecognitionSupported()` and degrade gracefully when it's false.
 
+import { spellOutNumbers, type NumberLang } from './numbers';
+
 function ctor(): typeof window.SpeechRecognition | undefined {
   if (typeof window === 'undefined') return undefined;
   return window.SpeechRecognition ?? window.webkitSpeechRecognition;
@@ -63,6 +65,7 @@ export function startListening({
   const Ctor = ctor();
   if (!Ctor) return { result: Promise.resolve({ status: 'not-supported' }), done: () => {}, cancel: () => {} };
 
+  const numberLang: NumberLang = lang.startsWith('de') ? 'de' : 'en';
   const recognition = new Ctor();
   recognition.lang = lang;
   recognition.continuous = true;
@@ -86,7 +89,8 @@ export function startListening({
   recognition.onresult = (event) => {
     const chunks: string[] = [];
     for (let i = 0; i < event.results.length; i++) chunks.push(event.results[i][0]?.transcript ?? '');
-    transcript = joinChunks(chunks);
+    // Show numbers the way they were said ("sieben Uhr"), not as the recognizer's digits ("7:00").
+    transcript = spellOutNumbers(joinChunks(chunks), numberLang);
     onTranscript?.(transcript);
   };
   recognition.onerror = (event) => {
@@ -116,12 +120,18 @@ export function startListening({
   };
 }
 
-export function normalizeText(text: string): string {
-  return text
+/**
+ * Canonical form for comparing answers: numbers spelled out as words (so
+ * "7:00", "7 Uhr" and "sieben Uhr" are the same), lower case, no punctuation.
+ * In English "o'clock" is dropped, so "at 7" and "at seven o'clock" match.
+ */
+export function normalizeText(text: string, lang: NumberLang = 'de'): string {
+  let normalized = spellOutNumbers(text, lang)
     .toLowerCase()
-    .replace(/[.,!?;:'"„“‚‘]/g, '')
-    .replace(/\s+/g, ' ')
-    .trim();
+    .replace(/[.,!?;:'"„“‚‘’]/g, '')
+    .replace(/-/g, ' ');
+  if (lang === 'en') normalized = normalized.replace(/\boclock\b/g, '');
+  return normalized.replace(/\s+/g, ' ').trim();
 }
 
 function levenshtein(a: string, b: string): number {
@@ -140,9 +150,9 @@ function levenshtein(a: string, b: string): number {
 }
 
 /** 0..1 similarity between two strings (1 = identical after normalizing). */
-export function textSimilarity(a: string, b: string): number {
-  const na = normalizeText(a);
-  const nb = normalizeText(b);
+export function textSimilarity(a: string, b: string, lang: NumberLang = 'de'): number {
+  const na = normalizeText(a, lang);
+  const nb = normalizeText(b, lang);
   if (na === nb) return 1;
   const maxLen = Math.max(na.length, nb.length, 1);
   return 1 - levenshtein(na, nb) / maxLen;
