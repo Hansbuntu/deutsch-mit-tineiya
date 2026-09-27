@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { Masthead } from '../components/Masthead';
-import { SceneIcon } from '../components/SceneIcon';
+import { Icon } from '../components/Icon';
 import { SoundButton } from '../components/SoundButton';
 import { cardsForTopic } from '../data/cards';
 import { topicById } from '../data/topics';
@@ -12,22 +11,14 @@ import { shuffle } from '../lib/text';
 
 type Phase = 'prompt' | 'listening' | 'result' | 'error';
 
-function MicIcon() {
-  return (
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-      <rect x="9" y="2" width="6" height="12" rx="3" />
-      <path d="M5 10v1a7 7 0 0 0 14 0v-1" />
-      <path d="M12 18v4" />
-      <path d="M8 22h8" />
-    </svg>
-  );
-}
-
 const ERROR_MESSAGES: Record<string, string> = {
-  'not-allowed': "Microphone access was blocked — allow it in your browser's site settings to use speaking practice.",
+  'not-allowed': "Microphone access is blocked — allow it in your browser's site settings to practise speaking.",
   'audio-capture': 'No microphone was found on this device.',
   network: 'A network error interrupted speech recognition — check your connection and try again.',
 };
+
+const sentenceCardsFor = (topicId: string) =>
+  shuffle(cardsForTopic(topicId).filter((c): c is SentenceCard => c.type === 'sentence'));
 
 export function SpeakSession() {
   const { topicId = '' } = useParams();
@@ -35,9 +26,7 @@ export function SpeakSession() {
   const { markAnswer } = useProgress();
   const supported = useMemo(speechRecognitionSupported, []);
 
-  const [cards, setCards] = useState<SentenceCard[]>(() =>
-    shuffle(cardsForTopic(topicId).filter((c): c is SentenceCard => c.type === 'sentence')),
-  );
+  const [cards, setCards] = useState<SentenceCard[]>(() => sentenceCardsFor(topicId));
   const [index, setIndex] = useState(0);
   const [phase, setPhase] = useState<Phase>('prompt');
   const [transcript, setTranscript] = useState('');
@@ -45,12 +34,11 @@ export function SpeakSession() {
   const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
-    setCards(shuffle(cardsForTopic(topicId).filter((c): c is SentenceCard => c.type === 'sentence')));
+    setCards(sentenceCardsFor(topicId));
     setIndex(0);
     setPhase('prompt');
     setTranscript('');
     setErrorMessage('');
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [topicId]);
 
   const card = cards[index];
@@ -60,6 +48,11 @@ export function SpeakSession() {
     setPhase('prompt');
     setTranscript('');
     setErrorMessage('');
+  };
+
+  const goTo = (next: number) => {
+    setIndex(next);
+    reset();
   };
 
   const handleListen = async () => {
@@ -80,133 +73,156 @@ export function SpeakSession() {
     }
   };
 
-  if (!topic) {
+  if (!topic || cards.length === 0) {
     return (
-      <div className="page">
-        <Masthead />
-        <p className="empty-state">That topic doesn't exist.</p>
-      </div>
-    );
-  }
-
-  if (cards.length === 0) {
-    return (
-      <div className="page">
-        <Masthead />
-        <p className="empty-state">There's no speaking practice for this topic yet.</p>
-        <Link to={`/thema/${topicId}`} className="btn" style={{ marginTop: 16 }}>
-          Back to cards
+      <div className="surface empty">
+        <p>{topic ? "There's no speaking practice for this topic yet." : "That topic doesn't exist."}</p>
+        <Link to={topic ? `/thema/${topicId}` : '/'} className="btn" style={{ marginTop: 16 }}>
+          {topic ? 'Back to cards' : 'Back to topics'}
         </Link>
       </div>
     );
   }
 
   return (
-    <div className="page">
-      <Masthead />
-      <div className="stack-label">speaking practice</div>
-      <h2 className="screen-title">{topic.name}</h2>
+    <div className="speak">
+      <nav className="crumbs" aria-label="Breadcrumb">
+        <Link to="/">Home</Link>
+        <Icon name="chevron-right" />
+        <Link to={`/thema/${topicId}`}>{topic.name}</Link>
+        <Icon name="chevron-right" />
+        <span>Speaking</span>
+      </nav>
+
+      <header className="reader-head rise">
+        <span className="eyebrow no-rule">Speaking practice</span>
+        <h1 className="title-xl">{topic.name}</h1>
+        <p className="muted">Read the English, then say it in German.</p>
+      </header>
 
       {!supported && (
-        <div className="side-card" style={{ marginBottom: 24 }}>
-          <p className="note">
-            Voice input isn't supported in this browser — try Chrome or Edge. You can still read the sentences below and
+        <div className="notice">
+          <Icon name="info" />
+          <span>
+            Voice input isn't available in this browser — try Chrome or Edge. You can still reveal each sentence and
             check yourself against the audio.
-          </p>
+          </span>
         </div>
       )}
 
       {finished ? (
-        <div className="card session-done">
-          <h2>Done — {cards.length} sentences from {topic.name}.</h2>
-          <p>Practice again, or head back to the cards.</p>
-          <div className="card-nav" style={{ justifyContent: 'center' }}>
-            <button type="button" className="btn" onClick={() => { setIndex(0); reset(); }}>
+        <div className="surface done rise">
+          <div className="done-icon">
+            <Icon name="trophy" />
+          </div>
+          <h2 className="title-lg">Gut gesprochen!</h2>
+          <p>
+            That's all {cards.length} sentences from {topic.name}. Run through them again, or head back to the cards.
+          </p>
+          <div className="done-actions">
+            <button type="button" className="btn" onClick={() => goTo(0)}>
+              <Icon name="refresh" />
               Again
             </button>
             <Link to={`/thema/${topicId}`} className="btn btn-primary">
               Back to cards
+              <Icon name="arrow-right" />
             </Link>
           </div>
         </div>
       ) : (
-        <div className="card">
-          <div className="scene">
-            {card.image.kind === 'icon' ? <SceneIcon name={card.image.icon} /> : null}
+        <div className="surface speak-card rise-2" key={card.id}>
+          <div className="session-progress" style={{ width: '100%' }}>
+            <div className="meter meter-sage">
+              <span style={{ width: `${((index + 1) / cards.length) * 100}%` }} />
+            </div>
+            <span className="session-count">
+              <strong>{index + 1}</strong> / {cards.length}
+            </span>
           </div>
 
-          <div className="stack-label">say this in German</div>
-          <p className="core-sentence-text" style={{ marginBottom: 22 }}>
-            {card.en}
-          </p>
+          <span className="eyebrow no-rule">Say this in German</span>
+          <p className="speak-prompt">{card.en}</p>
 
           {phase === 'prompt' && supported && (
-            <button type="button" className="mic-button" onClick={handleListen}>
-              <MicIcon />
-              <span>Press to speak</span>
-            </button>
+            <>
+              <div className="mic-stage">
+                <button type="button" className="mic-btn" onClick={handleListen} aria-label="Start speaking">
+                  <Icon name="mic" />
+                </button>
+              </div>
+              <p className="mic-caption">Tap the microphone and speak</p>
+            </>
+          )}
+
+          {phase === 'listening' && (
+            <>
+              <div className="mic-stage" aria-live="polite">
+                <span className="mic-ring" />
+                <span className="mic-ring" />
+                <span className="mic-ring" />
+                <button type="button" className="mic-btn listening" disabled aria-label="Listening">
+                  <Icon name="mic" />
+                </button>
+              </div>
+              <p className="mic-caption">Listening…</p>
+            </>
           )}
 
           {phase === 'prompt' && !supported && (
-            <button type="button" className="btn" onClick={() => setPhase('result')}>
+            <button type="button" className="btn btn-lg" onClick={() => setPhase('result')}>
+              <Icon name="eye" />
               Reveal the sentence
             </button>
           )}
 
-          {phase === 'listening' && (
-            <div className="mic-button listening">
-              <MicIcon />
-              <span>Listening…</span>
-            </div>
-          )}
-
           {phase === 'error' && (
             <>
-              <p className="drill-feedback incorrect">{errorMessage}</p>
+              <p className="inline-error" role="alert">
+                <Icon name="info" />
+                {errorMessage}
+              </p>
               <button type="button" className="btn btn-primary" onClick={handleListen}>
+                <Icon name="mic" />
                 Try again
               </button>
             </>
           )}
 
           {phase === 'result' && (
-            <div className={`speak-result${supported ? (correct ? ' correct' : ' incorrect') : ''}`}>
-              {supported && <p className="drill-feedback">{correct ? 'Correct!' : "Not quite what I heard:"}</p>}
-              {supported && !correct && <p className="transcript-line">You said: "{transcript}"</p>}
-              <div className="word-row" style={{ marginTop: supported ? 10 : 0 }}>
-                <p className="pattern-line" style={{ margin: 0 }}>
-                  {card.de}
+            <div className={`result ${supported ? (correct ? 'ok' : 'bad') : 'neutral'}`} role="status">
+              {supported && (
+                <p className="result-status">
+                  <Icon name={correct ? 'check' : 'x'} />
+                  {correct ? 'Richtig — well said!' : "Not quite. Here's the sentence:"}
                 </p>
+              )}
+              <div className="result-answer">
+                <p lang="de">{card.de}</p>
                 <SoundButton text={card.de} label={card.de} />
               </div>
+              {supported && !correct && (
+                <p className="transcript">
+                  I heard: <em lang="de">“{transcript}”</em>
+                </p>
+              )}
             </div>
           )}
 
-          <div className="progress-row" style={{ marginTop: 22 }}>
-            <div className="progress-track">
-              <div className="progress-fill" style={{ width: `${((index + 1) / cards.length) * 100}%` }} />
-            </div>
-            <div className="progress-label">
-              Card {index + 1} of {cards.length}
-            </div>
-          </div>
-
-          <div className="card-nav">
-            <button
-              type="button"
-              className="btn"
-              onClick={() => setIndex((i) => Math.max(0, i - 1))}
-              disabled={index === 0}
-            >
+          <div className="speak-foot">
+            <button type="button" className="btn btn-ghost" onClick={() => goTo(Math.max(0, index - 1))} disabled={index === 0}>
+              <Icon name="arrow-left" />
               Back
             </button>
             {phase === 'result' ? (
-              <button type="button" className="btn btn-primary" onClick={() => { setIndex((i) => i + 1); reset(); }}>
-                Next
+              <button type="button" className="btn btn-primary" onClick={() => goTo(index + 1)}>
+                {index === cards.length - 1 ? 'Finish' : 'Next'}
+                <Icon name="arrow-right" />
               </button>
             ) : (
-              <button type="button" className="btn" onClick={() => { setIndex((i) => i + 1); reset(); }}>
+              <button type="button" className="btn btn-ghost" onClick={() => goTo(index + 1)}>
                 Skip
+                <Icon name="arrow-right" />
               </button>
             )}
           </div>

@@ -1,14 +1,14 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Masthead } from '../components/Masthead';
+import { Icon } from '../components/Icon';
 import { SentenceFlipCard } from '../components/SentenceFlipCard';
 import { TypeCheckCard } from '../components/TypeCheckCard';
 import { allCards } from '../data/cards';
 import { topicById, TOPIC_GROUP_LABELS, TOPIC_GROUP_ORDER } from '../data/topics';
 import type { Card, CefrLevel, TopicGroup } from '../data/types';
 import { cardLevel } from '../lib/level';
-import { shuffle } from '../lib/text';
 import { useProgress } from '../lib/progress';
 import { sentenceOf, type PracticeDirection } from '../lib/practice';
+import { shouldIgnoreShortcut } from '../lib/keys';
 
 type LevelFilter = 'all' | CefrLevel;
 type SourceFilter = 'all' | TopicGroup;
@@ -24,6 +24,35 @@ function groupForCard(card: Card): TopicGroup | undefined {
   return undefined;
 }
 
+function Seg<T extends string>({
+  value,
+  options,
+  onChange,
+  label,
+}: {
+  value: T;
+  options: { value: T; label: string }[];
+  onChange: (value: T) => void;
+  label: string;
+}) {
+  return (
+    <div className="seg" role="radiogroup" aria-label={label}>
+      {options.map((o) => (
+        <button
+          key={o.value}
+          type="button"
+          role="radio"
+          aria-checked={value === o.value}
+          className={`seg-btn${value === o.value ? ' active' : ''}`}
+          onClick={() => onChange(o.value)}
+        >
+          {o.label}
+        </button>
+      ))}
+    </div>
+  );
+}
+
 export function Generator() {
   const { markSeen, markAnswer } = useProgress();
   const [level, setLevel] = useState<LevelFilter>('all');
@@ -31,6 +60,7 @@ export function Generator() {
   const [direction, setDirection] = useState<PracticeDirection>('en-to-de');
   const [mode, setMode] = useState<Mode>('flip');
   const [current, setCurrent] = useState<Card | null>(null);
+  const [generatedCount, setGeneratedCount] = useState(0);
 
   const pool = useMemo(() => {
     return allCards.filter((card) => {
@@ -46,8 +76,11 @@ export function Generator() {
       setCurrent(null);
       return;
     }
-    const [next] = shuffle(pool);
+    // Never show the same sentence twice in a row.
+    const candidates = pool.length > 1 && current ? pool.filter((c) => c.id !== current.id) : pool;
+    const next = candidates[Math.floor(Math.random() * candidates.length)];
     setCurrent(next);
+    setGeneratedCount((n) => n + 1);
     if (mode === 'flip') markSeen(next.id);
   };
 
@@ -56,96 +89,144 @@ export function Generator() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [level, source]);
 
+  useEffect(() => {
+    const onKey = (event: KeyboardEvent) => {
+      if (shouldIgnoreShortcut(event)) return;
+      if (event.key === 'ArrowRight' || event.key.toLowerCase() === 'n') generate();
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  });
+
   const sentence = current ? sentenceOf(current) : null;
   const topicLabel = current ? (topicById(current.topicIds[0])?.name ?? '') : '';
 
   return (
-    <div className="page">
-      <Masthead />
-      <div className="stack-label">practice generator</div>
-      <h2 className="screen-title">Generate random practice</h2>
+    <div className="gen">
+      <header className="reader-head rise">
+        <span className="eyebrow no-rule">Practice generator</span>
+        <h1 className="title-xl">One sentence at a time.</h1>
+        <p className="lede" style={{ textAlign: 'center' }}>
+          Choose a level and a source, work out the meaning yourself — then check.
+        </p>
+      </header>
 
-      <div className="terminal-panel">
-        <div className="terminal-row">
-          <span className="terminal-label">// LEVEL</span>
-          <div className="terminal-group">
-            {LEVEL_OPTIONS.map((opt) => (
-              <button
-                key={opt}
-                type="button"
-                className={`terminal-option${level === opt ? ' active' : ''}`}
-                onClick={() => setLevel(opt)}
-              >
-                {opt === 'all' ? 'ALL' : opt}
-              </button>
-            ))}
-          </div>
-
-          <span className="terminal-label">// SOURCE</span>
-          <select
-            className="terminal-select"
-            value={source}
-            onChange={(e) => setSource(e.target.value as SourceFilter)}
-          >
-            <option value="all">All content</option>
-            {TOPIC_GROUP_ORDER.map((g) => (
-              <option key={g} value={g}>
-                {TOPIC_GROUP_LABELS[g]}
-              </option>
-            ))}
-          </select>
+      <section className="console rise-2" aria-label="Generator settings">
+        <div className="console-bar">
+          <span className="console-dot" />
+          <span className="console-dot" />
+          <span className="console-dot" />
+          <span className="console-title">generator</span>
+          <span className="console-count">
+            {pool.length} sentences{generatedCount > 0 ? ` · #${generatedCount}` : ''}
+          </span>
         </div>
 
-        <div className="terminal-row">
-          <span className="terminal-label">// DIRECTION</span>
-          <div className="terminal-group">
-            <button
-              type="button"
-              className={`terminal-option${direction === 'en-to-de' ? ' active' : ''}`}
-              onClick={() => setDirection('en-to-de')}
-            >
-              EN → DE
-            </button>
-            <button
-              type="button"
-              className={`terminal-option${direction === 'de-to-en' ? ' active' : ''}`}
-              onClick={() => setDirection('de-to-en')}
-            >
-              DE → EN
-            </button>
+        <div className="console-grid">
+          <div className="console-field">
+            <span className="console-label">Level</span>
+            <Seg
+              label="Level"
+              value={level}
+              onChange={setLevel}
+              options={LEVEL_OPTIONS.map((o) => ({ value: o, label: o === 'all' ? 'All' : o }))}
+            />
           </div>
 
-          <span className="terminal-label">// MODE</span>
-          <div className="terminal-group">
-            <button type="button" className={`terminal-option${mode === 'flip' ? ' active' : ''}`} onClick={() => setMode('flip')}>
-              FLIP
-            </button>
-            <button type="button" className={`terminal-option${mode === 'type' ? ' active' : ''}`} onClick={() => setMode('type')}>
-              TYPE
-            </button>
+          <div className="console-field">
+            <label className="console-label" htmlFor="gen-source">
+              Source
+            </label>
+            <select
+              id="gen-source"
+              className="console-select"
+              value={source}
+              onChange={(e) => setSource(e.target.value as SourceFilter)}
+            >
+              <option value="all">All content</option>
+              {TOPIC_GROUP_ORDER.map((g) => (
+                <option key={g} value={g}>
+                  {TOPIC_GROUP_LABELS[g]}
+                </option>
+              ))}
+            </select>
           </div>
 
-          <button type="button" className="generate-btn" onClick={generate} style={{ marginLeft: 'auto' }}>
-            ↻ Generate
+          <div className="console-field">
+            <span className="console-label">Direction</span>
+            <Seg
+              label="Direction"
+              value={direction}
+              onChange={setDirection}
+              options={[
+                { value: 'en-to-de', label: 'EN → DE' },
+                { value: 'de-to-en', label: 'DE → EN' },
+              ]}
+            />
+          </div>
+
+          <div className="console-field">
+            <span className="console-label">Mode</span>
+            <Seg
+              label="Mode"
+              value={mode}
+              onChange={setMode}
+              options={[
+                { value: 'flip', label: 'Flip' },
+                { value: 'type', label: 'Type' },
+              ]}
+            />
+          </div>
+
+          <button type="button" className="gen-btn" onClick={generate}>
+            <Icon name="refresh" />
+            Generate
           </button>
         </div>
+      </section>
+
+      <div className="gen-stage">
+        {!current || !sentence ? (
+          <div className="surface empty">
+            No full sentences match these filters yet — try a different level or source.
+          </div>
+        ) : mode === 'flip' ? (
+          <SentenceFlipCard
+            key={current.id + direction}
+            sentence={sentence}
+            topicLabel={topicLabel}
+            level={cardLevel(current)}
+            direction={direction}
+          />
+        ) : (
+          <TypeCheckCard
+            key={current.id + direction}
+            sentence={sentence}
+            topicLabel={topicLabel}
+            level={cardLevel(current)}
+            direction={direction}
+            onGraded={(correct) => markAnswer(current.id, correct)}
+          />
+        )}
+
+        {current && (
+          <div className="gen-foot">
+            <span className="hint kbd-hint">
+              <span className="kbd">N</span> next sentence
+              {mode === 'flip' && (
+                <>
+                  {' '}
+                  · <span className="kbd">Space</span> reveal
+                </>
+              )}
+            </span>
+            <button type="button" className="btn btn-primary" onClick={generate}>
+              Next sentence
+              <Icon name="arrow-right" />
+            </button>
+          </div>
+        )}
       </div>
-
-      <p className="pool-note">{pool.length} card{pool.length === 1 ? '' : 's'} match these filters</p>
-
-      {!current || !sentence ? (
-        <p className="empty-state">No full-sentence cards match these filters yet — try a different level or source.</p>
-      ) : mode === 'flip' ? (
-        <SentenceFlipCard key={current.id} sentence={sentence} topicLabel={topicLabel} direction={direction} />
-      ) : (
-        <TypeCheckCard
-          key={current.id}
-          sentence={sentence}
-          topicLabel={topicLabel}
-          direction={direction}
-          onGraded={(correct) => markAnswer(current.id, correct)}
-        />
-      )}
     </div>
   );
 }

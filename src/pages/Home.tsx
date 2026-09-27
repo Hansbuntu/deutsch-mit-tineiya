@@ -1,63 +1,198 @@
 import { Link } from 'react-router-dom';
-import { Masthead } from '../components/Masthead';
-import { topics, TOPIC_GROUP_ORDER, TOPIC_GROUP_LABELS } from '../data/topics';
-import { cardsForTopic, FREQUENCY_LIST_TARGET } from '../data/cards';
+import { Icon } from '../components/Icon';
+import { SceneIcon } from '../components/SceneIcon';
+import { ProgressRing } from '../components/ProgressRing';
+import { topics, topicById, TOPIC_GROUP_DESCRIPTIONS, TOPIC_GROUP_LABELS, TOPIC_GROUP_ORDER } from '../data/topics';
+import { allCards, cardsForTopic, FREQUENCY_LIST_TARGET } from '../data/cards';
 import { passageForTopic } from '../data/passages';
+import type { Topic } from '../data/types';
 import { useProgress } from '../lib/progress';
+import { getLastTopicId } from '../lib/lastTopic';
 
-export function Home() {
-  const { isLearned } = useProgress();
+function greeting(date: Date) {
+  const hour = date.getHours();
+  if (hour < 11) return 'Guten Morgen';
+  if (hour < 18) return 'Guten Tag';
+  return 'Guten Abend';
+}
+
+function TopicTile({ topic, learned, total }: { topic: Topic; learned: number; total: number }) {
+  const isFrequencyList = topic.id === 'wortschatz-1000';
+  const passage = passageForTopic(topic.id);
+  const hasSpeaking = cardsForTopic(topic.id).some((c) => c.type === 'sentence');
+  const target = isFrequencyList ? FREQUENCY_LIST_TARGET : total;
+  const pct = target > 0 ? (learned / target) * 100 : 0;
 
   return (
-    <div className="page">
-      <Masthead />
+    <article className="tile">
+      <Link to={`/thema/${topic.id}`} className="tile-main">
+        <div className="tile-top">
+          <span className="tile-icon">
+            <SceneIcon name={topic.icon} />
+          </span>
+          <span className="tile-arrow" aria-hidden="true">
+            <Icon name="arrow-right" />
+          </span>
+        </div>
+        <div>
+          <h3 className="tile-title">{topic.name}</h3>
+        </div>
+        <p className="tile-meta">
+          {total} {total === 1 ? 'card' : 'cards'}
+          {topic.tagline ? ` · ${topic.tagline}` : ''}
+        </p>
+        <div className="tile-foot">
+          <div className="meter">
+            <span style={{ width: `${pct}%` }} />
+          </div>
+          <span className="tile-count">
+            {learned}/{target}
+          </span>
+        </div>
+      </Link>
+      {(passage || hasSpeaking) && (
+        <div className="tile-actions">
+          {passage && (
+            <Link to={`/thema/${topic.id}/passage`} className="chip-link">
+              <Icon name="book-open" />
+              Read passage
+            </Link>
+          )}
+          {hasSpeaking && (
+            <Link to={`/thema/${topic.id}/sprechen`} className="chip-link">
+              <Icon name="mic" />
+              Speak
+            </Link>
+          )}
+        </div>
+      )}
+    </article>
+  );
+}
 
-      <div className="stack-label">start &amp; topics</div>
-      <h2 className="screen-title">Where do you want to pick up?</h2>
+export function Home() {
+  const { isLearned, daysActive, totalCardsLearned, frequencyListLearned } = useProgress();
+  const learnedIn = (topicId: string) => cardsForTopic(topicId).filter((c) => isLearned(c.id)).length;
 
-      {TOPIC_GROUP_ORDER.map((group, groupIndex) => {
-        const groupTopics = topics.filter((t) => t.group === group);
-        if (groupTopics.length === 0) return null;
+  const lastTopic = topicById(getLastTopicId() ?? '');
+  const continueTopic = lastTopic ?? topics[0];
+  const notebook = topics.find((t) => t.group === 'notebook')!;
+  const notebookCards = cardsForTopic(notebook.id);
+  const notebookLearned = learnedIn(notebook.id);
 
-        return (
-          <div key={group} className={groupIndex === 0 ? undefined : 'section-gap'}>
-            <div className="stack-label">{TOPIC_GROUP_LABELS[group]}</div>
-            <div className="topic-grid">
-              {groupTopics.map((topic) => {
-                const cards = cardsForTopic(topic.id);
-                const isFrequencyList = topic.id === 'wortschatz-1000';
-                const learnedCount = cards.filter((c) => isLearned(c.id)).length;
-                const countLabel = isFrequencyList
-                  ? `${learnedCount} of ${FREQUENCY_LIST_TARGET} learned`
-                  : topic.tagline
-                    ? `${cards.length} cards · ${topic.tagline}`
-                    : `${cards.length} cards`;
-                const passage = passageForTopic(topic.id);
-                const hasSpeakingPractice = cards.some((c) => c.type === 'sentence');
+  return (
+    <>
+      <section className="hero">
+        <div className="hero-copy rise">
+          <span className="eyebrow">{greeting(new Date())}, Tineiya</span>
+          <h1 className="display">
+            Pick up where <em>you</em> left off.
+          </h1>
+          <p className="lede">
+            Your notebook, your TikTok scripts and the words that matter most — one calm place to practise, whenever you
+            feel like it.
+          </p>
+          <div className="hero-actions">
+            <Link to={`/thema/${continueTopic.id}`} className="btn btn-primary btn-lg">
+              {lastTopic ? `Continue: ${continueTopic.name}` : `Start with ${continueTopic.name}`}
+              <Icon name="arrow-right" />
+            </Link>
+            <Link to="/generieren" className="btn btn-lg">
+              <Icon name="sparkles" />
+              Random sentence
+            </Link>
+          </div>
+        </div>
 
-                return (
-                  <div key={topic.id} className={`tile tile-with-extra${topic.featured ? ' featured' : ''}`}>
-                    <Link to={`/thema/${topic.id}`} className="tile-link">
-                      <p className="tile-name">{topic.name}</p>
-                      <span className="tile-count">{countLabel}</span>
-                    </Link>
-                    {passage && (
-                      <Link to={`/thema/${topic.id}/passage`} className="tile-extra-link">
-                        Read full passage →
-                      </Link>
-                    )}
-                    {hasSpeakingPractice && (
-                      <Link to={`/thema/${topic.id}/sprechen`} className="tile-extra-link">
-                        Practice speaking →
-                      </Link>
-                    )}
-                  </div>
-                );
-              })}
+        <aside className="hero-panel surface corner-mark rise-2" aria-label="At a glance">
+          <span className="eyebrow">At a glance</span>
+          <div className="glance">
+            <ProgressRing value={frequencyListLearned} max={FREQUENCY_LIST_TARGET} />
+            <div>
+              <div className="glance-value">
+                {frequencyListLearned}
+                <small> / {FREQUENCY_LIST_TARGET.toLocaleString('en')}</small>
+              </div>
+              <p className="glance-label">most common German words learned</p>
             </div>
           </div>
+          <dl className="mini-stats">
+            <div>
+              <dt>Days active</dt>
+              <dd>{daysActive}</dd>
+            </div>
+            <div>
+              <dt>Cards learned</dt>
+              <dd>{totalCardsLearned}</dd>
+            </div>
+            <div>
+              <dt>In library</dt>
+              <dd>{allCards.length}</dd>
+            </div>
+          </dl>
+        </aside>
+      </section>
+
+      {TOPIC_GROUP_ORDER.map((group) => {
+        const groupTopics = topics.filter((t) => t.group === group);
+        if (groupTopics.length === 0) return null;
+        const cardTotal = groupTopics.reduce((sum, t) => sum + cardsForTopic(t.id).length, 0);
+
+        if (group === 'notebook') {
+          return (
+            <section key={group} className="section rise-3">
+              <Link to={`/thema/${notebook.id}`} className="feature">
+                <div>
+                  <span className="eyebrow">{TOPIC_GROUP_LABELS.notebook}</span>
+                  <h2 className="feature-title">{notebook.name}</h2>
+                  <p className="feature-desc">
+                    All {notebookCards.length} verbs from your handwritten flashcards — each with a picture, an example
+                    sentence and the full present-tense conjugation.
+                  </p>
+                  <div className="feature-foot">
+                    <span className="feature-cta">
+                      Study the verbs <Icon name="arrow-right" />
+                    </span>
+                    <span className="feature-progress">
+                      <span className="meter">
+                        <span style={{ width: `${(notebookLearned / notebookCards.length) * 100}%` }} />
+                      </span>
+                      {notebookLearned} of {notebookCards.length} learned
+                    </span>
+                  </div>
+                </div>
+                <div className="feature-art" aria-hidden="true">
+                  <SceneIcon name={notebook.icon} />
+                </div>
+              </Link>
+            </section>
+          );
+        }
+
+        return (
+          <section key={group} className="section">
+            <header className="section-head">
+              <div className="section-head-copy">
+                <h2 className="section-title">{TOPIC_GROUP_LABELS[group]}</h2>
+                <p className="section-desc">{TOPIC_GROUP_DESCRIPTIONS[group]}</p>
+              </div>
+              <span className="section-count">
+                {groupTopics.length} topics · {cardTotal} cards
+              </span>
+            </header>
+            <div className="topic-grid" data-count={groupTopics.length}>
+              {groupTopics.map((topic) => (
+                <TopicTile
+                  key={topic.id}
+                  topic={topic}
+                  learned={learnedIn(topic.id)}
+                  total={cardsForTopic(topic.id).length}
+                />
+              ))}
+            </div>
+          </section>
         );
       })}
-    </div>
+    </>
   );
 }

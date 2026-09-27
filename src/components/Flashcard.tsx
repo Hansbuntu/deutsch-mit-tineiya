@@ -1,12 +1,12 @@
 import type { Card } from '../data/types';
+import { Icon } from './Icon';
 import { SceneIcon } from './SceneIcon';
 import { SoundButton } from './SoundButton';
 import { splitOnWord, speakableText } from '../lib/text';
 import { seenBeforeInfo } from '../lib/repeats';
 
 function translation(card: Card): string {
-  if (card.type === 'sentence') return card.en;
-  return card.type === 'verb' || card.type === 'noun' || card.type === 'vocab' ? card.translation : '';
+  return card.type === 'sentence' ? card.en : card.translation;
 }
 
 function HighlightedSentence({ text, highlight }: { text: string; highlight?: string }) {
@@ -24,23 +24,16 @@ function HighlightedSentence({ text, highlight }: { text: string; highlight?: st
   );
 }
 
-export function Flashcard({
-  card,
-  index,
-  total,
-}: {
-  card: Card;
-  index: number;
-  total: number;
-}) {
+export function Flashcard({ card }: { card: Card }) {
   const word = speakableText(card);
   const highlight =
     card.type === 'verb' && card.separable ? card.prefix : card.type === 'sentence' ? card.emphasis : undefined;
   const isSentence = card.type === 'sentence';
+  const isSeparable = card.type === 'verb' && card.separable;
   const seenBefore = seenBeforeInfo(card);
 
   return (
-    <div className="card">
+    <article className="flashcard rise">
       <div className="scene">
         {card.image.kind === 'icon' ? (
           <SceneIcon name={card.image.icon} />
@@ -49,48 +42,48 @@ export function Flashcard({
         )}
       </div>
 
-      {seenBefore && (
-        <div className="seen-badge">you've seen this before · {seenBefore.topicName}</div>
-      )}
+      <div className="flashcard-body">
+        <div className="headword-row">
+          <div className="headword-stack">
+            {(isSeparable || seenBefore) && (
+              <div className="headword-line">
+                {isSeparable && <span className="tag tag-sage">separable · {card.prefix}-</span>}
+                {seenBefore && (
+                  <span className="tag tag-gold">
+                    <Icon name="refresh" />
+                    Seen before in {seenBefore.topicName}
+                  </span>
+                )}
+              </div>
+            )}
 
-      <div className="word-row">
-        {card.type === 'noun' && <span className="gender">{card.article}</span>}
-        {card.type === 'verb' && card.separable && <span className="gender">separable</span>}
-        {isSentence ? (
-          <p className="sentence core-sentence-text">
-            <HighlightedSentence text={word} highlight={highlight} />
-          </p>
-        ) : (
-          <span className="word">{word}</span>
+            <div className="headword-line">
+              {card.type === 'noun' && <span className={`article-badge article-${card.article}`}>{card.article}</span>}
+              {isSentence ? (
+                <p className="headword-sentence" lang="de">
+                  <HighlightedSentence text={word} highlight={highlight} />
+                </p>
+              ) : (
+                <h2 className="headword" lang="de">
+                  {word}
+                </h2>
+              )}
+            </div>
+
+            {translation(card) && <p className="translation">{translation(card)}</p>}
+          </div>
+          <SoundButton text={word} label={word} />
+        </div>
+
+        {!isSentence && card.example && (
+          <div className="example">
+            <p className="example-de" lang="de">
+              <HighlightedSentence text={card.example.de} highlight={highlight} />
+            </p>
+            <p className="example-en">{card.example.en}</p>
+          </div>
         )}
-        <SoundButton text={word} label={word} />
       </div>
-
-      {!isSentence && translation(card) && (
-        <p className="sentence-en" style={{ marginBottom: 14 }}>
-          {translation(card)}
-        </p>
-      )}
-
-      {isSentence && <p className="sentence-en">{translation(card)}</p>}
-
-      {!isSentence && card.example && (
-        <>
-          <p className="sentence">
-            <HighlightedSentence text={card.example.de} highlight={highlight} />
-          </p>
-          <p className="sentence-en">{card.example.en}</p>
-        </>
-      )}
-
-      <div className="progress-row">
-        <div className="progress-track">
-          <div className="progress-fill" style={{ width: `${((index + 1) / total) * 100}%` }} />
-        </div>
-        <div className="progress-label">
-          Card {index + 1} of {total}
-        </div>
-      </div>
-    </div>
+    </article>
   );
 }

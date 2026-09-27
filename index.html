@@ -1,18 +1,38 @@
 <!doctype html>
-  <html lang="en">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Deutsch mit Tineiya</title>
+    <meta name="description" content="Deutsch mit Tineiya — personal German flashcards, drills and speaking practice on the way from A1 to A2." />
+    <meta name="theme-color" content="#f2ede2" />
+    <meta name="color-scheme" content="light dark" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Deutsch mit Tineiya — personal German flashcards and drills on the way from A1 to A2." />
-    <meta name="theme-color" content="#EDE7D8" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Deutsch" />
+
+    <!-- Set the theme before first paint (saved choice, else the OS setting) so there's no light/dark flash. -->
+    <script>
+      (function () {
+        var theme;
+        try {
+          theme = localStorage.getItem('deutsch-mit-tineiya:theme');
+        } catch (e) {}
+        if (theme !== 'light' && theme !== 'dark') {
+          theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.dataset.theme = theme;
+        if (theme === 'dark') document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0e151d');
+      })();
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <title>Deutsch mit Tineiya</title>
   </head>
   <body>
     <div id="root"></div>

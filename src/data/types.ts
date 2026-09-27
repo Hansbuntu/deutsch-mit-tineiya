@@ -119,6 +119,8 @@ export interface Topic {
   tagline?: string;
   featured?: boolean;
   group: TopicGroup;
+  /** Illustration shown on the topic's tile and progress row. */
+  icon: IconName;
 }
 
 // ---------------------------------------------------------------------

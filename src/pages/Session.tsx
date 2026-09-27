@@ -1,19 +1,20 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import { Masthead } from '../components/Masthead';
+import { Link, useParams } from 'react-router-dom';
+import { Icon } from '../components/Icon';
 import { Flashcard } from '../components/Flashcard';
 import { DrillPanel } from '../components/DrillPanel';
-import { topics, topicById } from '../data/topics';
+import { topics, topicById, TOPIC_GROUP_LABELS } from '../data/topics';
 import { cardsForTopic } from '../data/cards';
 import { passageForTopic } from '../data/passages';
 import { useProgress } from '../lib/progress';
 import { generateDrillForCard } from '../lib/drills';
 import { shuffle } from '../lib/text';
+import { shouldIgnoreShortcut } from '../lib/keys';
+import { setLastTopicId } from '../lib/lastTopic';
 import type { VerbCard } from '../data/types';
 
 export function Session() {
   const { topicId = '' } = useParams();
-  const navigate = useNavigate();
   const topic = topicById(topicId);
   const { markSeen, markAnswer, notebookPagesDigitized } = useProgress();
 
@@ -23,6 +24,7 @@ export function Session() {
   useEffect(() => {
     setCards(shuffle(cardsForTopic(topicId)));
     setIndex(0);
+    if (topicById(topicId)) setLastTopicId(topicId);
   }, [topicId]);
 
   const currentCard = cards[index];
@@ -31,6 +33,16 @@ export function Session() {
     if (currentCard) markSeen(currentCard.id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentCard?.id]);
+
+  useEffect(() => {
+    const onKey = (event: KeyboardEvent) => {
+      if (shouldIgnoreShortcut(event)) return;
+      if (event.key === 'ArrowRight') setIndex((i) => Math.min(i + 1, cards.length));
+      if (event.key === 'ArrowLeft') setIndex((i) => Math.max(0, i - 1));
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [cards.length]);
 
   const seenVerbsSoFar = useMemo(
     () => cards.slice(0, index).filter((c): c is VerbCard => c.type === 'verb'),
@@ -43,20 +55,13 @@ export function Session() {
     [currentCard?.id],
   );
 
-  if (!topic) {
+  if (!topic || cards.length === 0) {
     return (
-      <div className="page">
-        <Masthead />
-        <p className="empty-state">That topic doesn't exist.</p>
-      </div>
-    );
-  }
-
-  if (cards.length === 0) {
-    return (
-      <div className="page">
-        <Masthead />
-        <p className="empty-state">There are no cards for this topic yet.</p>
+      <div className="surface empty">
+        <p>{topic ? 'There are no cards for this topic yet.' : "That topic doesn't exist."}</p>
+        <Link to="/" className="btn" style={{ marginTop: 16 }}>
+          Back to topics
+        </Link>
       </div>
     );
   }
@@ -65,87 +70,151 @@ export function Session() {
   const relatedTopics = topics.filter((t) => t.group === topic.group);
   const passage = passageForTopic(topicId);
   const hasSpeakingPractice = cards.some((c) => c.type === 'sentence');
+  const restart = () => {
+    setCards(shuffle(cardsForTopic(topicId)));
+    setIndex(0);
+  };
 
   return (
-    <div className="page">
-      <Masthead />
+    <>
+      <nav className="crumbs" aria-label="Breadcrumb">
+        <Link to="/">Home</Link>
+        <Icon name="chevron-right" />
+        <span>{TOPIC_GROUP_LABELS[topic.group]}</span>
+      </nav>
 
-      <div className="stack-label">today's session</div>
-      <div className="topics">
-        {relatedTopics.map((t) => (
-          <Link key={t.id} to={`/thema/${t.id}`} className={`topic${t.id === topicId ? ' active' : ''}`}>
-            {t.name}
-          </Link>
-        ))}
-      </div>
+      <header className="page-head">
+        <div className="page-head-copy">
+          <h1 className="title-xl">{topic.name}</h1>
+          <p className="muted">
+            {cards.length} cards{topic.tagline ? ` · ${topic.tagline}` : ''}
+          </p>
+        </div>
+        {(passage || hasSpeakingPractice) && (
+          <div className="page-head-actions">
+            {passage && (
+              <Link to={`/thema/${topicId}/passage`} className="btn btn-sm">
+                <Icon name="book-open" />
+                Read passage
+              </Link>
+            )}
+            {hasSpeakingPractice && (
+              <Link to={`/thema/${topicId}/sprechen`} className="btn btn-sm">
+                <Icon name="mic" />
+                Practice speaking
+              </Link>
+            )}
+          </div>
+        )}
+      </header>
 
-      {(passage || hasSpeakingPractice) && (
-        <p style={{ marginTop: -10, marginBottom: 20, display: 'flex', gap: 18 }}>
-          {passage && (
-            <Link to={`/thema/${topicId}/passage`} style={{ fontSize: 13, color: 'var(--sage-deep)' }}>
-              Read the full passage →
+      {relatedTopics.length > 1 && (
+        <div className="chip-row" role="navigation" aria-label="Related topics">
+          {relatedTopics.map((t) => (
+            <Link
+              key={t.id}
+              to={`/thema/${t.id}`}
+              className={`chip${t.id === topicId ? ' active' : ''}`}
+              aria-current={t.id === topicId ? 'page' : undefined}
+            >
+              {t.name}
             </Link>
-          )}
-          {hasSpeakingPractice && (
-            <Link to={`/thema/${topicId}/sprechen`} style={{ fontSize: 13, color: 'var(--sage-deep)' }}>
-              Practice speaking →
-            </Link>
-          )}
-        </p>
+          ))}
+        </div>
       )}
 
       {finished ? (
-        <div className="card session-done">
-          <h2>Done — {cards.length} cards from {topic.name}.</h2>
-          <p>Pick a new topic, or go through this one again.</p>
-          <div className="card-nav" style={{ justifyContent: 'center' }}>
-            <button type="button" className="btn" onClick={() => { setCards(shuffle(cardsForTopic(topicId))); setIndex(0); }}>
-              Again
+        <div className="surface done rise">
+          <div className="done-icon">
+            <Icon name="trophy" />
+          </div>
+          <h2 className="title-lg">Schön gemacht!</h2>
+          <p>
+            You went through all {cards.length} cards in {topic.name}. Go again for a fresh shuffle, or pick another
+            topic.
+          </p>
+          <div className="done-actions">
+            <button type="button" className="btn" onClick={restart}>
+              <Icon name="refresh" />
+              Go again
             </button>
-            <button type="button" className="btn btn-primary" onClick={() => navigate('/')}>
-              Back to overview
-            </button>
+            <Link to="/" className="btn btn-primary">
+              Back to topics
+              <Icon name="arrow-right" />
+            </Link>
           </div>
         </div>
       ) : (
-        <div className="layout">
+        <div className="session-grid">
           <div>
-            <Flashcard card={currentCard} index={index} total={cards.length} />
-            <div className="card-nav">
-              <button type="button" className="btn" onClick={() => setIndex((i) => Math.max(0, i - 1))} disabled={index === 0}>
+            <div className="session-progress">
+              <div className="meter meter-sage">
+                <span style={{ width: `${((index + 1) / cards.length) * 100}%` }} />
+              </div>
+              <span className="session-count">
+                <strong>{index + 1}</strong> / {cards.length}
+              </span>
+            </div>
+
+            <Flashcard key={currentCard.id} card={currentCard} />
+
+            <div className="card-actions">
+              <button
+                type="button"
+                className="btn btn-ghost"
+                onClick={() => setIndex((i) => Math.max(0, i - 1))}
+                disabled={index === 0}
+              >
+                <Icon name="arrow-left" />
                 Back
               </button>
+              <span className="hint">
+                <span className="kbd">←</span>
+                <span className="kbd">→</span>
+                to move
+              </span>
               <button type="button" className="btn btn-primary" onClick={() => setIndex((i) => i + 1)}>
-                Next
+                {index === cards.length - 1 ? 'Finish' : 'Next'}
+                <Icon name="arrow-right" />
               </button>
             </div>
           </div>
 
-          <div>
+          <aside>
             {drill ? (
               <DrillPanel key={drill.id} drill={drill} onAnswer={(correct) => markAnswer(currentCard.id, correct)} />
             ) : (
-              <div className="side-card">
-                <div className="stack-label">good to know</div>
-                <p className="note">
-                  There's no drill for this card yet — the picture and text are enough for now. Hit next to keep
-                  going.
-                </p>
+              <div className="panel panel-quiet rise-2">
+                <span className="panel-quiet-icon">
+                  <Icon name="lightbulb" />
+                </span>
+                <div>
+                  <h3>Just look and listen</h3>
+                  <p>
+                    There's no drill for this card — take in the picture, say the word out loud, and move on when you're
+                    ready.
+                  </p>
+                </div>
               </div>
             )}
 
-            {topicId === 'trennbare-verben' && (
-              <div className="side-card">
-                <div className="stack-label">from your notebook</div>
-                <p className="note">
-                  All {notebookPagesDigitized} separable verbs from your notebook are now digitized — each with its own
-                  picture, example sentence, and full conjugation.
-                </p>
+            {topic.group === 'notebook' && (
+              <div className="panel panel-quiet rise-3">
+                <span className="panel-quiet-icon">
+                  <Icon name="notebook" />
+                </span>
+                <div>
+                  <h3>From your notebook</h3>
+                  <p>
+                    All {notebookPagesDigitized} separable verbs from your handwritten cards — each with its own picture,
+                    example sentence and full conjugation.
+                  </p>
+                </div>
               </div>
             )}
-          </div>
+          </aside>
         </div>
       )}
-    </div>
+    </>
   );
 }

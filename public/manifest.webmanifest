@@ -1,0 +1,18 @@
+{
+  "name": "Deutsch mit Tineiya",
+  "short_name": "Deutsch",
+  "description": "Personal German flashcards, drills and speaking practice — A1 on the way to A2.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f2ede2",
+  "theme_color": "#f2ede2",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

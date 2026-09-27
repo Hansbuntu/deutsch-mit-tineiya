@@ -18,15 +18,25 @@ and deploys to GitHub Pages on every push to `main`.
 
 | Screen | Route | What it does |
 |---|---|---|
-| Home | `/` | Topic tiles in four sections (your notebook, your TikTok scripts, grammar & vocabulary, common A1 sentences) with card counts and progress. Tiles link out to "Read full passage →" and "Practice speaking →" where they apply. |
+| Home | `/` | A hero with "continue where you left off" and an at-a-glance panel (frequency-list ring, days active, cards learned), the notebook verbs as a feature banner, then topic tiles in three more sections (your TikTok scripts, grammar & vocabulary, common A1 sentences) with progress bars and "Read passage" / "Speak" shortcuts where they apply. |
 | Flashcard session | `/thema/:topicId` | Image-first cards (noun article badge, separable-verb prefix highlighted in the example sentence, DE + EN example, sound button). Verbs, nouns, and the core sentences with a grammar drill also get a multiple-choice drill built from the card just shown; other cards show the card alone. |
 | Full passage | `/thema/:topicId/passage` | One of the four TikTok scripts as continuous text, for reading and memorizing the way it's practiced for posting. |
 | Speaking practice | `/thema/:topicId/sprechen` | Shows an English prompt, you say the German sentence, and it's checked against the target. |
 | Practice generator | `/generieren` | Random full-sentence practice filtered by level and source, in Flip or Type mode. |
-| Progress | `/fortschritt` | Quiet stats: days active, cards total, notebook pages digitized, progress through the frequency list, and per-topic learned counts. |
+| Progress | `/fortschritt` | Quiet stats: progress through the frequency list (ring), days active, cards learned out of the total, notebook pages digitized, and a per-topic progress row for every topic (each row opens that topic). |
 
 There is deliberately no streak mechanic — the app is meant to be dipped into
 casually, not a daily obligation.
+
+### Keyboard shortcuts
+
+| Where | Keys |
+|---|---|
+| Flashcard session | `←` / `→` previous / next card · `1`–`3` answer the drill |
+| Practice generator | `Space` or `Enter` reveal (Flip mode) · `N` or `→` next sentence |
+
+Shortcuts are ignored while typing in a field, and the on-screen key hints are
+hidden on touch devices.
 
 ### Drills
 
@@ -59,11 +69,36 @@ practice generator draws from (220 at A1, 307 at A2 — see
 ## Stack
 
 Vite + React + TypeScript, `react-router-dom` with `HashRouter` (so routing
-works on static hosts with no server-side rewrites). Fonts: Fraunces (German
-words and headings), IBM Plex Sans (everything else), IBM Plex Mono (generator
-controls). Design follows `reference/design-reference.html`: warm parchment
-background, ink-navy text, sage green as the structural accent, mustard gold
-as the single highlight.
+works on static hosts with no server-side rewrites). No UI library — the design
+system is hand-written CSS in `src/index.css`.
+
+## Design
+
+The identity comes from `reference/design-reference.html` — warm parchment,
+ink-navy text, sage green as the structural accent, mustard gold as the single
+highlight — refined into a fuller system:
+
+- **Tokens** at the top of `index.css`: layered surfaces (`--bg`,
+  `--surface`, `--surface-raised`), a three-step ink scale, hairline borders,
+  warm-tinted shadows, and a radius scale. Components use only tokens, so a
+  theme is just a token swap.
+- **Light and dark themes.** A toggle in the header sets `data-theme` on
+  `<html>` and saves the choice; the first visit follows the OS setting. A
+  small inline script in `index.html` applies it before first paint, so there
+  is no flash. Logic lives in `lib/theme.ts`.
+- **Type:** Fraunces for German words, headings and reading text (variable
+  weight and optical size), IBM Plex Sans for the interface, IBM Plex Mono for
+  labels, counters and the generator console.
+- **Articles are colour-coded** as a memory aid — *der* ink-blue, *die*
+  terracotta, *das* sage — in both themes.
+- **Layout:** a sticky frosted header on desktop; on phones the nav moves to a
+  bottom tab bar. Topic grids size themselves to their topic count (four
+  across, or three-over-two for five) so rows are always full.
+- **Motion** is limited to short entrance fades and hover lifts, and switches
+  off under `prefers-reduced-motion`.
+- **App icon:** `public/favicon.svg` (monogram with a gold dot), plus
+  `public/manifest.webmanifest` so the site can be added to a phone's home
+  screen.
 
 ## Running locally
 
@@ -105,9 +140,13 @@ src/
     voice.ts               SpeechRecognition wrapper + text similarity
     practice.ts            sentenceOf(), word-level diff, answer checking
     level.ts               derives an A1/A2 level for a card
+    theme.ts               light/dark theme switch
+    lastTopic.ts           remembers the last topic for "Continue"
+    keys.ts                shared keyboard-shortcut guard
     text.ts                shared helpers (shuffle, audio filename hash, ...)
-  components/              Flashcard, DrillPanel, SentenceFlipCard, TypeCheckCard,
-                           SoundButton, SceneIcon (hand-drawn SVG icons), Masthead
+  components/              Header (+ phone bottom nav), Flashcard, DrillPanel,
+                           SentenceFlipCard, TypeCheckCard, SoundButton, ProgressRing,
+                           Icon (UI icons), SceneIcon (card illustrations)
   pages/                   Home, Session, Passage, SpeakSession, Generator, Progress
 public/audio/              1,130 pre-generated MP3 pronunciation clips (~16 MB)
 scripts/generate-audio.mjs builds those clips
@@ -174,7 +213,9 @@ reference/                 original build brief + design reference (archived)
 ## Progress tracking
 
 `lib/progress.tsx` is a small React context over `localStorage` (key
-`deutsch-mit-tineiya:progress:v1`). It records cards seen, correct drill
+`deutsch-mit-tineiya:progress:v1`). Two small extra keys hold the theme choice
+(`deutsch-mit-tineiya:theme`) and the last topic opened
+(`deutsch-mit-tineiya:last-topic`). It records cards seen, correct drill
 answers, and the dates the app was opened (`daysActive`, shown quietly — never
 as a streak). Nothing leaves the device.
 
