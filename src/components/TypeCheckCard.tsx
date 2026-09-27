@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Icon } from './Icon';
 import { SoundButton } from './SoundButton';
 import type { CefrLevel } from '../data/types';
 import { wordDiff, isCloseEnough, type PracticeDirection, type Sentence } from '../lib/practice';
-import { listenOnce, speechRecognitionSupported } from '../lib/voice';
+import { startListening, speechRecognitionSupported, type ListenSession } from '../lib/voice';
+import { shouldIgnoreShortcut } from '../lib/keys';
 
 export function TypeCheckCard({
   sentence,
@@ -29,15 +30,56 @@ export function TypeCheckCard({
   const diff = checked ? wordDiff(answer, value) : null;
   const correct = checked ? isCloseEnough(answer, value) : false;
 
+  // After a miss the learner answers again until it's right; only the first try counts toward progress.
+  const [isRetry, setIsRetry] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
+
   const check = (finalValue: string) => {
     if (!finalValue.trim()) return;
     setChecked(true);
-    onGraded?.(isCloseEnough(answer, finalValue));
+    if (!isRetry) onGraded?.(isCloseEnough(answer, finalValue));
   };
 
+  const tryAgain = () => {
+    setValue('');
+    setChecked(false);
+    setIsRetry(true);
+  };
+
+  useEffect(() => {
+    if (isRetry && !checked) inputRef.current?.focus();
+  }, [isRetry, checked]);
+
+  // Enter retries after a miss (same key that submitted the answer).
+  const missed = checked && !correct;
+  useEffect(() => {
+    if (!missed) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (shouldIgnoreShortcut(event) || event.key !== 'Enter') return;
+      event.preventDefault();
+      tryAgain();
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [missed]);
+
+  const session = useRef<ListenSession | null>(null);
+
+  // Release the mic if the card goes away mid-answer.
+  useEffect(() => () => session.current?.cancel(), []);
+
   const handleMic = async () => {
+    // Second tap while listening = "I'm done": stop the mic and grade it.
+    if (session.current) {
+      session.current.done();
+      return;
+    }
     setListening(true);
-    const result = await listenOnce();
+    setValue('');
+    const current = startListening({ lang: toGerman ? 'de-DE' : 'en-US', onTranscript: setValue });
+    session.current = current;
+    const result = await current.result;
+    session.current = null;
     setListening(false);
     if (result.status === 'result') {
       setValue(result.transcript);
@@ -71,10 +113,20 @@ export function TypeCheckCard({
           }}
         >
           <input
+            ref={inputRef}
             type="text"
             className="type-input"
             lang={toGerman ? 'de' : 'en'}
-            placeholder={toGerman ? 'Type or speak your German…' : 'Type or speak your English…'}
+            readOnly={listening}
+            placeholder={
+              listening
+                ? 'Listening… tap ✓ when you’re done'
+                : isRetry
+                  ? 'Now write it again, correctly…'
+                  : toGerman
+                  ? 'Type or speak your German…'
+                  : 'Type or speak your English…'
+            }
             value={value}
             onChange={(e) => setValue(e.target.value)}
             autoComplete="off"
@@ -87,12 +139,13 @@ export function TypeCheckCard({
               type="button"
               className={`mic-inline${listening ? ' listening' : ''}`}
               onClick={handleMic}
-              aria-label={listening ? 'Listening' : 'Speak your answer'}
+              aria-label={listening ? 'Done speaking' : 'Speak your answer'}
+              title={listening ? 'Done speaking' : 'Speak your answer'}
             >
-              <Icon name="mic" />
+              <Icon name={listening ? 'check' : 'mic'} />
             </button>
           )}
-          <button type="submit" className="btn btn-primary" disabled={!value.trim()}>
+          <button type="submit" className="btn btn-primary" disabled={!value.trim() || listening}>
             Check
           </button>
         </form>
@@ -100,7 +153,11 @@ export function TypeCheckCard({
         <div className={`diff ${correct ? 'ok' : 'bad'}`} role="status">
           <p className="diff-head">
             <Icon name={correct ? 'check' : 'x'} />
-            {correct ? 'Richtig — that works.' : "Not quite — here's the breakdown"}
+            {correct
+              ? isRetry
+                ? 'Corrected — now you’ve got it.'
+                : 'Richtig — that works.'
+              : "Not quite — here's the breakdown"}
           </p>
           <div className="diff-line">
             <span className="diff-key">Answer</span>
@@ -124,6 +181,12 @@ export function TypeCheckCard({
           </div>
           <div className="diff-foot">
             <SoundButton text={sentence.de} label={sentence.de} />
+            {!correct && (
+              <button type="button" className="btn btn-primary" onClick={tryAgain}>
+                <Icon name="refresh" />
+                Try again
+              </button>
+            )}
           </div>
         </div>
       )}

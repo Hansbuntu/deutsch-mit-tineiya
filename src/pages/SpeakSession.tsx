@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Icon } from '../components/Icon';
 import { SoundButton } from '../components/SoundButton';
@@ -6,10 +6,17 @@ import { cardsForTopic } from '../data/cards';
 import { topicById } from '../data/topics';
 import type { SentenceCard } from '../data/types';
 import { useProgress } from '../lib/progress';
-import { listenOnce, speechRecognitionSupported, textSimilarity, SPOKEN_MATCH_THRESHOLD } from '../lib/voice';
+import {
+  startListening,
+  speechRecognitionSupported,
+  textSimilarity,
+  SPOKEN_MATCH_THRESHOLD,
+  type ListenSession,
+} from '../lib/voice';
 import { shuffle } from '../lib/text';
+import { shouldIgnoreShortcut } from '../lib/keys';
 
-type Phase = 'prompt' | 'listening' | 'result' | 'error';
+type Phase = 'prompt' | 'listening' | 'checking' | 'result' | 'error';
 
 const ERROR_MESSAGES: Record<string, string> = {
   'not-allowed': "Microphone access is blocked — allow it in your browser's site settings to practise speaking.",
@@ -32,8 +39,21 @@ export function SpeakSession() {
   const [transcript, setTranscript] = useState('');
   const [correct, setCorrect] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [liveText, setLiveText] = useState('');
+  // After a miss the learner says it again until it's right; only the first try counts toward progress.
+  const [isRetry, setIsRetry] = useState(false);
+  const session = useRef<ListenSession | null>(null);
+
+  const stopListening = () => {
+    session.current?.cancel();
+    session.current = null;
+  };
+
+  // Never leave the mic running after leaving the page.
+  useEffect(() => stopListening, []);
 
   useEffect(() => {
+    stopListening();
     setCards(sentenceCardsFor(topicId));
     setIndex(0);
     setPhase('prompt');
@@ -45,6 +65,8 @@ export function SpeakSession() {
   const finished = index >= cards.length;
 
   const reset = () => {
+    stopListening();
+    setLiveText('');
     setPhase('prompt');
     setTranscript('');
     setErrorMessage('');
@@ -52,26 +74,69 @@ export function SpeakSession() {
 
   const goTo = (next: number) => {
     setIndex(next);
+    setIsRetry(false);
+    reset();
+  };
+
+  const tryAgain = () => {
+    setIsRetry(true);
     reset();
   };
 
   const handleListen = async () => {
+    stopListening();
+    setLiveText('');
     setPhase('listening');
-    const result = await listenOnce();
+    const current = startListening({ onTranscript: setLiveText });
+    session.current = current;
+    const result = await current.result;
+    if (session.current !== current) return; // cancelled, or the card changed
+    session.current = null;
+
     if (result.status === 'result') {
       const isCorrect = textSimilarity(result.transcript, card.de) >= SPOKEN_MATCH_THRESHOLD;
       setTranscript(result.transcript);
       setCorrect(isCorrect);
       setPhase('result');
-      markAnswer(card.id, isCorrect);
+      if (!isRetry) markAnswer(card.id, isCorrect);
     } else if (result.status === 'no-match') {
       setErrorMessage("Didn't catch that — try again, a little closer to the mic.");
       setPhase('error');
-    } else {
+    } else if (result.status !== 'cancelled') {
       setErrorMessage(ERROR_MESSAGES[result.status === 'error' ? result.error : ''] ?? 'Something went wrong — try again.');
       setPhase('error');
     }
   };
+
+  const handleDone = () => {
+    setPhase('checking');
+    session.current?.done();
+  };
+
+  const handleCancel = () => {
+    stopListening();
+    setLiveText('');
+    setPhase('prompt');
+  };
+
+  const missed = phase === 'result' && supported && !correct;
+
+  // Enter or Space finishes the answer while listening; Enter retries after a miss.
+  useEffect(() => {
+    if (phase !== 'listening' && !missed) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (shouldIgnoreShortcut(event)) return;
+      if (phase === 'listening' && (event.key === 'Enter' || event.key === ' ')) {
+        event.preventDefault();
+        handleDone();
+      } else if (missed && event.key === 'Enter') {
+        event.preventDefault();
+        tryAgain();
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [phase, missed]);
 
   if (!topic || cards.length === 0) {
     return (
@@ -151,21 +216,48 @@ export function SpeakSession() {
                   <Icon name="mic" />
                 </button>
               </div>
-              <p className="mic-caption">Tap the microphone and speak</p>
+              <p className="mic-caption">
+                {isRetry ? 'Now say it again — correctly this time' : 'Tap the microphone, speak, then tap Done'}
+              </p>
             </>
           )}
 
-          {phase === 'listening' && (
+          {(phase === 'listening' || phase === 'checking') && (
             <>
-              <div className="mic-stage" aria-live="polite">
-                <span className="mic-ring" />
-                <span className="mic-ring" />
-                <span className="mic-ring" />
-                <button type="button" className="mic-btn listening" disabled aria-label="Listening">
-                  <Icon name="mic" />
+              <div className="mic-stage">
+                {phase === 'listening' && (
+                  <>
+                    <span className="mic-ring" />
+                    <span className="mic-ring" />
+                    <span className="mic-ring" />
+                  </>
+                )}
+                <button
+                  type="button"
+                  className="mic-btn listening"
+                  onClick={handleDone}
+                  disabled={phase === 'checking'}
+                  aria-label="Done speaking"
+                >
+                  <Icon name="check" />
                 </button>
               </div>
-              <p className="mic-caption">Listening…</p>
+              <p className={`live-transcript${liveText ? '' : ' is-empty'}`} lang="de" aria-live="polite">
+                {liveText || 'Listening… say the sentence'}
+              </p>
+              {phase === 'listening' ? (
+                <div className="listen-actions">
+                  <button type="button" className="btn btn-primary" onClick={handleDone}>
+                    <Icon name="check" />
+                    Done
+                  </button>
+                  <button type="button" className="btn btn-ghost" onClick={handleCancel}>
+                    Cancel
+                  </button>
+                </div>
+              ) : (
+                <p className="mic-caption">Checking…</p>
+              )}
             </>
           )}
 
@@ -194,7 +286,11 @@ export function SpeakSession() {
               {supported && (
                 <p className="result-status">
                   <Icon name={correct ? 'check' : 'x'} />
-                  {correct ? 'Richtig — well said!' : "Not quite. Here's the sentence:"}
+                  {correct
+                    ? isRetry
+                      ? 'Corrected — well said!'
+                      : 'Richtig — well said!'
+                    : "Not quite. Here's the sentence — listen, then try again:"}
                 </p>
               )}
               <div className="result-answer">
@@ -214,7 +310,17 @@ export function SpeakSession() {
               <Icon name="arrow-left" />
               Back
             </button>
-            {phase === 'result' ? (
+            {missed ? (
+              <div className="retry-actions">
+                <button type="button" className="btn btn-ghost" onClick={() => goTo(index + 1)}>
+                  Skip
+                </button>
+                <button type="button" className="btn btn-primary" onClick={tryAgain}>
+                  <Icon name="refresh" />
+                  Try again
+                </button>
+              </div>
+            ) : phase === 'result' ? (
               <button type="button" className="btn btn-primary" onClick={() => goTo(index + 1)}>
                 {index === cards.length - 1 ? 'Finish' : 'Next'}
                 <Icon name="arrow-right" />

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Icon } from './Icon';
 import type { Drill, DrillKind } from '../data/types';
 import { shouldIgnoreShortcut } from '../lib/keys';
+import { shuffle } from '../lib/text';
 
 const COPY: Record<DrillKind, { eyebrow: string; title: string }> = {
   conjugation: { eyebrow: 'Conjugation', title: 'Pick the right verb form' },
@@ -12,26 +13,42 @@ const COPY: Record<DrillKind, { eyebrow: string; title: string }> = {
 
 export function DrillPanel({ drill, onAnswer }: { drill: Drill; onAnswer: (correct: boolean) => void }) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [options, setOptions] = useState(drill.options);
+  // After a miss, the learner answers again until they get it; only the first try counts toward progress.
+  const [isRetry, setIsRetry] = useState(false);
 
   const select = (optionId: string) => {
     if (selectedId) return;
     setSelectedId(optionId);
-    onAnswer(optionId === drill.correctOptionId);
+    if (!isRetry) onAnswer(optionId === drill.correctOptionId);
   };
 
+  const tryAgain = () => {
+    setOptions((current) => shuffle(current));
+    setSelectedId(null);
+    setIsRetry(true);
+  };
+
+  const answeredCorrectly = selectedId === drill.correctOptionId;
+
   useEffect(() => {
-    if (selectedId) return;
     const onKey = (event: KeyboardEvent) => {
       if (shouldIgnoreShortcut(event)) return;
+      if (selectedId) {
+        if (!answeredCorrectly && event.key === 'Enter') {
+          event.preventDefault();
+          tryAgain();
+        }
+        return;
+      }
       const n = Number(event.key);
-      if (Number.isInteger(n) && n >= 1 && n <= drill.options.length) select(drill.options[n - 1].id);
+      if (Number.isInteger(n) && n >= 1 && n <= options.length) select(options[n - 1].id);
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedId, drill]);
+  }, [selectedId, options, isRetry]);
 
-  const answeredCorrectly = selectedId === drill.correctOptionId;
   const labelFor = (id: string | null) => drill.options.find((o) => o.id === id)?.label;
   const correctLabel = labelFor(drill.correctOptionId) ?? drill.correctOptionId;
   const isFillInBlank = drill.kind !== 'word-order';
@@ -56,7 +73,7 @@ export function DrillPanel({ drill, onAnswer }: { drill: Drill; onAnswer: (corre
       )}
 
       <div className="option-list" role="group" aria-label="Answers">
-        {drill.options.map((option, i) => {
+        {options.map((option, i) => {
           const isSelected = selectedId === option.id;
           const isCorrect = option.id === drill.correctOptionId;
           const answered = selectedId !== null;
@@ -81,21 +98,39 @@ export function DrillPanel({ drill, onAnswer }: { drill: Drill; onAnswer: (corre
       </div>
 
       {selectedId ? (
-        <div className={`feedback ${answeredCorrectly ? 'ok' : 'bad'}`} role="status">
-          <Icon name={answeredCorrectly ? 'check' : 'x'} />
-          <span>
-            {answeredCorrectly ? (
-              'Richtig — well done.'
-            ) : (
-              <>
-                Not quite — it's <strong lang="de">“{correctLabel}”</strong>.
-              </>
-            )}
-          </span>
-        </div>
+        <>
+          <div className={`feedback ${answeredCorrectly ? 'ok' : 'bad'}`} role="status">
+            <Icon name={answeredCorrectly ? 'check' : 'x'} />
+            <span>
+              {answeredCorrectly ? (
+                isRetry ? (
+                  'Corrected — now you’ve got it.'
+                ) : (
+                  'Richtig — well done.'
+                )
+              ) : (
+                <>
+                  Not quite — it's <strong lang="de">“{correctLabel}”</strong>.
+                </>
+              )}
+            </span>
+          </div>
+          {!answeredCorrectly && (
+            <div className="retry-row">
+              <button type="button" className="btn btn-primary" onClick={tryAgain}>
+                <Icon name="refresh" />
+                Try again
+              </button>
+              <span className="hint kbd-hint">
+                or press <span className="kbd">Enter</span>
+              </span>
+            </div>
+          )}
+        </>
       ) : (
         <p className="hint kbd-hint" style={{ marginTop: 16 }}>
-          Press <span className="kbd">1</span>–<span className="kbd">{drill.options.length}</span> to answer
+          {isRetry ? 'Your turn again — ' : ''}Press <span className="kbd">1</span>–
+          <span className="kbd">{options.length}</span> to answer
         </p>
       )}
 

@@ -15,41 +15,105 @@ export function speechRecognitionSupported(): boolean {
 export type ListenResult =
   | { status: 'result'; transcript: string }
   | { status: 'no-match' }
+  | { status: 'cancelled' }
   | { status: 'error'; error: string }
   | { status: 'not-supported' };
 
-/** Listen once and resolve with what was heard (or why not). Never rejects. */
-export function listenOnce(): Promise<ListenResult> {
+export interface ListenSession {
+  /** Resolves once listening has stopped — never rejects. */
+  result: Promise<ListenResult>;
+  /** The speaker is finished: stop the mic now and grade what was heard. */
+  done: () => void;
+  /** Stop the mic and throw away whatever was heard. */
+  cancel: () => void;
+}
+
+/** Hard ceiling so a forgotten session can't keep the mic open. */
+const MAX_LISTEN_MS = 30_000;
+
+/**
+ * Joins the recognizer's result chunks into one transcript. Android Chrome in
+ * continuous mode sometimes repeats earlier chunks cumulatively ("Ich", "Ich
+ * bin", "Ich bin müde"), so a chunk that already contains the text so far
+ * replaces it instead of being appended.
+ */
+function joinChunks(chunks: string[]): string {
+  let text = '';
+  for (const raw of chunks) {
+    const chunk = raw.trim();
+    if (!chunk) continue;
+    const t = normalizeText(text);
+    const c = normalizeText(chunk);
+    if (!text || c.startsWith(t)) text = chunk;
+    else if (!t.endsWith(c)) text = `${text} ${chunk}`;
+  }
+  return text;
+}
+
+/**
+ * Start listening and keep the mic open until the caller says the speaker is
+ * `done()` (or cancels, or the browser gives up on its own). The mic is only
+ * in use for the life of one session — permission stays granted, but nothing
+ * is recorded between sessions. `onTranscript` receives live text as it's heard.
+ */
+export function startListening({
+  lang = 'de-DE',
+  onTranscript,
+}: { lang?: string; onTranscript?: (text: string) => void } = {}): ListenSession {
   const Ctor = ctor();
-  if (!Ctor) return Promise.resolve({ status: 'not-supported' });
+  if (!Ctor) return { result: Promise.resolve({ status: 'not-supported' }), done: () => {}, cancel: () => {} };
 
-  return new Promise((resolve) => {
-    const recognition = new Ctor();
-    recognition.lang = 'de-DE';
-    recognition.interimResults = false;
-    recognition.maxAlternatives = 1;
+  const recognition = new Ctor();
+  recognition.lang = lang;
+  recognition.continuous = true;
+  recognition.interimResults = true;
+  recognition.maxAlternatives = 1;
 
-    let settled = false;
-    const finish = (result: ListenResult) => {
-      if (settled) return;
-      settled = true;
-      resolve(result);
-    };
+  let transcript = '';
+  let cancelled = false;
+  let settled = false;
+  let resolve!: (result: ListenResult) => void;
+  const result = new Promise<ListenResult>((r) => (resolve = r));
 
-    recognition.onresult = (event) => {
-      const transcript = event.results[0]?.[0]?.transcript ?? '';
-      finish(transcript.trim() ? { status: 'result', transcript } : { status: 'no-match' });
-    };
-    recognition.onnomatch = () => finish({ status: 'no-match' });
-    recognition.onerror = (event) => finish({ status: 'error', error: event.error });
-    recognition.onend = () => finish({ status: 'no-match' });
+  const timer = window.setTimeout(() => recognition.stop(), MAX_LISTEN_MS);
+  const finish = (value: ListenResult) => {
+    if (settled) return;
+    settled = true;
+    window.clearTimeout(timer);
+    resolve(value);
+  };
 
-    try {
-      recognition.start();
-    } catch (err) {
-      finish({ status: 'error', error: String(err) });
-    }
-  });
+  recognition.onresult = (event) => {
+    const chunks: string[] = [];
+    for (let i = 0; i < event.results.length; i++) chunks.push(event.results[i][0]?.transcript ?? '');
+    transcript = joinChunks(chunks);
+    onTranscript?.(transcript);
+  };
+  recognition.onerror = (event) => {
+    // "aborted" is our own cancel(); "no-speech" just means silence — let onend report it.
+    if (event.error === 'aborted' || event.error === 'no-speech') return;
+    finish({ status: 'error', error: event.error });
+  };
+  // Fires after stop()/abort() once the final results are in — the mic is released by now.
+  recognition.onend = () => {
+    if (cancelled) finish({ status: 'cancelled' });
+    else finish(transcript.trim() ? { status: 'result', transcript } : { status: 'no-match' });
+  };
+
+  try {
+    recognition.start();
+  } catch (err) {
+    finish({ status: 'error', error: String(err) });
+  }
+
+  return {
+    result,
+    done: () => recognition.stop(),
+    cancel: () => {
+      cancelled = true;
+      recognition.abort();
+    },
+  };
 }
 
 export function normalizeText(text: string): string {
