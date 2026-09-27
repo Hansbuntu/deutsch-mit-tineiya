@@ -1,6 +1,17 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
-import { allCards } from '../data/cards';
+import { allCards, cardsForTopic } from '../data/cards';
+
+/** How far through one topic the learner is. */
+export interface TopicProgress {
+  total: number;
+  /** Cards worked through at least once — looked at in a session, answered, or spoken. */
+  done: number;
+  /** Cards answered correctly twice (see LEARNED_THRESHOLD). */
+  learned: number;
+  /** Every card worked through. */
+  finished: boolean;
+}
 
 const KNOWN_IDS = new Set(allCards.map((c) => c.id));
 
@@ -68,9 +79,12 @@ interface ProgressContextValue {
   totalCardsLearned: number;
   notebookPagesDigitized: number;
   frequencyListLearned: number;
+  /** Frequency-list words worked through at least once (seen, answered or spoken). */
+  frequencyListPractised: number;
   isLearned: (cardId: string) => boolean;
   /** The saved record for a card, if it has been studied. */
   recordFor: (cardId: string) => CardProgress | undefined;
+  topicProgress: (topicId: string) => TopicProgress;
   /** Card ids due for review today — missed cards first, then the longest overdue. */
   reviewQueue: string[];
   /** The next day something comes due after today, if nothing is due now. */
@@ -129,8 +143,15 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
       totalCardsLearned: learnedIds.size,
       notebookPagesDigitized: allCards.filter((c) => c.source === 'notebook').length,
       frequencyListLearned: [...learnedIds].filter((id) => frequencyIds.has(id)).length,
+      frequencyListPractised: Object.keys(state.cards).filter((id) => frequencyIds.has(id)).length,
       isLearned: (cardId: string) => state.cards[cardId]?.learned ?? false,
       recordFor: (cardId: string) => state.cards[cardId],
+      topicProgress: (topicId: string) => {
+        const cards = cardsForTopic(topicId);
+        const done = cards.filter((c) => state.cards[c.id]).length;
+        const learned = cards.filter((c) => state.cards[c.id]?.learned).length;
+        return { total: cards.length, done, learned, finished: cards.length > 0 && done === cards.length };
+      },
       reviewQueue,
       nextReview,
       markSeen: (cardId: string) =>

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Icon } from '../components/Icon';
 import { Flashcard } from '../components/Flashcard';
@@ -16,18 +16,32 @@ import type { VerbCard } from '../data/types';
 export function Session() {
   const { topicId = '' } = useParams();
   const topic = topicById(topicId);
-  const { markSeen, markAnswer, notebookPagesDigitized } = useProgress();
+  const { markSeen, markAnswer, notebookPagesDigitized, recordFor, topicProgress } = useProgress();
 
-  const [cards, setCards] = useState(() => shuffle(cardsForTopic(topicId)));
+  // Shuffled, but cards not done yet come first — reopening a topic carries on where you stopped.
+  const deckFor = (id: string) => {
+    const deck = shuffle(cardsForTopic(id));
+    return [...deck.filter((c) => !recordFor(c.id)), ...deck.filter((c) => recordFor(c.id))];
+  };
+
+  const [cards, setCards] = useState(() => deckFor(topicId));
   const [index, setIndex] = useState(0);
+  const deckTopic = useRef(topicId);
 
   useEffect(() => {
-    setCards(shuffle(cardsForTopic(topicId)));
-    setIndex(0);
     if (topicById(topicId)) setLastTopicId(topicId);
+    // Only re-deal when switching topics — re-dealing on first render would mark an unseen card as seen.
+    if (deckTopic.current === topicId) return;
+    deckTopic.current = topicId;
+    setCards(deckFor(topicId));
+    setIndex(0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [topicId]);
 
   const currentCard = cards[index];
+  // Whether the drill for the current card has been answered (its answer stays hidden on the card until then).
+  const [answered, setAnswered] = useState(false);
+  useEffect(() => setAnswered(false), [currentCard?.id]);
 
   useEffect(() => {
     if (currentCard) markSeen(currentCard.id);
@@ -67,6 +81,7 @@ export function Session() {
   }
 
   const finished = index >= cards.length;
+  const progress = topicProgress(topicId);
   const relatedTopics = topics.filter((t) => t.group === topic.group);
   const passage = passageForTopic(topicId);
   const hasSpeakingPractice = cards.some((c) => c.type === 'sentence');
@@ -88,6 +103,16 @@ export function Session() {
           <h1 className="title-xl">{topic.name}</h1>
           <p className="muted">
             {cards.length} cards{topic.tagline ? ` · ${topic.tagline}` : ''}
+            {progress.finished ? (
+              <span className="head-status is-finished">
+                <Icon name="check" />
+                Finished · {progress.learned} learned
+              </span>
+            ) : progress.done > 0 ? (
+              <span className="head-status">
+                {progress.done} of {progress.total} done{progress.learned > 0 ? ` · ${progress.learned} learned` : ''}
+              </span>
+            ) : null}
           </p>
         </div>
         {(passage || hasSpeakingPractice) && (
@@ -130,8 +155,9 @@ export function Session() {
           </div>
           <h2 className="title-lg">Schön gemacht!</h2>
           <p>
-            You went through all {cards.length} cards in {topic.name}. Go again for a fresh shuffle, or pick another
-            topic.
+            {topic.name} is finished — you’ve worked through all {cards.length} cards
+            {progress.learned > 0 ? ` and learned ${progress.learned}` : ''}. Go again to lock them in: drill answers
+            you get right twice count as learned.
           </p>
           <div className="done-actions">
             <button type="button" className="btn" onClick={restart}>
@@ -156,7 +182,13 @@ export function Session() {
               </span>
             </div>
 
-            <Flashcard key={currentCard.id} card={currentCard} />
+            <Flashcard
+              key={currentCard.id}
+              card={currentCard}
+              hide={
+                drill && !answered && (drill.kind === 'meaning' || drill.kind === 'article') ? drill.kind : undefined
+              }
+            />
 
             <div className="card-actions">
               <button
@@ -182,7 +214,14 @@ export function Session() {
 
           <aside>
             {drill ? (
-              <DrillPanel key={drill.id} drill={drill} onAnswer={(correct) => markAnswer(currentCard.id, correct)} />
+              <DrillPanel
+                key={drill.id}
+                drill={drill}
+                onAnswer={(correct) => {
+                  markAnswer(currentCard.id, correct);
+                  setAnswered(true);
+                }}
+              />
             ) : (
               <div className="panel panel-quiet rise-2">
                 <span className="panel-quiet-icon">

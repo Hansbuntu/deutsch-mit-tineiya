@@ -44,7 +44,7 @@ hidden on touch devices.
 
 ### Drills
 
-Multiple choice, never typing. Four kinds:
+Multiple choice, never typing. Five kinds:
 
 - **conjugation** — fill in the conjugated verb form (regular and stem-changing:
   fangen → fängst/fängt, fahren → fährst/fährt, nehmen → nimmst/nimmt)
@@ -52,8 +52,16 @@ Multiple choice, never typing. Four kinds:
 - **article** — der / die / das
 - **word-order** — pick the correctly ordered sentence (verb-second, dative
   after prepositions, `weil` clauses, indirect questions)
+- **meaning** — "What does „schon“ mean?" for words with no grammar to drill
+  (adverbs, adjectives, pronouns…), with wrong options drawn from words of the
+  same kind — so the Top 1000 list can be learned in a session
 
-A card counts as "learned" after two correct answers.
+While a drill asks about something the card shows — the English meaning, or
+the article (and its example sentence) — the card hides it until you answer.
+
+A card counts as "learned" after two correct answers. The "At a glance" ring
+shows most-common words learned in gold, with words practised so far as a
+lighter band, so it moves from the first practice.
 
 **Correcting mistakes.** After a wrong answer — in a drill, speaking practice,
 or the generator's Type mode — the correction is shown with a **Try again**
@@ -64,17 +72,17 @@ card look learned early.
 
 ## Content
 
-1,240 cards in 15 topics:
+1,248 cards in 15 topics:
 
 | Group | Topics | Cards |
 |---|---|---|
 | From your notebook | Separable Verbs | 15 |
-| Your TikTok scripts | Mein Tag, Mein Zuhause, Über mich, Mein Leben | 63 vocabulary cards + 12 core sentences |
+| Your TikTok scripts | Mein Tag, Mein Zuhause, Über mich, Mein Leben | 63 vocabulary cards + 20 sentences (5 per script) |
 | Grammar & vocabulary | Nouns & Articles, Everyday & Time, At the Café, Numbers, Top 1000 Words | 50 curated + 1,000 frequency-list words |
 | Common A1 sentences | Greetings & Introductions, Time & Daily Life, Asking Questions, Shopping & Ordering, Directions | 100 sentences (20 each) |
 
-1,220 of the 1,240 cards carry a full example sentence, which is the pool the
-practice generator draws from (440 at A1, 780 at A2 — see
+1,228 of the 1,248 cards carry a full sentence, which is the pool the
+practice generator draws from (448 at A1, 780 at A2 — see
 [Practice generator](#practice-generator)).
 
 ## Stack
@@ -200,6 +208,10 @@ reference/                 original build brief + design reference (archived)
   lernen, Freizeit, YouTube-Videos schauen, …) are deliberately kept as their
   own card in each topic; `lib/repeats.ts` flags the later ones as "you've seen
   this before" rather than deduplicating them.
+- `passageSentences.ts` — two more lines per script, chosen for grammar and
+  everyday phrasing worth saying aloud, so each script has five sentences
+  (with its three core sentences) for the session and speaking practice. The
+  German is word-for-word from `passages.ts`; ids carry the line's position.
 - `coreSentences.ts` — 2–3 whole sentences per script worth memorizing,
   mixed into that topic's session.
 - `grammarDrills.ts` — hand-authored `word-order` drills for the grammar each
@@ -243,6 +255,13 @@ reference/                 original build brief + design reference (archived)
 (`deutsch-mit-tineiya:review-mode`). It records cards seen, correct answers,
 each card's review schedule (below), and the dates the app was opened
 (`daysActive`, shown quietly — never as a streak). Nothing leaves the device.
+
+**Topic progress** (`topicProgress()`): for each topic, how many cards have
+been worked through (looked at in a session, answered, or spoken), how many are
+learned, and whether it's **finished** (every card worked through). Home tiles,
+the notebook banner, the topic page header and the Progress rows all read it,
+so they update as you go. Reopening a topic deals the cards you haven't done
+yet first, so you carry on where you stopped.
 
 ## Review
 
@@ -306,8 +325,9 @@ happen to be installed on their device.
 
 ## Speaking practice (`SpeakSession.tsx`, `lib/voice.ts`)
 
-A "say this in German" mode for `SentenceCard`s (the TikTok core sentences and
-the A1 sentence bank).
+A "say this in German" mode for `SentenceCard`s — for a TikTok topic, five
+key sentences from the script, in script order; for the A1 sentence bank, its
+20 sentences shuffled.
 
 - The browser's built-in `SpeechRecognition` transcribes what's said (free, no
   backend), and the transcript is compared to the target with a normalized
@@ -336,7 +356,7 @@ else — no separate dataset.
 
 - **Pool:** only cards that have a real sentence — a `SentenceCard`, or any
   card with a hand-written `example` (`sentenceOf()` in `lib/practice.ts`).
-  Bare words never appear. That's 1,220 cards today.
+  Bare words never appear. That's 1,228 cards today.
 - **Level (All / A1 / A2):** derived, not stored — `cardLevel()` in
   `lib/level.ts` uses `frequencyRank` for the frequency list (rank ≤250 → A1,
   otherwise A2) and treats all other content as A1. This is an approximation,

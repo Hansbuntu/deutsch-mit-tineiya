@@ -9,6 +9,7 @@ const COPY: Record<DrillKind, { eyebrow: string; title: string }> = {
   'separable-position': { eyebrow: 'Separable verbs', title: 'Complete the sentence' },
   article: { eyebrow: 'Articles', title: 'Der, die or das?' },
   'word-order': { eyebrow: 'Word order', title: 'Which order is correct?' },
+  meaning: { eyebrow: 'Meaning', title: 'What does it mean?' },
 };
 
 export function DrillPanel({ drill, onAnswer }: { drill: Drill; onAnswer: (correct: boolean) => void }) {
@@ -51,7 +52,7 @@ export function DrillPanel({ drill, onAnswer }: { drill: Drill; onAnswer: (corre
 
   const labelFor = (id: string | null) => drill.options.find((o) => o.id === id)?.label;
   const correctLabel = labelFor(drill.correctOptionId) ?? drill.correctOptionId;
-  const isFillInBlank = drill.kind !== 'word-order';
+  const isFillInBlank = drill.kind !== 'word-order' && drill.kind !== 'meaning';
   const copy = COPY[drill.kind];
 
   return (
@@ -87,7 +88,7 @@ export function DrillPanel({ drill, onAnswer }: { drill: Drill; onAnswer: (corre
               onClick={() => select(option.id)}
             >
               <span className="option-key">{i + 1}</span>
-              <span className="option-label" lang="de">
+              <span className="option-label" lang={drill.kind === 'meaning' ? 'en' : 'de'}>
                 {option.label}
               </span>
               {answered && isCorrect && <Icon name="check" className="option-state" />}

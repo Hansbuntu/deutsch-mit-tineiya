@@ -4,6 +4,7 @@ import { Icon } from '../components/Icon';
 import { SoundButton } from '../components/SoundButton';
 import { cardsForTopic } from '../data/cards';
 import { topicById } from '../data/topics';
+import { passageForTopic } from '../data/passages';
 import type { SentenceCard } from '../data/types';
 import { useProgress } from '../lib/progress';
 import {
@@ -24,8 +25,19 @@ const ERROR_MESSAGES: Record<string, string> = {
   network: 'A network error interrupted speech recognition — check your connection and try again.',
 };
 
-const sentenceCardsFor = (topicId: string) =>
-  shuffle(cardsForTopic(topicId).filter((c): c is SentenceCard => c.type === 'sentence'));
+/** A TikTok script is practised in script order, line by line; other topics are shuffled. */
+const sentenceCardsFor = (topicId: string) => {
+  const sentences = cardsForTopic(topicId).filter((c): c is SentenceCard => c.type === 'sentence');
+  const passage = passageForTopic(topicId);
+  if (!passage) return shuffle(sentences);
+  const text = passage.paragraphs.join(' ');
+  // Core sentences reworded from the script (not found verbatim) go after the script's own lines.
+  const position = (c: SentenceCard) => {
+    const at = text.indexOf(c.de);
+    return at === -1 ? Number.MAX_SAFE_INTEGER : at;
+  };
+  return [...sentences].sort((a, b) => position(a) - position(b));
+};
 
 export function SpeakSession() {
   const { topicId = '' } = useParams();

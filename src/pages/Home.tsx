@@ -6,7 +6,7 @@ import { topics, topicById, TOPIC_GROUP_DESCRIPTIONS, TOPIC_GROUP_LABELS, TOPIC_
 import { allCards, cardsForTopic, FREQUENCY_LIST_TARGET } from '../data/cards';
 import { passageForTopic } from '../data/passages';
 import type { Topic } from '../data/types';
-import { useProgress } from '../lib/progress';
+import { useProgress, type TopicProgress } from '../lib/progress';
 import { getLastTopicId } from '../lib/lastTopic';
 import { REVIEW_BATCH } from '../lib/review';
 
@@ -17,23 +17,29 @@ function greeting(date: Date) {
   return 'Guten Abend';
 }
 
-function TopicTile({ topic, learned, total }: { topic: Topic; learned: number; total: number }) {
-  const isFrequencyList = topic.id === 'wortschatz-1000';
+function TopicTile({ topic, progress }: { topic: Topic; progress: TopicProgress }) {
   const passage = passageForTopic(topic.id);
   const hasSpeaking = cardsForTopic(topic.id).some((c) => c.type === 'sentence');
-  const target = isFrequencyList ? FREQUENCY_LIST_TARGET : total;
-  const pct = target > 0 ? (learned / target) * 100 : 0;
+  const { total, done, learned, finished } = progress;
+  const pct = total > 0 ? (done / total) * 100 : 0;
 
   return (
-    <article className="tile">
+    <article className={`tile${finished ? ' is-finished' : ''}`}>
       <Link to={`/thema/${topic.id}`} className="tile-main">
         <div className="tile-top">
           <span className="tile-icon">
             <SceneIcon name={topic.icon} />
           </span>
-          <span className="tile-arrow" aria-hidden="true">
-            <Icon name="arrow-right" />
-          </span>
+          {finished ? (
+            <span className="tag tag-sage tile-status">
+              <Icon name="check" />
+              Finished
+            </span>
+          ) : (
+            <span className="tile-arrow" aria-hidden="true">
+              <Icon name="arrow-right" />
+            </span>
+          )}
         </div>
         <div>
           <h3 className="tile-title">{topic.name}</h3>
@@ -42,12 +48,22 @@ function TopicTile({ topic, learned, total }: { topic: Topic; learned: number; t
           {total} {total === 1 ? 'card' : 'cards'}
           {topic.tagline ? ` · ${topic.tagline}` : ''}
         </p>
+        {done > 0 && !finished && (
+          <p className="tile-progress-note">
+            {done} of {total} done{learned > 0 ? ` · ${learned} learned` : ''}
+          </p>
+        )}
+        {finished && learned < total && (
+          <p className="tile-progress-note">
+            All {total} done · {learned} learned — practise again to lock them in
+          </p>
+        )}
         <div className="tile-foot">
           <div className="meter">
             <span style={{ width: `${pct}%` }} />
           </div>
-          <span className="tile-count">
-            {learned}/{target}
+          <span className="tile-count" title={`${done} of ${total} worked through · ${learned} learned`}>
+            {done}/{total}
           </span>
         </div>
       </Link>
@@ -72,15 +88,15 @@ function TopicTile({ topic, learned, total }: { topic: Topic; learned: number; t
 }
 
 export function Home() {
-  const { isLearned, daysActive, totalCardsLearned, frequencyListLearned, reviewQueue } = useProgress();
+  const { daysActive, totalCardsLearned, frequencyListLearned, frequencyListPractised, reviewQueue, topicProgress } =
+    useProgress();
   const dueCount = reviewQueue.length;
-  const learnedIn = (topicId: string) => cardsForTopic(topicId).filter((c) => isLearned(c.id)).length;
 
   const lastTopic = topicById(getLastTopicId() ?? '');
   const continueTopic = lastTopic ?? topics[0];
   const notebook = topics.find((t) => t.group === 'notebook')!;
   const notebookCards = cardsForTopic(notebook.id);
-  const notebookLearned = learnedIn(notebook.id);
+  const notebookProgress = topicProgress(notebook.id);
 
   return (
     <>
@@ -109,13 +125,19 @@ export function Home() {
         <aside className="hero-panel surface corner-mark rise-2" aria-label="At a glance">
           <span className="eyebrow">At a glance</span>
           <div className="glance">
-            <ProgressRing value={frequencyListLearned} max={FREQUENCY_LIST_TARGET} />
+            <ProgressRing value={frequencyListLearned} secondary={frequencyListPractised} max={FREQUENCY_LIST_TARGET} />
             <div>
               <div className="glance-value">
                 {frequencyListLearned}
                 <small> / {FREQUENCY_LIST_TARGET.toLocaleString('en')}</small>
               </div>
               <p className="glance-label">most common German words learned</p>
+              {frequencyListPractised > 0 && (
+                <p className="glance-sub">
+                  <span className="glance-swatch" aria-hidden="true" />
+                  {frequencyListPractised.toLocaleString('en')} practised so far
+                </p>
+              )}
             </div>
           </div>
           <dl className="mini-stats">
@@ -178,10 +200,20 @@ export function Home() {
                       Study the verbs <Icon name="arrow-right" />
                     </span>
                     <span className="feature-progress">
-                      <span className="meter">
-                        <span style={{ width: `${(notebookLearned / notebookCards.length) * 100}%` }} />
-                      </span>
-                      {notebookLearned} of {notebookCards.length} learned
+                      {notebookProgress.finished ? (
+                        <>
+                          <Icon name="check" />
+                          Finished · {notebookProgress.learned} of {notebookCards.length} learned
+                        </>
+                      ) : (
+                        <>
+                          <span className="meter">
+                            <span style={{ width: `${(notebookProgress.done / notebookCards.length) * 100}%` }} />
+                          </span>
+                          {notebookProgress.done} of {notebookCards.length} done
+                          {notebookProgress.learned > 0 ? ` · ${notebookProgress.learned} learned` : ''}
+                        </>
+                      )}
                     </span>
                   </div>
                 </div>
@@ -206,12 +238,7 @@ export function Home() {
             </header>
             <div className="topic-grid" data-count={groupTopics.length}>
               {groupTopics.map((topic) => (
-                <TopicTile
-                  key={topic.id}
-                  topic={topic}
-                  learned={learnedIn(topic.id)}
-                  total={cardsForTopic(topic.id).length}
-                />
+                <TopicTile key={topic.id} topic={topic} progress={topicProgress(topic.id)} />
               ))}
             </div>
           </section>

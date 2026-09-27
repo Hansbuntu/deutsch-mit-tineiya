@@ -5,6 +5,7 @@ import { frequencyWords } from './frequencyWords';
 import { tiktokVocab } from './tiktokVocab';
 import { coreSentences } from './coreSentences';
 import { a1Sentences } from './a1Sentences';
+import { passageSentences } from './passageSentences';
 
 export const allCards: Card[] = [
   ...verbs,
@@ -13,6 +14,7 @@ export const allCards: Card[] = [
   ...tiktokVocab,
   ...coreSentences,
   ...a1Sentences,
+  ...passageSentences,
 ];
 
 export const cardById = (id: string): Card | undefined => allCards.find((c) => c.id === id);

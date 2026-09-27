@@ -2803,7 +2803,7 @@ svg {
 
 .topic-row {
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(0, 2fr) 84px;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 2fr) 96px;
   align-items: center;
   gap: 20px;
   padding-block: 16px;
@@ -3447,4 +3447,102 @@ svg {
     width: 100%;
     justify-content: center;
   }
+}
+
+/* Topic progress: done / learned / finished (Home tiles, notebook banner, Progress rows) */
+.tile-status {
+  height: 26px;
+}
+
+.tile-progress-note {
+  margin-top: -6px;
+  font-size: 12.5px;
+  color: var(--sage-strong);
+}
+
+.tile.is-finished {
+  border-color: color-mix(in srgb, var(--sage) 35%, var(--line));
+}
+
+.tile.is-finished .meter span,
+.topic-row.is-finished .meter span {
+  background: var(--sage);
+}
+
+.feature-progress svg {
+  width: 16px;
+  height: 16px;
+}
+
+.topic-row-name .topic-row-status {
+  flex-shrink: 0;
+  overflow: visible;
+  height: 22px;
+  padding-inline: 8px;
+  font-size: 11px;
+  color: var(--sage-strong);
+}
+
+.topic-row-count small {
+  display: block;
+  font-size: 10.5px;
+}
+
+/* Topic page header: "12 of 20 done · 3 learned" / "Finished" */
+.head-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: 10px;
+  padding: 2px 10px;
+  border-radius: var(--r-pill);
+  background: var(--bg-sunken);
+  font-size: 12.5px;
+  color: var(--ink-2);
+  vertical-align: 1px;
+}
+
+.head-status.is-finished {
+  background: var(--sage-tint);
+  color: var(--sage-strong);
+}
+
+.head-status svg {
+  width: 13px;
+  height: 13px;
+}
+
+/* Flashcard: the part a drill is asking about stays hidden until it's answered */
+.article-hidden {
+  background: var(--bg-sunken);
+  color: var(--ink-3);
+  font-style: normal;
+}
+
+.translation-hidden {
+  font-style: italic;
+  color: var(--ink-3);
+  font-size: 14px;
+}
+
+/* "At a glance": words practised (lighter band) under words learned (gold) */
+.ring-secondary {
+  stroke: color-mix(in srgb, var(--gold) 35%, var(--bg-sunken));
+  transition: stroke-dashoffset 0.8s var(--ease);
+}
+
+.glance-sub {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--ink-3);
+}
+
+.glance-swatch {
+  width: 10px;
+  height: 4px;
+  border-radius: var(--r-pill);
+  background: color-mix(in srgb, var(--gold) 35%, var(--bg-sunken));
 }

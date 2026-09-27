@@ -1,4 +1,5 @@
-import type { Article, Card, Drill, DrillOption, NounCard, VerbCard } from '../data/types';
+import type { Article, Card, Drill, DrillOption, NounCard, VerbCard, VocabCard } from '../data/types';
+import { allCards } from '../data/cards';
 import { verbs as allVerbs } from '../data/verbs';
 import { grammarDrillsByCardId } from '../data/grammarDrills';
 import { escapeRegExp, splitOnWord, shuffle } from './text';
@@ -66,6 +67,29 @@ function buildArticleDrill(card: NounCard): Drill {
   };
 }
 
+const vocabCards = allCards.filter((c): c is VocabCard => c.type === 'vocab');
+
+/**
+ * "What does „schon“ mean?" — for words with no grammar to drill (adverbs,
+ * adjectives, pronouns, …), so studying them can count toward "learned".
+ * Wrong options are meanings of other words of the same kind.
+ */
+function buildMeaningDrill(card: VocabCard): Drill | null {
+  const others = vocabCards.filter((c) => c.id !== card.id && c.translation !== card.translation);
+  const sameKind = others.filter((c) => c.partOfSpeech === card.partOfSpeech);
+  const pool = [...new Set((sameKind.length >= 2 ? sameKind : others).map((c) => c.translation))];
+  const distractors = shuffle(pool).slice(0, 2);
+  if (distractors.length < 2) return null;
+  return {
+    id: `meaning-${card.id}`,
+    kind: 'meaning',
+    cardId: card.id,
+    promptParts: [`What does „${card.word}“ mean?`, ''],
+    options: toOptions(shuffle([card.translation, ...distractors])),
+    correctOptionId: card.translation,
+  };
+}
+
 /**
  * Build a recognition drill for a card, preferring distractors drawn from
  * verbs already seen earlier in the current session (falls back to the
@@ -86,6 +110,9 @@ export function generateDrillForCard(card: Card, sessionSeenVerbs: VerbCard[]): 
   }
   if (card.type === 'noun') {
     return buildArticleDrill(card);
+  }
+  if (card.type === 'vocab') {
+    return buildMeaningDrill(card);
   }
   return null;
 }

@@ -5,11 +5,17 @@ import { ProgressRing } from '../components/ProgressRing';
 import { OfflineAudio } from '../components/OfflineAudio';
 import { useProgress } from '../lib/progress';
 import { topics, TOPIC_GROUP_ORDER, TOPIC_GROUP_LABELS } from '../data/topics';
-import { allCards, cardsForTopic, FREQUENCY_LIST_TARGET } from '../data/cards';
+import { allCards, FREQUENCY_LIST_TARGET } from '../data/cards';
 
 export function Progress() {
-  const { daysActive, totalCardsLearned, notebookPagesDigitized, frequencyListLearned, isLearned } = useProgress();
-  const learnedIn = (topicId: string) => cardsForTopic(topicId).filter((c) => isLearned(c.id)).length;
+  const {
+    daysActive,
+    totalCardsLearned,
+    notebookPagesDigitized,
+    frequencyListLearned,
+    frequencyListPractised,
+    topicProgress,
+  } = useProgress();
 
   return (
     <>
@@ -23,13 +29,19 @@ export function Progress() {
 
       <div className="stats-grid rise-2">
         <div className="surface stat-card stat-hero">
-          <ProgressRing value={frequencyListLearned} max={FREQUENCY_LIST_TARGET} />
+          <ProgressRing value={frequencyListLearned} secondary={frequencyListPractised} max={FREQUENCY_LIST_TARGET} />
           <div>
             <div className="stat-value">
               {frequencyListLearned}
               <small> / {FREQUENCY_LIST_TARGET.toLocaleString('en')}</small>
             </div>
             <p className="stat-label">most common German words learned</p>
+              {frequencyListPractised > 0 && (
+                <p className="glance-sub">
+                  <span className="glance-swatch" aria-hidden="true" />
+                  {frequencyListPractised.toLocaleString('en')} practised so far
+                </p>
+              )}
           </div>
         </div>
         <div className="surface stat-card">
@@ -67,8 +79,10 @@ export function Progress() {
       {TOPIC_GROUP_ORDER.map((group) => {
         const groupTopics = topics.filter((t) => t.group === group);
         if (groupTopics.length === 0) return null;
-        const groupTotal = groupTopics.reduce((sum, t) => sum + cardsForTopic(t.id).length, 0);
-        const groupLearned = groupTopics.reduce((sum, t) => sum + learnedIn(t.id), 0);
+        const groupProgress = groupTopics.map((t) => topicProgress(t.id));
+        const groupTotal = groupProgress.reduce((sum, p) => sum + p.total, 0);
+        const groupDone = groupProgress.reduce((sum, p) => sum + p.done, 0);
+        const groupLearned = groupProgress.reduce((sum, p) => sum + p.learned, 0);
 
         return (
           <section key={group} className="section">
@@ -77,26 +91,32 @@ export function Progress() {
                 <h2 className="section-title">{TOPIC_GROUP_LABELS[group]}</h2>
               </div>
               <span className="section-count">
-                {groupLearned} of {groupTotal} learned
+                {groupDone} of {groupTotal} done · {groupLearned} learned
               </span>
             </header>
             <div className="surface topic-rows">
               {groupTopics.map((topic) => {
-                const total = cardsForTopic(topic.id).length;
-                const learned = learnedIn(topic.id);
+                const { total, done, learned, finished } = topicProgress(topic.id);
                 return (
-                  <Link key={topic.id} to={`/thema/${topic.id}`} className="topic-row">
+                  <Link key={topic.id} to={`/thema/${topic.id}`} className={`topic-row${finished ? ' is-finished' : ''}`}>
                     <span className="topic-row-name">
                       <span className="topic-row-icon">
                         <SceneIcon name={topic.icon} />
                       </span>
                       <span>{topic.name}</span>
+                      {finished && (
+                        <span className="tag tag-sage topic-row-status">
+                          <Icon name="check" />
+                          Finished
+                        </span>
+                      )}
                     </span>
                     <div className="meter meter-sage">
-                      <span style={{ width: `${total ? (learned / total) * 100 : 0}%` }} />
+                      <span style={{ width: `${total ? (done / total) * 100 : 0}%` }} />
                     </div>
                     <span className="topic-row-count">
-                      <strong>{learned}</strong> / {total}
+                      <strong>{done}</strong> / {total}
+                      {learned > 0 && <small> · {learned} learned</small>}
                     </span>
                   </Link>
                 );

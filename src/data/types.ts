@@ -127,7 +127,7 @@ export interface Topic {
 // Drills
 // ---------------------------------------------------------------------
 
-export type DrillKind = 'conjugation' | 'separable-position' | 'article' | 'word-order';
+export type DrillKind = 'conjugation' | 'separable-position' | 'article' | 'word-order' | 'meaning';
 
 export interface DrillOption {
   id: string;
@@ -142,7 +142,8 @@ export interface Drill {
    * Sentence split around the blank: [textBeforeBlank, textAfterBlank].
    * For 'word-order' drills there's no blank — promptParts[0] holds the
    * instruction text instead and promptParts[1] is empty; options hold
-   * full sentence variants rather than single words.
+   * full sentence variants rather than single words. 'meaning' drills work
+   * the same way, with English meanings as the options.
    */
   promptParts: [string, string];
   options: DrillOption[];
