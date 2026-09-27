@@ -26,9 +26,32 @@ export type UiIconName =
   | 'lightbulb'
   | 'type'
   | 'flip'
-  | 'notebook';
+  | 'notebook'
+  | 'repeat'
+  | 'search'
+  | 'library';
 
 const paths: Record<UiIconName, ReactElement> = {
+  repeat: (
+    <>
+      <path d="M4 12a8 8 0 0 1 13.7-5.6L20 8.5" />
+      <path d="M20 4v4.5h-4.5" />
+      <path d="M20 12a8 8 0 0 1-13.7 5.6L4 15.5" />
+      <path d="M4 20v-4.5h4.5" />
+    </>
+  ),
+  search: (
+    <>
+      <circle cx="11" cy="11" r="6.5" />
+      <path d="m16 16 4 4" />
+    </>
+  ),
+  library: (
+    <>
+      <path d="M5 4.5v15M9 4.5v15" />
+      <path d="m13 5.2 3.9-1 3.6 14.5-3.9 1z" />
+    </>
+  ),
   home: (
     <>
       <path d="M4 11.2 12 4.5l8 6.7" />

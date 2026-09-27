@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Icon } from '../components/Icon';
 import { SceneIcon } from '../components/SceneIcon';
 import { ProgressRing } from '../components/ProgressRing';
+import { OfflineAudio } from '../components/OfflineAudio';
 import { useProgress } from '../lib/progress';
 import { topics, TOPIC_GROUP_ORDER, TOPIC_GROUP_LABELS } from '../data/topics';
 import { allCards, cardsForTopic, FREQUENCY_LIST_TARGET } from '../data/cards';
@@ -104,6 +105,8 @@ export function Progress() {
           </section>
         );
       })}
+
+      <OfflineAudio />
 
       <p className="footnote">
         <Icon name="info" />

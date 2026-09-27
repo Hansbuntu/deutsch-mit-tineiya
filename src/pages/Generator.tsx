@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Icon } from '../components/Icon';
 import { SentenceFlipCard } from '../components/SentenceFlipCard';
 import { TypeCheckCard } from '../components/TypeCheckCard';
+import { Seg } from '../components/Seg';
 import { allCards } from '../data/cards';
 import { topicById, TOPIC_GROUP_LABELS, TOPIC_GROUP_ORDER } from '../data/topics';
 import type { Card, CefrLevel, TopicGroup } from '../data/types';
@@ -22,35 +23,6 @@ function groupForCard(card: Card): TopicGroup | undefined {
     if (group) return group;
   }
   return undefined;
-}
-
-function Seg<T extends string>({
-  value,
-  options,
-  onChange,
-  label,
-}: {
-  value: T;
-  options: { value: T; label: string }[];
-  onChange: (value: T) => void;
-  label: string;
-}) {
-  return (
-    <div className="seg" role="radiogroup" aria-label={label}>
-      {options.map((o) => (
-        <button
-          key={o.value}
-          type="button"
-          role="radio"
-          aria-checked={value === o.value}
-          className={`seg-btn${value === o.value ? ' active' : ''}`}
-          onClick={() => onChange(o.value)}
-        >
-          {o.label}
-        </button>
-      ))}
-    </div>
-  );
 }
 
 export function Generator() {

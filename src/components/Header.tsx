@@ -6,13 +6,27 @@ import { applyTheme, currentTheme, type Theme } from '../lib/theme';
 
 const NAV: { to: string; label: string; icon: UiIconName }[] = [
   { to: '/', label: 'Home', icon: 'home' },
+  { to: '/wiederholen', label: 'Review', icon: 'repeat' },
   { to: '/generieren', label: 'Generate', icon: 'sparkles' },
+  { to: '/woerter', label: 'Words', icon: 'library' },
   { to: '/fortschritt', label: 'Progress', icon: 'chart' },
 ];
 
 function useIsActive() {
   const { pathname } = useLocation();
   return (to: string) => (to === '/' ? pathname === '/' || pathname.startsWith('/thema') : pathname.startsWith(to));
+}
+
+/** Small count on the Review tab — how many cards are due today. */
+function DueBadge({ to }: { to: string }) {
+  const { reviewQueue } = useProgress();
+  if (to !== '/wiederholen' || reviewQueue.length === 0) return null;
+  const count = reviewQueue.length > 99 ? '99+' : String(reviewQueue.length);
+  return (
+    <span className="nav-badge" aria-label={`${reviewQueue.length} due`}>
+      {count}
+    </span>
+  );
 }
 
 export function Header() {
@@ -53,9 +67,12 @@ export function Header() {
               to={item.to}
               className={`nav-link${isActive(item.to) ? ' active' : ''}`}
               aria-current={isActive(item.to) ? 'page' : undefined}
+              aria-label={item.label}
+              title={item.label}
             >
               <Icon name={item.icon} />
-              {item.label}
+              <span className="nav-label">{item.label}</span>
+              <DueBadge to={item.to} />
             </Link>
           ))}
         </nav>
@@ -94,6 +111,7 @@ export function BottomNav() {
         >
           <span className="bottom-nav-icon">
             <Icon name={item.icon} />
+            <DueBadge to={item.to} />
           </span>
           {item.label}
         </Link>

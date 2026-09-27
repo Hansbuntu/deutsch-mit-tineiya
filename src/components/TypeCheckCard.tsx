@@ -12,12 +12,15 @@ export function TypeCheckCard({
   level,
   direction,
   onGraded,
+  audioText,
 }: {
   sentence: Sentence;
   topicLabel: string;
   level: CefrLevel;
   direction: PracticeDirection;
   onGraded?: (correct: boolean) => void;
+  /** What the sound button plays, when it differs from the German answer (e.g. "Tisch" for "der Tisch"). */
+  audioText?: string;
 }) {
   const toGerman = direction === 'en-to-de';
   const prompt = toGerman ? sentence.en : sentence.de;
@@ -102,7 +105,7 @@ export function TypeCheckCard({
         <p className="gen-prompt" lang={toGerman ? 'en' : 'de'}>
           {prompt}
         </p>
-        {!toGerman && <SoundButton text={sentence.de} label={sentence.de} />}
+        {!toGerman && <SoundButton text={audioText ?? sentence.de} label={sentence.de} />}
       </div>
 
       {!checked ? (
@@ -181,7 +184,7 @@ export function TypeCheckCard({
             </span>
           </div>
           <div className="diff-foot">
-            <SoundButton text={sentence.de} label={sentence.de} />
+            <SoundButton text={audioText ?? sentence.de} label={sentence.de} />
             {!correct && (
               <button type="button" className="btn btn-primary" onClick={tryAgain}>
                 <Icon name="refresh" />

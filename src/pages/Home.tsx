@@ -8,6 +8,7 @@ import { passageForTopic } from '../data/passages';
 import type { Topic } from '../data/types';
 import { useProgress } from '../lib/progress';
 import { getLastTopicId } from '../lib/lastTopic';
+import { REVIEW_BATCH } from '../lib/review';
 
 function greeting(date: Date) {
   const hour = date.getHours();
@@ -71,7 +72,8 @@ function TopicTile({ topic, learned, total }: { topic: Topic; learned: number; t
 }
 
 export function Home() {
-  const { isLearned, daysActive, totalCardsLearned, frequencyListLearned } = useProgress();
+  const { isLearned, daysActive, totalCardsLearned, frequencyListLearned, reviewQueue } = useProgress();
+  const dueCount = reviewQueue.length;
   const learnedIn = (topicId: string) => cardsForTopic(topicId).filter((c) => isLearned(c.id)).length;
 
   const lastTopic = topicById(getLastTopicId() ?? '');
@@ -132,6 +134,28 @@ export function Home() {
           </dl>
         </aside>
       </section>
+
+      {dueCount > 0 && (
+        <section className="section rise-2" aria-label="Review">
+          <Link to="/wiederholen" className="review-banner">
+            <span className="review-banner-icon">
+              <Icon name="repeat" />
+            </span>
+            <span className="review-banner-copy">
+              <span className="review-banner-title">
+                {dueCount} {dueCount === 1 ? 'card' : 'cards'} to review today
+              </span>
+              <span className="review-banner-sub">
+                Missed ones first · about {Math.max(1, Math.round((Math.min(dueCount, REVIEW_BATCH) * 12) / 60))} min
+              </span>
+            </span>
+            <span className="btn btn-primary">
+              Start review
+              <Icon name="arrow-right" />
+            </span>
+          </Link>
+        </section>
+      )}
 
       {TOPIC_GROUP_ORDER.map((group) => {
         const groupTopics = topics.filter((t) => t.group === group);
