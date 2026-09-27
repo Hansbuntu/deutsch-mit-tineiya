@@ -133,7 +133,7 @@ const meinTag: (NounCard | VocabCard)[] = [
     example: { de: 'Am Abend gehe ich nach Hause.', en: 'In the evening I go home.' },
   },
   {
-    id: 'kochen',
+    id: 'kochen-meintag',
     type: 'vocab',
     partOfSpeech: 'verb',
     topicIds: ['mein-tag'],
@@ -188,7 +188,7 @@ const meinTag: (NounCard | VocabCard)[] = [
     example: { de: 'Ich bin müde.', en: 'I am tired.' },
   },
   {
-    id: 'schlafen',
+    id: 'schlafen-meintag',
     type: 'vocab',
     partOfSpeech: 'verb',
     topicIds: ['mein-tag'],
@@ -470,7 +470,7 @@ const ueberMich: (NounCard | VocabCard)[] = [
     example: { de: 'Ich mache auch Musik.', en: 'I also make music.' },
   },
   {
-    id: 'schreiben',
+    id: 'schreiben-uebermich',
     type: 'vocab',
     partOfSpeech: 'verb',
     topicIds: ['ueber-mich'],
@@ -532,7 +532,7 @@ const ueberMich: (NounCard | VocabCard)[] = [
     },
   },
   {
-    id: 'reisen',
+    id: 'reisen-uebermich',
     type: 'vocab',
     partOfSpeech: 'verb',
     topicIds: ['ueber-mich'],
@@ -546,7 +546,7 @@ const ueberMich: (NounCard | VocabCard)[] = [
     },
   },
   {
-    id: 'verstehen',
+    id: 'verstehen-uebermich',
     type: 'vocab',
     partOfSpeech: 'verb',
     topicIds: ['ueber-mich'],

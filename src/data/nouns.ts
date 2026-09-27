@@ -242,7 +242,7 @@ export const alltagZeit: (NounCard | VocabCard)[] = [
     example: { de: 'Ich habe keine Zeit.', en: "I don't have time." },
   },
   {
-    id: 'arbeit',
+    id: 'arbeit-alltag',
     type: 'noun',
     partOfSpeech: 'noun',
     topicIds: ['alltag-zeit'],

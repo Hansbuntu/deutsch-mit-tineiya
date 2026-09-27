@@ -60,12 +60,34 @@ function addDaysISO(days: number) {
 const REVIEW_INTERVALS = [0, 1, 3, 7, 14, 30, 60];
 const MAX_BOX = REVIEW_INTERVALS.length - 1;
 
+/**
+ * Cards that used to share an id with a frequency-list word (so one record
+ * counted for both) and were given their own id. Progress saved before the
+ * split is copied to the new id, so neither card loses its history.
+ */
+const SPLIT_IDS: Record<string, string> = {
+  arbeit: 'arbeit-alltag',
+  kochen: 'kochen-meintag',
+  schlafen: 'schlafen-meintag',
+  schreiben: 'schreiben-uebermich',
+  reisen: 'reisen-uebermich',
+  verstehen: 'verstehen-uebermich',
+};
+
+function migrate(state: ProgressState): ProgressState {
+  const cards = { ...state.cards };
+  for (const [sharedId, newId] of Object.entries(SPLIT_IDS)) {
+    if (cards[sharedId] && !cards[newId]) cards[newId] = { ...cards[sharedId] };
+  }
+  return { ...state, cards };
+}
+
 function loadState(): ProgressState {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (raw) {
       const parsed = JSON.parse(raw) as ProgressState;
-      if (parsed.version === 1) return parsed;
+      if (parsed.version === 1) return migrate(parsed);
     }
   } catch {
     // ignore corrupt/blocked storage, fall through to a fresh state
