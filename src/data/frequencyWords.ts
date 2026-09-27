@@ -1,6 +1,6 @@
 import type { NounCard, VocabCard } from './types';
 
-// Curated ~500-word A1/A2 frequency-ranked pool (bulk everyday vocabulary
+// Curated 1,000-word A1/A2 frequency-ranked pool (bulk everyday vocabulary
 // beyond the hand-digitized notebook cards). Words already covered by the
 // curated topic decks are excluded to avoid duplicates.
 export const frequencyWords: (NounCard | VocabCard)[] = [
@@ -10073,5 +10073,9684 @@ export const frequencyWords: (NounCard | VocabCard)[] = [
     "word": "Glück",
     "article": "das",
     "translation": "luck, happiness"
+  },
+  {
+    "id": "nicht",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adverb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-quality"
+    },
+    "frequencyRank": 572,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich verstehe das nicht.",
+      "en": "I don't understand that."
+    },
+    "word": "nicht",
+    "translation": "not"
+  },
+  {
+    "id": "kein",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "pronoun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-quality"
+    },
+    "frequencyRank": 573,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich habe heute keine Zeit.",
+      "en": "I don't have any time today."
+    },
+    "word": "kein",
+    "translation": "no, not a"
+  },
+  {
+    "id": "ja",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "other",
+    "image": {
+      "kind": "icon",
+      "icon": "category-communication"
+    },
+    "frequencyRank": 574,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ja, das stimmt.",
+      "en": "Yes, that's right."
+    },
+    "word": "ja",
+    "translation": "yes"
+  },
+  {
+    "id": "nein",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "other",
+    "image": {
+      "kind": "icon",
+      "icon": "category-communication"
+    },
+    "frequencyRank": 575,
+    "source": "frequency-list",
+    "example": {
+      "de": "Nein, danke, ich bin satt.",
+      "en": "No thanks, I'm full."
+    },
+    "word": "nein",
+    "translation": "no"
+  },
+  {
+    "id": "bitte",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "other",
+    "image": {
+      "kind": "icon",
+      "icon": "category-communication"
+    },
+    "frequencyRank": 576,
+    "source": "frequency-list",
+    "example": {
+      "de": "Einen Kaffee, bitte.",
+      "en": "A coffee, please."
+    },
+    "word": "bitte",
+    "translation": "please"
+  },
+  {
+    "id": "danke",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "other",
+    "image": {
+      "kind": "icon",
+      "icon": "category-communication"
+    },
+    "frequencyRank": 577,
+    "source": "frequency-list",
+    "example": {
+      "de": "Danke für das schöne Geschenk!",
+      "en": "Thank you for the lovely present!"
+    },
+    "word": "danke",
+    "translation": "thank you"
+  },
+  {
+    "id": "viel",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adverb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-number"
+    },
+    "frequencyRank": 578,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich arbeite heute sehr viel.",
+      "en": "I'm working a lot today."
+    },
+    "word": "viel",
+    "translation": "much, a lot"
+  },
+  {
+    "id": "mehr",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adverb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-number"
+    },
+    "frequencyRank": 579,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich möchte mehr Deutsch sprechen.",
+      "en": "I want to speak more German."
+    },
+    "word": "mehr",
+    "translation": "more"
+  },
+  {
+    "id": "wenig",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adverb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-number"
+    },
+    "frequencyRank": 580,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich habe nur wenig Geld.",
+      "en": "I only have a little money."
+    },
+    "word": "wenig",
+    "translation": "little, few"
+  },
+  {
+    "id": "alles",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "pronoun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-number"
+    },
+    "frequencyRank": 581,
+    "source": "frequency-list",
+    "example": {
+      "de": "Alles ist gut.",
+      "en": "Everything is fine."
+    },
+    "word": "alles",
+    "translation": "everything"
+  },
+  {
+    "id": "viele",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "pronoun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-number"
+    },
+    "frequencyRank": 582,
+    "source": "frequency-list",
+    "example": {
+      "de": "Viele Leute sprechen Englisch.",
+      "en": "Many people speak English."
+    },
+    "word": "viele",
+    "translation": "many"
+  },
+  {
+    "id": "beide",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "pronoun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-number"
+    },
+    "frequencyRank": 583,
+    "source": "frequency-list",
+    "example": {
+      "de": "Beide Kinder gehen zur Schule.",
+      "en": "Both children go to school."
+    },
+    "word": "beide",
+    "translation": "both"
+  },
+  {
+    "id": "einige",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "pronoun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-number"
+    },
+    "frequencyRank": 584,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich habe einige Fragen.",
+      "en": "I have a few questions."
+    },
+    "word": "einige",
+    "translation": "some, a few"
+  },
+  {
+    "id": "selbst",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "pronoun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-person"
+    },
+    "frequencyRank": 585,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das mache ich selbst.",
+      "en": "I'll do that myself."
+    },
+    "word": "selbst",
+    "translation": "oneself, myself"
+  },
+  {
+    "id": "sich",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "pronoun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-person"
+    },
+    "frequencyRank": 586,
+    "source": "frequency-list",
+    "example": {
+      "de": "Er freut sich auf das Wochenende.",
+      "en": "He's looking forward to the weekend."
+    },
+    "word": "sich",
+    "translation": "oneself, himself, herself"
+  },
+  {
+    "id": "heissen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-communication"
+    },
+    "frequencyRank": 587,
+    "source": "frequency-list",
+    "example": {
+      "de": "Wie heißt du?",
+      "en": "What's your name?"
+    },
+    "word": "heißen",
+    "translation": "to be called"
+  },
+  {
+    "id": "moechten",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-emotion"
+    },
+    "frequencyRank": 588,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich möchte ein Glas Wasser.",
+      "en": "I'd like a glass of water."
+    },
+    "word": "möchten",
+    "translation": "would like"
+  },
+  {
+    "id": "lassen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-action"
+    },
+    "frequencyRank": 589,
+    "source": "frequency-list",
+    "example": {
+      "de": "Lass mich bitte in Ruhe!",
+      "en": "Please leave me alone!"
+    },
+    "word": "lassen",
+    "translation": "to let, to leave"
+  },
+  {
+    "id": "tun",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-action"
+    },
+    "frequencyRank": 590,
+    "source": "frequency-list",
+    "example": {
+      "de": "Was kann ich für dich tun?",
+      "en": "What can I do for you?"
+    },
+    "word": "tun",
+    "translation": "to do"
+  },
+  {
+    "id": "schauen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-action"
+    },
+    "frequencyRank": 591,
+    "source": "frequency-list",
+    "example": {
+      "de": "Schau mal, da ist ein Vogel!",
+      "en": "Look, there's a bird!"
+    },
+    "word": "schauen",
+    "translation": "to look, to watch"
+  },
+  {
+    "id": "kennenlernen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-person"
+    },
+    "frequencyRank": 592,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich möchte deine Familie kennenlernen.",
+      "en": "I'd like to meet your family."
+    },
+    "word": "kennenlernen",
+    "translation": "to get to know"
+  },
+  {
+    "id": "erleben",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-emotion"
+    },
+    "frequencyRank": 593,
+    "source": "frequency-list",
+    "example": {
+      "de": "Im Urlaub haben wir viel erlebt.",
+      "en": "We experienced a lot on holiday."
+    },
+    "word": "erleben",
+    "translation": "to experience"
+  },
+  {
+    "id": "geniessen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-emotion"
+    },
+    "frequencyRank": 594,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich genieße die Sonne.",
+      "en": "I'm enjoying the sun."
+    },
+    "word": "genießen",
+    "translation": "to enjoy"
+  },
+  {
+    "id": "entspannen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-emotion"
+    },
+    "frequencyRank": 595,
+    "source": "frequency-list",
+    "example": {
+      "de": "Am Wochenende will ich nur entspannen.",
+      "en": "At the weekend I just want to relax."
+    },
+    "word": "entspannen",
+    "translation": "to relax"
+  },
+  {
+    "id": "erkennen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-action"
+    },
+    "frequencyRank": 596,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich habe dich nicht erkannt!",
+      "en": "I didn't recognise you!"
+    },
+    "word": "erkennen",
+    "translation": "to recognise"
+  },
+  {
+    "id": "merken",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-action"
+    },
+    "frequencyRank": 597,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich kann mir die Wörter nicht merken.",
+      "en": "I can't remember the words."
+    },
+    "word": "merken",
+    "translation": "to notice, to remember"
+  },
+  {
+    "id": "verpassen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-travel"
+    },
+    "frequencyRank": 598,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich habe den Bus verpasst.",
+      "en": "I missed the bus."
+    },
+    "word": "verpassen",
+    "translation": "to miss"
+  },
+  {
+    "id": "erreichen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-travel"
+    },
+    "frequencyRank": 599,
+    "source": "frequency-list",
+    "example": {
+      "de": "Wir erreichen Berlin um zwölf Uhr.",
+      "en": "We reach Berlin at twelve o'clock."
+    },
+    "word": "erreichen",
+    "translation": "to reach"
+  },
+  {
+    "id": "funktionieren",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-object"
+    },
+    "frequencyRank": 600,
+    "source": "frequency-list",
+    "example": {
+      "de": "Der Drucker funktioniert nicht.",
+      "en": "The printer isn't working."
+    },
+    "word": "funktionieren",
+    "translation": "to work, to function"
+  },
+  {
+    "id": "dauern",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-time"
+    },
+    "frequencyRank": 601,
+    "source": "frequency-list",
+    "example": {
+      "de": "Wie lange dauert der Film?",
+      "en": "How long is the film?"
+    },
+    "word": "dauern",
+    "translation": "to last, to take (time)"
+  },
+  {
+    "id": "stimmen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-quality"
+    },
+    "frequencyRank": 602,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das stimmt nicht.",
+      "en": "That's not right."
+    },
+    "word": "stimmen",
+    "translation": "to be right"
+  },
+  {
+    "id": "schaffen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-work"
+    },
+    "frequencyRank": 603,
+    "source": "frequency-list",
+    "example": {
+      "de": "Du schaffst das!",
+      "en": "You can do it!"
+    },
+    "word": "schaffen",
+    "translation": "to manage, to make it"
+  },
+  {
+    "id": "stoeren",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-action"
+    },
+    "frequencyRank": 604,
+    "source": "frequency-list",
+    "example": {
+      "de": "Entschuldigung, störe ich?",
+      "en": "Sorry, am I disturbing you?"
+    },
+    "word": "stören",
+    "translation": "to disturb"
+  },
+  {
+    "id": "klingeln",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-home"
+    },
+    "frequencyRank": 605,
+    "source": "frequency-list",
+    "example": {
+      "de": "Es klingelt an der Tür.",
+      "en": "Someone is ringing the doorbell."
+    },
+    "word": "klingeln",
+    "translation": "to ring"
+  },
+  {
+    "id": "drucken",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-work"
+    },
+    "frequencyRank": 606,
+    "source": "frequency-list",
+    "example": {
+      "de": "Kannst du das Ticket drucken?",
+      "en": "Can you print the ticket?"
+    },
+    "word": "drucken",
+    "translation": "to print"
+  },
+  {
+    "id": "teilen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-action"
+    },
+    "frequencyRank": 607,
+    "source": "frequency-list",
+    "example": {
+      "de": "Wir teilen uns eine Pizza.",
+      "en": "We're sharing a pizza."
+    },
+    "word": "teilen",
+    "translation": "to share"
+  },
+  {
+    "id": "folgen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-action"
+    },
+    "frequencyRank": 608,
+    "source": "frequency-list",
+    "example": {
+      "de": "Folgen Sie mir bitte!",
+      "en": "Please follow me!"
+    },
+    "word": "folgen",
+    "translation": "to follow"
+  },
+  {
+    "id": "anbieten",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-food"
+    },
+    "frequencyRank": 609,
+    "source": "frequency-list",
+    "example": {
+      "de": "Darf ich Ihnen etwas zu trinken anbieten?",
+      "en": "May I offer you something to drink?"
+    },
+    "word": "anbieten",
+    "translation": "to offer"
+  },
+  {
+    "id": "empfehlen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-communication"
+    },
+    "frequencyRank": 610,
+    "source": "frequency-list",
+    "example": {
+      "de": "Kannst du mir ein Restaurant empfehlen?",
+      "en": "Can you recommend a restaurant to me?"
+    },
+    "word": "empfehlen",
+    "translation": "to recommend"
+  },
+  {
+    "id": "bedeuten",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-communication"
+    },
+    "frequencyRank": 611,
+    "source": "frequency-list",
+    "example": {
+      "de": "Was bedeutet das auf Englisch?",
+      "en": "What does that mean in English?"
+    },
+    "word": "bedeuten",
+    "translation": "to mean"
+  },
+  {
+    "id": "parken",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-travel"
+    },
+    "frequencyRank": 612,
+    "source": "frequency-list",
+    "example": {
+      "de": "Hier darf man nicht parken.",
+      "en": "You're not allowed to park here."
+    },
+    "word": "parken",
+    "translation": "to park"
+  },
+  {
+    "id": "landen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-travel"
+    },
+    "frequencyRank": 613,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das Flugzeug landet um acht Uhr.",
+      "en": "The plane lands at eight o'clock."
+    },
+    "word": "landen",
+    "translation": "to land"
+  },
+  {
+    "id": "abbiegen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-travel"
+    },
+    "frequencyRank": 614,
+    "source": "frequency-list",
+    "example": {
+      "de": "An der Ampel biegen Sie rechts ab.",
+      "en": "At the traffic lights, turn right."
+    },
+    "word": "abbiegen",
+    "translation": "to turn (off)"
+  },
+  {
+    "id": "umsteigen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-travel"
+    },
+    "frequencyRank": 615,
+    "source": "frequency-list",
+    "example": {
+      "de": "In Frankfurt müssen wir umsteigen.",
+      "en": "We have to change trains in Frankfurt."
+    },
+    "word": "umsteigen",
+    "translation": "to change (trains)"
+  },
+  {
+    "id": "traeumen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-emotion"
+    },
+    "frequencyRank": 616,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich träume von einem Haus am Meer.",
+      "en": "I dream of a house by the sea."
+    },
+    "word": "träumen",
+    "translation": "to dream"
+  },
+  {
+    "id": "backen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-food"
+    },
+    "frequencyRank": 617,
+    "source": "frequency-list",
+    "example": {
+      "de": "Am Sonntag backe ich einen Kuchen.",
+      "en": "On Sunday I'm baking a cake."
+    },
+    "word": "backen",
+    "translation": "to bake"
+  },
+  {
+    "id": "braten",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-food"
+    },
+    "frequencyRank": 618,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich brate die Kartoffeln in der Pfanne.",
+      "en": "I fry the potatoes in the pan."
+    },
+    "word": "braten",
+    "translation": "to fry"
+  },
+  {
+    "id": "schneiden",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-food"
+    },
+    "frequencyRank": 619,
+    "source": "frequency-list",
+    "example": {
+      "de": "Kannst du das Brot schneiden?",
+      "en": "Can you cut the bread?"
+    },
+    "word": "schneiden",
+    "translation": "to cut"
+  },
+  {
+    "id": "frieren",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-weather"
+    },
+    "frequencyRank": 620,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich friere, mach bitte das Fenster zu.",
+      "en": "I'm cold, please close the window."
+    },
+    "word": "frieren",
+    "translation": "to be cold, to freeze"
+  },
+  {
+    "id": "husten",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-body"
+    },
+    "frequencyRank": 621,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das Kind hustet die ganze Nacht.",
+      "en": "The child coughs all night."
+    },
+    "word": "husten",
+    "translation": "to cough"
+  },
+  {
+    "id": "wehtun",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-body"
+    },
+    "frequencyRank": 622,
+    "source": "frequency-list",
+    "example": {
+      "de": "Mein Kopf tut weh.",
+      "en": "My head hurts."
+    },
+    "word": "wehtun",
+    "translation": "to hurt"
+  },
+  {
+    "id": "mitnehmen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-travel"
+    },
+    "frequencyRank": 623,
+    "source": "frequency-list",
+    "example": {
+      "de": "Nimm eine Jacke mit!",
+      "en": "Take a jacket with you!"
+    },
+    "word": "mitnehmen",
+    "translation": "to take along"
+  },
+  {
+    "id": "zurueckgeben",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-object"
+    },
+    "frequencyRank": 624,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich gebe dir das Buch morgen zurück.",
+      "en": "I'll give you the book back tomorrow."
+    },
+    "word": "zurückgeben",
+    "translation": "to give back"
+  },
+  {
+    "id": "vorbeikommen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-travel"
+    },
+    "frequencyRank": 625,
+    "source": "frequency-list",
+    "example": {
+      "de": "Komm doch morgen mal vorbei!",
+      "en": "Why don't you drop by tomorrow!"
+    },
+    "word": "vorbeikommen",
+    "translation": "to drop by"
+  },
+  {
+    "id": "aufschreiben",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-communication"
+    },
+    "frequencyRank": 626,
+    "source": "frequency-list",
+    "example": {
+      "de": "Schreib dir die Adresse auf.",
+      "en": "Write down the address."
+    },
+    "word": "aufschreiben",
+    "translation": "to write down"
+  },
+  {
+    "id": "waehlen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-action"
+    },
+    "frequencyRank": 627,
+    "source": "frequency-list",
+    "example": {
+      "de": "Wählen Sie bitte eine Farbe.",
+      "en": "Please choose a colour."
+    },
+    "word": "wählen",
+    "translation": "to choose, to dial"
+  },
+  {
+    "id": "kontrollieren",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-work"
+    },
+    "frequencyRank": 628,
+    "source": "frequency-list",
+    "example": {
+      "de": "Der Schaffner kontrolliert die Fahrkarten.",
+      "en": "The conductor checks the tickets."
+    },
+    "word": "kontrollieren",
+    "translation": "to check"
+  },
+  {
+    "id": "sich-beeilen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-time"
+    },
+    "frequencyRank": 629,
+    "source": "frequency-list",
+    "example": {
+      "de": "Beeil dich, der Zug fährt gleich!",
+      "en": "Hurry up, the train is leaving soon!"
+    },
+    "word": "sich beeilen",
+    "translation": "to hurry"
+  },
+  {
+    "id": "sich-ausruhen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-emotion"
+    },
+    "frequencyRank": 630,
+    "source": "frequency-list",
+    "example": {
+      "de": "Nach der Arbeit ruhe ich mich aus.",
+      "en": "After work I have a rest."
+    },
+    "word": "sich ausruhen",
+    "translation": "to rest"
+  },
+  {
+    "id": "sich-entschuldigen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-communication"
+    },
+    "frequencyRank": 631,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich möchte mich entschuldigen.",
+      "en": "I'd like to apologise."
+    },
+    "word": "sich entschuldigen",
+    "translation": "to apologise"
+  },
+  {
+    "id": "sich-interessieren",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-emotion"
+    },
+    "frequencyRank": 632,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich interessiere mich für Musik.",
+      "en": "I'm interested in music."
+    },
+    "word": "sich interessieren",
+    "translation": "to be interested"
+  },
+  {
+    "id": "sich-kuemmern",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-family"
+    },
+    "frequencyRank": 633,
+    "source": "frequency-list",
+    "example": {
+      "de": "Sie kümmert sich um ihre Oma.",
+      "en": "She takes care of her grandma."
+    },
+    "word": "sich kümmern",
+    "translation": "to take care of"
+  },
+  {
+    "id": "sich-aergern",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-emotion"
+    },
+    "frequencyRank": 634,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ärger dich nicht!",
+      "en": "Don't be annoyed!"
+    },
+    "word": "sich ärgern",
+    "translation": "to be annoyed"
+  },
+  {
+    "id": "sich-langweilen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-emotion"
+    },
+    "frequencyRank": 635,
+    "source": "frequency-list",
+    "example": {
+      "de": "Die Kinder langweilen sich.",
+      "en": "The children are bored."
+    },
+    "word": "sich langweilen",
+    "translation": "to be bored"
+  },
+  {
+    "id": "sich-unterhalten",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-communication"
+    },
+    "frequencyRank": 636,
+    "source": "frequency-list",
+    "example": {
+      "de": "Wir unterhalten uns auf Deutsch.",
+      "en": "We're chatting in German."
+    },
+    "word": "sich unterhalten",
+    "translation": "to chat, to talk"
+  },
+  {
+    "id": "sich-verlieben",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-emotion"
+    },
+    "frequencyRank": 637,
+    "source": "frequency-list",
+    "example": {
+      "de": "Sie hat sich in Berlin verliebt.",
+      "en": "She fell in love in Berlin."
+    },
+    "word": "sich verlieben",
+    "translation": "to fall in love"
+  },
+  {
+    "id": "beruehmt",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-quality"
+    },
+    "frequencyRank": 638,
+    "source": "frequency-list",
+    "example": {
+      "de": "Die Sängerin ist sehr berühmt.",
+      "en": "The singer is very famous."
+    },
+    "word": "berühmt",
+    "translation": "famous"
+  },
+  {
+    "id": "beliebt",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-quality"
+    },
+    "frequencyRank": 639,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das Café ist bei Studenten beliebt.",
+      "en": "The café is popular with students."
+    },
+    "word": "beliebt",
+    "translation": "popular"
+  },
+  {
+    "id": "bequem",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-quality"
+    },
+    "frequencyRank": 640,
+    "source": "frequency-list",
+    "example": {
+      "de": "Die Schuhe sind sehr bequem.",
+      "en": "The shoes are very comfortable."
+    },
+    "word": "bequem",
+    "translation": "comfortable"
+  },
+  {
+    "id": "gemuetlich",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-home"
+    },
+    "frequencyRank": 641,
+    "source": "frequency-list",
+    "example": {
+      "de": "Deine Wohnung ist sehr gemütlich.",
+      "en": "Your flat is very cosy."
+    },
+    "word": "gemütlich",
+    "translation": "cosy"
+  },
+  {
+    "id": "ruhig",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-quality"
+    },
+    "frequencyRank": 642,
+    "source": "frequency-list",
+    "example": {
+      "de": "Die Straße ist sehr ruhig.",
+      "en": "The street is very quiet."
+    },
+    "word": "ruhig",
+    "translation": "quiet, calm"
+  },
+  {
+    "id": "ordentlich",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-quality"
+    },
+    "frequencyRank": 643,
+    "source": "frequency-list",
+    "example": {
+      "de": "Sein Zimmer ist immer ordentlich.",
+      "en": "His room is always tidy."
+    },
+    "word": "ordentlich",
+    "translation": "tidy"
+  },
+  {
+    "id": "puenktlich",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-time"
+    },
+    "frequencyRank": 644,
+    "source": "frequency-list",
+    "example": {
+      "de": "Der Zug ist heute pünktlich.",
+      "en": "The train is on time today."
+    },
+    "word": "pünktlich",
+    "translation": "punctual, on time"
+  },
+  {
+    "id": "ehrlich",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-quality"
+    },
+    "frequencyRank": 645,
+    "source": "frequency-list",
+    "example": {
+      "de": "Sei bitte ehrlich zu mir.",
+      "en": "Please be honest with me."
+    },
+    "word": "ehrlich",
+    "translation": "honest"
+  },
+  {
+    "id": "hoeflich",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-quality"
+    },
+    "frequencyRank": 646,
+    "source": "frequency-list",
+    "example": {
+      "de": "Der Kellner ist sehr höflich.",
+      "en": "The waiter is very polite."
+    },
+    "word": "höflich",
+    "translation": "polite"
+  },
+  {
+    "id": "fleissig",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-work"
+    },
+    "frequencyRank": 647,
+    "source": "frequency-list",
+    "example": {
+      "de": "Sie ist eine fleißige Schülerin.",
+      "en": "She's a hard-working pupil."
+    },
+    "word": "fleißig",
+    "translation": "hard-working"
+  },
+  {
+    "id": "faul",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-quality"
+    },
+    "frequencyRank": 648,
+    "source": "frequency-list",
+    "example": {
+      "de": "Heute bin ich ein bisschen faul.",
+      "en": "I'm a bit lazy today."
+    },
+    "word": "faul",
+    "translation": "lazy"
+  },
+  {
+    "id": "lustig",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-emotion"
+    },
+    "frequencyRank": 649,
+    "source": "frequency-list",
+    "example": {
+      "de": "Der Film war sehr lustig.",
+      "en": "The film was very funny."
+    },
+    "word": "lustig",
+    "translation": "funny"
+  },
+  {
+    "id": "ernst",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-emotion"
+    },
+    "frequencyRank": 650,
+    "source": "frequency-list",
+    "example": {
+      "de": "Warum bist du so ernst?",
+      "en": "Why are you so serious?"
+    },
+    "word": "ernst",
+    "translation": "serious"
+  },
+  {
+    "id": "klug",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-quality"
+    },
+    "frequencyRank": 651,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das Mädchen ist sehr klug.",
+      "en": "The girl is very clever."
+    },
+    "word": "klug",
+    "translation": "clever"
+  },
+  {
+    "id": "dumm",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-quality"
+    },
+    "frequencyRank": 652,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das war eine dumme Idee.",
+      "en": "That was a stupid idea."
+    },
+    "word": "dumm",
+    "translation": "stupid"
+  },
+  {
+    "id": "stolz",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-emotion"
+    },
+    "frequencyRank": 653,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich bin stolz auf dich.",
+      "en": "I'm proud of you."
+    },
+    "word": "stolz",
+    "translation": "proud"
+  },
+  {
+    "id": "sicher",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-quality"
+    },
+    "frequencyRank": 654,
+    "source": "frequency-list",
+    "example": {
+      "de": "Bist du sicher?",
+      "en": "Are you sure?"
+    },
+    "word": "sicher",
+    "translation": "safe, sure"
+  },
+  {
+    "id": "gefaehrlich",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-quality"
+    },
+    "frequencyRank": 655,
+    "source": "frequency-list",
+    "example": {
+      "de": "Die Straße ist nachts gefährlich.",
+      "en": "The street is dangerous at night."
+    },
+    "word": "gefährlich",
+    "translation": "dangerous"
+  },
+  {
+    "id": "wunderbar",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-emotion"
+    },
+    "frequencyRank": 656,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das Wetter ist wunderbar.",
+      "en": "The weather is wonderful."
+    },
+    "word": "wunderbar",
+    "translation": "wonderful"
+  },
+  {
+    "id": "toll",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-emotion"
+    },
+    "frequencyRank": 657,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das ist eine tolle Idee!",
+      "en": "That's a great idea!"
+    },
+    "word": "toll",
+    "translation": "great"
+  },
+  {
+    "id": "schrecklich",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-emotion"
+    },
+    "frequencyRank": 658,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das Essen war schrecklich.",
+      "en": "The food was terrible."
+    },
+    "word": "schrecklich",
+    "translation": "terrible"
+  },
+  {
+    "id": "moeglich",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-quality"
+    },
+    "frequencyRank": 659,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ist das möglich?",
+      "en": "Is that possible?"
+    },
+    "word": "möglich",
+    "translation": "possible"
+  },
+  {
+    "id": "praktisch",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-quality"
+    },
+    "frequencyRank": 660,
+    "source": "frequency-list",
+    "example": {
+      "de": "Die Tasche ist sehr praktisch.",
+      "en": "The bag is very practical."
+    },
+    "word": "praktisch",
+    "translation": "practical"
+  },
+  {
+    "id": "modern",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-quality"
+    },
+    "frequencyRank": 661,
+    "source": "frequency-list",
+    "example": {
+      "de": "Die Küche ist ganz modern.",
+      "en": "The kitchen is really modern."
+    },
+    "word": "modern",
+    "translation": "modern"
+  },
+  {
+    "id": "bekannt",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-quality"
+    },
+    "frequencyRank": 662,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das Restaurant ist sehr bekannt.",
+      "en": "The restaurant is very well known."
+    },
+    "word": "bekannt",
+    "translation": "well known"
+  },
+  {
+    "id": "fremd",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-quality"
+    },
+    "frequencyRank": 663,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich bin fremd hier.",
+      "en": "I'm not from around here."
+    },
+    "word": "fremd",
+    "translation": "foreign, strange"
+  },
+  {
+    "id": "besonders",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adverb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-quality"
+    },
+    "frequencyRank": 664,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das Essen war besonders gut.",
+      "en": "The food was especially good."
+    },
+    "word": "besonders",
+    "translation": "especially"
+  },
+  {
+    "id": "normal",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-quality"
+    },
+    "frequencyRank": 665,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das ist ganz normal.",
+      "en": "That's completely normal."
+    },
+    "word": "normal",
+    "translation": "normal"
+  },
+  {
+    "id": "typisch",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-quality"
+    },
+    "frequencyRank": 666,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das ist typisch deutsch!",
+      "en": "That's typically German!"
+    },
+    "word": "typisch",
+    "translation": "typical"
+  },
+  {
+    "id": "aehnlich",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-quality"
+    },
+    "frequencyRank": 667,
+    "source": "frequency-list",
+    "example": {
+      "de": "Die Schwestern sind sich sehr ähnlich.",
+      "en": "The sisters are very similar."
+    },
+    "word": "ähnlich",
+    "translation": "similar"
+  },
+  {
+    "id": "bereit",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-quality"
+    },
+    "frequencyRank": 668,
+    "source": "frequency-list",
+    "example": {
+      "de": "Bist du bereit?",
+      "en": "Are you ready?"
+    },
+    "word": "bereit",
+    "translation": "ready"
+  },
+  {
+    "id": "geoeffnet",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-place"
+    },
+    "frequencyRank": 669,
+    "source": "frequency-list",
+    "example": {
+      "de": "Die Apotheke ist bis acht Uhr geöffnet.",
+      "en": "The pharmacy is open until eight o'clock."
+    },
+    "word": "geöffnet",
+    "translation": "open"
+  },
+  {
+    "id": "geschlossen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-place"
+    },
+    "frequencyRank": 670,
+    "source": "frequency-list",
+    "example": {
+      "de": "Am Sonntag ist das Geschäft geschlossen.",
+      "en": "The shop is closed on Sunday."
+    },
+    "word": "geschlossen",
+    "translation": "closed"
+  },
+  {
+    "id": "besetzt",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-place"
+    },
+    "frequencyRank": 671,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ist der Platz hier besetzt?",
+      "en": "Is this seat taken?"
+    },
+    "word": "besetzt",
+    "translation": "occupied, taken"
+  },
+  {
+    "id": "kostenlos",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-money"
+    },
+    "frequencyRank": 672,
+    "source": "frequency-list",
+    "example": {
+      "de": "Der Eintritt ist kostenlos.",
+      "en": "Entry is free."
+    },
+    "word": "kostenlos",
+    "translation": "free (of charge)"
+  },
+  {
+    "id": "satt",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-food"
+    },
+    "frequencyRank": 673,
+    "source": "frequency-list",
+    "example": {
+      "de": "Danke, ich bin satt.",
+      "en": "Thanks, I'm full."
+    },
+    "word": "satt",
+    "translation": "full (after eating)"
+  },
+  {
+    "id": "weich",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-quality"
+    },
+    "frequencyRank": 674,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das Bett ist schön weich.",
+      "en": "The bed is nice and soft."
+    },
+    "word": "weich",
+    "translation": "soft"
+  },
+  {
+    "id": "hart",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-quality"
+    },
+    "frequencyRank": 675,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das Brot ist zu hart.",
+      "en": "The bread is too hard."
+    },
+    "word": "hart",
+    "translation": "hard"
+  },
+  {
+    "id": "rund",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-quality"
+    },
+    "frequencyRank": 676,
+    "source": "frequency-list",
+    "example": {
+      "de": "Der Tisch ist rund.",
+      "en": "The table is round."
+    },
+    "word": "rund",
+    "translation": "round"
+  },
+  {
+    "id": "tief",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-quality"
+    },
+    "frequencyRank": 677,
+    "source": "frequency-list",
+    "example": {
+      "de": "Der See ist sehr tief.",
+      "en": "The lake is very deep."
+    },
+    "word": "tief",
+    "translation": "deep"
+  },
+  {
+    "id": "eng",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-clothing"
+    },
+    "frequencyRank": 678,
+    "source": "frequency-list",
+    "example": {
+      "de": "Die Jeans ist mir zu eng.",
+      "en": "The jeans are too tight for me."
+    },
+    "word": "eng",
+    "translation": "tight, narrow"
+  },
+  {
+    "id": "weit",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-place"
+    },
+    "frequencyRank": 679,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ist es weit bis zum Bahnhof?",
+      "en": "Is it far to the station?"
+    },
+    "word": "weit",
+    "translation": "far, wide"
+  },
+  {
+    "id": "nah",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-place"
+    },
+    "frequencyRank": 680,
+    "source": "frequency-list",
+    "example": {
+      "de": "Der Supermarkt ist ganz nah.",
+      "en": "The supermarket is really close."
+    },
+    "word": "nah",
+    "translation": "near"
+  },
+  {
+    "id": "bunt",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-color"
+    },
+    "frequencyRank": 681,
+    "source": "frequency-list",
+    "example": {
+      "de": "Sie trägt ein buntes Kleid.",
+      "en": "She's wearing a colourful dress."
+    },
+    "word": "bunt",
+    "translation": "colourful"
+  },
+  {
+    "id": "lila",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-color"
+    },
+    "frequencyRank": 682,
+    "source": "frequency-list",
+    "example": {
+      "de": "Meine Lieblingsfarbe ist Lila.",
+      "en": "My favourite colour is purple."
+    },
+    "word": "lila",
+    "translation": "purple"
+  },
+  {
+    "id": "blond",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-body"
+    },
+    "frequencyRank": 683,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ihr Bruder hat blonde Haare.",
+      "en": "Her brother has blond hair."
+    },
+    "word": "blond",
+    "translation": "blond"
+  },
+  {
+    "id": "huebsch",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-quality"
+    },
+    "frequencyRank": 684,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das ist ein hübsches Kleid.",
+      "en": "That's a pretty dress."
+    },
+    "word": "hübsch",
+    "translation": "pretty"
+  },
+  {
+    "id": "schlank",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-body"
+    },
+    "frequencyRank": 685,
+    "source": "frequency-list",
+    "example": {
+      "de": "Er ist groß und schlank.",
+      "en": "He's tall and slim."
+    },
+    "word": "schlank",
+    "translation": "slim"
+  },
+  {
+    "id": "kuehl",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-weather"
+    },
+    "frequencyRank": 686,
+    "source": "frequency-list",
+    "example": {
+      "de": "Am Abend wird es kühl.",
+      "en": "It gets cool in the evening."
+    },
+    "word": "kühl",
+    "translation": "cool"
+  },
+  {
+    "id": "froh",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-emotion"
+    },
+    "frequencyRank": 687,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich bin froh, dass du hier bist.",
+      "en": "I'm glad you're here."
+    },
+    "word": "froh",
+    "translation": "glad"
+  },
+  {
+    "id": "enttaeuscht",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-emotion"
+    },
+    "frequencyRank": 688,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich bin ein bisschen enttäuscht.",
+      "en": "I'm a little disappointed."
+    },
+    "word": "enttäuscht",
+    "translation": "disappointed"
+  },
+  {
+    "id": "aufgeregt",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-emotion"
+    },
+    "frequencyRank": 689,
+    "source": "frequency-list",
+    "example": {
+      "de": "Vor der Prüfung bin ich sehr aufgeregt.",
+      "en": "I'm very nervous before the exam."
+    },
+    "word": "aufgeregt",
+    "translation": "excited, nervous"
+  },
+  {
+    "id": "verliebt",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-emotion"
+    },
+    "frequencyRank": 690,
+    "source": "frequency-list",
+    "example": {
+      "de": "Sie sind sehr verliebt.",
+      "en": "They're very much in love."
+    },
+    "word": "verliebt",
+    "translation": "in love"
+  },
+  {
+    "id": "einsam",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-emotion"
+    },
+    "frequencyRank": 691,
+    "source": "frequency-list",
+    "example": {
+      "de": "Am Anfang war ich oft einsam.",
+      "en": "At the beginning I was often lonely."
+    },
+    "word": "einsam",
+    "translation": "lonely"
+  },
+  {
+    "id": "geschieden",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-family"
+    },
+    "frequencyRank": 692,
+    "source": "frequency-list",
+    "example": {
+      "de": "Meine Eltern sind geschieden.",
+      "en": "My parents are divorced."
+    },
+    "word": "geschieden",
+    "translation": "divorced"
+  },
+  {
+    "id": "arbeitslos",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-work"
+    },
+    "frequencyRank": 693,
+    "source": "frequency-list",
+    "example": {
+      "de": "Er ist seit einem Monat arbeitslos.",
+      "en": "He's been unemployed for a month."
+    },
+    "word": "arbeitslos",
+    "translation": "unemployed"
+  },
+  {
+    "id": "genau",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adverb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-quality"
+    },
+    "frequencyRank": 694,
+    "source": "frequency-list",
+    "example": {
+      "de": "Genau, das meine ich!",
+      "en": "Exactly, that's what I mean!"
+    },
+    "word": "genau",
+    "translation": "exactly"
+  },
+  {
+    "id": "klar",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-quality"
+    },
+    "frequencyRank": 695,
+    "source": "frequency-list",
+    "example": {
+      "de": "Alles klar, bis morgen!",
+      "en": "All right, see you tomorrow!"
+    },
+    "word": "klar",
+    "translation": "clear"
+  },
+  {
+    "id": "offen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-quality"
+    },
+    "frequencyRank": 696,
+    "source": "frequency-list",
+    "example": {
+      "de": "Die Tür ist offen.",
+      "en": "The door is open."
+    },
+    "word": "offen",
+    "translation": "open"
+  },
+  {
+    "id": "sympathisch",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-emotion"
+    },
+    "frequencyRank": 697,
+    "source": "frequency-list",
+    "example": {
+      "de": "Dein Freund ist sehr sympathisch.",
+      "en": "Your friend is very likeable."
+    },
+    "word": "sympathisch",
+    "translation": "likeable, nice"
+  },
+  {
+    "id": "sportlich",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-body"
+    },
+    "frequencyRank": 698,
+    "source": "frequency-list",
+    "example": {
+      "de": "Meine Schwester ist sehr sportlich.",
+      "en": "My sister is very sporty."
+    },
+    "word": "sportlich",
+    "translation": "sporty"
+  },
+  {
+    "id": "vegetarisch",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-food"
+    },
+    "frequencyRank": 699,
+    "source": "frequency-list",
+    "example": {
+      "de": "Haben Sie auch vegetarisches Essen?",
+      "en": "Do you also have vegetarian food?"
+    },
+    "word": "vegetarisch",
+    "translation": "vegetarian"
+  },
+  {
+    "id": "spannend",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-emotion"
+    },
+    "frequencyRank": 700,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das Buch ist sehr spannend.",
+      "en": "The book is very exciting."
+    },
+    "word": "spannend",
+    "translation": "exciting"
+  },
+  {
+    "id": "schade",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "other",
+    "image": {
+      "kind": "icon",
+      "icon": "category-emotion"
+    },
+    "frequencyRank": 701,
+    "source": "frequency-list",
+    "example": {
+      "de": "Schade, dass du nicht kommen kannst.",
+      "en": "Too bad you can't come."
+    },
+    "word": "schade",
+    "translation": "a pity, too bad"
+  },
+  {
+    "id": "reich",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-money"
+    },
+    "frequencyRank": 702,
+    "source": "frequency-list",
+    "example": {
+      "de": "Er ist nicht reich, aber glücklich.",
+      "en": "He's not rich, but he's happy."
+    },
+    "word": "reich",
+    "translation": "rich"
+  },
+  {
+    "id": "halb",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-number"
+    },
+    "frequencyRank": 703,
+    "source": "frequency-list",
+    "example": {
+      "de": "Es ist halb neun.",
+      "en": "It's half past eight."
+    },
+    "word": "halb",
+    "translation": "half"
+  },
+  {
+    "id": "echt",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adjective",
+    "image": {
+      "kind": "icon",
+      "icon": "category-quality"
+    },
+    "frequencyRank": 704,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das ist echt lecker!",
+      "en": "That's really tasty!"
+    },
+    "word": "echt",
+    "translation": "real, really"
+  },
+  {
+    "id": "bestimmt",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adverb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-quality"
+    },
+    "frequencyRank": 705,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das klappt bestimmt.",
+      "en": "That will definitely work."
+    },
+    "word": "bestimmt",
+    "translation": "certainly, definitely"
+  },
+  {
+    "id": "wahrscheinlich",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adverb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-quality"
+    },
+    "frequencyRank": 706,
+    "source": "frequency-list",
+    "example": {
+      "de": "Morgen regnet es wahrscheinlich.",
+      "en": "It will probably rain tomorrow."
+    },
+    "word": "wahrscheinlich",
+    "translation": "probably"
+  },
+  {
+    "id": "eigentlich",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adverb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-quality"
+    },
+    "frequencyRank": 707,
+    "source": "frequency-list",
+    "example": {
+      "de": "Eigentlich habe ich keine Zeit.",
+      "en": "Actually I don't have time."
+    },
+    "word": "eigentlich",
+    "translation": "actually"
+  },
+  {
+    "id": "ziemlich",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adverb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-quality"
+    },
+    "frequencyRank": 708,
+    "source": "frequency-list",
+    "example": {
+      "de": "Es ist ziemlich kalt heute.",
+      "en": "It's quite cold today."
+    },
+    "word": "ziemlich",
+    "translation": "quite, rather"
+  },
+  {
+    "id": "gerade",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adverb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-time"
+    },
+    "frequencyRank": 709,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich esse gerade.",
+      "en": "I'm eating right now."
+    },
+    "word": "gerade",
+    "translation": "right now, just"
+  },
+  {
+    "id": "endlich",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adverb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-time"
+    },
+    "frequencyRank": 710,
+    "source": "frequency-list",
+    "example": {
+      "de": "Endlich ist Wochenende!",
+      "en": "Finally it's the weekend!"
+    },
+    "word": "endlich",
+    "translation": "finally"
+  },
+  {
+    "id": "ploetzlich",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adverb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-time"
+    },
+    "frequencyRank": 711,
+    "source": "frequency-list",
+    "example": {
+      "de": "Plötzlich hat es geregnet.",
+      "en": "Suddenly it rained."
+    },
+    "word": "plötzlich",
+    "translation": "suddenly"
+  },
+  {
+    "id": "zuletzt",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adverb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-time"
+    },
+    "frequencyRank": 712,
+    "source": "frequency-list",
+    "example": {
+      "de": "Zuletzt haben wir Kaffee getrunken.",
+      "en": "Lastly we had coffee."
+    },
+    "word": "zuletzt",
+    "translation": "last, lastly"
+  },
+  {
+    "id": "vorher",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adverb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-time"
+    },
+    "frequencyRank": 713,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ruf mich vorher an.",
+      "en": "Call me beforehand."
+    },
+    "word": "vorher",
+    "translation": "before(hand)"
+  },
+  {
+    "id": "nachher",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adverb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-time"
+    },
+    "frequencyRank": 714,
+    "source": "frequency-list",
+    "example": {
+      "de": "Wir sehen uns nachher.",
+      "en": "See you later."
+    },
+    "word": "nachher",
+    "translation": "afterwards, later"
+  },
+  {
+    "id": "uebermorgen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adverb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-time"
+    },
+    "frequencyRank": 715,
+    "source": "frequency-list",
+    "example": {
+      "de": "Übermorgen fliegen wir nach Spanien.",
+      "en": "The day after tomorrow we fly to Spain."
+    },
+    "word": "übermorgen",
+    "translation": "the day after tomorrow"
+  },
+  {
+    "id": "vorgestern",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adverb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-time"
+    },
+    "frequencyRank": 716,
+    "source": "frequency-list",
+    "example": {
+      "de": "Vorgestern war ich beim Arzt.",
+      "en": "The day before yesterday I was at the doctor's."
+    },
+    "word": "vorgestern",
+    "translation": "the day before yesterday"
+  },
+  {
+    "id": "morgens",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adverb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-time"
+    },
+    "frequencyRank": 717,
+    "source": "frequency-list",
+    "example": {
+      "de": "Morgens trinke ich immer Kaffee.",
+      "en": "In the mornings I always drink coffee."
+    },
+    "word": "morgens",
+    "translation": "in the morning(s)"
+  },
+  {
+    "id": "abends",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adverb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-time"
+    },
+    "frequencyRank": 718,
+    "source": "frequency-list",
+    "example": {
+      "de": "Abends lese ich gern.",
+      "en": "In the evenings I like reading."
+    },
+    "word": "abends",
+    "translation": "in the evening(s)"
+  },
+  {
+    "id": "nachts",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adverb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-time"
+    },
+    "frequencyRank": 719,
+    "source": "frequency-list",
+    "example": {
+      "de": "Nachts ist es hier sehr ruhig.",
+      "en": "At night it's very quiet here."
+    },
+    "word": "nachts",
+    "translation": "at night"
+  },
+  {
+    "id": "taeglich",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adverb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-time"
+    },
+    "frequencyRank": 720,
+    "source": "frequency-list",
+    "example": {
+      "de": "Der Bus fährt täglich.",
+      "en": "The bus runs daily."
+    },
+    "word": "täglich",
+    "translation": "daily"
+  },
+  {
+    "id": "damals",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adverb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-time"
+    },
+    "frequencyRank": 721,
+    "source": "frequency-list",
+    "example": {
+      "de": "Damals war ich noch ein Kind.",
+      "en": "Back then I was still a child."
+    },
+    "word": "damals",
+    "translation": "back then"
+  },
+  {
+    "id": "frueher",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adverb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-time"
+    },
+    "frequencyRank": 722,
+    "source": "frequency-list",
+    "example": {
+      "de": "Früher habe ich in Hamburg gewohnt.",
+      "en": "I used to live in Hamburg."
+    },
+    "word": "früher",
+    "translation": "earlier, in the past"
+  },
+  {
+    "id": "wieder",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adverb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-time"
+    },
+    "frequencyRank": 723,
+    "source": "frequency-list",
+    "example": {
+      "de": "Es regnet schon wieder.",
+      "en": "It's raining again."
+    },
+    "word": "wieder",
+    "translation": "again"
+  },
+  {
+    "id": "meistens",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adverb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-time"
+    },
+    "frequencyRank": 724,
+    "source": "frequency-list",
+    "example": {
+      "de": "Meistens fahre ich mit dem Rad.",
+      "en": "I usually go by bike."
+    },
+    "word": "meistens",
+    "translation": "mostly, usually"
+  },
+  {
+    "id": "normalerweise",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adverb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-time"
+    },
+    "frequencyRank": 725,
+    "source": "frequency-list",
+    "example": {
+      "de": "Normalerweise stehe ich um sieben auf.",
+      "en": "I normally get up at seven."
+    },
+    "word": "normalerweise",
+    "translation": "normally"
+  },
+  {
+    "id": "ungefaehr",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adverb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-number"
+    },
+    "frequencyRank": 726,
+    "source": "frequency-list",
+    "example": {
+      "de": "Die Fahrt dauert ungefähr eine Stunde.",
+      "en": "The journey takes about an hour."
+    },
+    "word": "ungefähr",
+    "translation": "about, approximately"
+  },
+  {
+    "id": "kaum",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adverb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-number"
+    },
+    "frequencyRank": 727,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich habe kaum geschlafen.",
+      "en": "I hardly slept."
+    },
+    "word": "kaum",
+    "translation": "hardly"
+  },
+  {
+    "id": "geradeaus",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adverb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-place"
+    },
+    "frequencyRank": 728,
+    "source": "frequency-list",
+    "example": {
+      "de": "Gehen Sie immer geradeaus.",
+      "en": "Keep going straight ahead."
+    },
+    "word": "geradeaus",
+    "translation": "straight ahead"
+  },
+  {
+    "id": "hinten",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adverb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-place"
+    },
+    "frequencyRank": 729,
+    "source": "frequency-list",
+    "example": {
+      "de": "Der Ausgang ist hinten links.",
+      "en": "The exit is at the back on the left."
+    },
+    "word": "hinten",
+    "translation": "at the back"
+  },
+  {
+    "id": "vorne",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adverb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-place"
+    },
+    "frequencyRank": 730,
+    "source": "frequency-list",
+    "example": {
+      "de": "Wir sitzen ganz vorne.",
+      "en": "We're sitting right at the front."
+    },
+    "word": "vorne",
+    "translation": "at the front"
+  },
+  {
+    "id": "ueberall",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adverb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-place"
+    },
+    "frequencyRank": 731,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich habe überall gesucht.",
+      "en": "I've looked everywhere."
+    },
+    "word": "überall",
+    "translation": "everywhere"
+  },
+  {
+    "id": "zurueck",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adverb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-place"
+    },
+    "frequencyRank": 732,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich bin gleich zurück.",
+      "en": "I'll be right back."
+    },
+    "word": "zurück",
+    "translation": "back"
+  },
+  {
+    "id": "trotzdem",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adverb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-quality"
+    },
+    "frequencyRank": 733,
+    "source": "frequency-list",
+    "example": {
+      "de": "Es regnet, aber wir gehen trotzdem.",
+      "en": "It's raining, but we're going anyway."
+    },
+    "word": "trotzdem",
+    "translation": "nevertheless, anyway"
+  },
+  {
+    "id": "ausserdem",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adverb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-quality"
+    },
+    "frequencyRank": 734,
+    "source": "frequency-list",
+    "example": {
+      "de": "Außerdem brauchen wir noch Milch.",
+      "en": "We need milk as well."
+    },
+    "word": "außerdem",
+    "translation": "besides, in addition"
+  },
+  {
+    "id": "sonst",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adverb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-quality"
+    },
+    "frequencyRank": 735,
+    "source": "frequency-list",
+    "example": {
+      "de": "Sonst noch etwas?",
+      "en": "Anything else?"
+    },
+    "word": "sonst",
+    "translation": "otherwise, else"
+  },
+  {
+    "id": "ob",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "conjunction",
+    "image": {
+      "kind": "icon",
+      "icon": "category-question"
+    },
+    "frequencyRank": 736,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich weiß nicht, ob er kommt.",
+      "en": "I don't know whether he's coming."
+    },
+    "word": "ob",
+    "translation": "whether, if"
+  },
+  {
+    "id": "falls",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "conjunction",
+    "image": {
+      "kind": "icon",
+      "icon": "category-question"
+    },
+    "frequencyRank": 737,
+    "source": "frequency-list",
+    "example": {
+      "de": "Falls es regnet, bleiben wir zu Hause.",
+      "en": "If it rains, we'll stay at home."
+    },
+    "word": "falls",
+    "translation": "in case, if"
+  },
+  {
+    "id": "entweder",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "conjunction",
+    "image": {
+      "kind": "icon",
+      "icon": "category-question"
+    },
+    "frequencyRank": 738,
+    "source": "frequency-list",
+    "example": {
+      "de": "Entweder Tee oder Kaffee?",
+      "en": "Either tea or coffee?"
+    },
+    "word": "entweder",
+    "translation": "either"
+  },
+  {
+    "id": "ab",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "preposition",
+    "image": {
+      "kind": "icon",
+      "icon": "category-time"
+    },
+    "frequencyRank": 739,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ab Montag arbeite ich wieder.",
+      "en": "I'm working again from Monday."
+    },
+    "word": "ab",
+    "translation": "from"
+  },
+  {
+    "id": "ausser",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "preposition",
+    "image": {
+      "kind": "icon",
+      "icon": "category-quality"
+    },
+    "frequencyRank": 740,
+    "source": "frequency-list",
+    "example": {
+      "de": "Alle kommen außer Tom.",
+      "en": "Everyone is coming except Tom."
+    },
+    "word": "außer",
+    "translation": "except"
+  },
+  {
+    "id": "gegenueber",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "preposition",
+    "image": {
+      "kind": "icon",
+      "icon": "category-place"
+    },
+    "frequencyRank": 741,
+    "source": "frequency-list",
+    "example": {
+      "de": "Die Bank ist gegenüber der Post.",
+      "en": "The bank is opposite the post office."
+    },
+    "word": "gegenüber",
+    "translation": "opposite"
+  },
+  {
+    "id": "pro",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "preposition",
+    "image": {
+      "kind": "icon",
+      "icon": "category-number"
+    },
+    "frequencyRank": 742,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das kostet zehn Euro pro Person.",
+      "en": "That costs ten euros per person."
+    },
+    "word": "pro",
+    "translation": "per"
+  },
+  {
+    "id": "wie-lange",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adverb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-question"
+    },
+    "frequencyRank": 743,
+    "source": "frequency-list",
+    "example": {
+      "de": "Wie lange lernst du schon Deutsch?",
+      "en": "How long have you been learning German?"
+    },
+    "word": "wie lange",
+    "translation": "how long"
+  },
+  {
+    "id": "wie-oft",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adverb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-question"
+    },
+    "frequencyRank": 744,
+    "source": "frequency-list",
+    "example": {
+      "de": "Wie oft gehst du ins Kino?",
+      "en": "How often do you go to the cinema?"
+    },
+    "word": "wie oft",
+    "translation": "how often"
+  },
+  {
+    "id": "wie-alt",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "adverb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-question"
+    },
+    "frequencyRank": 745,
+    "source": "frequency-list",
+    "example": {
+      "de": "Wie alt bist du?",
+      "en": "How old are you?"
+    },
+    "word": "wie alt",
+    "translation": "how old"
+  },
+  {
+    "id": "wen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "pronoun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-question"
+    },
+    "frequencyRank": 746,
+    "source": "frequency-list",
+    "example": {
+      "de": "Wen hast du gestern getroffen?",
+      "en": "Who did you meet yesterday?"
+    },
+    "word": "wen",
+    "translation": "whom (accusative)"
+  },
+  {
+    "id": "wem",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "pronoun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-question"
+    },
+    "frequencyRank": 747,
+    "source": "frequency-list",
+    "example": {
+      "de": "Wem schenkst du die Blumen?",
+      "en": "Who are you giving the flowers to?"
+    },
+    "word": "wem",
+    "translation": "whom (dative)"
+  },
+  {
+    "id": "entschuldigung",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "phrase",
+    "image": {
+      "kind": "icon",
+      "icon": "category-communication"
+    },
+    "frequencyRank": 748,
+    "source": "frequency-list",
+    "example": {
+      "de": "Entschuldigung, wie spät ist es?",
+      "en": "Excuse me, what time is it?"
+    },
+    "word": "Entschuldigung",
+    "translation": "excuse me, sorry"
+  },
+  {
+    "id": "herzlichen-glueckwunsch",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "phrase",
+    "image": {
+      "kind": "icon",
+      "icon": "category-communication"
+    },
+    "frequencyRank": 749,
+    "source": "frequency-list",
+    "example": {
+      "de": "Herzlichen Glückwunsch zum Geburtstag!",
+      "en": "Happy birthday!"
+    },
+    "word": "Herzlichen Glückwunsch",
+    "translation": "congratulations"
+  },
+  {
+    "id": "gute-besserung",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "phrase",
+    "image": {
+      "kind": "icon",
+      "icon": "category-communication"
+    },
+    "frequencyRank": 750,
+    "source": "frequency-list",
+    "example": {
+      "de": "Du bist krank? Gute Besserung!",
+      "en": "You're ill? Get well soon!"
+    },
+    "word": "Gute Besserung",
+    "translation": "get well soon"
+  },
+  {
+    "id": "viel-spass",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "phrase",
+    "image": {
+      "kind": "icon",
+      "icon": "category-communication"
+    },
+    "frequencyRank": 751,
+    "source": "frequency-list",
+    "example": {
+      "de": "Viel Spaß im Urlaub!",
+      "en": "Have fun on holiday!"
+    },
+    "word": "Viel Spaß",
+    "translation": "have fun"
+  },
+  {
+    "id": "keine-ahnung",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "phrase",
+    "image": {
+      "kind": "icon",
+      "icon": "category-communication"
+    },
+    "frequencyRank": 752,
+    "source": "frequency-list",
+    "example": {
+      "de": "Keine Ahnung, wo er ist.",
+      "en": "No idea where he is."
+    },
+    "word": "Keine Ahnung",
+    "translation": "no idea"
+  },
+  {
+    "id": "kein-problem",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "phrase",
+    "image": {
+      "kind": "icon",
+      "icon": "category-communication"
+    },
+    "frequencyRank": 753,
+    "source": "frequency-list",
+    "example": {
+      "de": "Kein Problem, das mache ich gern.",
+      "en": "No problem, I'm happy to do it."
+    },
+    "word": "Kein Problem",
+    "translation": "no problem"
+  },
+  {
+    "id": "bis-bald-wort",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "phrase",
+    "image": {
+      "kind": "icon",
+      "icon": "category-communication"
+    },
+    "frequencyRank": 754,
+    "source": "frequency-list",
+    "example": {
+      "de": "Tschüss und bis bald!",
+      "en": "Bye and see you soon!"
+    },
+    "word": "Bis bald",
+    "translation": "see you soon"
+  },
+  {
+    "id": "job",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-work"
+    },
+    "frequencyRank": 755,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich suche einen neuen Job.",
+      "en": "I'm looking for a new job."
+    },
+    "word": "Job",
+    "article": "der",
+    "translation": "job"
+  },
+  {
+    "id": "stelle",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-work"
+    },
+    "frequencyRank": 756,
+    "source": "frequency-list",
+    "example": {
+      "de": "Die Stelle ist leider schon weg.",
+      "en": "Unfortunately the position has already gone."
+    },
+    "word": "Stelle",
+    "article": "die",
+    "translation": "position, job"
+  },
+  {
+    "id": "bewerbung",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-work"
+    },
+    "frequencyRank": 757,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich schreibe heute meine Bewerbung.",
+      "en": "I'm writing my application today."
+    },
+    "word": "Bewerbung",
+    "article": "die",
+    "translation": "application"
+  },
+  {
+    "id": "gehalt",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-money"
+    },
+    "frequencyRank": 758,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das Gehalt kommt am Monatsende.",
+      "en": "The salary comes at the end of the month."
+    },
+    "word": "Gehalt",
+    "article": "das",
+    "translation": "salary"
+  },
+  {
+    "id": "besprechung",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-work"
+    },
+    "frequencyRank": 759,
+    "source": "frequency-list",
+    "example": {
+      "de": "Die Besprechung dauert eine Stunde.",
+      "en": "The meeting lasts an hour."
+    },
+    "word": "Besprechung",
+    "article": "die",
+    "translation": "meeting"
+  },
+  {
+    "id": "projekt",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-work"
+    },
+    "frequencyRank": 760,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das Projekt ist fast fertig.",
+      "en": "The project is almost finished."
+    },
+    "word": "Projekt",
+    "article": "das",
+    "translation": "project"
+  },
+  {
+    "id": "aufgabe",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-work"
+    },
+    "frequencyRank": 761,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das ist eine schwierige Aufgabe.",
+      "en": "That's a difficult task."
+    },
+    "word": "Aufgabe",
+    "article": "die",
+    "translation": "task"
+  },
+  {
+    "id": "erfahrung",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-work"
+    },
+    "frequencyRank": 762,
+    "source": "frequency-list",
+    "example": {
+      "de": "Sie hat viel Erfahrung im Verkauf.",
+      "en": "She has a lot of experience in sales."
+    },
+    "word": "Erfahrung",
+    "article": "die",
+    "translation": "experience"
+  },
+  {
+    "id": "ausbildung",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-work"
+    },
+    "frequencyRank": 763,
+    "source": "frequency-list",
+    "example": {
+      "de": "Er macht eine Ausbildung als Koch.",
+      "en": "He's training to be a cook."
+    },
+    "word": "Ausbildung",
+    "article": "die",
+    "translation": "training, apprenticeship"
+  },
+  {
+    "id": "studium",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-work"
+    },
+    "frequencyRank": 764,
+    "source": "frequency-list",
+    "example": {
+      "de": "Nach dem Studium möchte ich reisen.",
+      "en": "After my studies I want to travel."
+    },
+    "word": "Studium",
+    "article": "das",
+    "translation": "university studies"
+  },
+  {
+    "id": "kurs",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-work"
+    },
+    "frequencyRank": 765,
+    "source": "frequency-list",
+    "example": {
+      "de": "Der Deutschkurs beginnt im Mai.",
+      "en": "The German course starts in May."
+    },
+    "word": "Kurs",
+    "article": "der",
+    "translation": "course"
+  },
+  {
+    "id": "unterricht",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-work"
+    },
+    "frequencyRank": 766,
+    "source": "frequency-list",
+    "example": {
+      "de": "Der Unterricht beginnt um acht Uhr.",
+      "en": "Class starts at eight o'clock."
+    },
+    "word": "Unterricht",
+    "article": "der",
+    "translation": "lesson, class"
+  },
+  {
+    "id": "hausaufgabe",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-work"
+    },
+    "frequencyRank": 767,
+    "source": "frequency-list",
+    "example": {
+      "de": "Hast du deine Hausaufgaben gemacht?",
+      "en": "Have you done your homework?"
+    },
+    "word": "Hausaufgabe",
+    "article": "die",
+    "translation": "homework"
+  },
+  {
+    "id": "uebung",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-work"
+    },
+    "frequencyRank": 768,
+    "source": "frequency-list",
+    "example": {
+      "de": "Diese Übung ist ganz leicht.",
+      "en": "This exercise is really easy."
+    },
+    "word": "Übung",
+    "article": "die",
+    "translation": "exercise"
+  },
+  {
+    "id": "erfolg",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-work"
+    },
+    "frequencyRank": 769,
+    "source": "frequency-list",
+    "example": {
+      "de": "Viel Erfolg bei der Prüfung!",
+      "en": "Good luck with the exam!"
+    },
+    "word": "Erfolg",
+    "article": "der",
+    "translation": "success"
+  },
+  {
+    "id": "wort",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-communication"
+    },
+    "frequencyRank": 770,
+    "source": "frequency-list",
+    "example": {
+      "de": "Was bedeutet dieses Wort?",
+      "en": "What does this word mean?"
+    },
+    "word": "Wort",
+    "article": "das",
+    "translation": "word"
+  },
+  {
+    "id": "satz",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-communication"
+    },
+    "frequencyRank": 771,
+    "source": "frequency-list",
+    "example": {
+      "de": "Lies bitte den ersten Satz.",
+      "en": "Please read the first sentence."
+    },
+    "word": "Satz",
+    "article": "der",
+    "translation": "sentence"
+  },
+  {
+    "id": "text",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-communication"
+    },
+    "frequencyRank": 772,
+    "source": "frequency-list",
+    "example": {
+      "de": "Der Text ist nicht so lang.",
+      "en": "The text isn't that long."
+    },
+    "word": "Text",
+    "article": "der",
+    "translation": "text"
+  },
+  {
+    "id": "grammatik",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-communication"
+    },
+    "frequencyRank": 773,
+    "source": "frequency-list",
+    "example": {
+      "de": "Die deutsche Grammatik ist nicht leicht.",
+      "en": "German grammar isn't easy."
+    },
+    "word": "Grammatik",
+    "article": "die",
+    "translation": "grammar"
+  },
+  {
+    "id": "beispiel",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-communication"
+    },
+    "frequencyRank": 774,
+    "source": "frequency-list",
+    "example": {
+      "de": "Kannst du mir ein Beispiel geben?",
+      "en": "Can you give me an example?"
+    },
+    "word": "Beispiel",
+    "article": "das",
+    "translation": "example"
+  },
+  {
+    "id": "bedeutung",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-communication"
+    },
+    "frequencyRank": 775,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich kenne die Bedeutung nicht.",
+      "en": "I don't know the meaning."
+    },
+    "word": "Bedeutung",
+    "article": "die",
+    "translation": "meaning"
+  },
+  {
+    "id": "gespraech",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-communication"
+    },
+    "frequencyRank": 776,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das Gespräch war sehr nett.",
+      "en": "The conversation was very nice."
+    },
+    "word": "Gespräch",
+    "article": "das",
+    "translation": "conversation"
+  },
+  {
+    "id": "information",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-communication"
+    },
+    "frequencyRank": 777,
+    "source": "frequency-list",
+    "example": {
+      "de": "Wo bekomme ich mehr Informationen?",
+      "en": "Where can I get more information?"
+    },
+    "word": "Information",
+    "article": "die",
+    "translation": "information"
+  },
+  {
+    "id": "meinung",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-communication"
+    },
+    "frequencyRank": 778,
+    "source": "frequency-list",
+    "example": {
+      "de": "Was ist deine Meinung?",
+      "en": "What's your opinion?"
+    },
+    "word": "Meinung",
+    "article": "die",
+    "translation": "opinion"
+  },
+  {
+    "id": "geschichte",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-communication"
+    },
+    "frequencyRank": 779,
+    "source": "frequency-list",
+    "example": {
+      "de": "Erzähl mir eine Geschichte!",
+      "en": "Tell me a story!"
+    },
+    "word": "Geschichte",
+    "article": "die",
+    "translation": "story, history"
+  },
+  {
+    "id": "kultur",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-communication"
+    },
+    "frequencyRank": 780,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich interessiere mich für die deutsche Kultur.",
+      "en": "I'm interested in German culture."
+    },
+    "word": "Kultur",
+    "article": "die",
+    "translation": "culture"
+  },
+  {
+    "id": "internet",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-communication"
+    },
+    "frequencyRank": 781,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das Internet ist heute sehr langsam.",
+      "en": "The internet is very slow today."
+    },
+    "word": "Internet",
+    "article": "das",
+    "translation": "internet"
+  },
+  {
+    "id": "passwort",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-communication"
+    },
+    "frequencyRank": 782,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich habe mein Passwort vergessen.",
+      "en": "I've forgotten my password."
+    },
+    "word": "Passwort",
+    "article": "das",
+    "translation": "password"
+  },
+  {
+    "id": "unterschrift",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-communication"
+    },
+    "frequencyRank": 783,
+    "source": "frequency-list",
+    "example": {
+      "de": "Hier fehlt noch Ihre Unterschrift.",
+      "en": "Your signature is still missing here."
+    },
+    "word": "Unterschrift",
+    "article": "die",
+    "translation": "signature"
+  },
+  {
+    "id": "hilfe",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-communication"
+    },
+    "frequencyRank": 784,
+    "source": "frequency-list",
+    "example": {
+      "de": "Danke für deine Hilfe!",
+      "en": "Thanks for your help!"
+    },
+    "word": "Hilfe",
+    "article": "die",
+    "translation": "help"
+  },
+  {
+    "id": "notfall",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-communication"
+    },
+    "frequencyRank": 785,
+    "source": "frequency-list",
+    "example": {
+      "de": "Im Notfall rufen Sie diese Nummer an.",
+      "en": "In an emergency, call this number."
+    },
+    "word": "Notfall",
+    "article": "der",
+    "translation": "emergency"
+  },
+  {
+    "id": "stimme",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-communication"
+    },
+    "frequencyRank": 786,
+    "source": "frequency-list",
+    "example": {
+      "de": "Sie hat eine schöne Stimme.",
+      "en": "She has a beautiful voice."
+    },
+    "word": "Stimme",
+    "article": "die",
+    "translation": "voice"
+  },
+  {
+    "id": "seite",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-object"
+    },
+    "frequencyRank": 787,
+    "source": "frequency-list",
+    "example": {
+      "de": "Öffnet das Buch auf Seite zehn.",
+      "en": "Open the book at page ten."
+    },
+    "word": "Seite",
+    "article": "die",
+    "translation": "page, side"
+  },
+  {
+    "id": "heft",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-object"
+    },
+    "frequencyRank": 788,
+    "source": "frequency-list",
+    "example": {
+      "de": "Schreib das Wort in dein Heft.",
+      "en": "Write the word in your exercise book."
+    },
+    "word": "Heft",
+    "article": "das",
+    "translation": "exercise book"
+  },
+  {
+    "id": "stift",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-object"
+    },
+    "frequencyRank": 789,
+    "source": "frequency-list",
+    "example": {
+      "de": "Hast du einen Stift für mich?",
+      "en": "Do you have a pen for me?"
+    },
+    "word": "Stift",
+    "article": "der",
+    "translation": "pen"
+  },
+  {
+    "id": "papier",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-object"
+    },
+    "frequencyRank": 790,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich brauche ein Blatt Papier.",
+      "en": "I need a sheet of paper."
+    },
+    "word": "Papier",
+    "article": "das",
+    "translation": "paper"
+  },
+  {
+    "id": "tafel",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-object"
+    },
+    "frequencyRank": 791,
+    "source": "frequency-list",
+    "example": {
+      "de": "Der Lehrer schreibt an die Tafel.",
+      "en": "The teacher writes on the board."
+    },
+    "word": "Tafel",
+    "article": "die",
+    "translation": "board"
+  },
+  {
+    "id": "woerterbuch",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-object"
+    },
+    "frequencyRank": 792,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich schaue im Wörterbuch nach.",
+      "en": "I'll look it up in the dictionary."
+    },
+    "word": "Wörterbuch",
+    "article": "das",
+    "translation": "dictionary"
+  },
+  {
+    "id": "karte",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-object"
+    },
+    "frequencyRank": 793,
+    "source": "frequency-list",
+    "example": {
+      "de": "Kann ich mit Karte bezahlen?",
+      "en": "Can I pay by card?"
+    },
+    "word": "Karte",
+    "article": "die",
+    "translation": "card, map"
+  },
+  {
+    "id": "paket",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-object"
+    },
+    "frequencyRank": 794,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das Paket ist heute angekommen.",
+      "en": "The parcel arrived today."
+    },
+    "word": "Paket",
+    "article": "das",
+    "translation": "parcel"
+  },
+  {
+    "id": "briefmarke",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-object"
+    },
+    "frequencyRank": 795,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich brauche eine Briefmarke für den Brief.",
+      "en": "I need a stamp for the letter."
+    },
+    "word": "Briefmarke",
+    "article": "die",
+    "translation": "stamp"
+  },
+  {
+    "id": "formular",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-object"
+    },
+    "frequencyRank": 796,
+    "source": "frequency-list",
+    "example": {
+      "de": "Bitte füllen Sie das Formular aus.",
+      "en": "Please fill out the form."
+    },
+    "word": "Formular",
+    "article": "das",
+    "translation": "form"
+  },
+  {
+    "id": "laptop",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-object"
+    },
+    "frequencyRank": 797,
+    "source": "frequency-list",
+    "example": {
+      "de": "Mein Laptop ist schon alt.",
+      "en": "My laptop is already old."
+    },
+    "word": "Laptop",
+    "article": "der",
+    "translation": "laptop"
+  },
+  {
+    "id": "bildschirm",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-object"
+    },
+    "frequencyRank": 798,
+    "source": "frequency-list",
+    "example": {
+      "de": "Der Bildschirm ist zu dunkel.",
+      "en": "The screen is too dark."
+    },
+    "word": "Bildschirm",
+    "article": "der",
+    "translation": "screen"
+  },
+  {
+    "id": "sache",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-object"
+    },
+    "frequencyRank": 799,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das ist eine wichtige Sache.",
+      "en": "That's an important matter."
+    },
+    "word": "Sache",
+    "article": "die",
+    "translation": "thing, matter"
+  },
+  {
+    "id": "ding",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-object"
+    },
+    "frequencyRank": 800,
+    "source": "frequency-list",
+    "example": {
+      "de": "Was ist das für ein Ding?",
+      "en": "What kind of thing is that?"
+    },
+    "word": "Ding",
+    "article": "das",
+    "translation": "thing"
+  },
+  {
+    "id": "teil",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-object"
+    },
+    "frequencyRank": 801,
+    "source": "frequency-list",
+    "example": {
+      "de": "Der erste Teil war besser.",
+      "en": "The first part was better."
+    },
+    "word": "Teil",
+    "article": "der",
+    "translation": "part"
+  },
+  {
+    "id": "nummer",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-number"
+    },
+    "frequencyRank": 802,
+    "source": "frequency-list",
+    "example": {
+      "de": "Wie ist deine Nummer?",
+      "en": "What's your number?"
+    },
+    "word": "Nummer",
+    "article": "die",
+    "translation": "number"
+  },
+  {
+    "id": "note",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-number"
+    },
+    "frequencyRank": 803,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich habe eine gute Note bekommen.",
+      "en": "I got a good grade."
+    },
+    "word": "Note",
+    "article": "die",
+    "translation": "grade, mark"
+  },
+  {
+    "id": "haelfte",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-number"
+    },
+    "frequencyRank": 804,
+    "source": "frequency-list",
+    "example": {
+      "de": "Die Hälfte der Klasse ist krank.",
+      "en": "Half the class is ill."
+    },
+    "word": "Hälfte",
+    "article": "die",
+    "translation": "half"
+  },
+  {
+    "id": "ergebnis",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-number"
+    },
+    "frequencyRank": 805,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das Ergebnis kommt nächste Woche.",
+      "en": "The result comes next week."
+    },
+    "word": "Ergebnis",
+    "article": "das",
+    "translation": "result"
+  },
+  {
+    "id": "fehler",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-quality"
+    },
+    "frequencyRank": 806,
+    "source": "frequency-list",
+    "example": {
+      "de": "Jeder macht mal Fehler.",
+      "en": "Everyone makes mistakes sometimes."
+    },
+    "word": "Fehler",
+    "article": "der",
+    "translation": "mistake"
+  },
+  {
+    "id": "unterschied",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-quality"
+    },
+    "frequencyRank": 807,
+    "source": "frequency-list",
+    "example": {
+      "de": "Was ist der Unterschied?",
+      "en": "What's the difference?"
+    },
+    "word": "Unterschied",
+    "article": "der",
+    "translation": "difference"
+  },
+  {
+    "id": "moeglichkeit",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-quality"
+    },
+    "frequencyRank": 808,
+    "source": "frequency-list",
+    "example": {
+      "de": "Es gibt zwei Möglichkeiten.",
+      "en": "There are two options."
+    },
+    "word": "Möglichkeit",
+    "article": "die",
+    "translation": "possibility, option"
+  },
+  {
+    "id": "art",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-quality"
+    },
+    "frequencyRank": 809,
+    "source": "frequency-list",
+    "example": {
+      "de": "Welche Art Musik magst du?",
+      "en": "What kind of music do you like?"
+    },
+    "word": "Art",
+    "article": "die",
+    "translation": "kind, type"
+  },
+  {
+    "id": "grund",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-question"
+    },
+    "frequencyRank": 810,
+    "source": "frequency-list",
+    "example": {
+      "de": "Aus welchem Grund bist du hier?",
+      "en": "For what reason are you here?"
+    },
+    "word": "Grund",
+    "article": "der",
+    "translation": "reason"
+  },
+  {
+    "id": "loesung",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-question"
+    },
+    "frequencyRank": 811,
+    "source": "frequency-list",
+    "example": {
+      "de": "Wir finden bestimmt eine Lösung.",
+      "en": "We'll definitely find a solution."
+    },
+    "word": "Lösung",
+    "article": "die",
+    "translation": "solution"
+  },
+  {
+    "id": "spiel",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-music"
+    },
+    "frequencyRank": 812,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das Spiel beginnt um acht.",
+      "en": "The match starts at eight."
+    },
+    "word": "Spiel",
+    "article": "das",
+    "translation": "game, match"
+  },
+  {
+    "id": "film",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-music"
+    },
+    "frequencyRank": 813,
+    "source": "frequency-list",
+    "example": {
+      "de": "Der Film war sehr spannend.",
+      "en": "The film was very exciting."
+    },
+    "word": "Film",
+    "article": "der",
+    "translation": "film"
+  },
+  {
+    "id": "lied",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-music"
+    },
+    "frequencyRank": 814,
+    "source": "frequency-list",
+    "example": {
+      "de": "Dieses Lied höre ich jeden Tag.",
+      "en": "I listen to this song every day."
+    },
+    "word": "Lied",
+    "article": "das",
+    "translation": "song"
+  },
+  {
+    "id": "konzert",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-music"
+    },
+    "frequencyRank": 815,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das Konzert war fantastisch.",
+      "en": "The concert was fantastic."
+    },
+    "word": "Konzert",
+    "article": "das",
+    "translation": "concert"
+  },
+  {
+    "id": "hobby",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-music"
+    },
+    "frequencyRank": 816,
+    "source": "frequency-list",
+    "example": {
+      "de": "Was ist dein Hobby?",
+      "en": "What is your hobby?"
+    },
+    "word": "Hobby",
+    "article": "das",
+    "translation": "hobby"
+  },
+  {
+    "id": "sport",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-body"
+    },
+    "frequencyRank": 817,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich mache jeden Morgen Sport.",
+      "en": "I do sport every morning."
+    },
+    "word": "Sport",
+    "article": "der",
+    "translation": "sport"
+  },
+  {
+    "id": "fussball",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-body"
+    },
+    "frequencyRank": 818,
+    "source": "frequency-list",
+    "example": {
+      "de": "Am Sonntag spielen wir Fußball.",
+      "en": "On Sunday we play football."
+    },
+    "word": "Fußball",
+    "article": "der",
+    "translation": "football"
+  },
+  {
+    "id": "mannschaft",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-person"
+    },
+    "frequencyRank": 819,
+    "source": "frequency-list",
+    "example": {
+      "de": "Unsere Mannschaft hat gewonnen.",
+      "en": "Our team won."
+    },
+    "word": "Mannschaft",
+    "article": "die",
+    "translation": "team"
+  },
+  {
+    "id": "gesundheit",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-body"
+    },
+    "frequencyRank": 820,
+    "source": "frequency-list",
+    "example": {
+      "de": "Gesundheit ist das Wichtigste.",
+      "en": "Health is the most important thing."
+    },
+    "word": "Gesundheit",
+    "article": "die",
+    "translation": "health"
+  },
+  {
+    "id": "krankheit",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-body"
+    },
+    "frequencyRank": 821,
+    "source": "frequency-list",
+    "example": {
+      "de": "Die Krankheit ist nicht gefährlich.",
+      "en": "The illness isn't dangerous."
+    },
+    "word": "Krankheit",
+    "article": "die",
+    "translation": "illness"
+  },
+  {
+    "id": "schmerz",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-body"
+    },
+    "frequencyRank": 822,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich habe starke Schmerzen im Rücken.",
+      "en": "I have bad pain in my back."
+    },
+    "word": "Schmerz",
+    "article": "der",
+    "translation": "pain"
+  },
+  {
+    "id": "fieber",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-body"
+    },
+    "frequencyRank": 823,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das Kind hat hohes Fieber.",
+      "en": "The child has a high fever."
+    },
+    "word": "Fieber",
+    "article": "das",
+    "translation": "fever"
+  },
+  {
+    "id": "erkaeltung",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-body"
+    },
+    "frequencyRank": 824,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich habe eine Erkältung.",
+      "en": "I have a cold."
+    },
+    "word": "Erkältung",
+    "article": "die",
+    "translation": "cold"
+  },
+  {
+    "id": "medikament",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-body"
+    },
+    "frequencyRank": 825,
+    "source": "frequency-list",
+    "example": {
+      "de": "Nimm das Medikament nach dem Essen.",
+      "en": "Take the medicine after eating."
+    },
+    "word": "Medikament",
+    "article": "das",
+    "translation": "medicine"
+  },
+  {
+    "id": "tablette",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-body"
+    },
+    "frequencyRank": 826,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich nehme eine Tablette gegen Kopfschmerzen.",
+      "en": "I'm taking a pill for my headache."
+    },
+    "word": "Tablette",
+    "article": "die",
+    "translation": "tablet, pill"
+  },
+  {
+    "id": "knie",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-body"
+    },
+    "frequencyRank": 827,
+    "source": "frequency-list",
+    "example": {
+      "de": "Mein Knie tut weh.",
+      "en": "My knee hurts."
+    },
+    "word": "Knie",
+    "article": "das",
+    "translation": "knee"
+  },
+  {
+    "id": "schulter",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-body"
+    },
+    "frequencyRank": 828,
+    "source": "frequency-list",
+    "example": {
+      "de": "Er hat Schmerzen in der Schulter.",
+      "en": "He has pain in his shoulder."
+    },
+    "word": "Schulter",
+    "article": "die",
+    "translation": "shoulder"
+  },
+  {
+    "id": "haut",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-body"
+    },
+    "frequencyRank": 829,
+    "source": "frequency-list",
+    "example": {
+      "de": "Die Sonne ist schlecht für die Haut.",
+      "en": "The sun is bad for your skin."
+    },
+    "word": "Haut",
+    "article": "die",
+    "translation": "skin"
+  },
+  {
+    "id": "gewicht",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-body"
+    },
+    "frequencyRank": 830,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich möchte mein Gewicht halten.",
+      "en": "I want to keep my weight steady."
+    },
+    "word": "Gewicht",
+    "article": "das",
+    "translation": "weight"
+  },
+  {
+    "id": "anfang",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-time"
+    },
+    "frequencyRank": 831,
+    "source": "frequency-list",
+    "example": {
+      "de": "Am Anfang war alles neu.",
+      "en": "At the beginning everything was new."
+    },
+    "word": "Anfang",
+    "article": "der",
+    "translation": "beginning"
+  },
+  {
+    "id": "ende",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-time"
+    },
+    "frequencyRank": 832,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das Ende vom Film war traurig.",
+      "en": "The end of the film was sad."
+    },
+    "word": "Ende",
+    "article": "das",
+    "translation": "end"
+  },
+  {
+    "id": "moment",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-time"
+    },
+    "frequencyRank": 833,
+    "source": "frequency-list",
+    "example": {
+      "de": "Einen Moment, bitte!",
+      "en": "One moment, please!"
+    },
+    "word": "Moment",
+    "article": "der",
+    "translation": "moment"
+  },
+  {
+    "id": "datum",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-time"
+    },
+    "frequencyRank": 834,
+    "source": "frequency-list",
+    "example": {
+      "de": "Welches Datum haben wir heute?",
+      "en": "What's the date today?"
+    },
+    "word": "Datum",
+    "article": "das",
+    "translation": "date"
+  },
+  {
+    "id": "kalender",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-time"
+    },
+    "frequencyRank": 835,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich schreibe den Termin in den Kalender.",
+      "en": "I'm writing the appointment in the calendar."
+    },
+    "word": "Kalender",
+    "article": "der",
+    "translation": "calendar"
+  },
+  {
+    "id": "vormittag",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-time"
+    },
+    "frequencyRank": 836,
+    "source": "frequency-list",
+    "example": {
+      "de": "Am Vormittag bin ich im Büro.",
+      "en": "In the morning I'm at the office."
+    },
+    "word": "Vormittag",
+    "article": "der",
+    "translation": "late morning"
+  },
+  {
+    "id": "nachmittag",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-time"
+    },
+    "frequencyRank": 837,
+    "source": "frequency-list",
+    "example": {
+      "de": "Am Nachmittag gehen wir spazieren.",
+      "en": "In the afternoon we go for a walk."
+    },
+    "word": "Nachmittag",
+    "article": "der",
+    "translation": "afternoon"
+  },
+  {
+    "id": "mitternacht",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-time"
+    },
+    "frequencyRank": 838,
+    "source": "frequency-list",
+    "example": {
+      "de": "Die Party geht bis Mitternacht.",
+      "en": "The party goes on until midnight."
+    },
+    "word": "Mitternacht",
+    "article": "die",
+    "translation": "midnight"
+  },
+  {
+    "id": "viertel",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-time"
+    },
+    "frequencyRank": 839,
+    "source": "frequency-list",
+    "example": {
+      "de": "Es ist Viertel nach drei.",
+      "en": "It's a quarter past three."
+    },
+    "word": "Viertel",
+    "article": "das",
+    "translation": "quarter"
+  },
+  {
+    "id": "uhrzeit",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-time"
+    },
+    "frequencyRank": 840,
+    "source": "frequency-list",
+    "example": {
+      "de": "Um welche Uhrzeit beginnt der Kurs?",
+      "en": "At what time does the course start?"
+    },
+    "word": "Uhrzeit",
+    "article": "die",
+    "translation": "time (of day)"
+  },
+  {
+    "id": "plan",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-time"
+    },
+    "frequencyRank": 841,
+    "source": "frequency-list",
+    "example": {
+      "de": "Was ist dein Plan für morgen?",
+      "en": "What's your plan for tomorrow?"
+    },
+    "word": "Plan",
+    "article": "der",
+    "translation": "plan"
+  },
+  {
+    "id": "wunsch",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-emotion"
+    },
+    "frequencyRank": 842,
+    "source": "frequency-list",
+    "example": {
+      "de": "Hast du einen Wunsch zum Geburtstag?",
+      "en": "Do you have a wish for your birthday?"
+    },
+    "word": "Wunsch",
+    "article": "der",
+    "translation": "wish"
+  },
+  {
+    "id": "traum",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-emotion"
+    },
+    "frequencyRank": 843,
+    "source": "frequency-list",
+    "example": {
+      "de": "Mein Traum ist eine Reise nach Japan.",
+      "en": "My dream is a trip to Japan."
+    },
+    "word": "Traum",
+    "article": "der",
+    "translation": "dream"
+  },
+  {
+    "id": "ruhe",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-emotion"
+    },
+    "frequencyRank": 844,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich brauche jetzt ein bisschen Ruhe.",
+      "en": "I need a bit of peace and quiet now."
+    },
+    "word": "Ruhe",
+    "article": "die",
+    "translation": "peace, quiet"
+  },
+  {
+    "id": "spass",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-emotion"
+    },
+    "frequencyRank": 845,
+    "source": "frequency-list",
+    "example": {
+      "de": "Deutsch lernen macht mir Spaß.",
+      "en": "I enjoy learning German."
+    },
+    "word": "Spaß",
+    "article": "der",
+    "translation": "fun"
+  },
+  {
+    "id": "freude",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-emotion"
+    },
+    "frequencyRank": 846,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das Geschenk macht mir große Freude.",
+      "en": "The present gives me great joy."
+    },
+    "word": "Freude",
+    "article": "die",
+    "translation": "joy"
+  },
+  {
+    "id": "sorge",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-emotion"
+    },
+    "frequencyRank": 847,
+    "source": "frequency-list",
+    "example": {
+      "de": "Mach dir keine Sorgen!",
+      "en": "Don't worry!"
+    },
+    "word": "Sorge",
+    "article": "die",
+    "translation": "worry"
+  },
+  {
+    "id": "hoffnung",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-emotion"
+    },
+    "frequencyRank": 848,
+    "source": "frequency-list",
+    "example": {
+      "de": "Wir haben noch Hoffnung.",
+      "en": "We still have hope."
+    },
+    "word": "Hoffnung",
+    "article": "die",
+    "translation": "hope"
+  },
+  {
+    "id": "ueberraschung",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-emotion"
+    },
+    "frequencyRank": 849,
+    "source": "frequency-list",
+    "example": {
+      "de": "Die Party war eine Überraschung.",
+      "en": "The party was a surprise."
+    },
+    "word": "Überraschung",
+    "article": "die",
+    "translation": "surprise"
+  },
+  {
+    "id": "lust",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-emotion"
+    },
+    "frequencyRank": 850,
+    "source": "frequency-list",
+    "example": {
+      "de": "Hast du Lust auf Kino?",
+      "en": "Do you feel like going to the cinema?"
+    },
+    "word": "Lust",
+    "article": "die",
+    "translation": "desire, being in the mood"
+  },
+  {
+    "id": "stress",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-emotion"
+    },
+    "frequencyRank": 851,
+    "source": "frequency-list",
+    "example": {
+      "de": "Bei der Arbeit habe ich viel Stress.",
+      "en": "I have a lot of stress at work."
+    },
+    "word": "Stress",
+    "article": "der",
+    "translation": "stress"
+  },
+  {
+    "id": "benutzen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-action"
+    },
+    "frequencyRank": 852,
+    "source": "frequency-list",
+    "example": {
+      "de": "Darf ich dein Handy benutzen?",
+      "en": "May I use your phone?"
+    },
+    "word": "benutzen",
+    "translation": "to use"
+  },
+  {
+    "id": "bezahlen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-money"
+    },
+    "frequencyRank": 853,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich bezahle heute das Essen.",
+      "en": "I'm paying for the meal today."
+    },
+    "word": "bezahlen",
+    "translation": "to pay"
+  },
+  {
+    "id": "bestellen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-food"
+    },
+    "frequencyRank": 854,
+    "source": "frequency-list",
+    "example": {
+      "de": "Wir möchten jetzt bestellen.",
+      "en": "We'd like to order now."
+    },
+    "word": "bestellen",
+    "translation": "to order"
+  },
+  {
+    "id": "buchen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-travel"
+    },
+    "frequencyRank": 855,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich buche das Hotel im Internet.",
+      "en": "I'm booking the hotel online."
+    },
+    "word": "buchen",
+    "translation": "to book"
+  },
+  {
+    "id": "mieten",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-home"
+    },
+    "frequencyRank": 856,
+    "source": "frequency-list",
+    "example": {
+      "de": "Wir mieten eine kleine Wohnung.",
+      "en": "We're renting a small flat."
+    },
+    "word": "mieten",
+    "translation": "to rent"
+  },
+  {
+    "id": "packen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-travel"
+    },
+    "frequencyRank": 857,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich muss noch meinen Koffer packen.",
+      "en": "I still have to pack my suitcase."
+    },
+    "word": "packen",
+    "translation": "to pack"
+  },
+  {
+    "id": "tanzen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-music"
+    },
+    "frequencyRank": 858,
+    "source": "frequency-list",
+    "example": {
+      "de": "Tanzt du gern?",
+      "en": "Do you like dancing?"
+    },
+    "word": "tanzen",
+    "translation": "to dance"
+  },
+  {
+    "id": "singen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-music"
+    },
+    "frequencyRank": 859,
+    "source": "frequency-list",
+    "example": {
+      "de": "Meine Schwester singt im Chor.",
+      "en": "My sister sings in a choir."
+    },
+    "word": "singen",
+    "translation": "to sing"
+  },
+  {
+    "id": "wandern",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-nature"
+    },
+    "frequencyRank": 860,
+    "source": "frequency-list",
+    "example": {
+      "de": "Am Sonntag wandern wir in den Bergen.",
+      "en": "On Sunday we're hiking in the mountains."
+    },
+    "word": "wandern",
+    "translation": "to hike"
+  },
+  {
+    "id": "joggen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-body"
+    },
+    "frequencyRank": 861,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich jogge jeden Morgen im Park.",
+      "en": "I jog in the park every morning."
+    },
+    "word": "joggen",
+    "translation": "to jog"
+  },
+  {
+    "id": "feiern",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-music"
+    },
+    "frequencyRank": 862,
+    "source": "frequency-list",
+    "example": {
+      "de": "Wir feiern heute meinen Geburtstag.",
+      "en": "We're celebrating my birthday today."
+    },
+    "word": "feiern",
+    "translation": "to celebrate"
+  },
+  {
+    "id": "gratulieren",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-communication"
+    },
+    "frequencyRank": 863,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich gratuliere dir zum Geburtstag!",
+      "en": "Happy birthday to you!"
+    },
+    "word": "gratulieren",
+    "translation": "to congratulate"
+  },
+  {
+    "id": "schenken",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-object"
+    },
+    "frequencyRank": 864,
+    "source": "frequency-list",
+    "example": {
+      "de": "Was schenkst du deiner Mutter?",
+      "en": "What are you giving your mother?"
+    },
+    "word": "schenken",
+    "translation": "to give (as a gift)"
+  },
+  {
+    "id": "wuenschen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-emotion"
+    },
+    "frequencyRank": 865,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich wünsche dir ein schönes Wochenende.",
+      "en": "I wish you a nice weekend."
+    },
+    "word": "wünschen",
+    "translation": "to wish"
+  },
+  {
+    "id": "laecheln",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-emotion"
+    },
+    "frequencyRank": 866,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das Baby lächelt die ganze Zeit.",
+      "en": "The baby smiles all the time."
+    },
+    "word": "lächeln",
+    "translation": "to smile"
+  },
+  {
+    "id": "weinen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-emotion"
+    },
+    "frequencyRank": 867,
+    "source": "frequency-list",
+    "example": {
+      "de": "Warum weinst du?",
+      "en": "Why are you crying?"
+    },
+    "word": "weinen",
+    "translation": "to cry"
+  },
+  {
+    "id": "rufen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-communication"
+    },
+    "frequencyRank": 868,
+    "source": "frequency-list",
+    "example": {
+      "de": "Die Mutter ruft die Kinder zum Essen.",
+      "en": "The mother calls the children to eat."
+    },
+    "word": "rufen",
+    "translation": "to call, to shout"
+  },
+  {
+    "id": "erklaeren",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-communication"
+    },
+    "frequencyRank": 869,
+    "source": "frequency-list",
+    "example": {
+      "de": "Kannst du mir das bitte erklären?",
+      "en": "Can you explain that to me, please?"
+    },
+    "word": "erklären",
+    "translation": "to explain"
+  },
+  {
+    "id": "uebersetzen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-communication"
+    },
+    "frequencyRank": 870,
+    "source": "frequency-list",
+    "example": {
+      "de": "Kannst du diesen Satz übersetzen?",
+      "en": "Can you translate this sentence?"
+    },
+    "word": "übersetzen",
+    "translation": "to translate"
+  },
+  {
+    "id": "wiederholen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-communication"
+    },
+    "frequencyRank": 871,
+    "source": "frequency-list",
+    "example": {
+      "de": "Können Sie das bitte wiederholen?",
+      "en": "Could you repeat that, please?"
+    },
+    "word": "wiederholen",
+    "translation": "to repeat"
+  },
+  {
+    "id": "ueben",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-work"
+    },
+    "frequencyRank": 872,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich übe jeden Tag Deutsch.",
+      "en": "I practise German every day."
+    },
+    "word": "üben",
+    "translation": "to practise"
+  },
+  {
+    "id": "buchstabieren",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-communication"
+    },
+    "frequencyRank": 873,
+    "source": "frequency-list",
+    "example": {
+      "de": "Können Sie Ihren Namen buchstabieren?",
+      "en": "Can you spell your name?"
+    },
+    "word": "buchstabieren",
+    "translation": "to spell"
+  },
+  {
+    "id": "bitten",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-communication"
+    },
+    "frequencyRank": 874,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich bitte dich um Hilfe.",
+      "en": "I'm asking you for help."
+    },
+    "word": "bitten",
+    "translation": "to ask (for), to request"
+  },
+  {
+    "id": "erlauben",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-communication"
+    },
+    "frequencyRank": 875,
+    "source": "frequency-list",
+    "example": {
+      "de": "Meine Eltern erlauben das nicht.",
+      "en": "My parents don't allow that."
+    },
+    "word": "erlauben",
+    "translation": "to allow"
+  },
+  {
+    "id": "verbieten",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-communication"
+    },
+    "frequencyRank": 876,
+    "source": "frequency-list",
+    "example": {
+      "de": "Rauchen ist hier verboten.",
+      "en": "Smoking is forbidden here."
+    },
+    "word": "verbieten",
+    "translation": "to forbid"
+  },
+  {
+    "id": "legen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-action"
+    },
+    "frequencyRank": 877,
+    "source": "frequency-list",
+    "example": {
+      "de": "Leg das Buch auf den Tisch.",
+      "en": "Put the book on the table."
+    },
+    "word": "legen",
+    "translation": "to lay, to put (flat)"
+  },
+  {
+    "id": "setzen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-action"
+    },
+    "frequencyRank": 878,
+    "source": "frequency-list",
+    "example": {
+      "de": "Setz dich bitte!",
+      "en": "Please sit down!"
+    },
+    "word": "setzen",
+    "translation": "to set, to sit down"
+  },
+  {
+    "id": "haengen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-action"
+    },
+    "frequencyRank": 879,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das Bild hängt an der Wand.",
+      "en": "The picture is hanging on the wall."
+    },
+    "word": "hängen",
+    "translation": "to hang"
+  },
+  {
+    "id": "fallen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-action"
+    },
+    "frequencyRank": 880,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das Glas ist auf den Boden gefallen.",
+      "en": "The glass fell on the floor."
+    },
+    "word": "fallen",
+    "translation": "to fall"
+  },
+  {
+    "id": "springen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-action"
+    },
+    "frequencyRank": 881,
+    "source": "frequency-list",
+    "example": {
+      "de": "Der Hund springt über den Zaun.",
+      "en": "The dog jumps over the fence."
+    },
+    "word": "springen",
+    "translation": "to jump"
+  },
+  {
+    "id": "gehoeren",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-object"
+    },
+    "frequencyRank": 882,
+    "source": "frequency-list",
+    "example": {
+      "de": "Wem gehört die Tasche?",
+      "en": "Who does the bag belong to?"
+    },
+    "word": "gehören",
+    "translation": "to belong to"
+  },
+  {
+    "id": "passen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-clothing"
+    },
+    "frequencyRank": 883,
+    "source": "frequency-list",
+    "example": {
+      "de": "Die Hose passt mir nicht.",
+      "en": "The trousers don't fit me."
+    },
+    "word": "passen",
+    "translation": "to fit, to suit"
+  },
+  {
+    "id": "gefallen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-emotion"
+    },
+    "frequencyRank": 884,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das Kleid gefällt mir sehr.",
+      "en": "I really like the dress."
+    },
+    "word": "gefallen",
+    "translation": "to please, to like"
+  },
+  {
+    "id": "fehlen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-quality"
+    },
+    "frequencyRank": 885,
+    "source": "frequency-list",
+    "example": {
+      "de": "Mir fehlt noch ein Euro.",
+      "en": "I'm still one euro short."
+    },
+    "word": "fehlen",
+    "translation": "to be missing"
+  },
+  {
+    "id": "riechen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-food"
+    },
+    "frequencyRank": 886,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das Essen riecht sehr gut.",
+      "en": "The food smells very good."
+    },
+    "word": "riechen",
+    "translation": "to smell"
+  },
+  {
+    "id": "probieren",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-food"
+    },
+    "frequencyRank": 887,
+    "source": "frequency-list",
+    "example": {
+      "de": "Möchtest du den Kuchen probieren?",
+      "en": "Would you like to try the cake?"
+    },
+    "word": "probieren",
+    "translation": "to try, to taste"
+  },
+  {
+    "id": "heiraten",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-family"
+    },
+    "frequencyRank": 888,
+    "source": "frequency-list",
+    "example": {
+      "de": "Sie heiraten im Sommer.",
+      "en": "They're getting married in summer."
+    },
+    "word": "heiraten",
+    "translation": "to marry"
+  },
+  {
+    "id": "verdienen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-money"
+    },
+    "frequencyRank": 889,
+    "source": "frequency-list",
+    "example": {
+      "de": "Er verdient nicht viel Geld.",
+      "en": "He doesn't earn much money."
+    },
+    "word": "verdienen",
+    "translation": "to earn"
+  },
+  {
+    "id": "sparen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-money"
+    },
+    "frequencyRank": 890,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich spare für ein neues Fahrrad.",
+      "en": "I'm saving for a new bike."
+    },
+    "word": "sparen",
+    "translation": "to save (money)"
+  },
+  {
+    "id": "ausgeben",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-money"
+    },
+    "frequencyRank": 891,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich gebe zu viel Geld für Kleidung aus.",
+      "en": "I spend too much money on clothes."
+    },
+    "word": "ausgeben",
+    "translation": "to spend (money)"
+  },
+  {
+    "id": "leihen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-object"
+    },
+    "frequencyRank": 892,
+    "source": "frequency-list",
+    "example": {
+      "de": "Kannst du mir dein Buch leihen?",
+      "en": "Can you lend me your book?"
+    },
+    "word": "leihen",
+    "translation": "to lend, to borrow"
+  },
+  {
+    "id": "mitbringen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-object"
+    },
+    "frequencyRank": 893,
+    "source": "frequency-list",
+    "example": {
+      "de": "Soll ich etwas zum Essen mitbringen?",
+      "en": "Should I bring something to eat?"
+    },
+    "word": "mitbringen",
+    "translation": "to bring along"
+  },
+  {
+    "id": "abholen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-travel"
+    },
+    "frequencyRank": 894,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich hole dich um sieben Uhr ab.",
+      "en": "I'll pick you up at seven o'clock."
+    },
+    "word": "abholen",
+    "translation": "to pick up"
+  },
+  {
+    "id": "einschlafen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-time"
+    },
+    "frequencyRank": 895,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich schlafe immer sehr spät ein.",
+      "en": "I always fall asleep very late."
+    },
+    "word": "einschlafen",
+    "translation": "to fall asleep"
+  },
+  {
+    "id": "aufpassen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-action"
+    },
+    "frequencyRank": 896,
+    "source": "frequency-list",
+    "example": {
+      "de": "Pass bitte gut auf!",
+      "en": "Please pay close attention!"
+    },
+    "word": "aufpassen",
+    "translation": "to pay attention, to look after"
+  },
+  {
+    "id": "ausfuellen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-work"
+    },
+    "frequencyRank": 897,
+    "source": "frequency-list",
+    "example": {
+      "de": "Füllen Sie bitte das Formular aus.",
+      "en": "Please fill out the form."
+    },
+    "word": "ausfüllen",
+    "translation": "to fill out"
+  },
+  {
+    "id": "unterschreiben",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-work"
+    },
+    "frequencyRank": 898,
+    "source": "frequency-list",
+    "example": {
+      "de": "Bitte unterschreiben Sie hier.",
+      "en": "Please sign here."
+    },
+    "word": "unterschreiben",
+    "translation": "to sign"
+  },
+  {
+    "id": "bestehen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-work"
+    },
+    "frequencyRank": 899,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich habe die Prüfung bestanden!",
+      "en": "I passed the exam!"
+    },
+    "word": "bestehen",
+    "translation": "to pass (an exam)"
+  },
+  {
+    "id": "studieren",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-work"
+    },
+    "frequencyRank": 900,
+    "source": "frequency-list",
+    "example": {
+      "de": "Meine Schwester studiert in Köln.",
+      "en": "My sister studies in Cologne."
+    },
+    "word": "studieren",
+    "translation": "to study (at university)"
+  },
+  {
+    "id": "unterrichten",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-work"
+    },
+    "frequencyRank": 901,
+    "source": "frequency-list",
+    "example": {
+      "de": "Sie unterrichtet Englisch an einer Schule.",
+      "en": "She teaches English at a school."
+    },
+    "word": "unterrichten",
+    "translation": "to teach"
+  },
+  {
+    "id": "bauen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-home"
+    },
+    "frequencyRank": 902,
+    "source": "frequency-list",
+    "example": {
+      "de": "Meine Eltern bauen ein Haus.",
+      "en": "My parents are building a house."
+    },
+    "word": "bauen",
+    "translation": "to build"
+  },
+  {
+    "id": "reparieren",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-work"
+    },
+    "frequencyRank": 903,
+    "source": "frequency-list",
+    "example": {
+      "de": "Kannst du mein Fahrrad reparieren?",
+      "en": "Can you repair my bike?"
+    },
+    "word": "reparieren",
+    "translation": "to repair"
+  },
+  {
+    "id": "druecken",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-action"
+    },
+    "frequencyRank": 904,
+    "source": "frequency-list",
+    "example": {
+      "de": "Drück bitte auf den Knopf.",
+      "en": "Please press the button."
+    },
+    "word": "drücken",
+    "translation": "to press, to push"
+  },
+  {
+    "id": "ziehen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-action"
+    },
+    "frequencyRank": 905,
+    "source": "frequency-list",
+    "example": {
+      "de": "Du musst die Tür ziehen, nicht drücken.",
+      "en": "You have to pull the door, not push it."
+    },
+    "word": "ziehen",
+    "translation": "to pull"
+  },
+  {
+    "id": "werfen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-action"
+    },
+    "frequencyRank": 906,
+    "source": "frequency-list",
+    "example": {
+      "de": "Wirf den Ball zu mir!",
+      "en": "Throw the ball to me!"
+    },
+    "word": "werfen",
+    "translation": "to throw"
+  },
+  {
+    "id": "halten",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-action"
+    },
+    "frequencyRank": 907,
+    "source": "frequency-list",
+    "example": {
+      "de": "Der Bus hält direkt vor der Schule.",
+      "en": "The bus stops right outside the school."
+    },
+    "word": "halten",
+    "translation": "to hold, to stop"
+  },
+  {
+    "id": "aendern",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-action"
+    },
+    "frequencyRank": 908,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich möchte meinen Termin ändern.",
+      "en": "I'd like to change my appointment."
+    },
+    "word": "ändern",
+    "translation": "to change"
+  },
+  {
+    "id": "wechseln",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-money"
+    },
+    "frequencyRank": 909,
+    "source": "frequency-list",
+    "example": {
+      "de": "Kann ich hier Geld wechseln?",
+      "en": "Can I change money here?"
+    },
+    "word": "wechseln",
+    "translation": "to change, to exchange"
+  },
+  {
+    "id": "umziehen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-home"
+    },
+    "frequencyRank": 910,
+    "source": "frequency-list",
+    "example": {
+      "de": "Nächsten Monat ziehen wir nach Hamburg um.",
+      "en": "Next month we're moving to Hamburg."
+    },
+    "word": "umziehen",
+    "translation": "to move (house)"
+  },
+  {
+    "id": "einziehen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-home"
+    },
+    "frequencyRank": 911,
+    "source": "frequency-list",
+    "example": {
+      "de": "Wann ziehst du in die neue Wohnung ein?",
+      "en": "When are you moving into the new flat?"
+    },
+    "word": "einziehen",
+    "translation": "to move in"
+  },
+  {
+    "id": "besichtigen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-travel"
+    },
+    "frequencyRank": 912,
+    "source": "frequency-list",
+    "example": {
+      "de": "Morgen besichtigen wir das Schloss.",
+      "en": "Tomorrow we're visiting the castle."
+    },
+    "word": "besichtigen",
+    "translation": "to visit, to view"
+  },
+  {
+    "id": "planen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-time"
+    },
+    "frequencyRank": 913,
+    "source": "frequency-list",
+    "example": {
+      "de": "Wir planen eine Reise nach Italien.",
+      "en": "We're planning a trip to Italy."
+    },
+    "word": "planen",
+    "translation": "to plan"
+  },
+  {
+    "id": "vorbereiten",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-work"
+    },
+    "frequencyRank": 914,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich bereite mich auf die Prüfung vor.",
+      "en": "I'm preparing for the exam."
+    },
+    "word": "vorbereiten",
+    "translation": "to prepare"
+  },
+  {
+    "id": "organisieren",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-work"
+    },
+    "frequencyRank": 915,
+    "source": "frequency-list",
+    "example": {
+      "de": "Wer organisiert die Party?",
+      "en": "Who's organising the party?"
+    },
+    "word": "organisieren",
+    "translation": "to organise"
+  },
+  {
+    "id": "beschreiben",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-communication"
+    },
+    "frequencyRank": 916,
+    "source": "frequency-list",
+    "example": {
+      "de": "Kannst du den Mann beschreiben?",
+      "en": "Can you describe the man?"
+    },
+    "word": "beschreiben",
+    "translation": "to describe"
+  },
+  {
+    "id": "vergleichen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-quality"
+    },
+    "frequencyRank": 917,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich vergleiche die Preise im Internet.",
+      "en": "I compare the prices online."
+    },
+    "word": "vergleichen",
+    "translation": "to compare"
+  },
+  {
+    "id": "zaehlen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-number"
+    },
+    "frequencyRank": 918,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das Kind zählt bis zwanzig.",
+      "en": "The child counts to twenty."
+    },
+    "word": "zählen",
+    "translation": "to count"
+  },
+  {
+    "id": "rechnen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-number"
+    },
+    "frequencyRank": 919,
+    "source": "frequency-list",
+    "example": {
+      "de": "Im Kopf rechnen kann ich nicht gut.",
+      "en": "I'm not good at mental arithmetic."
+    },
+    "word": "rechnen",
+    "translation": "to calculate"
+  },
+  {
+    "id": "streiten",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-emotion"
+    },
+    "frequencyRank": 920,
+    "source": "frequency-list",
+    "example": {
+      "de": "Die Geschwister streiten oft.",
+      "en": "The siblings often argue."
+    },
+    "word": "streiten",
+    "translation": "to argue"
+  },
+  {
+    "id": "diskutieren",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-communication"
+    },
+    "frequencyRank": 921,
+    "source": "frequency-list",
+    "example": {
+      "de": "Wir diskutieren über das Problem.",
+      "en": "We're discussing the problem."
+    },
+    "word": "diskutieren",
+    "translation": "to discuss"
+  },
+  {
+    "id": "meinen",
+    "type": "vocab",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "verb",
+    "image": {
+      "kind": "icon",
+      "icon": "category-communication"
+    },
+    "frequencyRank": 922,
+    "source": "frequency-list",
+    "example": {
+      "de": "Was meinst du damit?",
+      "en": "What do you mean by that?"
+    },
+    "word": "meinen",
+    "translation": "to mean, to think"
+  },
+  {
+    "id": "baeckerei",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-place"
+    },
+    "frequencyRank": 923,
+    "source": "frequency-list",
+    "example": {
+      "de": "Die Bäckerei öffnet um sechs Uhr.",
+      "en": "The bakery opens at six o'clock."
+    },
+    "word": "Bäckerei",
+    "article": "die",
+    "translation": "bakery"
+  },
+  {
+    "id": "parkplatz",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-place"
+    },
+    "frequencyRank": 924,
+    "source": "frequency-list",
+    "example": {
+      "de": "Hier gibt es keinen Parkplatz.",
+      "en": "There's no parking space here."
+    },
+    "word": "Parkplatz",
+    "article": "der",
+    "translation": "car park, parking space"
+  },
+  {
+    "id": "adresse",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-place"
+    },
+    "frequencyRank": 925,
+    "source": "frequency-list",
+    "example": {
+      "de": "Wie ist deine Adresse?",
+      "en": "What is your address?"
+    },
+    "word": "Adresse",
+    "article": "die",
+    "translation": "address"
+  },
+  {
+    "id": "richtung",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-place"
+    },
+    "frequencyRank": 926,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ist das die richtige Richtung?",
+      "en": "Is this the right direction?"
+    },
+    "word": "Richtung",
+    "article": "die",
+    "translation": "direction"
+  },
+  {
+    "id": "ausgang",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-place"
+    },
+    "frequencyRank": 927,
+    "source": "frequency-list",
+    "example": {
+      "de": "Der Ausgang ist dort hinten.",
+      "en": "The exit is over there at the back."
+    },
+    "word": "Ausgang",
+    "article": "der",
+    "translation": "exit"
+  },
+  {
+    "id": "eingang",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-place"
+    },
+    "frequencyRank": 928,
+    "source": "frequency-list",
+    "example": {
+      "de": "Wir treffen uns am Eingang.",
+      "en": "We'll meet at the entrance."
+    },
+    "word": "Eingang",
+    "article": "der",
+    "translation": "entrance"
+  },
+  {
+    "id": "mitte",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-place"
+    },
+    "frequencyRank": 929,
+    "source": "frequency-list",
+    "example": {
+      "de": "Der Tisch steht in der Mitte.",
+      "en": "The table is in the middle."
+    },
+    "word": "Mitte",
+    "article": "die",
+    "translation": "middle"
+  },
+  {
+    "id": "naehe",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-place"
+    },
+    "frequencyRank": 930,
+    "source": "frequency-list",
+    "example": {
+      "de": "Gibt es hier in der Nähe eine Apotheke?",
+      "en": "Is there a pharmacy nearby?"
+    },
+    "word": "Nähe",
+    "article": "die",
+    "translation": "vicinity, nearby"
+  },
+  {
+    "id": "fluss",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-nature"
+    },
+    "frequencyRank": 931,
+    "source": "frequency-list",
+    "example": {
+      "de": "Der Fluss fließt durch die Stadt.",
+      "en": "The river flows through the town."
+    },
+    "word": "Fluss",
+    "article": "der",
+    "translation": "river"
+  },
+  {
+    "id": "strand",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-nature"
+    },
+    "frequencyRank": 932,
+    "source": "frequency-list",
+    "example": {
+      "de": "Wir liegen den ganzen Tag am Strand.",
+      "en": "We lie on the beach all day."
+    },
+    "word": "Strand",
+    "article": "der",
+    "translation": "beach"
+  },
+  {
+    "id": "natur",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-nature"
+    },
+    "frequencyRank": 933,
+    "source": "frequency-list",
+    "example": {
+      "de": "Am Wochenende bin ich gern in der Natur.",
+      "en": "At the weekend I like being out in nature."
+    },
+    "word": "Natur",
+    "article": "die",
+    "translation": "nature"
+  },
+  {
+    "id": "tier",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-animal"
+    },
+    "frequencyRank": 934,
+    "source": "frequency-list",
+    "example": {
+      "de": "Hast du ein Tier zu Hause?",
+      "en": "Do you have a pet at home?"
+    },
+    "word": "Tier",
+    "article": "das",
+    "translation": "animal"
+  },
+  {
+    "id": "treppe",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-home"
+    },
+    "frequencyRank": 935,
+    "source": "frequency-list",
+    "example": {
+      "de": "Die Treppe ist sehr steil.",
+      "en": "The stairs are very steep."
+    },
+    "word": "Treppe",
+    "article": "die",
+    "translation": "stairs"
+  },
+  {
+    "id": "balkon",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-home"
+    },
+    "frequencyRank": 936,
+    "source": "frequency-list",
+    "example": {
+      "de": "Wir frühstücken auf dem Balkon.",
+      "en": "We have breakfast on the balcony."
+    },
+    "word": "Balkon",
+    "article": "der",
+    "translation": "balcony"
+  },
+  {
+    "id": "heizung",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-home"
+    },
+    "frequencyRank": 937,
+    "source": "frequency-list",
+    "example": {
+      "de": "Die Heizung funktioniert nicht.",
+      "en": "The heating isn't working."
+    },
+    "word": "Heizung",
+    "article": "die",
+    "translation": "heating"
+  },
+  {
+    "id": "dusche",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-home"
+    },
+    "frequencyRank": 938,
+    "source": "frequency-list",
+    "example": {
+      "de": "Die Dusche ist neu.",
+      "en": "The shower is new."
+    },
+    "word": "Dusche",
+    "article": "die",
+    "translation": "shower"
+  },
+  {
+    "id": "toilette",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-home"
+    },
+    "frequencyRank": 939,
+    "source": "frequency-list",
+    "example": {
+      "de": "Wo ist die Toilette, bitte?",
+      "en": "Where is the toilet, please?"
+    },
+    "word": "Toilette",
+    "article": "die",
+    "translation": "toilet"
+  },
+  {
+    "id": "moebel",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-home"
+    },
+    "frequencyRank": 940,
+    "source": "frequency-list",
+    "example": {
+      "de": "Wir brauchen neue Möbel.",
+      "en": "We need new furniture."
+    },
+    "word": "Möbel",
+    "article": "die",
+    "translation": "furniture"
+  },
+  {
+    "id": "fernseher",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-home"
+    },
+    "frequencyRank": 941,
+    "source": "frequency-list",
+    "example": {
+      "de": "Der Fernseher ist zu laut.",
+      "en": "The television is too loud."
+    },
+    "word": "Fernseher",
+    "article": "der",
+    "translation": "television"
+  },
+  {
+    "id": "muell",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-home"
+    },
+    "frequencyRank": 942,
+    "source": "frequency-list",
+    "example": {
+      "de": "Bringst du bitte den Müll raus?",
+      "en": "Can you take the rubbish out, please?"
+    },
+    "word": "Müll",
+    "article": "der",
+    "translation": "rubbish"
+  },
+  {
+    "id": "schreibtisch",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-work"
+    },
+    "frequencyRank": 943,
+    "source": "frequency-list",
+    "example": {
+      "de": "Mein Laptop liegt auf dem Schreibtisch.",
+      "en": "My laptop is on the desk."
+    },
+    "word": "Schreibtisch",
+    "article": "der",
+    "translation": "desk"
+  },
+  {
+    "id": "arzt",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-person"
+    },
+    "frequencyRank": 944,
+    "source": "frequency-list",
+    "example": {
+      "de": "Der Arzt hat heute keine Zeit.",
+      "en": "The doctor has no time today."
+    },
+    "word": "Arzt",
+    "article": "der",
+    "translation": "doctor"
+  },
+  {
+    "id": "aerztin",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-person"
+    },
+    "frequencyRank": 945,
+    "source": "frequency-list",
+    "example": {
+      "de": "Meine Ärztin ist sehr nett.",
+      "en": "My doctor is very nice."
+    },
+    "word": "Ärztin",
+    "article": "die",
+    "translation": "doctor (female)"
+  },
+  {
+    "id": "polizei",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-place"
+    },
+    "frequencyRank": 946,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ruf bitte sofort die Polizei!",
+      "en": "Please call the police right away!"
+    },
+    "word": "Polizei",
+    "article": "die",
+    "translation": "police"
+  },
+  {
+    "id": "polizist",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-person"
+    },
+    "frequencyRank": 947,
+    "source": "frequency-list",
+    "example": {
+      "de": "Der Polizist zeigt uns den Weg.",
+      "en": "The police officer shows us the way."
+    },
+    "word": "Polizist",
+    "article": "der",
+    "translation": "police officer"
+  },
+  {
+    "id": "kellner",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-person"
+    },
+    "frequencyRank": 948,
+    "source": "frequency-list",
+    "example": {
+      "de": "Der Kellner bringt die Rechnung.",
+      "en": "The waiter brings the bill."
+    },
+    "word": "Kellner",
+    "article": "der",
+    "translation": "waiter"
+  },
+  {
+    "id": "verkaeufer",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-person"
+    },
+    "frequencyRank": 949,
+    "source": "frequency-list",
+    "example": {
+      "de": "Der Verkäufer hilft mir gern.",
+      "en": "The salesperson is happy to help me."
+    },
+    "word": "Verkäufer",
+    "article": "der",
+    "translation": "salesperson"
+  },
+  {
+    "id": "kunde",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-person"
+    },
+    "frequencyRank": 950,
+    "source": "frequency-list",
+    "example": {
+      "de": "Der Kunde möchte mit dem Chef sprechen.",
+      "en": "The customer wants to speak to the boss."
+    },
+    "word": "Kunde",
+    "article": "der",
+    "translation": "customer"
+  },
+  {
+    "id": "gast",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-person"
+    },
+    "frequencyRank": 951,
+    "source": "frequency-list",
+    "example": {
+      "de": "Heute Abend kommt ein Gast zum Essen.",
+      "en": "A guest is coming for dinner tonight."
+    },
+    "word": "Gast",
+    "article": "der",
+    "translation": "guest"
+  },
+  {
+    "id": "mitarbeiter",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-work"
+    },
+    "frequencyRank": 952,
+    "source": "frequency-list",
+    "example": {
+      "de": "Die Firma hat fünfzig Mitarbeiter.",
+      "en": "The company has fifty employees."
+    },
+    "word": "Mitarbeiter",
+    "article": "der",
+    "translation": "employee"
+  },
+  {
+    "id": "kollegin",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-work"
+    },
+    "frequencyRank": 953,
+    "source": "frequency-list",
+    "example": {
+      "de": "Meine Kollegin kommt aus Spanien.",
+      "en": "My colleague comes from Spain."
+    },
+    "word": "Kollegin",
+    "article": "die",
+    "translation": "colleague (female)"
+  },
+  {
+    "id": "nachbarin",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-person"
+    },
+    "frequencyRank": 954,
+    "source": "frequency-list",
+    "example": {
+      "de": "Meine Nachbarin hat eine Katze.",
+      "en": "My neighbour has a cat."
+    },
+    "word": "Nachbarin",
+    "article": "die",
+    "translation": "neighbour (female)"
+  },
+  {
+    "id": "herr",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-person"
+    },
+    "frequencyRank": 955,
+    "source": "frequency-list",
+    "example": {
+      "de": "Herr Schmidt wartet im Büro.",
+      "en": "Mr Schmidt is waiting in the office."
+    },
+    "word": "Herr",
+    "article": "der",
+    "translation": "Mr, gentleman"
+  },
+  {
+    "id": "oma",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-family"
+    },
+    "frequencyRank": 956,
+    "source": "frequency-list",
+    "example": {
+      "de": "Am Sonntag besuchen wir Oma.",
+      "en": "On Sunday we visit Grandma."
+    },
+    "word": "Oma",
+    "article": "die",
+    "translation": "grandma"
+  },
+  {
+    "id": "opa",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-family"
+    },
+    "frequencyRank": 957,
+    "source": "frequency-list",
+    "example": {
+      "de": "Mein Opa erzählt gern Geschichten.",
+      "en": "My grandpa likes telling stories."
+    },
+    "word": "Opa",
+    "article": "der",
+    "translation": "grandpa"
+  },
+  {
+    "id": "cousin",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-family"
+    },
+    "frequencyRank": 958,
+    "source": "frequency-list",
+    "example": {
+      "de": "Mein Cousin wohnt in Berlin.",
+      "en": "My cousin lives in Berlin."
+    },
+    "word": "Cousin",
+    "article": "der",
+    "translation": "cousin"
+  },
+  {
+    "id": "geschwister",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-family"
+    },
+    "frequencyRank": 959,
+    "source": "frequency-list",
+    "example": {
+      "de": "Hast du Geschwister?",
+      "en": "Do you have siblings?"
+    },
+    "word": "Geschwister",
+    "article": "die",
+    "translation": "siblings"
+  },
+  {
+    "id": "partner",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-family"
+    },
+    "frequencyRank": 960,
+    "source": "frequency-list",
+    "example": {
+      "de": "Mein Partner kocht heute.",
+      "en": "My partner is cooking today."
+    },
+    "word": "Partner",
+    "article": "der",
+    "translation": "partner"
+  },
+  {
+    "id": "paar",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-family"
+    },
+    "frequencyRank": 961,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das Paar tanzt die ganze Nacht.",
+      "en": "The couple dances all night."
+    },
+    "word": "Paar",
+    "article": "das",
+    "translation": "couple"
+  },
+  {
+    "id": "freundschaft",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-emotion"
+    },
+    "frequencyRank": 962,
+    "source": "frequency-list",
+    "example": {
+      "de": "Unsere Freundschaft ist mir wichtig.",
+      "en": "Our friendship is important to me."
+    },
+    "word": "Freundschaft",
+    "article": "die",
+    "translation": "friendship"
+  },
+  {
+    "id": "hochzeit",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-family"
+    },
+    "frequencyRank": 963,
+    "source": "frequency-list",
+    "example": {
+      "de": "Die Hochzeit ist im Juni.",
+      "en": "The wedding is in June."
+    },
+    "word": "Hochzeit",
+    "article": "die",
+    "translation": "wedding"
+  },
+  {
+    "id": "geburtstag",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-time"
+    },
+    "frequencyRank": 964,
+    "source": "frequency-list",
+    "example": {
+      "de": "Wann hast du Geburtstag?",
+      "en": "When is your birthday?"
+    },
+    "word": "Geburtstag",
+    "article": "der",
+    "translation": "birthday"
+  },
+  {
+    "id": "party",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-music"
+    },
+    "frequencyRank": 965,
+    "source": "frequency-list",
+    "example": {
+      "de": "Kommst du am Samstag zur Party?",
+      "en": "Are you coming to the party on Saturday?"
+    },
+    "word": "Party",
+    "article": "die",
+    "translation": "party"
+  },
+  {
+    "id": "fest",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-music"
+    },
+    "frequencyRank": 966,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das Fest beginnt um acht Uhr.",
+      "en": "The celebration starts at eight o'clock."
+    },
+    "word": "Fest",
+    "article": "das",
+    "translation": "festival, celebration"
+  },
+  {
+    "id": "feier",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-music"
+    },
+    "frequencyRank": 967,
+    "source": "frequency-list",
+    "example": {
+      "de": "Nach der Prüfung machen wir eine Feier.",
+      "en": "After the exam we're having a party."
+    },
+    "word": "Feier",
+    "article": "die",
+    "translation": "celebration, party"
+  },
+  {
+    "id": "einladung",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-communication"
+    },
+    "frequencyRank": 968,
+    "source": "frequency-list",
+    "example": {
+      "de": "Danke für die Einladung!",
+      "en": "Thanks for the invitation!"
+    },
+    "word": "Einladung",
+    "article": "die",
+    "translation": "invitation"
+  },
+  {
+    "id": "weihnachten",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-time"
+    },
+    "frequencyRank": 969,
+    "source": "frequency-list",
+    "example": {
+      "de": "Zu Weihnachten fahre ich nach Hause.",
+      "en": "I'm going home for Christmas."
+    },
+    "word": "Weihnachten",
+    "article": "das",
+    "translation": "Christmas"
+  },
+  {
+    "id": "ostern",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-time"
+    },
+    "frequencyRank": 970,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ostern ist dieses Jahr im April.",
+      "en": "Easter is in April this year."
+    },
+    "word": "Ostern",
+    "article": "das",
+    "translation": "Easter"
+  },
+  {
+    "id": "ferien",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-time"
+    },
+    "frequencyRank": 971,
+    "source": "frequency-list",
+    "example": {
+      "de": "In den Ferien schlafe ich lange.",
+      "en": "In the holidays I sleep late."
+    },
+    "word": "Ferien",
+    "article": "die",
+    "translation": "holidays"
+  },
+  {
+    "id": "temperatur",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-weather"
+    },
+    "frequencyRank": 972,
+    "source": "frequency-list",
+    "example": {
+      "de": "Die Temperatur ist heute sehr niedrig.",
+      "en": "The temperature is very low today."
+    },
+    "word": "Temperatur",
+    "article": "die",
+    "translation": "temperature"
+  },
+  {
+    "id": "gewitter",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-weather"
+    },
+    "frequencyRank": 973,
+    "source": "frequency-list",
+    "example": {
+      "de": "Am Abend gibt es ein Gewitter.",
+      "en": "There's a thunderstorm in the evening."
+    },
+    "word": "Gewitter",
+    "article": "das",
+    "translation": "thunderstorm"
+  },
+  {
+    "id": "sturm",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-weather"
+    },
+    "frequencyRank": 974,
+    "source": "frequency-list",
+    "example": {
+      "de": "Der Sturm war gestern sehr stark.",
+      "en": "The storm was very strong yesterday."
+    },
+    "word": "Sturm",
+    "article": "der",
+    "translation": "storm"
+  },
+  {
+    "id": "nebel",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-weather"
+    },
+    "frequencyRank": 975,
+    "source": "frequency-list",
+    "example": {
+      "de": "Am Morgen ist viel Nebel.",
+      "en": "There is a lot of fog in the morning."
+    },
+    "word": "Nebel",
+    "article": "der",
+    "translation": "fog"
+  },
+  {
+    "id": "regenschirm",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-weather"
+    },
+    "frequencyRank": 976,
+    "source": "frequency-list",
+    "example": {
+      "de": "Vergiss deinen Regenschirm nicht!",
+      "en": "Don't forget your umbrella!"
+    },
+    "word": "Regenschirm",
+    "article": "der",
+    "translation": "umbrella"
+  },
+  {
+    "id": "eis",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-food"
+    },
+    "frequencyRank": 977,
+    "source": "frequency-list",
+    "example": {
+      "de": "Im Sommer esse ich gern Eis.",
+      "en": "In summer I like eating ice cream."
+    },
+    "word": "Eis",
+    "article": "das",
+    "translation": "ice cream, ice"
+  },
+  {
+    "id": "schokolade",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-food"
+    },
+    "frequencyRank": 978,
+    "source": "frequency-list",
+    "example": {
+      "de": "Die Schokolade ist sehr süß.",
+      "en": "The chocolate is very sweet."
+    },
+    "word": "Schokolade",
+    "article": "die",
+    "translation": "chocolate"
+  },
+  {
+    "id": "reis",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-food"
+    },
+    "frequencyRank": 979,
+    "source": "frequency-list",
+    "example": {
+      "de": "Heute gibt es Reis mit Gemüse.",
+      "en": "Today there's rice with vegetables."
+    },
+    "word": "Reis",
+    "article": "der",
+    "translation": "rice"
+  },
+  {
+    "id": "salat",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-food"
+    },
+    "frequencyRank": 980,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich nehme einen Salat, bitte.",
+      "en": "I'll have a salad, please."
+    },
+    "word": "Salat",
+    "article": "der",
+    "translation": "salad"
+  },
+  {
+    "id": "tomate",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-food"
+    },
+    "frequencyRank": 981,
+    "source": "frequency-list",
+    "example": {
+      "de": "Die Tomate ist rot und frisch.",
+      "en": "The tomato is red and fresh."
+    },
+    "word": "Tomate",
+    "article": "die",
+    "translation": "tomato"
+  },
+  {
+    "id": "karotte",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-food"
+    },
+    "frequencyRank": 982,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das Kind isst gern Karotten.",
+      "en": "The child likes eating carrots."
+    },
+    "word": "Karotte",
+    "article": "die",
+    "translation": "carrot"
+  },
+  {
+    "id": "banane",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-food"
+    },
+    "frequencyRank": 983,
+    "source": "frequency-list",
+    "example": {
+      "de": "Zum Frühstück esse ich eine Banane.",
+      "en": "I eat a banana for breakfast."
+    },
+    "word": "Banane",
+    "article": "die",
+    "translation": "banana"
+  },
+  {
+    "id": "zitrone",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-food"
+    },
+    "frequencyRank": 984,
+    "source": "frequency-list",
+    "example": {
+      "de": "Möchtest du Tee mit Zitrone?",
+      "en": "Would you like tea with lemon?"
+    },
+    "word": "Zitrone",
+    "article": "die",
+    "translation": "lemon"
+  },
+  {
+    "id": "erdbeere",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-food"
+    },
+    "frequencyRank": 985,
+    "source": "frequency-list",
+    "example": {
+      "de": "Die Erdbeeren sind sehr lecker.",
+      "en": "The strawberries are very tasty."
+    },
+    "word": "Erdbeere",
+    "article": "die",
+    "translation": "strawberry"
+  },
+  {
+    "id": "wurst",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-food"
+    },
+    "frequencyRank": 986,
+    "source": "frequency-list",
+    "example": {
+      "de": "In Deutschland gibt es viele Sorten Wurst.",
+      "en": "There are many kinds of sausage in Germany."
+    },
+    "word": "Wurst",
+    "article": "die",
+    "translation": "sausage"
+  },
+  {
+    "id": "haehnchen",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-food"
+    },
+    "frequencyRank": 987,
+    "source": "frequency-list",
+    "example": {
+      "de": "Heute Abend kochen wir Hähnchen.",
+      "en": "Tonight we're cooking chicken."
+    },
+    "word": "Hähnchen",
+    "article": "das",
+    "translation": "chicken (meat)"
+  },
+  {
+    "id": "joghurt",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-food"
+    },
+    "frequencyRank": 988,
+    "source": "frequency-list",
+    "example": {
+      "de": "Der Joghurt ist im Kühlschrank.",
+      "en": "The yoghurt is in the fridge."
+    },
+    "word": "Joghurt",
+    "article": "der",
+    "translation": "yoghurt"
+  },
+  {
+    "id": "broetchen",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-food"
+    },
+    "frequencyRank": 989,
+    "source": "frequency-list",
+    "example": {
+      "de": "Am Sonntag hole ich frische Brötchen.",
+      "en": "On Sunday I get fresh bread rolls."
+    },
+    "word": "Brötchen",
+    "article": "das",
+    "translation": "bread roll"
+  },
+  {
+    "id": "pizza",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-food"
+    },
+    "frequencyRank": 990,
+    "source": "frequency-list",
+    "example": {
+      "de": "Wollen wir heute Pizza bestellen?",
+      "en": "Shall we order pizza today?"
+    },
+    "word": "Pizza",
+    "article": "die",
+    "translation": "pizza"
+  },
+  {
+    "id": "oel",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-food"
+    },
+    "frequencyRank": 991,
+    "source": "frequency-list",
+    "example": {
+      "de": "Wir brauchen noch Öl für den Salat.",
+      "en": "We still need oil for the salad."
+    },
+    "word": "Öl",
+    "article": "das",
+    "translation": "oil"
+  },
+  {
+    "id": "rezept",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-food"
+    },
+    "frequencyRank": 992,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das Rezept ist von meiner Mutter.",
+      "en": "The recipe is from my mother."
+    },
+    "word": "Rezept",
+    "article": "das",
+    "translation": "recipe"
+  },
+  {
+    "id": "mahlzeit",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-food"
+    },
+    "frequencyRank": 993,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das Frühstück ist meine liebste Mahlzeit.",
+      "en": "Breakfast is my favourite meal."
+    },
+    "word": "Mahlzeit",
+    "article": "die",
+    "translation": "meal"
+  },
+  {
+    "id": "hunger",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-food"
+    },
+    "frequencyRank": 994,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich habe großen Hunger.",
+      "en": "I'm really hungry."
+    },
+    "word": "Hunger",
+    "article": "der",
+    "translation": "hunger"
+  },
+  {
+    "id": "durst",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-drink"
+    },
+    "frequencyRank": 995,
+    "source": "frequency-list",
+    "example": {
+      "de": "Hast du Durst?",
+      "en": "Are you thirsty?"
+    },
+    "word": "Durst",
+    "article": "der",
+    "translation": "thirst"
+  },
+  {
+    "id": "geschmack",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-food"
+    },
+    "frequencyRank": 996,
+    "source": "frequency-list",
+    "example": {
+      "de": "Der Geschmack ist sehr besonders.",
+      "en": "The taste is very special."
+    },
+    "word": "Geschmack",
+    "article": "der",
+    "translation": "taste"
+  },
+  {
+    "id": "getraenk",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-drink"
+    },
+    "frequencyRank": 997,
+    "source": "frequency-list",
+    "example": {
+      "de": "Welches Getränk möchtest du?",
+      "en": "Which drink would you like?"
+    },
+    "word": "Getränk",
+    "article": "das",
+    "translation": "drink, beverage"
+  },
+  {
+    "id": "cola",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-drink"
+    },
+    "frequencyRank": 998,
+    "source": "frequency-list",
+    "example": {
+      "de": "Eine Cola ohne Eis, bitte.",
+      "en": "A cola without ice, please."
+    },
+    "word": "Cola",
+    "article": "die",
+    "translation": "cola"
+  },
+  {
+    "id": "mineralwasser",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-drink"
+    },
+    "frequencyRank": 999,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ein Mineralwasser, bitte.",
+      "en": "A mineral water, please."
+    },
+    "word": "Mineralwasser",
+    "article": "das",
+    "translation": "mineral water"
+  },
+  {
+    "id": "teller",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-home"
+    },
+    "frequencyRank": 1000,
+    "source": "frequency-list",
+    "example": {
+      "de": "Stell den Teller auf den Tisch.",
+      "en": "Put the plate on the table."
+    },
+    "word": "Teller",
+    "article": "der",
+    "translation": "plate"
+  },
+  {
+    "id": "gabel",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-home"
+    },
+    "frequencyRank": 1001,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich brauche noch eine Gabel.",
+      "en": "I still need a fork."
+    },
+    "word": "Gabel",
+    "article": "die",
+    "translation": "fork"
+  },
+  {
+    "id": "topf",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-home"
+    },
+    "frequencyRank": 1002,
+    "source": "frequency-list",
+    "example": {
+      "de": "Die Suppe kocht im Topf.",
+      "en": "The soup is cooking in the pot."
+    },
+    "word": "Topf",
+    "article": "der",
+    "translation": "pot"
+  },
+  {
+    "id": "bestellung",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-money"
+    },
+    "frequencyRank": 1003,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ihre Bestellung kommt morgen.",
+      "en": "Your order arrives tomorrow."
+    },
+    "word": "Bestellung",
+    "article": "die",
+    "translation": "order"
+  },
+  {
+    "id": "trinkgeld",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-money"
+    },
+    "frequencyRank": 1004,
+    "source": "frequency-list",
+    "example": {
+      "de": "Wir geben dem Kellner Trinkgeld.",
+      "en": "We give the waiter a tip."
+    },
+    "word": "Trinkgeld",
+    "article": "das",
+    "translation": "tip"
+  },
+  {
+    "id": "kasse",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-money"
+    },
+    "frequencyRank": 1005,
+    "source": "frequency-list",
+    "example": {
+      "de": "Bitte zahlen Sie an der Kasse.",
+      "en": "Please pay at the checkout."
+    },
+    "word": "Kasse",
+    "article": "die",
+    "translation": "checkout, till"
+  },
+  {
+    "id": "quittung",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-money"
+    },
+    "frequencyRank": 1006,
+    "source": "frequency-list",
+    "example": {
+      "de": "Kann ich bitte eine Quittung haben?",
+      "en": "Can I have a receipt, please?"
+    },
+    "word": "Quittung",
+    "article": "die",
+    "translation": "receipt"
+  },
+  {
+    "id": "kreditkarte",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-money"
+    },
+    "frequencyRank": 1007,
+    "source": "frequency-list",
+    "example": {
+      "de": "Kann ich mit Kreditkarte bezahlen?",
+      "en": "Can I pay by credit card?"
+    },
+    "word": "Kreditkarte",
+    "article": "die",
+    "translation": "credit card"
+  },
+  {
+    "id": "konto",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-money"
+    },
+    "frequencyRank": 1008,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich habe ein Konto bei dieser Bank.",
+      "en": "I have an account at this bank."
+    },
+    "word": "Konto",
+    "article": "das",
+    "translation": "bank account"
+  },
+  {
+    "id": "angebot",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-money"
+    },
+    "frequencyRank": 1009,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das Angebot gilt nur heute.",
+      "en": "The offer is only valid today."
+    },
+    "word": "Angebot",
+    "article": "das",
+    "translation": "offer"
+  },
+  {
+    "id": "groesse",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-clothing"
+    },
+    "frequencyRank": 1010,
+    "source": "frequency-list",
+    "example": {
+      "de": "Welche Größe brauchen Sie?",
+      "en": "What size do you need?"
+    },
+    "word": "Größe",
+    "article": "die",
+    "translation": "size"
+  },
+  {
+    "id": "brille",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-clothing"
+    },
+    "frequencyRank": 1011,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ohne Brille sehe ich nichts.",
+      "en": "Without glasses I can't see anything."
+    },
+    "word": "Brille",
+    "article": "die",
+    "translation": "glasses"
+  },
+  {
+    "id": "ring",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-clothing"
+    },
+    "frequencyRank": 1012,
+    "source": "frequency-list",
+    "example": {
+      "de": "Der Ring ist ein Geschenk von meiner Mutter.",
+      "en": "The ring is a present from my mother."
+    },
+    "word": "Ring",
+    "article": "der",
+    "translation": "ring"
+  },
+  {
+    "id": "pullover",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-clothing"
+    },
+    "frequencyRank": 1013,
+    "source": "frequency-list",
+    "example": {
+      "de": "Der Pullover ist schön warm.",
+      "en": "The jumper is nice and warm."
+    },
+    "word": "Pullover",
+    "article": "der",
+    "translation": "jumper, sweater"
+  },
+  {
+    "id": "t-shirt",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-clothing"
+    },
+    "frequencyRank": 1014,
+    "source": "frequency-list",
+    "example": {
+      "de": "Im Sommer trage ich nur ein T-Shirt.",
+      "en": "In summer I only wear a T-shirt."
+    },
+    "word": "T-Shirt",
+    "article": "das",
+    "translation": "T-shirt"
+  },
+  {
+    "id": "rucksack",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-travel"
+    },
+    "frequencyRank": 1015,
+    "source": "frequency-list",
+    "example": {
+      "de": "Mein Rucksack ist sehr schwer.",
+      "en": "My backpack is very heavy."
+    },
+    "word": "Rucksack",
+    "article": "der",
+    "translation": "backpack"
+  },
+  {
+    "id": "ticket",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-travel"
+    },
+    "frequencyRank": 1016,
+    "source": "frequency-list",
+    "example": {
+      "de": "Hast du schon ein Ticket?",
+      "en": "Do you already have a ticket?"
+    },
+    "word": "Ticket",
+    "article": "das",
+    "translation": "ticket"
+  },
+  {
+    "id": "pass",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-travel"
+    },
+    "frequencyRank": 1017,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich habe meinen Pass vergessen.",
+      "en": "I forgot my passport."
+    },
+    "word": "Pass",
+    "article": "der",
+    "translation": "passport"
+  },
+  {
+    "id": "ausweis",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-travel"
+    },
+    "frequencyRank": 1018,
+    "source": "frequency-list",
+    "example": {
+      "de": "Zeigen Sie bitte Ihren Ausweis.",
+      "en": "Please show your ID card."
+    },
+    "word": "Ausweis",
+    "article": "der",
+    "translation": "ID card"
+  },
+  {
+    "id": "gepaeck",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-travel"
+    },
+    "frequencyRank": 1019,
+    "source": "frequency-list",
+    "example": {
+      "de": "Unser Gepäck ist noch im Auto.",
+      "en": "Our luggage is still in the car."
+    },
+    "word": "Gepäck",
+    "article": "das",
+    "translation": "luggage"
+  },
+  {
+    "id": "abfahrt",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-travel"
+    },
+    "frequencyRank": 1020,
+    "source": "frequency-list",
+    "example": {
+      "de": "Die Abfahrt ist um zehn Uhr.",
+      "en": "Departure is at ten o'clock."
+    },
+    "word": "Abfahrt",
+    "article": "die",
+    "translation": "departure"
+  },
+  {
+    "id": "ankunft",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-travel"
+    },
+    "frequencyRank": 1021,
+    "source": "frequency-list",
+    "example": {
+      "de": "Die Ankunft in München ist um drei.",
+      "en": "Arrival in Munich is at three."
+    },
+    "word": "Ankunft",
+    "article": "die",
+    "translation": "arrival"
+  },
+  {
+    "id": "gleis",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-travel"
+    },
+    "frequencyRank": 1022,
+    "source": "frequency-list",
+    "example": {
+      "de": "Der Zug fährt von Gleis fünf.",
+      "en": "The train leaves from platform five."
+    },
+    "word": "Gleis",
+    "article": "das",
+    "translation": "platform, track"
+  },
+  {
+    "id": "haltestelle",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-travel"
+    },
+    "frequencyRank": 1023,
+    "source": "frequency-list",
+    "example": {
+      "de": "Die Haltestelle ist direkt vor dem Haus.",
+      "en": "The stop is right in front of the house."
+    },
+    "word": "Haltestelle",
+    "article": "die",
+    "translation": "stop (bus, tram)"
+  },
+  {
+    "id": "strassenbahn",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-travel"
+    },
+    "frequencyRank": 1024,
+    "source": "frequency-list",
+    "example": {
+      "de": "Ich fahre mit der Straßenbahn zur Arbeit.",
+      "en": "I take the tram to work."
+    },
+    "word": "Straßenbahn",
+    "article": "die",
+    "translation": "tram"
+  },
+  {
+    "id": "u-bahn",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-travel"
+    },
+    "frequencyRank": 1025,
+    "source": "frequency-list",
+    "example": {
+      "de": "Die U-Bahn ist schneller als der Bus.",
+      "en": "The underground is faster than the bus."
+    },
+    "word": "U-Bahn",
+    "article": "die",
+    "translation": "underground, subway"
+  },
+  {
+    "id": "ausflug",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-travel"
+    },
+    "frequencyRank": 1026,
+    "source": "frequency-list",
+    "example": {
+      "de": "Am Wochenende machen wir einen Ausflug.",
+      "en": "At the weekend we're going on a trip."
+    },
+    "word": "Ausflug",
+    "article": "der",
+    "translation": "trip, outing"
+  },
+  {
+    "id": "unfall",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-travel"
+    },
+    "frequencyRank": 1027,
+    "source": "frequency-list",
+    "example": {
+      "de": "Auf der Straße gab es einen Unfall.",
+      "en": "There was an accident on the road."
+    },
+    "word": "Unfall",
+    "article": "der",
+    "translation": "accident"
+  },
+  {
+    "id": "ausland",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-travel"
+    },
+    "frequencyRank": 1028,
+    "source": "frequency-list",
+    "example": {
+      "de": "Meine Schwester arbeitet im Ausland.",
+      "en": "My sister works abroad."
+    },
+    "word": "Ausland",
+    "article": "das",
+    "translation": "abroad"
+  },
+  {
+    "id": "ampel",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-place"
+    },
+    "frequencyRank": 1029,
+    "source": "frequency-list",
+    "example": {
+      "de": "Die Ampel ist rot.",
+      "en": "The traffic light is red."
+    },
+    "word": "Ampel",
+    "article": "die",
+    "translation": "traffic light"
+  },
+  {
+    "id": "kreuzung",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-place"
+    },
+    "frequencyRank": 1030,
+    "source": "frequency-list",
+    "example": {
+      "de": "An der Kreuzung gehen Sie links.",
+      "en": "At the crossroads, go left."
+    },
+    "word": "Kreuzung",
+    "article": "die",
+    "translation": "crossroads"
+  },
+  {
+    "id": "ecke",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-place"
+    },
+    "frequencyRank": 1031,
+    "source": "frequency-list",
+    "example": {
+      "de": "Die Bäckerei ist an der Ecke.",
+      "en": "The bakery is on the corner."
+    },
+    "word": "Ecke",
+    "article": "die",
+    "translation": "corner"
+  },
+  {
+    "id": "bruecke",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-place"
+    },
+    "frequencyRank": 1032,
+    "source": "frequency-list",
+    "example": {
+      "de": "Wir gehen über die Brücke.",
+      "en": "We walk across the bridge."
+    },
+    "word": "Brücke",
+    "article": "die",
+    "translation": "bridge"
+  },
+  {
+    "id": "dorf",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-place"
+    },
+    "frequencyRank": 1033,
+    "source": "frequency-list",
+    "example": {
+      "de": "Meine Eltern wohnen in einem kleinen Dorf.",
+      "en": "My parents live in a small village."
+    },
+    "word": "Dorf",
+    "article": "das",
+    "translation": "village"
+  },
+  {
+    "id": "zentrum",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-place"
+    },
+    "frequencyRank": 1034,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das Hotel liegt im Zentrum.",
+      "en": "The hotel is in the centre."
+    },
+    "word": "Zentrum",
+    "article": "das",
+    "translation": "centre"
+  },
+  {
+    "id": "markt",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-place"
+    },
+    "frequencyRank": 1035,
+    "source": "frequency-list",
+    "example": {
+      "de": "Am Samstag gehe ich auf den Markt.",
+      "en": "On Saturday I go to the market."
+    },
+    "word": "Markt",
+    "article": "der",
+    "translation": "market"
+  },
+  {
+    "id": "museum",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-place"
+    },
+    "frequencyRank": 1036,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das Museum ist montags geschlossen.",
+      "en": "The museum is closed on Mondays."
+    },
+    "word": "Museum",
+    "article": "das",
+    "translation": "museum"
+  },
+  {
+    "id": "kino",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-place"
+    },
+    "frequencyRank": 1037,
+    "source": "frequency-list",
+    "example": {
+      "de": "Gehen wir heute Abend ins Kino?",
+      "en": "Shall we go to the cinema tonight?"
+    },
+    "word": "Kino",
+    "article": "das",
+    "translation": "cinema"
+  },
+  {
+    "id": "theater",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-place"
+    },
+    "frequencyRank": 1038,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das Theater ist sehr alt.",
+      "en": "The theatre is very old."
+    },
+    "word": "Theater",
+    "article": "das",
+    "translation": "theatre"
+  },
+  {
+    "id": "bibliothek",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-place"
+    },
+    "frequencyRank": 1039,
+    "source": "frequency-list",
+    "example": {
+      "de": "In der Bibliothek ist es ruhig.",
+      "en": "It's quiet in the library."
+    },
+    "word": "Bibliothek",
+    "article": "die",
+    "translation": "library"
+  },
+  {
+    "id": "rathaus",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-place"
+    },
+    "frequencyRank": 1040,
+    "source": "frequency-list",
+    "example": {
+      "de": "Das Rathaus ist am Marktplatz.",
+      "en": "The town hall is on the market square."
+    },
+    "word": "Rathaus",
+    "article": "das",
+    "translation": "town hall"
+  },
+  {
+    "id": "schwimmbad",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-place"
+    },
+    "frequencyRank": 1041,
+    "source": "frequency-list",
+    "example": {
+      "de": "Im Sommer gehen wir ins Schwimmbad.",
+      "en": "In summer we go to the swimming pool."
+    },
+    "word": "Schwimmbad",
+    "article": "das",
+    "translation": "swimming pool"
+  },
+  {
+    "id": "kiosk",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-place"
+    },
+    "frequencyRank": 1042,
+    "source": "frequency-list",
+    "example": {
+      "de": "Am Kiosk kaufe ich eine Zeitung.",
+      "en": "I buy a newspaper at the kiosk."
+    },
+    "word": "Kiosk",
+    "article": "der",
+    "translation": "kiosk"
+  },
+  {
+    "id": "kaufhaus",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-place"
+    },
+    "frequencyRank": 1043,
+    "source": "frequency-list",
+    "example": {
+      "de": "Im Kaufhaus gibt es alles.",
+      "en": "The department store has everything."
+    },
+    "word": "Kaufhaus",
+    "article": "das",
+    "translation": "department store"
+  },
+  {
+    "id": "tankstelle",
+    "type": "noun",
+    "topicIds": [
+      "wortschatz-1000"
+    ],
+    "partOfSpeech": "noun",
+    "image": {
+      "kind": "icon",
+      "icon": "category-place"
+    },
+    "frequencyRank": 1044,
+    "source": "frequency-list",
+    "example": {
+      "de": "Wir müssen noch zur Tankstelle.",
+      "en": "We still have to go to the petrol station."
+    },
+    "word": "Tankstelle",
+    "article": "die",
+    "translation": "petrol station"
   }
 ];

@@ -57,15 +57,15 @@ export function wordDiff(expectedRaw: string, typedRaw: string): WordDiff {
 
   const n = expectedNorm.length;
   const m = typedNorm.length;
-  const dp: number[][] = Array.from({ length: n + 1 }, () => new Array<number>(m + 1).fill(0));
+  const dp: number[][] = Array.from({ length: n + 1 }, () => Array.from({ length: m + 1 }, () => 0));
   for (let i = n - 1; i >= 0; i--) {
     for (let j = m - 1; j >= 0; j--) {
       dp[i][j] = expectedNorm[i] === typedNorm[j] ? dp[i + 1][j + 1] + 1 : Math.max(dp[i + 1][j], dp[i][j + 1]);
     }
   }
 
-  const expectedMatched = new Array<boolean>(n).fill(false);
-  const typedMatched = new Array<boolean>(m).fill(false);
+  const expectedMatched = Array.from({ length: n }, () => false);
+  const typedMatched = Array.from({ length: m }, () => false);
   let i = 0;
   let j = 0;
   while (i < n && j < m) {

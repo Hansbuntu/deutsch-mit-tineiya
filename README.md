@@ -53,17 +53,17 @@ A card counts as "learned" after two correct answers.
 
 ## Content
 
-767 cards in 15 topics:
+1,240 cards in 15 topics:
 
 | Group | Topics | Cards |
 |---|---|---|
 | From your notebook | Separable Verbs | 15 |
 | Your TikTok scripts | Mein Tag, Mein Zuhause, Über mich, Mein Leben | 63 vocabulary cards + 12 core sentences |
-| Grammar & vocabulary | Nouns & Articles, Everyday & Time, At the Café, Numbers, Top 1000 Words | 50 curated + 527 frequency-list words |
+| Grammar & vocabulary | Nouns & Articles, Everyday & Time, At the Café, Numbers, Top 1000 Words | 50 curated + 1,000 frequency-list words |
 | Common A1 sentences | Greetings & Introductions, Time & Daily Life, Asking Questions, Shopping & Ordering, Directions | 100 sentences (20 each) |
 
-527 of the 767 cards carry a full example sentence, which is the pool the
-practice generator draws from (220 at A1, 307 at A2 — see
+1,000 of the 1,240 cards carry a full example sentence, which is the pool the
+practice generator draws from (220 at A1, 780 at A2 — see
 [Practice generator](#practice-generator)).
 
 ## Stack
@@ -148,7 +148,7 @@ src/
                            SentenceFlipCard, TypeCheckCard, SoundButton, ProgressRing,
                            Icon (UI icons), SceneIcon (card illustrations)
   pages/                   Home, Session, Passage, SpeakSession, Generator, Progress
-public/audio/              1,130 pre-generated MP3 pronunciation clips (~16 MB)
+public/audio/              2,072 pre-generated MP3 pronunciation clips (~30 MB)
 scripts/generate-audio.mjs builds those clips
 reference/                 original build brief + design reference (archived)
 .github/workflows/         GitHub Pages deploy
@@ -165,10 +165,10 @@ reference/                 original build brief + design reference (archived)
   drills).
 - `nouns.ts` — curated cards for Nouns & Articles, Everyday & Time, At the Café,
   and Numbers.
-- `frequencyWords.ts` — 527 A1/A2 everyday words ranked by frequency, minus
+- `frequencyWords.ts` — 1,000 A1/A2 everyday words ranked by frequency, minus
   anything already in the curated topics. Words ranked 251+ (the A2 tier)
   each carry a hand-written example sentence; the top 250 are bare words. The
-  progress screen measures this against a fixed target of 1000
+  progress screen measures progress against this target of 1000
   (`FREQUENCY_LIST_TARGET` in `cards.ts`).
 - `passages.ts` — the four TikTok scripts, verbatim, for the passage view.
 - `tiktokVocab.ts` — vocabulary extracted from those scripts, one topic per
@@ -228,7 +228,7 @@ pronunciation identical for every visitor: it doesn't depend on which voices
 happen to be installed on their device.
 
 - **What's covered:** every card's headword/infinitive/sentence *and* its full
-  example sentence (the generator plays those) — 1,130 clips, about 16 MB.
+  example sentence (the generator plays those) — 2,072 clips, about 30 MB.
 - **Lookup:** `audioKeyForText()` in `lib/text.ts` hashes the spoken text
   (FNV-1a, pure JS) to a filename, `public/audio/<hash>.mp3`. The same function
   runs in the generation script and in the app, so there's no manifest to keep
@@ -265,7 +265,7 @@ else — no separate dataset.
 
 - **Pool:** only cards that have a real sentence — a `SentenceCard`, or any
   card with a hand-written `example` (`sentenceOf()` in `lib/practice.ts`).
-  Bare words never appear. That's 527 cards today.
+  Bare words never appear. That's 1,000 cards today.
 - **Level (All / A1 / A2):** derived, not stored — `cardLevel()` in
   `lib/level.ts` uses `frequencyRank` for the frequency list (rank ≤250 → A1,
   otherwise A2) and treats all other content as A1. This is an approximation,
@@ -291,8 +291,6 @@ else — no separate dataset.
 
 ## Known gaps
 
-- The frequency list is 527 words, not the 1,000 the progress screen counts
-  against.
 - Level tagging is a heuristic; there is no B1+ content (the `CefrLevel` type
   allows it).
 - The 220 top-ranked frequency words have no example sentences, so they aren't

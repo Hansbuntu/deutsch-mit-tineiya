@@ -63,7 +63,7 @@ export function normalizeText(text: string): string {
 function levenshtein(a: string, b: string): number {
   const rows = a.length + 1;
   const cols = b.length + 1;
-  const d: number[][] = Array.from({ length: rows }, () => new Array(cols).fill(0));
+  const d: number[][] = Array.from({ length: rows }, () => Array.from({ length: cols }, () => 0));
   for (let i = 0; i < rows; i++) d[i][0] = i;
   for (let j = 0; j < cols; j++) d[0][j] = j;
   for (let i = 1; i < rows; i++) {
