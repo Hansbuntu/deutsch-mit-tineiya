@@ -9,6 +9,7 @@ import type { Topic } from '../data/types';
 import { useProgress, type TopicProgress } from '../lib/progress';
 import { getLastTopicId } from '../lib/lastTopic';
 import { REVIEW_BATCH } from '../lib/review';
+import { hasSpeaking } from '../lib/speaking';
 
 function greeting(date: Date) {
   const hour = date.getHours();
@@ -19,7 +20,7 @@ function greeting(date: Date) {
 
 function TopicTile({ topic, progress }: { topic: Topic; progress: TopicProgress }) {
   const passage = passageForTopic(topic.id);
-  const hasSpeaking = cardsForTopic(topic.id).some((c) => c.type === 'sentence');
+  const speakable = hasSpeaking(topic.id);
   const { total, done, learned, finished } = progress;
   const pct = total > 0 ? (done / total) * 100 : 0;
 
@@ -67,7 +68,7 @@ function TopicTile({ topic, progress }: { topic: Topic; progress: TopicProgress 
           </span>
         </div>
       </Link>
-      {(passage || hasSpeaking) && (
+      {(passage || speakable) && (
         <div className="tile-actions">
           {passage && (
             <Link to={`/thema/${topic.id}/passage`} className="chip-link">
@@ -75,7 +76,7 @@ function TopicTile({ topic, progress }: { topic: Topic; progress: TopicProgress 
               Read passage
             </Link>
           )}
-          {hasSpeaking && (
+          {speakable && (
             <Link to={`/thema/${topic.id}/sprechen`} className="chip-link">
               <Icon name="mic" />
               Speak
@@ -118,6 +119,10 @@ export function Home() {
             <Link to="/generieren" className="btn btn-lg">
               <Icon name="sparkles" />
               Random sentence
+            </Link>
+            <Link to="/generieren?mode=listen" className="btn btn-lg">
+              <Icon name="volume" />
+              Listening practice
             </Link>
           </div>
         </div>

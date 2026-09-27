@@ -11,6 +11,7 @@ import { generateDrillForCard } from '../lib/drills';
 import { shuffle } from '../lib/text';
 import { shouldIgnoreShortcut } from '../lib/keys';
 import { setLastTopicId } from '../lib/lastTopic';
+import { hasSpeaking } from '../lib/speaking';
 import type { VerbCard } from '../data/types';
 
 export function Session() {
@@ -84,7 +85,7 @@ export function Session() {
   const progress = topicProgress(topicId);
   const relatedTopics = topics.filter((t) => t.group === topic.group);
   const passage = passageForTopic(topicId);
-  const hasSpeakingPractice = cards.some((c) => c.type === 'sentence');
+  const hasSpeakingPractice = hasSpeaking(topicId);
   const restart = () => {
     setCards(shuffle(cardsForTopic(topicId)));
     setIndex(0);

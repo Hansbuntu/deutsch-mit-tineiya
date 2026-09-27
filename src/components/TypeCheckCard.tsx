@@ -5,6 +5,10 @@ import type { CefrLevel } from '../data/types';
 import { wordDiff, isCloseEnough, type PracticeDirection, type Sentence } from '../lib/practice';
 import { startListening, speechRecognitionSupported, type ListenSession } from '../lib/voice';
 import { shouldIgnoreShortcut } from '../lib/keys';
+import { playPronunciation } from '../lib/speech';
+
+/** Playback speed for "Slower" in listening mode. */
+const SLOW_RATE = 0.7;
 
 export function TypeCheckCard({
   sentence,
@@ -13,6 +17,7 @@ export function TypeCheckCard({
   direction,
   onGraded,
   audioText,
+  listen = false,
 }: {
   sentence: Sentence;
   topicLabel: string;
@@ -21,8 +26,13 @@ export function TypeCheckCard({
   onGraded?: (correct: boolean) => void;
   /** What the sound button plays, when it differs from the German answer (e.g. "Tisch" for "der Tisch"). */
   audioText?: string;
+  /**
+   * Listening (dictation): the German is played, not shown — write down what you hear.
+   * Checked against the German, with the English meaning shown afterwards.
+   */
+  listen?: boolean;
 }) {
-  const toGerman = direction === 'en-to-de';
+  const toGerman = listen || direction === 'en-to-de';
   const prompt = toGerman ? sentence.en : sentence.de;
   const answer = toGerman ? sentence.de : sentence.en;
   const answerLang = toGerman ? 'de' : 'en';
@@ -44,11 +54,20 @@ export function TypeCheckCard({
     if (!isRetry) onGraded?.(isCloseEnough(answer, finalValue, answerLang));
   };
 
+  const play = (rate = 1) => playPronunciation(sentence.de, rate);
+
   const tryAgain = () => {
     setValue('');
     setChecked(false);
     setIsRetry(true);
+    if (listen) play();
   };
+
+  // Listening starts by playing the sentence (the Generate tap that got here counts as the user's gesture).
+  useEffect(() => {
+    if (listen) play();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     if (isRetry && !checked) inputRef.current?.focus();
@@ -97,16 +116,36 @@ export function TypeCheckCard({
         <span className="tag tag-mono tag-gold">{level}</span>
         <span className="tag">{topicLabel}</span>
         <span className="gen-task" style={{ marginLeft: 'auto' }}>
-          {toGerman ? 'Write it in German' : 'Write it in English'}
+          {listen ? 'Write what you hear' : toGerman ? 'Write it in German' : 'Write it in English'}
         </span>
       </div>
 
-      <div className="gen-prompt-row">
-        <p className="gen-prompt" lang={toGerman ? 'en' : 'de'}>
-          {prompt}
-        </p>
-        {!toGerman && <SoundButton text={audioText ?? sentence.de} label={sentence.de} />}
-      </div>
+      {listen ? (
+        <div className="listen-stage">
+          <button type="button" className="listen-play" onClick={() => play()} aria-label="Play the sentence again">
+            <Icon name="volume" />
+          </button>
+          <div className="listen-copy">
+            <p className="listen-title">Listen, then write it down</p>
+            <div className="listen-controls">
+              <button type="button" className="btn btn-sm" onClick={() => play()}>
+                <Icon name="refresh" />
+                Play again
+              </button>
+              <button type="button" className="btn btn-sm" onClick={() => play(SLOW_RATE)}>
+                Slower
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div className="gen-prompt-row">
+          <p className="gen-prompt" lang={toGerman ? 'en' : 'de'}>
+            {prompt}
+          </p>
+          {!toGerman && <SoundButton text={audioText ?? sentence.de} label={sentence.de} />}
+        </div>
+      )}
 
       {!checked ? (
         <form
@@ -126,7 +165,11 @@ export function TypeCheckCard({
               listening
                 ? 'Listening… tap ✓ when you’re done'
                 : isRetry
-                  ? 'Now write it again, correctly…'
+                  ? listen
+                    ? 'Listen again, then write it correctly…'
+                    : 'Now write it again, correctly…'
+                  : listen
+                  ? 'Type or say what you hear…'
                   : toGerman
                   ? 'Type or speak your German…'
                   : 'Type or speak your English…'
@@ -183,6 +226,12 @@ export function TypeCheckCard({
               ))}
             </span>
           </div>
+          {listen && (
+            <div className="diff-line">
+              <span className="diff-key">Meaning</span>
+              <span className="diff-words diff-meaning">{sentence.en}</span>
+            </div>
+          )}
           <div className="diff-foot">
             <SoundButton text={audioText ?? sentence.de} label={sentence.de} />
             {!correct && (

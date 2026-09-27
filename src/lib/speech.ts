@@ -15,18 +15,29 @@
 
 import { audioKeyForText } from './text';
 
-/** Play the pre-generated clip for `text`, falling back to speechSynthesis if it's missing. */
-export function playPronunciation(text: string) {
+let current: HTMLAudioElement | null = null;
+
+/**
+ * Play the pre-generated clip for `text`, falling back to speechSynthesis if it's missing.
+ * `rate` below 1 plays it slower (pitch is kept). Starting a clip stops the one before.
+ */
+export function playPronunciation(text: string, rate = 1) {
   const src = `${import.meta.env.BASE_URL}audio/${audioKeyForText(text)}.mp3`;
   let fellBack = false;
   const fallback = () => {
     if (fellBack) return;
     fellBack = true;
-    speakGerman(text);
+    speakGerman(text, 0.95 * rate);
   };
+  current?.pause();
   const audio = new Audio(src);
+  audio.playbackRate = rate;
+  current = audio;
   audio.addEventListener('error', fallback, { once: true });
-  audio.play().catch(fallback);
+  audio.play().catch((error: unknown) => {
+    // AbortError just means a newer clip replaced this one — not a missing clip.
+    if ((error as DOMException)?.name !== 'AbortError') fallback();
+  });
 }
 
 let voicesPromise: Promise<SpeechSynthesisVoice[]> | null = null;
@@ -89,7 +100,7 @@ function pickGermanVoice(voices: SpeechSynthesisVoice[]): SpeechSynthesisVoice |
   return pool.find((v) => !v.localService) ?? pool[0];
 }
 
-export async function speakGerman(text: string) {
+export async function speakGerman(text: string, rate = 0.95) {
   if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
   window.speechSynthesis.cancel();
 
@@ -99,7 +110,7 @@ export async function speakGerman(text: string) {
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = voice?.lang ?? 'de-DE';
   if (voice) utterance.voice = voice;
-  utterance.rate = 0.95;
+  utterance.rate = rate;
   window.speechSynthesis.speak(utterance);
 }
 

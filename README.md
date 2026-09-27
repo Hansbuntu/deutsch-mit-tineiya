@@ -23,7 +23,7 @@ and deploys to GitHub Pages on every push to `main`.
 | Full passage | `/thema/:topicId/passage` | One of the four TikTok scripts as continuous text, for reading and memorizing the way it's practiced for posting. |
 | Speaking practice | `/thema/:topicId/sprechen` | Shows an English prompt; tap the mic, say the German sentence, tap **Done**, and it's checked against the target. |
 | Review | `/wiederholen` | Spaced review of cards you've studied — missed ones first — in Flip (self-graded) or Type mode. Home shows "N cards to review today" and the tab carries a count. See [Review](#review). |
-| Practice generator | `/generieren` | Random full-sentence practice filtered by level and source, in Flip or Type mode. |
+| Practice generator | `/generieren` | Random full-sentence practice filtered by level and source, in Flip, Type or Listen (dictation) mode. `#/generieren?mode=listen` opens straight into listening — Home links to it as "Listening practice". |
 | Word list | `/woerter` | Every word in the app (about 1,100, deduplicated) — search German or English, filter by der/die/das, verbs or other, sort by frequency or A–Z, tap for the example sentence, play the audio. |
 | Progress | `/fortschritt` | Quiet stats: progress through the frequency list (ring), days active, cards learned out of the total, notebook pages digitized, a per-topic progress row for every topic, and "Save all audio" for offline use. |
 
@@ -37,7 +37,7 @@ casually, not a daily obligation.
 | Flashcard session | `←` / `→` previous / next card · `1`–`3` answer the drill · `Enter` try again after a miss |
 | Speaking practice | `Space` or `Enter` = Done while listening · `Enter` try again after a miss |
 | Review | `Space` or `Enter` reveal · `1` didn't know it · `2` knew it · `N` or `→` next card (Type mode) |
-| Practice generator | `Space` or `Enter` reveal (Flip mode) · `Enter` try again after a miss (Type mode) · `N` or `→` next sentence |
+| Practice generator | `Space` or `Enter` reveal (Flip mode) · `Enter` try again after a miss (Type and Listen modes) · `N` or `→` next sentence |
 
 Shortcuts are ignored while typing in a field, and the on-screen key hints are
 hidden on touch devices.
@@ -162,6 +162,7 @@ src/
     voice.ts               SpeechRecognition sessions (tap Done to finish) + text similarity
     numbers.ts             spells digits out as words ("7:00" → "sieben Uhr") for answer checking
     practice.ts            sentenceOf(), word-level diff, answer checking
+    speaking.ts            which sentences each topic's speaking practice uses
     review.ts              what a review asks for each card, round size
     offline.ts             registers the service worker, "Save all audio"
     level.ts               derives an A1/A2 level for a card
@@ -325,9 +326,16 @@ happen to be installed on their device.
 
 ## Speaking practice (`SpeakSession.tsx`, `lib/voice.ts`)
 
-A "say this in German" mode for `SentenceCard`s — for a TikTok topic, five
-key sentences from the script, in script order; for the A1 sentence bank, its
-20 sentences shuffled.
+A "say this in German" mode on every topic that has sentences
+(`lib/speaking.ts`):
+
+- **Sentence topics** use their sentences — a TikTok script's five key
+  sentences in script order; an A1 topic's 20, shuffled.
+- **Word topics** (Separable Verbs, Nouns & Articles, Everyday & Time, At the
+  Café, Top 1000 Words) use the cards' example sentences, words not learned yet
+  first, in rounds of 20 ("Next round" deals another). A right answer counts
+  for the word the sentence belongs to.
+- Numbers has no speaking — its cards are bare number words.
 
 - The browser's built-in `SpeechRecognition` transcribes what's said (free, no
   backend), and the transcript is compared to the target with a normalized
@@ -373,9 +381,15 @@ else — no separate dataset.
     ≥ 0.9) plus an exact word-by-word diff (`wordDiff`, longest common
     subsequence) showing which words matched, which were missed, and what was
     written instead.
+  - *Listen* is dictation: the German sentence plays (it isn't shown) and you
+    type or say what you heard, checked against the German the same way as
+    Type, with the English meaning shown afterwards. **Play again** and
+    **Slower** (70% speed, same pitch) replay it; Try again replays it too.
+    Direction doesn't apply.
 - **Generate** picks the next random card; changing level or source also draws
   a fresh one. Changing direction or mode re-presents the current card.
-- Flip records a card as seen; Type records correct answers toward "learned".
+- Flip records a card as seen; Type and Listen record correct answers toward
+  "learned".
 - Styling is intentionally a little different from the rest of the app (dark
   terminal-style control bar, monospace type, `// LABEL` tags) but stays inside
   the ink/sage/gold palette.

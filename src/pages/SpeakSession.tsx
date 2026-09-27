@@ -2,11 +2,9 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Icon } from '../components/Icon';
 import { SoundButton } from '../components/SoundButton';
-import { cardsForTopic } from '../data/cards';
 import { topicById } from '../data/topics';
-import { passageForTopic } from '../data/passages';
-import type { SentenceCard } from '../data/types';
 import { useProgress } from '../lib/progress';
+import { speakingItemsFor, SPEAK_ROUND, type SpeakItem } from '../lib/speaking';
 import {
   startListening,
   speechRecognitionSupported,
@@ -14,7 +12,6 @@ import {
   SPOKEN_MATCH_THRESHOLD,
   type ListenSession,
 } from '../lib/voice';
-import { shuffle } from '../lib/text';
 import { shouldIgnoreShortcut } from '../lib/keys';
 
 type Phase = 'prompt' | 'listening' | 'checking' | 'result' | 'error';
@@ -25,27 +22,13 @@ const ERROR_MESSAGES: Record<string, string> = {
   network: 'A network error interrupted speech recognition — check your connection and try again.',
 };
 
-/** A TikTok script is practised in script order, line by line; other topics are shuffled. */
-const sentenceCardsFor = (topicId: string) => {
-  const sentences = cardsForTopic(topicId).filter((c): c is SentenceCard => c.type === 'sentence');
-  const passage = passageForTopic(topicId);
-  if (!passage) return shuffle(sentences);
-  const text = passage.paragraphs.join(' ');
-  // Core sentences reworded from the script (not found verbatim) go after the script's own lines.
-  const position = (c: SentenceCard) => {
-    const at = text.indexOf(c.de);
-    return at === -1 ? Number.MAX_SAFE_INTEGER : at;
-  };
-  return [...sentences].sort((a, b) => position(a) - position(b));
-};
-
 export function SpeakSession() {
   const { topicId = '' } = useParams();
   const topic = topicById(topicId);
-  const { markAnswer } = useProgress();
+  const { markAnswer, isLearned } = useProgress();
   const supported = useMemo(speechRecognitionSupported, []);
 
-  const [cards, setCards] = useState<SentenceCard[]>(() => sentenceCardsFor(topicId));
+  const [items, setItems] = useState<SpeakItem[]>(() => speakingItemsFor(topicId, isLearned));
   const [index, setIndex] = useState(0);
   const [phase, setPhase] = useState<Phase>('prompt');
   const [transcript, setTranscript] = useState('');
@@ -66,15 +49,18 @@ export function SpeakSession() {
 
   useEffect(() => {
     stopListening();
-    setCards(sentenceCardsFor(topicId));
+    setItems(speakingItemsFor(topicId, isLearned));
     setIndex(0);
     setPhase('prompt');
     setTranscript('');
     setErrorMessage('');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [topicId]);
 
-  const card = cards[index];
-  const finished = index >= cards.length;
+  const item = items[index];
+  const finished = index >= items.length;
+  // Word topics are practised in rounds; "Go again" deals the next one.
+  const isRound = items.length === SPEAK_ROUND && items.every((i) => i.card.type !== 'sentence');
 
   const reset = () => {
     stopListening();
@@ -106,11 +92,11 @@ export function SpeakSession() {
     session.current = null;
 
     if (result.status === 'result') {
-      const isCorrect = textSimilarity(result.transcript, card.de) >= SPOKEN_MATCH_THRESHOLD;
+      const isCorrect = textSimilarity(result.transcript, item.sentence.de) >= SPOKEN_MATCH_THRESHOLD;
       setTranscript(result.transcript);
       setCorrect(isCorrect);
       setPhase('result');
-      if (!isRetry) markAnswer(card.id, isCorrect);
+      if (!isRetry) markAnswer(item.card.id, isCorrect);
     } else if (result.status === 'no-match') {
       setErrorMessage("Didn't catch that — try again, a little closer to the mic.");
       setPhase('error');
@@ -150,7 +136,7 @@ export function SpeakSession() {
     return () => window.removeEventListener('keydown', onKey);
   }, [phase, missed]);
 
-  if (!topic || cards.length === 0) {
+  if (!topic || items.length === 0) {
     return (
       <div className="surface empty">
         <p>{topic ? "There's no speaking practice for this topic yet." : "That topic doesn't exist."}</p>
@@ -194,12 +180,21 @@ export function SpeakSession() {
           </div>
           <h2 className="title-lg">Gut gesprochen!</h2>
           <p>
-            That's all {cards.length} sentences from {topic.name}. Run through them again, or head back to the cards.
+            {isRound
+              ? `That's a round of ${items.length} sentences from ${topic.name}. Go again for ${SPEAK_ROUND} more — words you haven't learned yet come first.`
+              : `That's all ${items.length} sentences from ${topic.name}. Run through them again, or head back to the cards.`}
           </p>
           <div className="done-actions">
-            <button type="button" className="btn" onClick={() => goTo(0)}>
+            <button
+              type="button"
+              className="btn"
+              onClick={() => {
+                if (isRound) setItems(speakingItemsFor(topicId, isLearned));
+                goTo(0);
+              }}
+            >
               <Icon name="refresh" />
-              Again
+              {isRound ? 'Next round' : 'Again'}
             </button>
             <Link to={`/thema/${topicId}`} className="btn btn-primary">
               Back to cards
@@ -208,18 +203,18 @@ export function SpeakSession() {
           </div>
         </div>
       ) : (
-        <div className="surface speak-card rise-2" key={card.id}>
+        <div className="surface speak-card rise-2" key={`${item.card.id}-${index}`}>
           <div className="session-progress" style={{ width: '100%' }}>
             <div className="meter meter-sage">
-              <span style={{ width: `${((index + 1) / cards.length) * 100}%` }} />
+              <span style={{ width: `${((index + 1) / items.length) * 100}%` }} />
             </div>
             <span className="session-count">
-              <strong>{index + 1}</strong> / {cards.length}
+              <strong>{index + 1}</strong> / {items.length}
             </span>
           </div>
 
           <span className="eyebrow no-rule">Say this in German</span>
-          <p className="speak-prompt">{card.en}</p>
+          <p className="speak-prompt">{item.sentence.en}</p>
 
           {phase === 'prompt' && supported && (
             <>
@@ -306,8 +301,8 @@ export function SpeakSession() {
                 </p>
               )}
               <div className="result-answer">
-                <p lang="de">{card.de}</p>
-                <SoundButton text={card.de} label={card.de} />
+                <p lang="de">{item.sentence.de}</p>
+                <SoundButton text={item.sentence.de} label={item.sentence.de} />
               </div>
               {supported && !correct && (
                 <p className="transcript">
@@ -334,7 +329,7 @@ export function SpeakSession() {
               </div>
             ) : phase === 'result' ? (
               <button type="button" className="btn btn-primary" onClick={() => goTo(index + 1)}>
-                {index === cards.length - 1 ? 'Finish' : 'Next'}
+                {index === items.length - 1 ? 'Finish' : 'Next'}
                 <Icon name="arrow-right" />
               </button>
             ) : (

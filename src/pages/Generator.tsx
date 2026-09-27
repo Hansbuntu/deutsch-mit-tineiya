@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Icon } from '../components/Icon';
 import { SentenceFlipCard } from '../components/SentenceFlipCard';
 import { TypeCheckCard } from '../components/TypeCheckCard';
@@ -13,7 +14,9 @@ import { shouldIgnoreShortcut } from '../lib/keys';
 
 type LevelFilter = 'all' | CefrLevel;
 type SourceFilter = 'all' | TopicGroup;
-type Mode = 'flip' | 'type';
+type Mode = 'flip' | 'type' | 'listen';
+
+const MODES: Mode[] = ['flip', 'type', 'listen'];
 
 const LEVEL_OPTIONS: LevelFilter[] = ['all', 'A1', 'A2'];
 
@@ -30,7 +33,12 @@ export function Generator() {
   const [level, setLevel] = useState<LevelFilter>('all');
   const [source, setSource] = useState<SourceFilter>('all');
   const [direction, setDirection] = useState<PracticeDirection>('en-to-de');
-  const [mode, setMode] = useState<Mode>('flip');
+  // A link can open a mode directly, e.g. #/generieren?mode=listen from Home.
+  const [searchParams] = useSearchParams();
+  const [mode, setMode] = useState<Mode>(() => {
+    const requested = searchParams.get('mode') as Mode | null;
+    return requested && MODES.includes(requested) ? requested : 'flip';
+  });
   const [current, setCurrent] = useState<Card | null>(null);
   const [generatedCount, setGeneratedCount] = useState(0);
 
@@ -126,15 +134,19 @@ export function Generator() {
 
           <div className="console-field">
             <span className="console-label">Direction</span>
-            <Seg
-              label="Direction"
-              value={direction}
-              onChange={setDirection}
-              options={[
-                { value: 'en-to-de', label: 'EN → DE' },
-                { value: 'de-to-en', label: 'DE → EN' },
-              ]}
-            />
+            {mode === 'listen' ? (
+              <span className="console-note">German audio → you write it</span>
+            ) : (
+              <Seg
+                label="Direction"
+                value={direction}
+                onChange={setDirection}
+                options={[
+                  { value: 'en-to-de', label: 'EN → DE' },
+                  { value: 'de-to-en', label: 'DE → EN' },
+                ]}
+              />
+            )}
           </div>
 
           <div className="console-field">
@@ -146,6 +158,7 @@ export function Generator() {
               options={[
                 { value: 'flip', label: 'Flip' },
                 { value: 'type', label: 'Type' },
+                { value: 'listen', label: 'Listen' },
               ]}
             />
           </div>
@@ -172,7 +185,8 @@ export function Generator() {
           />
         ) : (
           <TypeCheckCard
-            key={current.id + direction}
+            key={current.id + direction + mode}
+            listen={mode === 'listen'}
             sentence={sentence}
             topicLabel={topicLabel}
             level={cardLevel(current)}
