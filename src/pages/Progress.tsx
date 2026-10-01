@@ -3,27 +3,33 @@ import { Icon } from '../components/Icon';
 import { SceneIcon } from '../components/SceneIcon';
 import { ProgressRing } from '../components/ProgressRing';
 import { OfflineAudio } from '../components/OfflineAudio';
+import { ProgressBackup } from '../components/ProgressBackup';
+import { HowItWorksList } from '../components/HowItWorks';
 import { useProgress } from '../lib/progress';
 import { topics, TOPIC_GROUP_ORDER, TOPIC_GROUP_LABELS } from '../data/topics';
-import { allCards, FREQUENCY_LIST_TARGET } from '../data/cards';
+import { FREQUENCY_LIST_TARGET } from '../data/cards';
+import { HeroBackdrop } from '../components/HeroBackdrop';
 
 export function Progress() {
   const {
     daysActive,
     totalCardsLearned,
-    notebookPagesDigitized,
+    practisedThisWeek,
     frequencyListLearned,
     frequencyListPractised,
     topicProgress,
   } = useProgress();
 
   return (
-    <>
+    <div className="tab-page">
+      <HeroBackdrop className="tab-waves" />
       <header className="page-head rise">
-        <div className="page-head-copy">
+        <div className="page-head-copy on-waves">
           <span className="eyebrow">Your progress</span>
           <h1 className="title-xl">How far you've come</h1>
-          <p className="lede">Quiet numbers, no streaks. A card counts as learned once you've answered it correctly twice.</p>
+          <p className="lede">
+            Quiet numbers, no streaks. A card counts as learned once you've answered it correctly twice.
+          </p>
         </div>
       </header>
 
@@ -36,12 +42,12 @@ export function Progress() {
               <small> / {FREQUENCY_LIST_TARGET.toLocaleString('en')}</small>
             </div>
             <p className="stat-label">most common German words learned</p>
-              {frequencyListPractised > 0 && (
-                <p className="glance-sub">
-                  <span className="glance-swatch" aria-hidden="true" />
-                  {frequencyListPractised.toLocaleString('en')} practised so far
-                </p>
-              )}
+            {frequencyListPractised > 0 && (
+              <p className="glance-sub">
+                <span className="glance-swatch" aria-hidden="true" />
+                {frequencyListPractised.toLocaleString('en')} practised so far
+              </p>
+            )}
           </div>
         </div>
         <div className="surface stat-card">
@@ -58,20 +64,17 @@ export function Progress() {
             <Icon name="cards" />
           </span>
           <div>
-            <div className="stat-value">
-              {totalCardsLearned}
-              <small> / {allCards.length}</small>
-            </div>
-            <p className="stat-label">cards learned</p>
+            <div className="stat-value">{totalCardsLearned}</div>
+            <p className="stat-label">cards learned (answered right twice)</p>
           </div>
         </div>
         <div className="surface stat-card">
           <span className="stat-icon">
-            <Icon name="notebook" />
+            <Icon name="chart" />
           </span>
           <div>
-            <div className="stat-value">{notebookPagesDigitized}</div>
-            <p className="stat-label">notebook pages digitized</p>
+            <div className="stat-value">{practisedThisWeek}</div>
+            <p className="stat-label">cards practised this week</p>
           </div>
         </div>
       </div>
@@ -98,7 +101,11 @@ export function Progress() {
               {groupTopics.map((topic) => {
                 const { total, done, learned, finished } = topicProgress(topic.id);
                 return (
-                  <Link key={topic.id} to={`/thema/${topic.id}`} className={`topic-row${finished ? ' is-finished' : ''}`}>
+                  <Link
+                    key={topic.id}
+                    to={`/thema/${topic.id}`}
+                    className={`topic-row${finished ? ' is-finished' : ''}`}
+                  >
                     <span className="topic-row-name">
                       <span className="topic-row-icon">
                         <SceneIcon name={topic.icon} />
@@ -126,13 +133,25 @@ export function Progress() {
         );
       })}
 
+      <ProgressBackup />
+
+      <section className="section">
+        <details className="surface how-details">
+          <summary>
+            <Icon name="info" />
+            How this app works
+          </summary>
+          <HowItWorksList />
+        </details>
+      </section>
+
       <OfflineAudio />
 
       <p className="footnote">
         <Icon name="info" />
-        Progress is stored only in this browser. Nothing is sent anywhere — and there's no streak to protect, so come back
-        whenever it suits you.
+        Progress is stored only in this browser. Nothing is sent anywhere — and there's no streak to protect, so come
+        back whenever it suits you.
       </p>
-    </>
+    </div>
   );
 }

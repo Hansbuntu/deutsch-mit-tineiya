@@ -4014,3 +4014,334 @@ textarea {
     justify-content: center;
   }
 }
+
+/* Progress: back up / restore */
+.backup-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px 22px;
+}
+
+.backup-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.backup-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.backup-restore {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.backup-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+.backup-paste {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.backup-code {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-md);
+  background: var(--surface-raised);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  resize: vertical;
+}
+
+.backup-code:focus {
+  outline: none;
+  border-color: var(--sage);
+  box-shadow: var(--focus-ring);
+}
+
+.backup-confirm {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  border-radius: var(--r-md);
+  background: var(--gold-tint);
+  font-size: 14px;
+  color: var(--ink-2);
+}
+
+.backup-confirm strong {
+  color: var(--ink);
+}
+
+.backup-status {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 13.5px;
+}
+
+.backup-status svg {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+}
+
+.backup-status.ok {
+  color: var(--sage-strong);
+}
+
+.backup-status.bad {
+  color: var(--danger);
+}
+
+@media (max-width: 720px) {
+  .backup-card {
+    padding: 16px;
+  }
+
+  .backup-actions > .btn:not(.btn-sm) {
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+}
+
+/* Review: take back the last Flip grade */
+.undo-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+  padding: 6px 6px 6px 16px;
+  border-radius: var(--r-md);
+  background: var(--bg-sunken);
+  font-size: 13.5px;
+  color: var(--ink-2);
+  animation: rise 0.25s var(--ease) both;
+}
+
+.undo-bar strong {
+  color: var(--ink);
+}
+
+.done .undo-bar {
+  margin: 4px auto 0;
+  max-width: 360px;
+  width: 100%;
+}
+
+/* Welcome on Home + "How this app works" on Progress */
+.welcome-card {
+  padding: 22px 24px;
+}
+
+.welcome-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.how-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px 22px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.how-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.how-list li > span:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.how-list strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.how-icon {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: var(--sage-tint);
+  color: var(--sage-strong);
+}
+
+.how-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.how-details {
+  padding: 4px 22px;
+}
+
+.how-details summary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 52px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.how-details summary svg {
+  width: 18px;
+  height: 18px;
+  color: var(--sage-strong);
+}
+
+.how-details[open] {
+  padding-bottom: 20px;
+}
+
+.how-details[open] summary {
+  margin-bottom: 10px;
+}
+
+@media (max-width: 720px) {
+  .welcome-card {
+    padding: 18px 16px;
+  }
+
+  .how-details {
+    padding-inline: 16px;
+  }
+}
+
+/* ==========================================================================
+   Home hero backdrop: brand-coloured waves (components/HeroBackdrop.tsx)
+   ========================================================================== */
+
+/* Full-bleed backgrounds use 100vw; clip the overflow without breaking the sticky header. */
+.shell {
+  overflow-x: clip;
+}
+
+.hero-today {
+  position: relative;
+  isolation: isolate;
+}
+
+/* The wave layer: edge to edge behind the top of the page, from under the header. */
+.page-waves {
+  position: absolute;
+  z-index: -1;
+  top: calc(-1 * (var(--header-h) + 40px));
+  left: calc(50% - 50vw);
+  width: 100vw;
+  pointer-events: none;
+}
+
+/* Home: behind the whole hero, fading out into the page. */
+.hero-waves {
+  bottom: -64px;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 82%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 82%, transparent 100%);
+}
+
+/* The other tabs: a band behind the page title that fades out below it. */
+.tab-page {
+  position: relative;
+  isolation: isolate;
+}
+
+.tab-waves {
+  height: calc(var(--header-h) + 40px + 360px);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%);
+}
+
+/* No WebGL2 (or before the shader loads): a still wash in the same colours. */
+.page-waves:empty {
+  background:
+    radial-gradient(70% 55% at 85% 100%, color-mix(in srgb, var(--gold) 22%, transparent), transparent 70%),
+    radial-gradient(90% 70% at 20% 100%, color-mix(in srgb, var(--sage) 28%, transparent), transparent 75%);
+}
+
+.gradient-waves-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Readability: a soft wash of the page colour behind any text that sits on the waves. With
+   it, every text colour clears WCAG AA even over the darkest part of the waves (worked out
+   per theme, with the waves capped at 60% strength). */
+.on-waves {
+  position: relative;
+}
+
+.on-waves::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: -40px -48px;
+  border-radius: 48px;
+  background: color-mix(in srgb, var(--bg) 60%, transparent);
+  filter: blur(22px);
+  pointer-events: none;
+}
+
+.on-waves .eyebrow {
+  color: var(--ink-2);
+}
+
+@media (max-width: 720px) {
+  .page-waves {
+    top: calc(-1 * (var(--header-h) + 24px));
+  }
+
+  .tab-waves {
+    height: calc(var(--header-h) + 24px + 300px);
+  }
+
+  .on-waves::before {
+    inset: -32px -24px;
+  }
+}
+
+/* Inside a wash, the lightest grey isn't safe over every part of the waves — use the
+   darker secondary grey instead (it clears AA over the darkest wave colour). */
+.on-waves {
+  --ink-3: var(--ink-2);
+}
+
+/* Same for the light theme's red (the dark theme's already clears AA there). */
+[data-theme='light'] .on-waves {
+  --danger: #7d331f;
+}

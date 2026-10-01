@@ -11,6 +11,7 @@ import type { Card, CefrLevel } from '../data/types';
  * threading a `level` field through every data file.
  */
 export function cardLevel(card: Card): CefrLevel {
+  if (card.level) return card.level;
   if (card.source === 'frequency-list' && card.frequencyRank) {
     return card.frequencyRank <= 250 ? 'A1' : 'A2';
   }

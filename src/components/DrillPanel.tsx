@@ -10,6 +10,8 @@ const COPY: Record<DrillKind, { eyebrow: string; title: string }> = {
   article: { eyebrow: 'Articles', title: 'Der, die or das?' },
   'word-order': { eyebrow: 'Word order', title: 'Which order is correct?' },
   meaning: { eyebrow: 'Meaning', title: 'What does it mean?' },
+  auxiliary: { eyebrow: 'Perfekt', title: 'haben or sein?' },
+  participle: { eyebrow: 'Perfekt', title: 'Pick the past participle' },
 };
 
 export function DrillPanel({ drill, onAnswer }: { drill: Drill; onAnswer: (correct: boolean) => void }) {

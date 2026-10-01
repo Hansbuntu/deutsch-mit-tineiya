@@ -127,6 +127,10 @@ interface ProgressContextValue {
   /** When each kind of practice was last done (empty until it has been). */
   activity: Partial<Record<ActivityKind, ActivityRecord>>;
   logActivity: (kind: ActivityKind) => void;
+  /** Put a card's record back exactly as it was (undefined = never studied) — for undo. */
+  restoreRecord: (cardId: string, record: CardProgress | undefined) => void;
+  /** Cards worked through in the last 7 days. */
+  practisedThisWeek: number;
 }
 
 const ProgressContext = createContext<ProgressContextValue | null>(null);
@@ -191,6 +195,14 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
       reviewQueue,
       nextReview,
       activity: state.activity ?? {},
+      practisedThisWeek: records.filter((r) => r.lastSeenISO >= addDaysISO(-6)).length,
+      restoreRecord: (cardId: string, record: CardProgress | undefined) =>
+        setState((s) => {
+          const cards = { ...s.cards };
+          if (record) cards[cardId] = record;
+          else delete cards[cardId];
+          return { ...s, cards };
+        }),
       logActivity: (kind: ActivityKind) =>
         setState((s) => {
           const prev = s.activity?.[kind];

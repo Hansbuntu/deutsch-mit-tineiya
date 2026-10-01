@@ -44,7 +44,7 @@ hidden on touch devices.
 
 ### Drills
 
-Multiple choice, never typing. Five kinds:
+Multiple choice, never typing. Seven kinds:
 
 - **conjugation** — fill in the conjugated verb form (regular and stem-changing:
   fangen → fängst/fängt, fahren → fährst/fährt, nehmen → nimmst/nimmt)
@@ -55,6 +55,9 @@ Multiple choice, never typing. Five kinds:
 - **meaning** — "What does „schon“ mean?" for words with no grammar to drill
   (adverbs, adjectives, pronouns…), with wrong options drawn from words of the
   same kind — so the Top 1000 list can be learned in a session
+- **auxiliary** — Perfekt: "Ich ___ nach Berlin gefahren." haben or sein?
+- **participle** — Perfekt: "Ich habe Wasser ___." with a hand-picked trap form
+  (getrunken / getrinkt / trinken)
 
 While a drill asks about something the card shows — the English meaning, or
 the article (and its example sentence) — the card hides it until you answer.
@@ -72,17 +75,17 @@ card look learned early.
 
 ## Content
 
-1,248 cards in 15 topics:
+1,280 cards in 16 topics:
 
 | Group | Topics | Cards |
 |---|---|---|
 | From your notebook | Separable Verbs | 15 |
 | Your TikTok scripts | Mein Tag, Mein Zuhause, Über mich, Mein Leben | 63 vocabulary cards + 20 sentences (5 per script) |
-| Grammar & vocabulary | Nouns & Articles, Everyday & Time, At the Café, Numbers, Top 1000 Words | 50 curated + 1,000 frequency-list words |
+| Grammar & vocabulary | Nouns & Articles, Everyday & Time, At the Café, Numbers, Past Tense (Perfekt), Top 1000 Words | 50 curated + 32 Perfekt sentences + 1,000 frequency-list words |
 | Common A1 sentences | Greetings & Introductions, Time & Daily Life, Asking Questions, Shopping & Ordering, Directions | 100 sentences (20 each) |
 
-1,228 of the 1,248 cards carry a full sentence, which is the pool the
-practice generator draws from (448 at A1, 780 at A2 — see
+1,260 of the 1,280 cards carry a full sentence, which is the pool the
+practice generator draws from (448 at A1, 812 at A2 — see
 [Practice generator](#practice-generator)).
 
 ## Stack
@@ -115,6 +118,14 @@ highlight — refined into a fuller system:
   across, or three-over-two for five) so rows are always full.
 - **Motion** is limited to short entrance fades and hover lifts, and switches
   off under `prefers-reduced-motion`.
+- **Tab backdrop:** brand-coloured waves behind the top of every tab — Home's hero, and a band behind the header on Review, Generate, Words and Progress (topic, speaking and passage pages stay plain) — (`components/HeroBackdrop.tsx`,
+  adapted from React Bits' GradientWaves — WebGL2 via `ogl`, MIT + Commons Clause). Sage and gold
+  per theme, switching live with the theme toggle. Readability is guaranteed, not eyeballed: the
+  waves' strength is capped (60%) and any text on the waves sits on a soft 60% page-colour wash (`.on-waves`, which also deepens the lightest grey and, in light mode, the red), so every text
+  colour there clears WCAG AA even over the darkest wave colour (worked out per theme). Lower detail
+  and pixel ratio on phones; pauses off-screen and in hidden tabs; a still frame with reduced
+  motion; a static gradient where WebGL2 isn't available. The shader loads as its own chunk after
+  Home renders.
 - **App icon:** `public/favicon.svg` (monogram with a gold dot), plus
   `public/manifest.webmanifest` so the site can be added to a phone's home
   screen.
@@ -257,6 +268,20 @@ reference/                 original build brief + design reference (archived)
 each card's review schedule (below), and the dates the app was opened
 (`daysActive`, shown quietly — never as a streak). Nothing leaves the device.
 
+**Backup** (`lib/backup.ts`, Progress page): because everything lives in this
+browser, the Progress page can **download** a JSON backup or **copy a code**
+(gzip + base64, prefixed `DMT1:` — a few KB, easy to paste into a note), and
+**restore** from either on any device. A backup holds the progress plus the
+small preferences (theme, last topic, review mode, Today's-pick history).
+Restoring shows what's in the backup, asks before replacing this device's
+progress, then reloads.
+
+**Small helpers on the Progress page:** "cards practised this week"; a "How
+this app works" explainer (the same one Home shows once to a first-time
+visitor until "Got it", `deutsch-mit-tineiya:welcome-done`). In Review's Flip
+mode the last grade can be taken back (**Undo** or `U`): the card's record and
+the round go back exactly as they were.
+
 **Topic progress** (`topicProgress()`): for each topic, how many cards have
 been worked through (looked at in a session, answered, or spoken), how many are
 learned, and whether it's **finished** (every card worked through). Home tiles,
@@ -293,6 +318,19 @@ by kind (`activity` — flashcards, speaking, listening, writing, reading,
 review) with a count and the last date: the topic page logs flashcards,
 speaking practice logs speaking, the generator logs writing (Type) or
 listening (Listen), opening a passage logs reading, and Review logs review.
+
+## Past tense (Perfekt)
+
+`data/perfekt.ts` — 32 A2 sentences: the common haben verbs, the sein verbs of
+movement and change (gehen, fahren, fliegen, bleiben, aufstehen, umziehen…),
+and Tineiya's "Mein Tag" script retold as yesterday ("Gestern bin ich um
+sieben Uhr aufgestanden…"). They're `SentenceCard`s with a `perfekt` field
+(the helper verb as used, the other helper in the same person, the
+participle, a tempting wrong participle, the infinitive), which drives two
+drills — haben or sein? and which participle? — alternating per card. The
+card hides the German until answered; the topic page explains the rule; the
+cards also feed speaking practice, the generator and Review. Cards can now
+carry an explicit `level` (these are A2).
 
 ## Review
 
@@ -394,7 +432,7 @@ else — no separate dataset.
 
 - **Pool:** only cards that have a real sentence — a `SentenceCard`, or any
   card with a hand-written `example` (`sentenceOf()` in `lib/practice.ts`).
-  Bare words never appear. That's 1,228 cards today.
+  Bare words never appear. That's 1,260 cards today.
 - **Level (All / A1 / A2):** derived, not stored — `cardLevel()` in
   `lib/level.ts` uses `frequencyRank` for the frequency list (rank ≤250 → A1,
   otherwise A2) and treats all other content as A1. This is an approximation,

@@ -21,6 +21,8 @@ const HIDE_FOR_DRILL: Record<DrillKind, FlashcardHide> = {
   conjugation: 'example',
   'separable-position': 'example',
   'word-order': 'sentence',
+  auxiliary: 'sentence',
+  participle: 'sentence',
 };
 
 export function Session() {
@@ -284,6 +286,25 @@ export function Session() {
                   <p>
                     All {notebookPagesDigitized} separable verbs from your handwritten cards — each with its own
                     picture, example sentence and full conjugation.
+                  </p>
+                </div>
+              </div>
+            </aside>
+          )}
+
+          {topic.id === 'perfekt' && (
+            <aside className="session-info">
+              <div className="panel panel-quiet rise-3">
+                <span className="panel-quiet-icon">
+                  <Icon name="lightbulb" />
+                </span>
+                <div>
+                  <h3>How the Perfekt works</h3>
+                  <p>
+                    <strong lang="de">haben</strong> or <strong lang="de">sein</strong> in second place, the past
+                    participle at the end: <em lang="de">Ich habe Kaffee getrunken.</em> Most verbs take haben; verbs of
+                    movement or change — gehen, fahren, aufstehen, bleiben — take sein:{' '}
+                    <em lang="de">Ich bin nach Hause gegangen.</em>
                   </p>
                 </div>
               </div>

@@ -26,6 +26,13 @@ export const topics: Topic[] = [
   { id: 'alltag-zeit', name: 'Everyday & Time', group: 'grammar', icon: 'clock' },
   { id: 'im-cafe', name: 'At the Café', group: 'grammar', icon: 'coffee-cup' },
   { id: 'zahlen', name: 'Numbers', group: 'grammar', icon: 'category-number' },
+  {
+    id: 'perfekt',
+    name: 'Past Tense (Perfekt)',
+    tagline: 'A2 · haben or sein',
+    group: 'grammar',
+    icon: 'return-arrow',
+  },
   { id: 'wortschatz-1000', name: 'Top 1000 Words', group: 'grammar', icon: 'newspaper' },
   { id: 'a1-greetings', name: 'Greetings & Introductions', group: 'a1-sentences', icon: 'category-communication' },
   { id: 'a1-time', name: 'Time & Daily Life', group: 'a1-sentences', icon: 'calendar' },

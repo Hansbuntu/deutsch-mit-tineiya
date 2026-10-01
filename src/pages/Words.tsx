@@ -7,6 +7,7 @@ import type { Article, Card, CefrLevel, ExampleSentence } from '../data/types';
 import { cardLevel } from '../lib/level';
 import { useProgress } from '../lib/progress';
 import { escapeRegExp, speakableText } from '../lib/text';
+import { HeroBackdrop } from '../components/HeroBackdrop';
 
 type Filter = 'all' | Article | 'verb' | 'other';
 type Sort = 'common' | 'az';
@@ -40,12 +41,7 @@ const FILTERS: { value: Filter; label: string }[] = [
 
 /** Lower case with umlauts and ß folded, so "fruhstuck" finds "Frühstück". */
 function fold(text: string): string {
-  return text
-    .toLowerCase()
-    .replace(/ä/g, 'a')
-    .replace(/ö/g, 'o')
-    .replace(/ü/g, 'u')
-    .replace(/ß/g, 'ss');
+  return text.toLowerCase().replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/ü/g, 'u').replace(/ß/g, 'ss');
 }
 
 function toEntry(card: Exclude<Card, { type: 'sentence' }>): WordEntry {
@@ -56,7 +52,8 @@ function toEntry(card: Exclude<Card, { type: 'sentence' }>): WordEntry {
     word,
     article,
     translation: card.translation,
-    kind: card.type === 'noun' ? 'noun' : card.type === 'verb' ? 'verb' : card.partOfSpeech === 'verb' ? 'verb' : 'other',
+    kind:
+      card.type === 'noun' ? 'noun' : card.type === 'verb' ? 'verb' : card.partOfSpeech === 'verb' ? 'verb' : 'other',
     level: cardLevel(card),
     // Only the frequency list's rank means 'how common' (the Numbers deck numbers its cards 1–20 too).
     rank: card.source === 'frequency-list' && card.frequencyRank ? card.frequencyRank : Number.MAX_SAFE_INTEGER,
@@ -77,7 +74,11 @@ const ENTRIES: WordEntry[] = (() => {
     const key = `${entry.article ?? ''} ${entry.word}`.toLowerCase();
     const existing = seen.get(key);
     // Keep the version that has an example sentence, then the one with a frequency rank.
-    if (!existing || (!existing.example && entry.example) || (entry.rank < existing.rank && !!entry.example === !!existing.example)) {
+    if (
+      !existing ||
+      (!existing.example && entry.example) ||
+      (entry.rank < existing.rank && !!entry.example === !!existing.example)
+    ) {
       seen.set(key, entry);
     }
   }
@@ -94,7 +95,12 @@ const isArticle = (value: Filter): value is Article => value === 'der' || value 
 function matchScore(e: WordEntry, q: string): number {
   if (e.foldedWord === q) return 0;
   // One of the English meanings exactly ("table", or "go" for "to go").
-  const meanings = e.foldedTranslation.split(/[,;/]/).map((m) => m.replace(/\(.*?\)/g, '').replace(/^\s*to\s+/, '').trim());
+  const meanings = e.foldedTranslation.split(/[,;/]/).map((m) =>
+    m
+      .replace(/\(.*?\)/g, '')
+      .replace(/^\s*to\s+/, '')
+      .trim(),
+  );
   if (meanings.includes(q)) return 1;
   if (e.foldedWord.startsWith(q)) return 2;
   if (new RegExp(`(^|[^a-z])${escapeRegExp(q)}([^a-z]|$)`).test(e.foldedTranslation)) return 3;
@@ -136,8 +142,9 @@ export function Words() {
   const shown = results.slice(0, limit);
 
   return (
-    <div className="words">
-      <header className="reader-head task-head rise">
+    <div className="words tab-page">
+      <HeroBackdrop className="tab-waves" />
+      <header className="reader-head task-head on-waves rise">
         <span className="eyebrow no-rule">Word list</span>
         <h1 className="title-xl">Every word, in one place.</h1>
         <p className="lede" style={{ textAlign: 'center' }}>
@@ -194,7 +201,7 @@ export function Words() {
         </div>
       </div>
 
-      <p className="words-count" aria-live="polite">
+      <p className="words-count on-waves" aria-live="polite">
         {results.length.toLocaleString('en')} {results.length === 1 ? 'word' : 'words'}
       </p>
 

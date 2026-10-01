@@ -8,11 +8,21 @@ import { cardById } from '../data/cards';
 import { topicById } from '../data/topics';
 import type { CefrLevel } from '../data/types';
 import { cardLevel } from '../lib/level';
-import { useProgress } from '../lib/progress';
+import { useProgress, type CardProgress } from '../lib/progress';
 import { REVIEW_BATCH, relativeDay, reviewItemFor, type ReviewItem } from '../lib/review';
 import { shouldIgnoreShortcut } from '../lib/keys';
+import { HeroBackdrop } from '../components/HeroBackdrop';
 
 type Mode = 'flip' | 'type';
+
+interface UndoSnapshot {
+  id: string;
+  record: CardProgress | undefined;
+  batch: string[];
+  tally: { right: number; missed: number };
+  pos: number;
+  knew: boolean;
+}
 
 const MODE_KEY = 'deutsch-mit-tineiya:review-mode';
 
@@ -110,7 +120,7 @@ function ReviewFlipCard({
 }
 
 export function Review() {
-  const { reviewQueue, nextReview, markAnswer, recordFor, logActivity } = useProgress();
+  const { reviewQueue, nextReview, markAnswer, recordFor, logActivity, restoreRecord } = useProgress();
   const [mode, setMode] = useState<Mode>(savedMode);
   // The round is a snapshot: grading changes the live queue, but the round in progress shouldn't shift under you.
   const [batch, setBatch] = useState<string[]>(() => reviewQueue.slice(0, REVIEW_BATCH));
@@ -118,9 +128,12 @@ export function Review() {
   const [pos, setPos] = useState(0);
   const [graded, setGraded] = useState(false);
   const [tally, setTally] = useState({ right: 0, missed: 0 });
+  // The last Flip grade, so a mis-tap can be taken back: the card's record and the round as they were.
+  const [undo, setUndo] = useState<UndoSnapshot | null>(null);
 
   const changeMode = (next: Mode) => {
     setMode(next);
+    setUndo(null);
     try {
       localStorage.setItem(MODE_KEY, next);
     } catch {
@@ -128,7 +141,42 @@ export function Review() {
     }
   };
 
+  const takeBack = () => {
+    if (!undo) return;
+    restoreRecord(undo.id, undo.record);
+    setBatch(undo.batch);
+    setTally(undo.tally);
+    setPos(undo.pos);
+    setGraded(false);
+    setUndo(null);
+  };
+
+  // U takes back the last Flip grade.
+  useEffect(() => {
+    if (!undo) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (shouldIgnoreShortcut(event) || event.key.toLowerCase() !== 'u') return;
+      takeBack();
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  });
+
+  const undoBar = undo && (
+    <div className="undo-bar" role="status">
+      <span>
+        Marked <strong>{undo.knew ? 'Knew it' : 'Didn’t know it'}</strong>
+      </span>
+      <button type="button" className="btn btn-sm btn-ghost" onClick={takeBack}>
+        <Icon name="arrow-left" />
+        Undo
+        <span className="kbd kbd-hint">U</span>
+      </button>
+    </div>
+  );
+
   const startRound = () => {
+    setUndo(null);
     const next = reviewQueue.slice(0, REVIEW_BATCH);
     setBatch(next);
     setFirstPassCount(next.length);
@@ -172,7 +220,7 @@ export function Review() {
   });
 
   const head = (
-    <header className="reader-head task-head rise">
+    <header className="reader-head task-head on-waves rise">
       <span className="eyebrow no-rule">Review</span>
       <h1 className="title-xl">
         {firstPassCount > 0
@@ -180,8 +228,8 @@ export function Review() {
           : 'Nothing to review right now'}
       </h1>
       <p className="lede" style={{ textAlign: 'center' }}>
-        Words you missed come back first. Get one right and it returns later — tomorrow, then in three days, then a
-        week — so it sticks.
+        Words you missed come back first. Get one right and it returns later — tomorrow, then in three days, then a week
+        — so it sticks.
       </p>
     </header>
   );
@@ -189,7 +237,8 @@ export function Review() {
   // Nothing due at all.
   if (batch.length === 0) {
     return (
-      <div className="gen">
+      <div className="gen tab-page">
+        <HeroBackdrop className="tab-waves" />
         {head}
         <div className="surface done rise-2">
           <div className="done-icon">
@@ -220,13 +269,15 @@ export function Review() {
   if (!card) {
     const moreDue = reviewQueue.length;
     return (
-      <div className="gen">
+      <div className="gen tab-page">
+        <HeroBackdrop className="tab-waves" />
         {head}
         <div className="surface done rise-2">
           <div className="done-icon">
             <Icon name="trophy" />
           </div>
           <h2 className="title-lg">Wiederholung fertig!</h2>
+          {undoBar}
           <p>
             {tally.right} of {firstPassCount} right first time
             {tally.missed > 0 ? ` — the ${tally.missed} you missed will come back again soon.` : '. Schön!'}
@@ -255,10 +306,11 @@ export function Review() {
   const missedLastTime = recordFor(card.id)?.lastCorrect === false;
 
   return (
-    <div className="gen">
+    <div className="gen tab-page">
+      <HeroBackdrop className="tab-waves" />
       {head}
 
-      <div className="review-bar rise-2">
+      <div className="review-bar on-waves rise-2">
         <div className="session-progress">
           <div className="meter meter-sage">
             <span style={{ width: `${(pos / batch.length) * 100}%` }} />
@@ -279,8 +331,10 @@ export function Review() {
         />
       </div>
 
+      {undoBar}
+
       {isSecondPass && (
-        <p className="review-note">
+        <p className="review-note on-waves">
           <Icon name="repeat" />
           One more go at the ones you missed.
         </p>
@@ -294,6 +348,7 @@ export function Review() {
           topicLabel={topicLabel}
           missedLastTime={missedLastTime}
           onGrade={(correct) => {
+            if (id) setUndo({ id, record: recordFor(id), batch, tally, pos, knew: correct });
             grade(correct);
             advance();
           }}

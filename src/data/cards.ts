@@ -6,6 +6,7 @@ import { tiktokVocab } from './tiktokVocab';
 import { coreSentences } from './coreSentences';
 import { a1Sentences } from './a1Sentences';
 import { passageSentences } from './passageSentences';
+import { perfektSentences } from './perfekt';
 
 export const allCards: Card[] = [
   ...verbs,
@@ -15,6 +16,7 @@ export const allCards: Card[] = [
   ...coreSentences,
   ...a1Sentences,
   ...passageSentences,
+  ...perfektSentences,
 ];
 
 export const cardById = (id: string): Card | undefined => allCards.find((c) => c.id === id);

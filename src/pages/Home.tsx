@@ -9,6 +9,8 @@ import type { Topic } from '../data/types';
 import { todayISO, useProgress, type TopicProgress } from '../lib/progress';
 import { candidatePicks, rankPicks } from '../lib/recommend';
 import { TodaysPick } from '../components/TodaysPick';
+import { Welcome } from '../components/HowItWorks';
+import { HeroBackdrop } from '../components/HeroBackdrop';
 import { getLastTopicId } from '../lib/lastTopic';
 import { REVIEW_BATCH } from '../lib/review';
 import { hasSpeaking } from '../lib/speaking';
@@ -141,15 +143,19 @@ export function Home() {
   return (
     <>
       <section className="hero hero-today">
+        <HeroBackdrop />
         <div className="hero-copy rise">
-          <span className="eyebrow">{greeting(new Date())}, Tineiya</span>
-          <h1 className="display">
-            Something <em>new</em> for today.
-          </h1>
-          <p className="lede">
-            Picked from how you’ve been practising — your weak spots, the skills you haven’t used lately and what you
-            haven’t tried yet.
-          </p>
+          {/* The intro sits on a soft wash so it stays readable over any part of the waves. */}
+          <div className="hero-intro on-waves">
+            <span className="eyebrow">{greeting(new Date())}, Tineiya</span>
+            <h1 className="display">
+              Something <em>new</em> for today.
+            </h1>
+            <p className="lede">
+              Picked from how you’ve been practising — your weak spots, the skills you haven’t used lately and what you
+              haven’t tried yet.
+            </p>
+          </div>
           <TodaysPick ranked={rankedPicks} todayISO={today} />
           <div className="hero-practice">
             <Link to="/generieren" className="chip-link">
@@ -241,6 +247,8 @@ export function Home() {
           </aside>
         </div>
       </section>
+
+      <Welcome />
 
       {upNext.length > 0 && (
         <section className="section rise-2" aria-labelledby="up-next-title">

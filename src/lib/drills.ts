@@ -1,4 +1,4 @@
-import type { Article, Card, Drill, DrillOption, NounCard, VerbCard, VocabCard } from '../data/types';
+import type { Article, Card, Drill, DrillOption, NounCard, SentenceCard, VerbCard, VocabCard } from '../data/types';
 import { allCards } from '../data/cards';
 import { verbs as allVerbs } from '../data/verbs';
 import { grammarDrillsByCardId } from '../data/grammarDrills';
@@ -90,6 +90,42 @@ function buildMeaningDrill(card: VocabCard): Drill | null {
   };
 }
 
+const SEIN_RULE = 'Most verbs take haben. Verbs of movement or change of state — gehen, fahren, aufstehen, bleiben — take sein.';
+
+/**
+ * Perfekt drills, alternating: "Ich ___ nach Berlin gefahren." (haben or sein?) and
+ * "Ich habe Wasser ___." (which participle?). The trap options are hand-written per sentence.
+ */
+function buildPerfektDrill(card: SentenceCard): Drill | null {
+  const p = card.perfekt;
+  if (!p) return null;
+  const askAuxiliary = Math.random() < 0.5;
+  if (askAuxiliary) {
+    const split = splitOnWord(card.de, p.auxiliary);
+    if (split) {
+      return {
+        id: `aux-${card.id}`,
+        kind: 'auxiliary',
+        cardId: card.id,
+        promptParts: split,
+        options: toOptions(shuffle([p.auxiliary, p.wrongAuxiliary])),
+        correctOptionId: p.auxiliary,
+        note: SEIN_RULE,
+      };
+    }
+  }
+  const split = splitOnWord(card.de, p.participle);
+  if (!split) return null;
+  return {
+    id: `part-${card.id}`,
+    kind: 'participle',
+    cardId: card.id,
+    promptParts: split,
+    options: toOptions(shuffle([...new Set([p.participle, p.wrongParticiple, p.infinitive])])),
+    correctOptionId: p.participle,
+  };
+}
+
 /**
  * Build a recognition drill for a card, preferring distractors drawn from
  * verbs already seen earlier in the current session (falls back to the
@@ -113,6 +149,9 @@ export function generateDrillForCard(card: Card, sessionSeenVerbs: VerbCard[]): 
   }
   if (card.type === 'vocab') {
     return buildMeaningDrill(card);
+  }
+  if (card.type === 'sentence' && card.perfekt) {
+    return buildPerfektDrill(card);
   }
   return null;
 }

@@ -46,6 +46,8 @@ interface CardBase {
   /** Rank within the frequency word list, when this card belongs to it. */
   frequencyRank?: number;
   source: CardSource;
+  /** CEFR level, when the content sets it explicitly (otherwise derived — see lib/level.ts). */
+  level?: CefrLevel;
 }
 
 export interface NounCard extends CardBase {
@@ -98,6 +100,19 @@ export interface SentenceCard extends CardBase {
   en: string;
   /** Substring of `de` to highlight — the grammar point this sentence demonstrates. */
   emphasis?: string;
+  /** For past-tense (Perfekt) sentences: what the haben/sein and participle drills ask. */
+  perfekt?: PerfektInfo;
+}
+
+export interface PerfektInfo {
+  infinitive: string;
+  /** The helper verb as it appears in the sentence ("bin", "hat", "haben"…). */
+  auxiliary: string;
+  /** The same person of the other helper verb — the wrong choice ("habe" for "bin"). */
+  wrongAuxiliary: string;
+  participle: string;
+  /** A tempting but wrong participle ("getrinkt" for "getrunken"). */
+  wrongParticiple: string;
 }
 
 export type Card = NounCard | VerbCard | VocabCard | SentenceCard;
@@ -127,7 +142,14 @@ export interface Topic {
 // Drills
 // ---------------------------------------------------------------------
 
-export type DrillKind = 'conjugation' | 'separable-position' | 'article' | 'word-order' | 'meaning';
+export type DrillKind =
+  | 'conjugation'
+  | 'separable-position'
+  | 'article'
+  | 'word-order'
+  | 'meaning'
+  | 'auxiliary'
+  | 'participle';
 
 export interface DrillOption {
   id: string;

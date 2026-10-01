@@ -11,6 +11,7 @@ import { cardLevel } from '../lib/level';
 import { useProgress } from '../lib/progress';
 import { sentenceOf, type PracticeDirection } from '../lib/practice';
 import { shouldIgnoreShortcut } from '../lib/keys';
+import { HeroBackdrop } from '../components/HeroBackdrop';
 
 type LevelFilter = 'all' | CefrLevel;
 type SourceFilter = 'all' | TopicGroup;
@@ -87,8 +88,9 @@ export function Generator() {
   const topicLabel = current ? (topicById(current.topicIds[0])?.name ?? '') : '';
 
   return (
-    <div className="gen">
-      <header className="reader-head task-head rise">
+    <div className="gen tab-page">
+      <HeroBackdrop className="tab-waves" />
+      <header className="reader-head task-head on-waves rise">
         <span className="eyebrow no-rule">Practice generator</span>
         <h1 className="title-xl">One sentence at a time.</h1>
         <p className="lede" style={{ textAlign: 'center' }}>
