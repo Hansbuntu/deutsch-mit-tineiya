@@ -17,6 +17,7 @@ type SourceFilter = 'all' | TopicGroup;
 type Mode = 'flip' | 'type' | 'listen';
 
 const MODES: Mode[] = ['flip', 'type', 'listen'];
+const MODE_LABELS: Record<Mode, string> = { flip: 'Flip', type: 'Type', listen: 'Listen' };
 
 const LEVEL_OPTIONS: LevelFilter[] = ['all', 'A1', 'A2'];
 
@@ -29,18 +30,22 @@ function groupForCard(card: Card): TopicGroup | undefined {
 }
 
 export function Generator() {
-  const { markSeen, markAnswer } = useProgress();
-  const [level, setLevel] = useState<LevelFilter>('all');
-  const [source, setSource] = useState<SourceFilter>('all');
-  const [direction, setDirection] = useState<PracticeDirection>('en-to-de');
-  // A link can open a mode directly, e.g. #/generieren?mode=listen from Home.
+  const { markSeen, markAnswer, logActivity } = useProgress();
+  // Links can open a mode and source directly, e.g. #/generieren?mode=listen&source=tiktok.
   const [searchParams] = useSearchParams();
+  const [level, setLevel] = useState<LevelFilter>('all');
+  const [source, setSource] = useState<SourceFilter>(() => {
+    const requested = searchParams.get('source') as TopicGroup | null;
+    return requested && TOPIC_GROUP_ORDER.includes(requested) ? requested : 'all';
+  });
+  const [direction, setDirection] = useState<PracticeDirection>('en-to-de');
   const [mode, setMode] = useState<Mode>(() => {
     const requested = searchParams.get('mode') as Mode | null;
     return requested && MODES.includes(requested) ? requested : 'flip';
   });
   const [current, setCurrent] = useState<Card | null>(null);
   const [generatedCount, setGeneratedCount] = useState(0);
+  const [settingsOpen, setSettingsOpen] = useState(() => !window.matchMedia('(max-width: 720px)').matches);
 
   const pool = useMemo(() => {
     return allCards.filter((card) => {
@@ -83,7 +88,7 @@ export function Generator() {
 
   return (
     <div className="gen">
-      <header className="reader-head rise">
+      <header className="reader-head task-head rise">
         <span className="eyebrow no-rule">Practice generator</span>
         <h1 className="title-xl">One sentence at a time.</h1>
         <p className="lede" style={{ textAlign: 'center' }}>
@@ -102,7 +107,25 @@ export function Generator() {
           </span>
         </div>
 
-        <div className="console-grid">
+        {/* Phones: the settings fold into one summary row so the practice card stays on the first screen. */}
+        <button
+          type="button"
+          className="console-summary"
+          aria-expanded={settingsOpen}
+          aria-controls="gen-settings"
+          onClick={() => setSettingsOpen((open) => !open)}
+        >
+          <span>
+            {level === 'all' ? 'All levels' : level} · {source === 'all' ? 'All content' : TOPIC_GROUP_LABELS[source]} ·{' '}
+            {MODE_LABELS[mode]}
+          </span>
+          <span className="console-summary-action">
+            {settingsOpen ? 'Done' : 'Change'}
+            <Icon name="chevron-right" />
+          </span>
+        </button>
+
+        <div id="gen-settings" className={`console-grid${settingsOpen ? '' : ' is-collapsed'}`}>
           <div className="console-field">
             <span className="console-label">Level</span>
             <Seg
@@ -191,7 +214,10 @@ export function Generator() {
             topicLabel={topicLabel}
             level={cardLevel(current)}
             direction={direction}
-            onGraded={(correct) => markAnswer(current.id, correct)}
+            onGraded={(correct) => {
+              markAnswer(current.id, correct);
+              logActivity(mode === 'listen' ? 'listening' : 'writing');
+            }}
           />
         )}
 

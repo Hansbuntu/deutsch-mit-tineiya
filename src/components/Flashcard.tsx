@@ -25,11 +25,15 @@ function HighlightedSentence({ text, highlight }: { text: string; highlight?: st
 }
 
 /**
- * `hide` keeps back whatever the drill beside the card is asking about, until
- * it's been answered: the English meaning (meaning drill) or the article
- * (article drill — the example sentence would give it away too).
+ * What the card keeps back while the drill beside it is unanswered:
+ * - 'meaning': the English meaning (meaning drill)
+ * - 'article': the article — and the example, which would give it away too (article drill)
+ * - 'example': the German example sentence, the drill's own sentence (conjugation, separable prefix)
+ * - 'sentence': the German sentence itself, which is the answer (word-order drill)
  */
-export function Flashcard({ card, hide }: { card: Card; hide?: 'meaning' | 'article' }) {
+export type FlashcardHide = 'meaning' | 'article' | 'example' | 'sentence';
+
+export function Flashcard({ card, hide }: { card: Card; hide?: FlashcardHide }) {
   const word = speakableText(card);
   const highlight =
     card.type === 'verb' && card.separable ? card.prefix : card.type === 'sentence' ? card.emphasis : undefined;
@@ -71,7 +75,9 @@ export function Flashcard({ card, hide }: { card: Card; hide?: 'meaning' | 'arti
                 ) : (
                   <span className={`article-badge article-${card.article}`}>{card.article}</span>
                 ))}
-              {isSentence ? (
+              {isSentence && hide === 'sentence' ? (
+                <p className="headword-sentence headword-hidden">Answer the question to see the German</p>
+              ) : isSentence ? (
                 <p className="headword-sentence" lang="de">
                   <HighlightedSentence text={word} highlight={highlight} />
                 </p>
@@ -88,14 +94,18 @@ export function Flashcard({ card, hide }: { card: Card; hide?: 'meaning' | 'arti
               translation(card) && <p className="translation">{translation(card)}</p>
             )}
           </div>
-          <SoundButton text={word} label={word} />
+          {hide !== 'sentence' && <SoundButton text={word} label={word} />}
         </div>
 
         {!isSentence && card.example && hide !== 'article' && (
           <div className="example">
-            <p className="example-de" lang="de">
-              <HighlightedSentence text={card.example.de} highlight={highlight} />
-            </p>
+            {hide === 'example' ? (
+              <p className="example-de example-hidden">Answer the question to see the German sentence</p>
+            ) : (
+              <p className="example-de" lang="de">
+                <HighlightedSentence text={card.example.de} highlight={highlight} />
+              </p>
+            )}
             {hide !== 'meaning' && <p className="example-en">{card.example.en}</p>}
           </div>
         )}

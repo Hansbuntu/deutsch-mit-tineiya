@@ -18,7 +18,7 @@ and deploys to GitHub Pages on every push to `main`.
 
 | Screen | Route | What it does |
 |---|---|---|
-| Home | `/` | A hero with "continue where you left off" and an at-a-glance panel (frequency-list ring, days active, cards learned), the notebook verbs as a feature banner, then topic tiles in three more sections (your TikTok scripts, grammar & vocabulary, common A1 sentences) with progress bars and "Read passage" / "Speak" shortcuts where they apply. |
+| Home | `/` | **Today's pick** — one recommended thing to do, chosen from your learning patterns, different each visit (see [Today's pick](#todays-pick)) — with "Where you left off" (due reviews, the topic in progress) beside it, the at-a-glance panel, "Up next" topics, the notebook banner, then every topic grouped (compact rows on phones). |
 | Flashcard session | `/thema/:topicId` | Image-first cards (noun article badge, separable-verb prefix highlighted in the example sentence, DE + EN example, sound button). Verbs, nouns, and the core sentences with a grammar drill also get a multiple-choice drill built from the card just shown; other cards show the card alone. |
 | Full passage | `/thema/:topicId/passage` | One of the four TikTok scripts as continuous text, for reading and memorizing the way it's practiced for posting. |
 | Speaking practice | `/thema/:topicId/sprechen` | Shows an English prompt; tap the mic, say the German sentence, tap **Done**, and it's checked against the target. |
@@ -263,6 +263,36 @@ learned, and whether it's **finished** (every card worked through). Home tiles,
 the notebook banner, the topic page header and the Progress rows all read it,
 so they update as you go. Reopening a topic deals the cards you haven't done
 yet first, so you carry on where you stopped.
+
+## Today's pick
+
+Home's main card (`lib/recommend.ts`, `components/TodaysPick.tsx`) recommends one
+thing to do, so opening the app isn't always "continue where you left off" —
+that stays one tap away beside it. Every candidate is scored from the
+learner's own data, and each carries a "why" in plain words:
+
+| Candidate | When | Score |
+|---|---|---|
+| Fix a weak spot | a topic with 2+ cards answered wrong last time (most first) | 75 + 4 per miss |
+| Finish a topic | at least half done, not finished | 60–85 by how close |
+| A skill left untouched | speaking, listening, writing or reading never tried (64), or not for 3+ days (50 + 2/day) | 50–78 |
+| Something new | the next three topics never opened, in course order | 58 / 54 / 50 (70… for a brand-new learner) |
+| Lock in a topic | finished, but under 60% learned | 52 |
+| Learn new words | Top 1000 list not complete | 46 |
+
+The topic in "Where you left off" is never picked, and each topic appears once
+(its best suggestion). **Something new each visit:** suggestions shown in the
+last day drop 35 points (15 within three days), and a small per-day nudge breaks
+ties, so a new visit (a new browser session) brings a different pick. Within a
+visit it stays put; **Something else** steps through the rest of the ranking.
+History lives in `deutsch-mit-tineiya:pick-history` (localStorage) and the
+visit's pick in sessionStorage.
+
+To know which skills were used when, the progress store now records practice
+by kind (`activity` — flashcards, speaking, listening, writing, reading,
+review) with a count and the last date: the topic page logs flashcards,
+speaking practice logs speaking, the generator logs writing (Type) or
+listening (Listen), opening a passage logs reading, and Review logs review.
 
 ## Review
 

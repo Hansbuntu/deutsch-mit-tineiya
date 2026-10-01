@@ -6,7 +6,9 @@ import { topics, topicById, TOPIC_GROUP_DESCRIPTIONS, TOPIC_GROUP_LABELS, TOPIC_
 import { allCards, cardsForTopic, FREQUENCY_LIST_TARGET } from '../data/cards';
 import { passageForTopic } from '../data/passages';
 import type { Topic } from '../data/types';
-import { useProgress, type TopicProgress } from '../lib/progress';
+import { todayISO, useProgress, type TopicProgress } from '../lib/progress';
+import { candidatePicks, rankPicks } from '../lib/recommend';
+import { TodaysPick } from '../components/TodaysPick';
 import { getLastTopicId } from '../lib/lastTopic';
 import { REVIEW_BATCH } from '../lib/review';
 import { hasSpeaking } from '../lib/speaking';
@@ -89,8 +91,16 @@ function TopicTile({ topic, progress }: { topic: Topic; progress: TopicProgress 
 }
 
 export function Home() {
-  const { daysActive, totalCardsLearned, frequencyListLearned, frequencyListPractised, reviewQueue, topicProgress } =
-    useProgress();
+  const {
+    daysActive,
+    totalCardsLearned,
+    frequencyListLearned,
+    frequencyListPractised,
+    reviewQueue,
+    topicProgress,
+    recordFor,
+    activity,
+  } = useProgress();
   const dueCount = reviewQueue.length;
 
   const lastTopic = topicById(getLastTopicId() ?? '');
@@ -98,89 +108,174 @@ export function Home() {
   const notebook = topics.find((t) => t.group === 'notebook')!;
   const notebookCards = cardsForTopic(notebook.id);
   const notebookProgress = topicProgress(notebook.id);
+  const continueLabel = lastTopic ? `Continue: ${continueTopic.name}` : `Start with ${continueTopic.name}`;
+  const reviewMinutes = Math.max(1, Math.round((Math.min(dueCount, REVIEW_BATCH) * 12) / 60));
+  const continueProgress = topicProgress(continueTopic.id);
+
+  // Today's pick: scored from the learner's own patterns, rotated so each visit brings something new.
+  const today = todayISO();
+  const rankedPicks = rankPicks(
+    candidatePicks({
+      topicProgress,
+      recordFor,
+      activity,
+      continueTopicId: continueTopic.id,
+      frequencyPractised: frequencyListPractised,
+      todayISO: today,
+    }),
+    today,
+  );
+
+  // "Up next": unfinished topics (furthest along first), then ones not started — never the Continue topic.
+  const upNext = (() => {
+    const others = topics
+      .filter((t) => t.id !== continueTopic.id)
+      .map((topic) => ({ topic, progress: topicProgress(topic.id) }));
+    const inProgress = others
+      .filter(({ progress }) => progress.done > 0 && !progress.finished)
+      .sort((a, b) => b.progress.done / b.progress.total - a.progress.done / a.progress.total);
+    const notStarted = others.filter(({ progress }) => progress.done === 0);
+    return [...inProgress, ...notStarted].slice(0, 3);
+  })();
 
   return (
     <>
-      <section className="hero">
+      <section className="hero hero-today">
         <div className="hero-copy rise">
           <span className="eyebrow">{greeting(new Date())}, Tineiya</span>
           <h1 className="display">
-            Pick up where <em>you</em> left off.
+            Something <em>new</em> for today.
           </h1>
           <p className="lede">
-            Your notebook, your TikTok scripts and the words that matter most — one calm place to practise, whenever you
-            feel like it.
+            Picked from how you’ve been practising — your weak spots, the skills you haven’t used lately and what you
+            haven’t tried yet.
           </p>
-          <div className="hero-actions">
-            <Link to={`/thema/${continueTopic.id}`} className="btn btn-primary btn-lg">
-              {lastTopic ? `Continue: ${continueTopic.name}` : `Start with ${continueTopic.name}`}
-              <Icon name="arrow-right" />
-            </Link>
-            <Link to="/generieren" className="btn btn-lg">
+          <TodaysPick ranked={rankedPicks} todayISO={today} />
+          <div className="hero-practice">
+            <Link to="/generieren" className="chip-link">
               <Icon name="sparkles" />
               Random sentence
             </Link>
-            <Link to="/generieren?mode=listen" className="btn btn-lg">
+            <Link to="/generieren?mode=listen" className="chip-link">
               <Icon name="volume" />
               Listening practice
             </Link>
           </div>
         </div>
 
-        <aside className="hero-panel surface corner-mark rise-2" aria-label="At a glance">
-          <span className="eyebrow">At a glance</span>
-          <div className="glance">
-            <ProgressRing value={frequencyListLearned} secondary={frequencyListPractised} max={FREQUENCY_LIST_TARGET} />
-            <div>
-              <div className="glance-value">
-                {frequencyListLearned}
-                <small> / {FREQUENCY_LIST_TARGET.toLocaleString('en')}</small>
+        <div className="hero-side rise-2">
+          {/* Where you left off stays one tap away, beside the pick. */}
+          <section className="surface left-off" aria-label="Where you left off">
+            <span className="eyebrow">Where you left off</span>
+            {dueCount > 0 && (
+              <Link to="/wiederholen" className="left-off-row left-off-review">
+                <span className="left-off-icon">
+                  <Icon name="repeat" />
+                </span>
+                <span className="left-off-copy">
+                  <strong>
+                    Review {dueCount} {dueCount === 1 ? 'card' : 'cards'}
+                  </strong>
+                  <span>Missed ones first · about {reviewMinutes} min</span>
+                </span>
+                <Icon name="arrow-right" />
+              </Link>
+            )}
+            <Link to={`/thema/${continueTopic.id}`} className="left-off-row">
+              <span className="left-off-icon">
+                <SceneIcon name={continueTopic.icon} />
+              </span>
+              <span className="left-off-copy">
+                <strong>{continueLabel}</strong>
+                <span className="left-off-meter">
+                  <span className="meter meter-sage">
+                    <span
+                      style={{
+                        width: `${continueProgress.total ? (continueProgress.done / continueProgress.total) * 100 : 0}%`,
+                      }}
+                    />
+                  </span>
+                  {continueProgress.finished ? 'Finished' : `${continueProgress.done} / ${continueProgress.total}`}
+                </span>
+              </span>
+              <Icon name="arrow-right" />
+            </Link>
+          </section>
+
+          <aside className="hero-panel surface corner-mark" aria-label="At a glance">
+            <span className="eyebrow">At a glance</span>
+            <div className="glance">
+              <ProgressRing
+                value={frequencyListLearned}
+                secondary={frequencyListPractised}
+                max={FREQUENCY_LIST_TARGET}
+              />
+              <div>
+                <div className="glance-value">
+                  {frequencyListLearned}
+                  <small> / {FREQUENCY_LIST_TARGET.toLocaleString('en')}</small>
+                </div>
+                <p className="glance-label">most common German words learned</p>
+                {frequencyListPractised > 0 && (
+                  <p className="glance-sub">
+                    <span className="glance-swatch" aria-hidden="true" />
+                    {frequencyListPractised.toLocaleString('en')} practised so far
+                  </p>
+                )}
               </div>
-              <p className="glance-label">most common German words learned</p>
-              {frequencyListPractised > 0 && (
-                <p className="glance-sub">
-                  <span className="glance-swatch" aria-hidden="true" />
-                  {frequencyListPractised.toLocaleString('en')} practised so far
-                </p>
-              )}
             </div>
-          </div>
-          <dl className="mini-stats">
-            <div>
-              <dt>Days active</dt>
-              <dd>{daysActive}</dd>
-            </div>
-            <div>
-              <dt>Cards learned</dt>
-              <dd>{totalCardsLearned}</dd>
-            </div>
-            <div>
-              <dt>In library</dt>
-              <dd>{allCards.length}</dd>
-            </div>
-          </dl>
-        </aside>
+            <dl className="mini-stats">
+              <div>
+                <dt>Days active</dt>
+                <dd>{daysActive}</dd>
+              </div>
+              <div>
+                <dt>Cards learned</dt>
+                <dd>{totalCardsLearned}</dd>
+              </div>
+              <div>
+                <dt>In library</dt>
+                <dd>{allCards.length}</dd>
+              </div>
+            </dl>
+          </aside>
+        </div>
       </section>
 
-      {dueCount > 0 && (
-        <section className="section rise-2" aria-label="Review">
-          <Link to="/wiederholen" className="review-banner">
-            <span className="review-banner-icon">
-              <Icon name="repeat" />
-            </span>
-            <span className="review-banner-copy">
-              <span className="review-banner-title">
-                {dueCount} {dueCount === 1 ? 'card' : 'cards'} to review today
-              </span>
-              <span className="review-banner-sub">
-                Missed ones first · about {Math.max(1, Math.round((Math.min(dueCount, REVIEW_BATCH) * 12) / 60))} min
-              </span>
-            </span>
-            <span className="btn btn-primary">
-              Start review
-              <Icon name="arrow-right" />
-            </span>
-          </Link>
+      {upNext.length > 0 && (
+        <section className="section rise-2" aria-labelledby="up-next-title">
+          <header className="section-head">
+            <div className="section-head-copy">
+              <h2 className="section-title" id="up-next-title">
+                Up next
+              </h2>
+              <p className="section-desc">Carry on with a topic you've started, or try a new one.</p>
+            </div>
+          </header>
+          <div className="surface topic-rows">
+            {upNext.map(({ topic, progress }) => (
+              <Link key={topic.id} to={`/thema/${topic.id}`} className="topic-row">
+                <span className="topic-row-name">
+                  <span className="topic-row-icon">
+                    <SceneIcon name={topic.icon} />
+                  </span>
+                  <span>{topic.name}</span>
+                </span>
+                <div className="meter meter-sage">
+                  <span style={{ width: `${progress.total ? (progress.done / progress.total) * 100 : 0}%` }} />
+                </div>
+                <span className="topic-row-count">
+                  {progress.done > 0 ? (
+                    <>
+                      <strong>{progress.done}</strong> / {progress.total}
+                    </>
+                  ) : (
+                    'Start'
+                  )}
+                </span>
+              </Link>
+            ))}
+          </div>
         </section>
       )}
 

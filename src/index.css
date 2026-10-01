@@ -14,7 +14,8 @@
   --surface-raised: #fffdf9;
   --ink: #15212e;
   --ink-2: #3f4c5c;
-  --ink-3: #6f7a87;
+  /* 4.5:1+ on every light surface, sunken panels included (was #6f7a87, 3.4–4.3:1). */
+  --ink-3: #5a6470;
   --line: rgba(21, 33, 46, 0.1);
   --line-strong: rgba(21, 33, 46, 0.18);
 
@@ -46,6 +47,7 @@
   --shadow-sm: 0 1px 2px rgba(45, 33, 12, 0.06), 0 1px 1px rgba(45, 33, 12, 0.03);
   --shadow-md: 0 1px 2px rgba(45, 33, 12, 0.05), 0 10px 26px -10px rgba(45, 33, 12, 0.16);
   --shadow-lg: 0 2px 6px rgba(45, 33, 12, 0.05), 0 28px 56px -20px rgba(45, 33, 12, 0.26);
+  --focus: #2e463d;
   --focus-ring: 0 0 0 3px rgba(70, 104, 92, 0.3);
 
   --r-sm: 8px;
@@ -103,6 +105,7 @@
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
   --shadow-md: 0 1px 2px rgba(0, 0, 0, 0.35), 0 12px 30px -12px rgba(0, 0, 0, 0.6);
   --shadow-lg: 0 2px 6px rgba(0, 0, 0, 0.35), 0 30px 60px -20px rgba(0, 0, 0, 0.7);
+  --focus: #9cc4b4;
   --focus-ring: 0 0 0 3px rgba(156, 196, 180, 0.35);
 
   color-scheme: dark;
@@ -184,10 +187,10 @@ svg {
   color: var(--ink);
 }
 
+/* A solid outline, not a shadow: component shadows can never cancel it, and it clears 3:1 in both themes. */
 :focus-visible {
-  outline: none;
-  box-shadow: var(--focus-ring);
-  border-radius: var(--r-sm);
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -251,6 +254,7 @@ svg {
   align-items: center;
   gap: 12px;
   flex-shrink: 0;
+  min-height: 44px;
 }
 
 .brand-mark {
@@ -369,8 +373,8 @@ svg {
 }
 
 .icon-btn {
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   display: grid;
   place-items: center;
   border-radius: var(--r-pill);
@@ -420,7 +424,7 @@ svg {
     gap: 3px;
     padding: 6px 0;
     border-radius: var(--r-md);
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 500;
     color: var(--ink-3);
     transition: color 0.2s var(--ease);
@@ -456,7 +460,7 @@ svg {
   align-items: center;
   gap: 10px;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -555,7 +559,7 @@ svg {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  height: 42px;
+  height: 44px;
   padding-inline: 18px;
   border-radius: var(--r-pill);
   border: 1px solid var(--line-strong);
@@ -619,7 +623,7 @@ svg {
 }
 
 .btn-sm {
-  height: 34px;
+  height: 38px;
   padding-inline: 14px;
   font-size: 13px;
 }
@@ -844,13 +848,6 @@ svg {
   justify-content: center;
   gap: 22px;
   padding-block: 12px;
-}
-
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 6px;
 }
 
 .hero-panel {
@@ -1219,7 +1216,7 @@ svg {
 
 .tile-count {
   font-family: var(--font-mono);
-  font-size: 11.5px;
+  font-size: 12px;
   color: var(--ink-3);
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
@@ -1236,7 +1233,7 @@ svg {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  height: 30px;
+  height: 36px;
   padding-inline: 12px;
   border-radius: var(--r-pill);
   border: 1px solid var(--line);
@@ -1270,6 +1267,13 @@ svg {
   font-size: 13px;
   color: var(--ink-3);
   margin-bottom: 16px;
+}
+
+/* Breadcrumb links get a taller tap area without changing the layout. */
+.crumbs a {
+  display: inline-block;
+  padding-block: 10px;
+  margin-block: -10px;
 }
 
 .crumbs a:hover {
@@ -1345,11 +1349,36 @@ svg {
   color: var(--on-accent);
 }
 
+/* Card and its controls on the left, the drill beside it. In one column (≤1000px) the drill
+   moves straight under the card, ahead of Back/Skip, so it's never below the fold. */
 .session-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
-  gap: 32px;
+  grid-template-areas:
+    'main drill'
+    'main info'
+    'actions info';
+  /* Row 1 hugs the drill; the note follows it directly while the card runs on beside both. */
+  grid-template-rows: auto 1fr auto;
+  column-gap: 32px;
   align-items: start;
+}
+
+.session-main {
+  grid-area: main;
+}
+
+.session-drill {
+  grid-area: drill;
+}
+
+.session-grid > .card-actions {
+  grid-area: actions;
+}
+
+.session-info {
+  grid-area: info;
+  margin-top: 18px;
 }
 
 .session-progress {
@@ -2163,7 +2192,7 @@ svg {
 
 .console-title {
   margin-left: 8px;
-  font-size: 11.5px;
+  font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--console-ink-2);
@@ -2171,7 +2200,7 @@ svg {
 
 .console-count {
   margin-left: auto;
-  font-size: 11.5px;
+  font-size: 12px;
   color: var(--console-ink-2);
 }
 
@@ -2190,7 +2219,7 @@ svg {
 }
 
 .console-label {
-  font-size: 10.5px;
+  font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--console-ink-2);
@@ -2206,7 +2235,7 @@ svg {
 }
 
 .seg-btn {
-  height: 32px;
+  height: 36px;
   padding-inline: 12px;
   border: none;
   border-radius: 7px;
@@ -2285,7 +2314,7 @@ svg {
 .pool-note {
   margin: 14px 4px 0;
   font-family: var(--font-mono);
-  font-size: 11.5px;
+  font-size: 12px;
   color: var(--ink-3);
 }
 
@@ -2385,7 +2414,7 @@ svg {
   display: block;
   margin-bottom: 4px;
   font-family: var(--font-mono);
-  font-size: 10.5px;
+  font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--gold-strong);
@@ -2528,7 +2557,7 @@ svg {
 
 .diff-key {
   font-family: var(--font-mono);
-  font-size: 10.5px;
+  font-size: 12px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--ink-3);
@@ -2637,68 +2666,6 @@ svg {
   justify-content: center;
 }
 
-/* Home: "N cards to review today" */
-.review-banner {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  padding: 18px 22px;
-  border-radius: var(--r-xl);
-  border: 1px solid var(--line);
-  background: var(--surface);
-  box-shadow: var(--shadow-sm);
-  color: var(--ink);
-  text-decoration: none;
-  transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease), border-color 0.2s var(--ease);
-}
-
-.review-banner:hover {
-  transform: translateY(-2px);
-  border-color: var(--line-strong);
-  box-shadow: var(--shadow-md);
-}
-
-.review-banner-icon {
-  flex-shrink: 0;
-  width: 46px;
-  height: 46px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: var(--gold-tint);
-  color: var(--gold-strong);
-}
-
-.review-banner-icon svg {
-  width: 22px;
-  height: 22px;
-}
-
-.review-banner-copy {
-  flex: 1;
-  min-width: 0;
-}
-
-.review-banner-title,
-.review-banner-sub {
-  display: block;
-}
-
-.review-banner-title {
-  font-family: var(--font-display);
-  font-size: 19px;
-  font-weight: 500;
-}
-
-.review-banner-sub {
-  font-size: 13.5px;
-  color: var(--ink-3);
-}
-
-.review-banner .btn {
-  flex-shrink: 0;
-}
-
 /* Count badge on the Review nav item */
 .nav-badge {
   display: inline-grid;
@@ -2723,18 +2690,6 @@ svg {
   position: absolute;
   top: -6px;
   right: -12px;
-}
-
-@media (max-width: 720px) {
-  .review-banner {
-    flex-wrap: wrap;
-    padding: 16px;
-  }
-
-  .review-banner .btn {
-    width: 100%;
-    justify-content: center;
-  }
 }
 
 /* ==========================================================================
@@ -2914,6 +2869,17 @@ svg {
 @media (max-width: 1000px) {
   .session-grid {
     grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: none;
+    grid-template-areas:
+      'main'
+      'drill'
+      'example'
+      'actions'
+      'info';
+  }
+
+  .session-drill {
+    margin-top: 16px;
   }
 
   .stats-grid {
@@ -2985,10 +2951,6 @@ svg {
     padding: 22px;
   }
 
-  .hero-actions .btn {
-    flex: 1 1 auto;
-  }
-
   .section {
     margin-top: 48px;
   }
@@ -3026,8 +2988,13 @@ svg {
     margin-bottom: 20px;
   }
 
+  /* A slimmer picture on phones keeps the drill on the first screen. */
   .scene {
-    aspect-ratio: 2 / 1;
+    aspect-ratio: 3 / 1;
+  }
+
+  .session-chips {
+    display: none;
   }
 
   .scene svg {
@@ -3198,7 +3165,7 @@ svg {
 }
 
 .filter-chip {
-  height: 34px;
+  height: 38px;
   padding-inline: 14px;
   border-radius: var(--r-pill);
   border: 1px solid var(--line);
@@ -3346,9 +3313,8 @@ svg {
   gap: 2px;
   margin: -4px 16px 14px;
   padding: 10px 14px;
-  border-left: 2px solid var(--gold);
   background: var(--gold-tint);
-  border-radius: 0 var(--r-md) var(--r-md) 0;
+  border-radius: var(--r-md);
   font-size: 13.5px;
   color: var(--ink-3);
   animation: rise 0.3s var(--ease) both;
@@ -3479,13 +3445,13 @@ svg {
   overflow: visible;
   height: 22px;
   padding-inline: 8px;
-  font-size: 11px;
+  font-size: 12px;
   color: var(--sage-strong);
 }
 
 .topic-row-count small {
   display: block;
-  font-size: 10.5px;
+  font-size: 12px;
 }
 
 /* Topic page header: "12 of 20 done · 3 learned" / "Finished" */
@@ -3519,10 +3485,13 @@ svg {
   font-style: normal;
 }
 
-.translation-hidden {
+.translation-hidden,
+.example-hidden,
+.headword-hidden {
+  font-family: var(--font-sans);
   font-style: italic;
-  color: var(--ink-3);
   font-size: 14px;
+  color: var(--ink-3);
 }
 
 /* "At a glance": words practised (lighter band) under words learned (gold) */
@@ -3612,4 +3581,436 @@ svg {
 .diff-meaning {
   font-size: 14.5px;
   color: var(--ink-2);
+}
+
+/* ==========================================================================
+   Phones: task screens put the task first
+   ========================================================================== */
+
+.console-summary {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  /* Generator, Review, Words, Speaking: a one-line title instead of label + title + intro. */
+  .task-head {
+    gap: 0;
+    margin-bottom: 18px;
+  }
+
+  .task-head .eyebrow,
+  .task-head .lede,
+  .task-head > .muted {
+    display: none;
+  }
+
+  .task-head .title-xl {
+    font-size: 26px;
+  }
+
+  .console {
+    padding: 14px 16px;
+  }
+
+  .console-bar {
+    padding-bottom: 12px;
+    margin-bottom: 4px;
+  }
+
+  .console-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+    min-height: 44px;
+    padding: 0;
+    border: none;
+    background: none;
+    color: var(--console-ink);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .console-summary-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+    color: var(--gold);
+  }
+
+  .console-summary-action svg {
+    width: 15px;
+    height: 15px;
+    transition: transform 0.2s var(--ease);
+  }
+
+  .console-summary[aria-expanded='true'] .console-summary-action svg {
+    transform: rotate(90deg);
+  }
+
+  .console-grid {
+    grid-template-columns: minmax(0, 1fr);
+    margin-top: 10px;
+  }
+
+  .console-grid.is-collapsed {
+    display: none;
+  }
+
+  /* Segmented controls fill their row, so three options never spill past the panel. */
+  .console-grid .seg {
+    display: flex;
+    width: 100%;
+  }
+
+  .console-grid .seg-btn {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+/* Home: practice shortcuts under the main buttons */
+.hero-practice {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+@media (max-width: 720px) {
+  /* Topic tiles become compact rows: icon | name + count | status, meter underneath. */
+  .tile-main {
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr) auto;
+    grid-template-areas:
+      'icon title status'
+      'icon meta meta'
+      'foot foot foot';
+    column-gap: 14px;
+    row-gap: 2px;
+    padding: 16px 16px 14px;
+  }
+
+  .tile-top {
+    display: contents;
+  }
+
+  .tile-icon {
+    grid-area: icon;
+    width: 40px;
+    height: 40px;
+    border-radius: 11px;
+  }
+
+  .tile-icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .tile-arrow,
+  .tile-status {
+    grid-area: status;
+    align-self: center;
+  }
+
+  .tile-main > div:not(.tile-top):not(.tile-foot) {
+    grid-area: title;
+    align-self: end;
+  }
+
+  .tile-title {
+    font-size: 18px;
+  }
+
+  .tile-meta {
+    grid-area: meta;
+    margin-top: 0;
+    align-self: start;
+  }
+
+  .tile-progress-note {
+    display: none;
+  }
+
+  .tile-foot {
+    grid-area: foot;
+    padding-top: 10px;
+  }
+
+  .tile-actions {
+    padding: 0 16px 14px;
+  }
+
+  .topic-grid,
+  .topic-grid[data-count] {
+    gap: 10px;
+  }
+}
+
+/* Segmented control on ordinary pages (Words sort, Review mode) — light, not the console's dark */
+.seg-light {
+  background: var(--bg-sunken);
+  border-color: var(--line);
+}
+
+.seg-light .seg-btn {
+  color: var(--ink-2);
+  font-family: var(--font-sans);
+  font-size: 13px;
+}
+
+.seg-light .seg-btn:hover {
+  color: var(--ink);
+}
+
+.seg-light .seg-btn.active {
+  background: var(--surface-raised);
+  color: var(--ink);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Browser surfaces in the palette, not browser blue */
+::selection {
+  background: color-mix(in srgb, var(--gold) 35%, transparent);
+  color: var(--ink);
+}
+
+input,
+textarea {
+  caret-color: var(--sage);
+}
+
+/* The example revealed under the drill exists for phones only; desktop shows it on the card. */
+.session-example {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  /* A card with a drill: no picture, and its example waits under the drill until answered. */
+  .has-drill .scene,
+  .has-drill .flashcard .example {
+    display: none;
+  }
+
+  .session-example {
+    display: block;
+    grid-area: example;
+    margin-top: 14px;
+  }
+}
+
+/* ==========================================================================
+   Home: today's pick, with where you left off beside it
+   ========================================================================== */
+
+.hero-today {
+  align-items: start;
+}
+
+.hero-side {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pick-card {
+  margin-top: 26px;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-xl);
+  background:
+    radial-gradient(120% 90% at 0% 0%, var(--gold-tint), transparent 62%),
+    var(--surface-raised);
+  box-shadow: var(--shadow-md);
+}
+
+.pick-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.pick-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold-strong);
+}
+
+.pick-label svg {
+  width: 15px;
+  height: 15px;
+}
+
+.pick-time {
+  font-size: 12.5px;
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+
+.pick-main {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.pick-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: var(--sage-tint);
+  color: var(--sage-strong);
+}
+
+.pick-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.pick-title {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+.pick-reason {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  margin-top: 14px;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.pick-reason svg {
+  flex-shrink: 0;
+  width: 17px;
+  height: 17px;
+  margin-top: 2px;
+  color: var(--gold-strong);
+}
+
+.pick-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.left-off {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 22px 18px 14px;
+}
+
+.left-off .eyebrow {
+  padding-inline: 8px;
+  margin-bottom: 4px;
+}
+
+.left-off-row {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 8px;
+  border-radius: var(--r-md);
+  color: var(--ink);
+  transition: background-color 0.2s var(--ease);
+}
+
+.left-off-row:hover {
+  background: var(--bg-sunken);
+}
+
+.left-off-row > svg {
+  width: 16px;
+  height: 16px;
+  color: var(--ink-3);
+}
+
+.left-off-icon {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 11px;
+  background: var(--sage-tint);
+  color: var(--sage-strong);
+}
+
+.left-off-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.left-off-review .left-off-icon {
+  background: var(--gold-tint);
+  color: var(--gold-strong);
+}
+
+.left-off-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.left-off-copy strong {
+  font-size: 15px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.left-off-copy > span {
+  font-size: 13px;
+  color: var(--ink-3);
+}
+
+.left-off-meter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.left-off-meter .meter {
+  flex: 1;
+  min-width: 60px;
+}
+
+@media (max-width: 720px) {
+  .pick-card {
+    margin-top: 20px;
+    padding: 20px 18px;
+  }
+
+  .pick-title {
+    font-size: 22px;
+  }
+
+  .pick-actions .btn {
+    flex: 1 1 auto;
+    justify-content: center;
+  }
 }

@@ -33,11 +33,22 @@ export interface CardProgress {
   lapses?: number;
 }
 
+/** The ways of practising the app tracks, so recommendations can spot a skill left untouched. */
+export type ActivityKind = 'flashcards' | 'speaking' | 'listening' | 'writing' | 'reading' | 'review';
+
+export interface ActivityRecord {
+  count: number;
+  /** yyyy-mm-dd of the last time. */
+  lastISO: string;
+}
+
 interface ProgressState {
   version: 1;
   firstUseISO: string;
   activeDates: string[]; // unique yyyy-mm-dd
   cards: Record<string, CardProgress>;
+  /** Optional so progress saved before activity tracking still loads. */
+  activity?: Partial<Record<ActivityKind, ActivityRecord>>;
 }
 
 /** Local calendar date as yyyy-mm-dd ("today" should mean the learner's today, not UTC's). */
@@ -46,7 +57,7 @@ function toISODate(date: Date) {
   return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
 }
 
-function todayISO() {
+export function todayISO() {
   return toISODate(new Date());
 }
 
@@ -113,6 +124,9 @@ interface ProgressContextValue {
   nextReview: { dateISO: string; count: number } | null;
   markSeen: (cardId: string) => void;
   markAnswer: (cardId: string, correct: boolean) => void;
+  /** When each kind of practice was last done (empty until it has been). */
+  activity: Partial<Record<ActivityKind, ActivityRecord>>;
+  logActivity: (kind: ActivityKind) => void;
 }
 
 const ProgressContext = createContext<ProgressContextValue | null>(null);
@@ -176,6 +190,15 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
       },
       reviewQueue,
       nextReview,
+      activity: state.activity ?? {},
+      logActivity: (kind: ActivityKind) =>
+        setState((s) => {
+          const prev = s.activity?.[kind];
+          return {
+            ...s,
+            activity: { ...s.activity, [kind]: { count: (prev?.count ?? 0) + 1, lastISO: todayISO() } },
+          };
+        }),
       markSeen: (cardId: string) =>
         setState((s) => {
           const prev = s.cards[cardId];

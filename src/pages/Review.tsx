@@ -110,7 +110,7 @@ function ReviewFlipCard({
 }
 
 export function Review() {
-  const { reviewQueue, nextReview, markAnswer, recordFor } = useProgress();
+  const { reviewQueue, nextReview, markAnswer, recordFor, logActivity } = useProgress();
   const [mode, setMode] = useState<Mode>(savedMode);
   // The round is a snapshot: grading changes the live queue, but the round in progress shouldn't shift under you.
   const [batch, setBatch] = useState<string[]>(() => reviewQueue.slice(0, REVIEW_BATCH));
@@ -150,6 +150,7 @@ export function Review() {
     if (!id) return;
     if (!isSecondPass) {
       markAnswer(id, correct);
+      logActivity('review');
       setTally((t) => (correct ? { ...t, right: t.right + 1 } : { ...t, missed: t.missed + 1 }));
       // A miss comes back once more at the end of this round, while it's fresh.
       if (!correct) setBatch((b) => [...b, id]);
@@ -171,7 +172,7 @@ export function Review() {
   });
 
   const head = (
-    <header className="reader-head rise">
+    <header className="reader-head task-head rise">
       <span className="eyebrow no-rule">Review</span>
       <h1 className="title-xl">
         {firstPassCount > 0
@@ -267,6 +268,7 @@ export function Review() {
           </span>
         </div>
         <Seg
+          light
           label="Review mode"
           value={mode}
           onChange={changeMode}

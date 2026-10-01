@@ -137,7 +137,7 @@ export function Words() {
 
   return (
     <div className="words">
-      <header className="reader-head rise">
+      <header className="reader-head task-head rise">
         <span className="eyebrow no-rule">Word list</span>
         <h1 className="title-xl">Every word, in one place.</h1>
         <p className="lede" style={{ textAlign: 'center' }}>
@@ -182,6 +182,7 @@ export function Words() {
             ))}
           </div>
           <Seg
+            light
             label="Sort"
             value={sort}
             onChange={setSort}

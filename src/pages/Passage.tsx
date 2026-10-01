@@ -1,8 +1,10 @@
+import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Icon } from '../components/Icon';
 import { passageForTopic } from '../data/passages';
 import { topicById } from '../data/topics';
 import { cardsForTopic } from '../data/cards';
+import { useProgress } from '../lib/progress';
 
 // A learner reading German aloud manages roughly 120–140 words a minute.
 const READ_ALOUD_WPM = 130;
@@ -11,6 +13,13 @@ export function PassagePage() {
   const { topicId = '' } = useParams();
   const passage = passageForTopic(topicId);
   const topic = topicById(topicId);
+  const { logActivity } = useProgress();
+
+  // Opening a script counts as reading practice.
+  useEffect(() => {
+    if (passage) logActivity('reading');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [topicId]);
 
   if (!passage || !topic) {
     return (

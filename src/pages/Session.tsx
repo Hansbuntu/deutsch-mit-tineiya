@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Icon } from '../components/Icon';
-import { Flashcard } from '../components/Flashcard';
+import { Flashcard, type FlashcardHide } from '../components/Flashcard';
 import { DrillPanel } from '../components/DrillPanel';
 import { topics, topicById, TOPIC_GROUP_LABELS } from '../data/topics';
 import { cardsForTopic } from '../data/cards';
@@ -12,12 +12,21 @@ import { shuffle } from '../lib/text';
 import { shouldIgnoreShortcut } from '../lib/keys';
 import { setLastTopicId } from '../lib/lastTopic';
 import { hasSpeaking } from '../lib/speaking';
-import type { VerbCard } from '../data/types';
+import type { VerbCard, DrillKind } from '../data/types';
+
+/** What the card keeps back while each kind of drill is unanswered — whatever would give the answer away. */
+const HIDE_FOR_DRILL: Record<DrillKind, FlashcardHide> = {
+  meaning: 'meaning',
+  article: 'article',
+  conjugation: 'example',
+  'separable-position': 'example',
+  'word-order': 'sentence',
+};
 
 export function Session() {
   const { topicId = '' } = useParams();
   const topic = topicById(topicId);
-  const { markSeen, markAnswer, notebookPagesDigitized, recordFor, topicProgress } = useProgress();
+  const { markSeen, markAnswer, notebookPagesDigitized, recordFor, topicProgress, logActivity } = useProgress();
 
   // Shuffled, but cards not done yet come first — reopening a topic carries on where you stopped.
   const deckFor = (id: string) => {
@@ -43,6 +52,16 @@ export function Session() {
   // Whether the drill for the current card has been answered (its answer stays hidden on the card until then).
   const [answered, setAnswered] = useState(false);
   useEffect(() => setAnswered(false), [currentCard?.id]);
+
+  // Moving past the first card counts as a flashcard session (opening a topic alone doesn't).
+  const loggedSession = useRef(false);
+  useEffect(() => {
+    if (index > 0 && !loggedSession.current) {
+      loggedSession.current = true;
+      logActivity('flashcards');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [index]);
 
   useEffect(() => {
     if (currentCard) markSeen(currentCard.id);
@@ -135,7 +154,7 @@ export function Session() {
       </header>
 
       {relatedTopics.length > 1 && (
-        <div className="chip-row" role="navigation" aria-label="Related topics">
+        <div className="chip-row session-chips" role="navigation" aria-label="Related topics">
           {relatedTopics.map((t) => (
             <Link
               key={t.id}
@@ -172,8 +191,8 @@ export function Session() {
           </div>
         </div>
       ) : (
-        <div className="session-grid">
-          <div>
+        <div className={`session-grid${drill ? ' has-drill' : ''}`}>
+          <div className="session-main">
             <div className="session-progress">
               <div className="meter meter-sage">
                 <span style={{ width: `${((index + 1) / cards.length) * 100}%` }} />
@@ -186,40 +205,44 @@ export function Session() {
             <Flashcard
               key={currentCard.id}
               card={currentCard}
-              hide={
-                drill && !answered && (drill.kind === 'meaning' || drill.kind === 'article') ? drill.kind : undefined
-              }
+              hide={drill && !answered ? HIDE_FOR_DRILL[drill.kind] : undefined}
             />
-
-            <div className="card-actions">
-              <button
-                type="button"
-                className="btn btn-ghost"
-                onClick={() => setIndex((i) => Math.max(0, i - 1))}
-                disabled={index === 0}
-              >
-                <Icon name="arrow-left" />
-                Back
-              </button>
-              <span className="hint">
-                <span className="kbd">←</span>
-                <span className="kbd">→</span>
-                to move
-              </span>
-              <button type="button" className="btn btn-primary" onClick={() => setIndex((i) => i + 1)}>
-                {index === cards.length - 1 ? 'Finish' : 'Next'}
-                <Icon name="arrow-right" />
-              </button>
-            </div>
           </div>
 
-          <aside>
+          <div className="card-actions">
+            <button
+              type="button"
+              className="btn btn-ghost"
+              onClick={() => setIndex((i) => Math.max(0, i - 1))}
+              disabled={index === 0}
+            >
+              <Icon name="arrow-left" />
+              Back
+            </button>
+            <span className="hint">
+              <span className="kbd">←</span>
+              <span className="kbd">→</span>
+              to move
+            </span>
+            {/* Until the drill is answered, moving on is a skip — say so, and keep it secondary. */}
+            <button
+              type="button"
+              className={`btn ${drill && !answered ? 'btn-ghost' : 'btn-primary'}`}
+              onClick={() => setIndex((i) => i + 1)}
+            >
+              {drill && !answered ? 'Skip question' : index === cards.length - 1 ? 'Finish' : 'Next'}
+              <Icon name="arrow-right" />
+            </button>
+          </div>
+
+          <aside className="session-drill">
             {drill ? (
               <DrillPanel
                 key={drill.id}
                 drill={drill}
                 onAnswer={(correct) => {
                   markAnswer(currentCard.id, correct);
+                  logActivity('flashcards');
                   setAnswered(true);
                 }}
               />
@@ -237,8 +260,21 @@ export function Session() {
                 </div>
               </div>
             )}
+          </aside>
 
-            {topic.group === 'notebook' && (
+          {/* Phones only: with a drill, the card's example moves here and appears once it's answered,
+              so nothing above the drill grows while you read the feedback. */}
+          {drill && answered && currentCard.type !== 'sentence' && currentCard.example && (
+            <div className="session-example example rise">
+              <p className="example-de" lang="de">
+                {currentCard.example.de}
+              </p>
+              <p className="example-en">{currentCard.example.en}</p>
+            </div>
+          )}
+
+          {topic.group === 'notebook' && (
+            <aside className="session-info">
               <div className="panel panel-quiet rise-3">
                 <span className="panel-quiet-icon">
                   <Icon name="notebook" />
@@ -246,13 +282,13 @@ export function Session() {
                 <div>
                   <h3>From your notebook</h3>
                   <p>
-                    All {notebookPagesDigitized} separable verbs from your handwritten cards — each with its own picture,
-                    example sentence and full conjugation.
+                    All {notebookPagesDigitized} separable verbs from your handwritten cards — each with its own
+                    picture, example sentence and full conjugation.
                   </p>
                 </div>
               </div>
-            )}
-          </aside>
+            </aside>
+          )}
         </div>
       )}
     </>

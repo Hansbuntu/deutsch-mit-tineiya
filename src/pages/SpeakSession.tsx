@@ -25,7 +25,7 @@ const ERROR_MESSAGES: Record<string, string> = {
 export function SpeakSession() {
   const { topicId = '' } = useParams();
   const topic = topicById(topicId);
-  const { markAnswer, isLearned } = useProgress();
+  const { markAnswer, isLearned, logActivity } = useProgress();
   const supported = useMemo(speechRecognitionSupported, []);
 
   const [items, setItems] = useState<SpeakItem[]>(() => speakingItemsFor(topicId, isLearned));
@@ -97,6 +97,7 @@ export function SpeakSession() {
       setCorrect(isCorrect);
       setPhase('result');
       if (!isRetry) markAnswer(item.card.id, isCorrect);
+      logActivity('speaking');
     } else if (result.status === 'no-match') {
       setErrorMessage("Didn't catch that — try again, a little closer to the mic.");
       setPhase('error');
@@ -157,7 +158,7 @@ export function SpeakSession() {
         <span>Speaking</span>
       </nav>
 
-      <header className="reader-head rise">
+      <header className="reader-head task-head rise">
         <span className="eyebrow no-rule">Speaking practice</span>
         <h1 className="title-xl">{topic.name}</h1>
         <p className="muted">Read the English, then say it in German.</p>
