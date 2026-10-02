@@ -76,11 +76,11 @@ export function Flashcard({ card, hide }: { card: Card; hide?: FlashcardHide }) 
                   <span className={`article-badge article-${card.article}`}>{card.article}</span>
                 ))}
               {isSentence && hide === 'sentence' ? (
-                <p className="headword-sentence headword-hidden">Answer the question to see the German</p>
+                <h2 className="headword-sentence headword-hidden">Answer the question to see the German</h2>
               ) : isSentence ? (
-                <p className="headword-sentence" lang="de">
+                <h2 className="headword-sentence" lang="de">
                   <HighlightedSentence text={word} highlight={highlight} />
-                </p>
+                </h2>
               ) : (
                 <h2 className="headword" lang="de">
                   {word}

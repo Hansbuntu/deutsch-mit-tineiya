@@ -1,9 +1,8 @@
 import { Link } from 'react-router-dom';
 import { Icon } from '../components/Icon';
 import { SceneIcon } from '../components/SceneIcon';
-import { ProgressRing } from '../components/ProgressRing';
 import { topics, topicById, TOPIC_GROUP_DESCRIPTIONS, TOPIC_GROUP_LABELS, TOPIC_GROUP_ORDER } from '../data/topics';
-import { allCards, cardsForTopic, FREQUENCY_LIST_TARGET } from '../data/cards';
+import { cardsForTopic } from '../data/cards';
 import { passageForTopic } from '../data/passages';
 import type { Topic } from '../data/types';
 import { todayISO, useProgress, type TopicProgress } from '../lib/progress';
@@ -93,17 +92,10 @@ function TopicTile({ topic, progress }: { topic: Topic; progress: TopicProgress 
 }
 
 export function Home() {
-  const {
-    daysActive,
-    totalCardsLearned,
-    frequencyListLearned,
-    frequencyListPractised,
-    reviewQueue,
-    topicProgress,
-    recordFor,
-    activity,
-  } = useProgress();
+  const { totalCardsSeen, frequencyListPractised, reviewQueue, topicProgress, recordFor, activity } = useProgress();
   const dueCount = reviewQueue.length;
+  // Nothing studied yet: there's nothing to continue or count, so Home leads with how it works.
+  const isNewLearner = totalCardsSeen === 0;
 
   const lastTopic = topicById(getLastTopicId() ?? '');
   const continueTopic = lastTopic ?? topics[0];
@@ -170,85 +162,52 @@ export function Home() {
         </div>
 
         <div className="hero-side rise-2">
-          {/* Where you left off stays one tap away, beside the pick. */}
-          <section className="surface left-off" aria-label="Where you left off">
-            <span className="eyebrow">Where you left off</span>
-            {dueCount > 0 && (
-              <Link to="/wiederholen" className="left-off-row left-off-review">
+          {isNewLearner ? (
+            // A first visit has nothing to continue: explain how it works instead, beside the pick.
+            <Welcome />
+          ) : (
+            /* Where you left off stays one tap away, beside the pick. */
+            <section className="surface left-off" aria-label="Where you left off">
+              <span className="eyebrow">Where you left off</span>
+              {dueCount > 0 && (
+                <Link to="/wiederholen" className="left-off-row left-off-review">
+                  <span className="left-off-icon">
+                    <Icon name="repeat" />
+                  </span>
+                  <span className="left-off-copy">
+                    <strong>
+                      Review {dueCount} {dueCount === 1 ? 'card' : 'cards'}
+                    </strong>
+                    <span>Missed ones first · about {reviewMinutes} min</span>
+                  </span>
+                  <Icon name="arrow-right" />
+                </Link>
+              )}
+              <Link to={`/thema/${continueTopic.id}`} className="left-off-row">
                 <span className="left-off-icon">
-                  <Icon name="repeat" />
+                  <SceneIcon name={continueTopic.icon} />
                 </span>
                 <span className="left-off-copy">
-                  <strong>
-                    Review {dueCount} {dueCount === 1 ? 'card' : 'cards'}
-                  </strong>
-                  <span>Missed ones first · about {reviewMinutes} min</span>
+                  <strong>{continueLabel}</strong>
+                  <span className="left-off-meter">
+                    <span className="meter meter-sage">
+                      <span
+                        style={{
+                          width: `${continueProgress.total ? (continueProgress.done / continueProgress.total) * 100 : 0}%`,
+                        }}
+                      />
+                    </span>
+                    {continueProgress.finished ? 'Finished' : `${continueProgress.done} / ${continueProgress.total}`}
+                  </span>
                 </span>
                 <Icon name="arrow-right" />
               </Link>
-            )}
-            <Link to={`/thema/${continueTopic.id}`} className="left-off-row">
-              <span className="left-off-icon">
-                <SceneIcon name={continueTopic.icon} />
-              </span>
-              <span className="left-off-copy">
-                <strong>{continueLabel}</strong>
-                <span className="left-off-meter">
-                  <span className="meter meter-sage">
-                    <span
-                      style={{
-                        width: `${continueProgress.total ? (continueProgress.done / continueProgress.total) * 100 : 0}%`,
-                      }}
-                    />
-                  </span>
-                  {continueProgress.finished ? 'Finished' : `${continueProgress.done} / ${continueProgress.total}`}
-                </span>
-              </span>
-              <Icon name="arrow-right" />
-            </Link>
-          </section>
-
-          <aside className="hero-panel surface corner-mark" aria-label="At a glance">
-            <span className="eyebrow">At a glance</span>
-            <div className="glance">
-              <ProgressRing
-                value={frequencyListLearned}
-                secondary={frequencyListPractised}
-                max={FREQUENCY_LIST_TARGET}
-              />
-              <div>
-                <div className="glance-value">
-                  {frequencyListLearned}
-                  <small> / {FREQUENCY_LIST_TARGET.toLocaleString('en')}</small>
-                </div>
-                <p className="glance-label">most common German words learned</p>
-                {frequencyListPractised > 0 && (
-                  <p className="glance-sub">
-                    <span className="glance-swatch" aria-hidden="true" />
-                    {frequencyListPractised.toLocaleString('en')} practised so far
-                  </p>
-                )}
-              </div>
-            </div>
-            <dl className="mini-stats">
-              <div>
-                <dt>Days active</dt>
-                <dd>{daysActive}</dd>
-              </div>
-              <div>
-                <dt>Cards learned</dt>
-                <dd>{totalCardsLearned}</dd>
-              </div>
-              <div>
-                <dt>In library</dt>
-                <dd>{allCards.length}</dd>
-              </div>
-            </dl>
-          </aside>
+            </section>
+          )}
         </div>
       </section>
 
-      <Welcome />
+      {!isNewLearner && <Welcome />}
 
       {upNext.length > 0 && (
         <section className="section rise-2" aria-labelledby="up-next-title">
