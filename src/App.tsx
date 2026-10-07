@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect } from 'react';
 import { HashRouter, Route, Routes, useLocation } from 'react-router-dom';
 import { ProgressProvider } from './lib/progress';
 import { Header, BottomNav } from './components/Header';
+import { UpdatePrompt } from './components/UpdatePrompt';
 import { Home } from './pages/Home';
 
 // Home ships with the first load; every other screen downloads the first time it's opened.
@@ -46,6 +47,7 @@ function App() {
             </Suspense>
           </main>
           <BottomNav />
+          <UpdatePrompt />
         </div>
       </HashRouter>
     </ProgressProvider>

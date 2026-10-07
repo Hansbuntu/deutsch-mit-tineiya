@@ -30,6 +30,11 @@ self.addEventListener('install', (event) => {
   event.waitUntil(caches.open(APP_CACHE).then((cache) => cache.addAll(PRECACHE.map(scoped))));
 });
 
+// The app asks a waiting update to take over when the learner taps Reload (see UpdatePrompt).
+self.addEventListener('message', (event) => {
+  if (event.data?.type === 'SKIP_WAITING') self.skipWaiting();
+});
+
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches

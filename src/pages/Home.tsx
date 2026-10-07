@@ -9,6 +9,7 @@ import { todayISO, useProgress, type TopicProgress } from '../lib/progress';
 import { candidatePicks, rankPicks } from '../lib/recommend';
 import { TodaysPick } from '../components/TodaysPick';
 import { Welcome } from '../components/HowItWorks';
+import { InstallApp } from '../components/InstallApp';
 import { HeroBackdrop } from '../components/HeroBackdrop';
 import { getLastTopicId } from '../lib/lastTopic';
 import { REVIEW_BATCH } from '../lib/review';
@@ -208,6 +209,7 @@ export function Home() {
       </section>
 
       {!isNewLearner && <Welcome />}
+      {!isNewLearner && <InstallApp variant="hint" />}
 
       {upNext.length > 0 && (
         <section className="section rise-2" aria-labelledby="up-next-title">

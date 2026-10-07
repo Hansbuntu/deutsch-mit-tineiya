@@ -32,10 +32,26 @@ export type UiIconName =
   | 'library'
   | 'plus'
   | 'pencil'
-  | 'trash';
+  | 'trash'
+  | 'install'
+  | 'share';
 
 const paths: Record<UiIconName, ReactElement> = {
   plus: <path d="M12 5v14M5 12h14" />,
+  install: (
+    <>
+      <rect x="6" y="2.5" width="12" height="19" rx="2.5" />
+      <path d="M12 7v7M9 11l3 3 3-3" />
+      <path d="M10.5 18.5h3" />
+    </>
+  ),
+  // the iOS share sheet button, for the Add to Home Screen steps
+  share: (
+    <>
+      <path d="M12 3v12M8 7l4-4 4 4" />
+      <path d="M8.5 10H6.5a1.5 1.5 0 0 0-1.5 1.5v8A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5v-8a1.5 1.5 0 0 0-1.5-1.5h-2" />
+    </>
+  ),
   pencil: (
     <>
       <path d="m15.5 5.5 3 3" />

@@ -1,18 +1,43 @@
 {
+  "id": "./",
   "name": "Deutsch mit Tineiya",
   "short_name": "Deutsch",
   "description": "Personal German flashcards, drills and speaking practice — A1 on the way to A2.",
+  "lang": "en",
+  "dir": "ltr",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "background_color": "#f2ede2",
   "theme_color": "#f2ede2",
+  "categories": ["education"],
   "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ],
+  "shortcuts": [
     {
-      "src": "favicon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any"
+      "name": "Review",
+      "short_name": "Review",
+      "description": "Cards due for review today",
+      "url": "./#/wiederholen",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Listening practice",
+      "short_name": "Listening",
+      "description": "Hear a sentence, type what you hear",
+      "url": "./#/generieren?mode=listen",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Add a TikTok script",
+      "short_name": "Add script",
+      "description": "Turn a new script into cards and practice",
+      "url": "./#/skript/neu",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
     }
   ]
 }

@@ -13,10 +13,61 @@ export function offlineSupported(): boolean {
 export function registerServiceWorker() {
   if (!offlineSupported()) return;
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js').catch(() => {
-      // No offline mode this visit — the app works exactly the same online.
+    navigator.serviceWorker
+      .register('./sw.js')
+      .then(watchForUpdates)
+      .catch(() => {
+        // No offline mode this visit — the app works exactly the same online.
+      });
+  });
+}
+
+// --- updates: a new deploy installs a new worker, which waits until the app reloads ---
+
+let waitingWorker: ServiceWorker | null = null;
+const updateListeners = new Set<() => void>();
+
+function watchForUpdates(registration: ServiceWorkerRegistration) {
+  // The very first install has no older version to replace — nothing to announce.
+  const isUpdate = () => navigator.serviceWorker.controller !== null;
+
+  // Waiting already as the app opens: this page came from the network (pages are network
+  // first), so it is the new version — let the new worker take over quietly. Offline, the page
+  // came from the old worker's cache, so the old one stays until next time.
+  if (registration.waiting && isUpdate() && navigator.onLine) {
+    registration.waiting.postMessage({ type: 'SKIP_WAITING' });
+  }
+
+  registration.addEventListener('updatefound', () => {
+    const worker = registration.installing;
+    worker?.addEventListener('statechange', () => {
+      if (worker.state === 'installed' && isUpdate()) {
+        waitingWorker = worker;
+        updateListeners.forEach((listener) => listener());
+      }
     });
   });
+
+  // An installed app is resumed rather than reopened, so check for a new version each time it comes back.
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') registration.update().catch(() => {});
+  });
+}
+
+/** Called when a new version has downloaded while the app is open. Returns an unsubscribe. */
+export function onUpdateReady(listener: () => void): () => void {
+  updateListeners.add(listener);
+  if (waitingWorker) listener();
+  return () => {
+    updateListeners.delete(listener);
+  };
+}
+
+/** Switch to the downloaded version and reload into it. */
+export function applyUpdate() {
+  if (!waitingWorker) return window.location.reload();
+  navigator.serviceWorker.addEventListener('controllerchange', () => window.location.reload(), { once: true });
+  waitingWorker.postMessage({ type: 'SKIP_WAITING' });
 }
 
 const clipUrl = (file: string) => new URL(`audio/${file}`, document.baseURI).href;

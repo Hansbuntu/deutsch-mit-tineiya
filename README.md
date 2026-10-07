@@ -149,6 +149,7 @@ npm run dev
 | `npm run preview` | Serve the production build locally |
 | `npm run lint` | oxlint |
 | `npm run generate-audio` | Generate any missing pronunciation clips (needs internet; see [Pronunciation](#pronunciation)) |
+| `npm run generate-icons` | Rebuild the app icons in `public/icons/` from `public/favicon.svg` (see [Installing the app](#installing-the-app-pwa)) |
 
 `vite.config.ts` sets `base: './'` so the build works from any subpath (a
 GitHub Pages project page, a Vercel/Netlify root, or straight from disk). It
@@ -180,7 +181,8 @@ src/
     practice.ts            sentenceOf(), word-level diff, answer checking
     speaking.ts            which sentences each topic's speaking practice uses
     review.ts              what a review asks for each card, round size
-    offline.ts             registers the service worker, "Save all audio"
+    offline.ts             registers the service worker, "Save all audio", update prompt
+    install.ts             install-the-app prompt (PWA) and iOS detection
     level.ts               derives an A1/A2 level for a card
     theme.ts               light/dark theme switch
     lastTopic.ts           remembers the last topic for "Continue"
@@ -188,13 +190,15 @@ src/
     text.ts                shared helpers (shuffle, audio filename hash, ...)
   components/              Header (+ phone bottom nav), Flashcard, DrillPanel,
                            SentenceFlipCard, TypeCheckCard, SoundButton, ProgressRing,
-                           Seg (segmented control), OfflineAudio, Icon (UI icons),
+                           Seg (segmented control), OfflineAudio, InstallApp,
+                           UpdatePrompt, Icon (UI icons),
                            SceneIcon (card illustrations)
   pages/                   Home, Session, Passage, SpeakSession, Review, Generator,
                            Words, Progress, ScriptEditor (all but Home load on first visit)
   service-worker.js        offline support — a template vite.config.ts builds into dist/sw.js
 public/audio/              2,276 pre-generated MP3 pronunciation clips (~33 MB)
 scripts/generate-audio.mjs builds those clips
+scripts/generate-icons.mjs builds the app icons in public/icons/
 reference/                 original build brief + design reference (archived)
 .github/workflows/         GitHub Pages deploy
 ```
@@ -411,6 +415,32 @@ Registered from `lib/offline.ts`, production builds only.
   which Safari needs for audio.
 - Cache lookups ignore `Vary` — the preview server sends `Vary: Origin`, and
   without that the browser's module requests never matched the saved copies.
+- **Updates:** a new deploy installs a new worker, which waits. If the app is
+  open when it arrives (an installed app checks each time it's brought back to
+  the front), a "new version is ready — Reload" prompt appears; Reload hands
+  over to the new worker and reloads. If the waiting worker is found as the app
+  opens, the page is already the new version (pages are network-first), so it
+  takes over quietly.
+
+## Installing the app (PWA)
+
+The site installs as an app — its own home-screen icon, full screen, offline.
+
+- **Manifest** (`public/manifest.webmanifest`): standalone display, the brand
+  colours, PNG icons (192, 512, and a maskable 512 so Android can crop it to
+  its own shape), and shortcuts — long-press the icon for Review, Listening
+  practice or Add a TikTok script.
+- **Icons** (`public/icons/`): rendered from `favicon.svg` by
+  `npm run generate-icons` (`scripts/generate-icons.mjs`, using resvg). The
+  full-bleed versions — maskable and the 180px `apple-touch-icon.png` — keep
+  the mark inside the safe zone. They're precached with the rest of the app.
+- **Install button** (`components/InstallApp.tsx`, `lib/install.ts`): Chrome,
+  Edge and Android fire `beforeinstallprompt`; the app keeps it and offers an
+  **Install** button. iPhone/iPad can only install from Safari's Share → Add to
+  Home Screen, and Safari on a Mac from File → Add to Dock, so those get the
+  steps instead. It's a card on the Progress page, and a hint on Home (not on
+  the very first visit) that can be dismissed for good. Both disappear once
+  the app is running installed.
 
 ## Pronunciation
 

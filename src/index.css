@@ -3337,6 +3337,76 @@ svg {
   }
 }
 
+/* Install the app (Progress card, dismissible Home hint) */
+.install-steps {
+  margin-top: 10px;
+  font-size: 14px;
+  color: var(--ink-2);
+}
+
+.install-steps-icon {
+  width: 17px;
+  height: 17px;
+  margin: 0 0 -3px 4px;
+  color: var(--sage-strong);
+}
+
+.install-hint {
+  position: relative;
+  padding-right: 64px;
+}
+
+.install-dismiss {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+}
+
+.install-dismiss svg {
+  width: 17px;
+  height: 17px;
+}
+
+/* New version ready: floats above the content (and above the phone tab bar) */
+.update-toast {
+  position: fixed;
+  z-index: 60;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: calc(100% - 32px);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 10px 10px 18px;
+  background: var(--surface-raised);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-lg);
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.update-toast .icon-btn {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+
+.update-toast .icon-btn svg {
+  width: 17px;
+  height: 17px;
+}
+
+@media (max-width: 720px) {
+  .update-toast {
+    bottom: calc(84px + env(safe-area-inset-bottom));
+  }
+}
+
 /* Topic progress: done / learned / finished (Home tiles, notebook banner, Progress rows) */
 .tile-status {
   height: 26px;

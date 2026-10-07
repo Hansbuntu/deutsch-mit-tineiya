@@ -3,6 +3,7 @@ import { Icon } from '../components/Icon';
 import { SceneIcon } from '../components/SceneIcon';
 import { ProgressRing } from '../components/ProgressRing';
 import { OfflineAudio } from '../components/OfflineAudio';
+import { InstallApp } from '../components/InstallApp';
 import { ProgressBackup } from '../components/ProgressBackup';
 import { HowItWorksList } from '../components/HowItWorks';
 import { useProgress } from '../lib/progress';
@@ -145,6 +146,7 @@ export function Progress() {
         </details>
       </section>
 
+      <InstallApp />
       <OfflineAudio />
 
       <p className="footnote">

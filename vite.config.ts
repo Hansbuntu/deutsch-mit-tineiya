@@ -17,7 +17,8 @@ function serviceWorker(): Plugin {
       this.emitFile({ type: 'asset', fileName: 'audio-manifest.json', source: JSON.stringify(clips) })
 
       const built = Object.keys(bundle).filter((file) => !file.endsWith('.map'))
-      const shell = ['./', 'index.html', 'manifest.webmanifest', 'favicon.svg', 'audio-manifest.json']
+      const icons = readdirSync('public/icons').map((file) => `icons/${file}`)
+      const shell = ['./', 'index.html', 'manifest.webmanifest', 'favicon.svg', 'audio-manifest.json', ...icons]
       const precache = [...new Set([...shell, ...built])]
       const template = readFileSync('src/service-worker.js', 'utf8')
       // Changes whenever a built file or the worker itself changes, so browsers pick up the new worker.
