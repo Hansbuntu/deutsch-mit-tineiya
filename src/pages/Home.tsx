@@ -303,10 +303,20 @@ export function Home() {
                 {groupTopics.length} topics · {cardTotal} cards
               </span>
             </header>
-            <div className="topic-grid" data-count={groupTopics.length}>
+            <div className="topic-grid" data-count={groupTopics.length + (group === 'tiktok' ? 1 : 0)}>
               {groupTopics.map((topic) => (
                 <TopicTile key={topic.id} topic={topic} progress={topicProgress(topic.id)} />
               ))}
+              {group === 'tiktok' && (
+                // Each new TikTok becomes a topic of its own here.
+                <Link to="/skript/neu" className="tile tile-add">
+                  <span className="tile-add-icon" aria-hidden="true">
+                    <Icon name="plus" />
+                  </span>
+                  <span className="tile-title">Add a script</span>
+                  <span className="tile-meta">Turn your next TikTok into cards, drills and speaking practice.</span>
+                </Link>
+              )}
             </div>
           </section>
         );

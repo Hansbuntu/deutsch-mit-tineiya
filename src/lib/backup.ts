@@ -9,6 +9,8 @@ const PREF_KEYS = [
   'deutsch-mit-tineiya:last-topic',
   'deutsch-mit-tineiya:review-mode',
   'deutsch-mit-tineiya:pick-history',
+  // Scripts added in the app — the backup is their only copy off this device.
+  'deutsch-mit-tineiya:my-scripts',
 ];
 const APP = 'deutsch-mit-tineiya';
 const CODE_PREFIX = 'DMT1:';

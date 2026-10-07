@@ -1,5 +1,5 @@
 import { allCards } from '../data/cards';
-import { topicById } from '../data/topics';
+import { topicById, topics } from '../data/topics';
 import type { Card } from '../data/types';
 
 // Chronological order the learner actually encountered these topics in
@@ -7,7 +7,15 @@ import type { Card } from '../data/types';
 // topics in this list participate in "you've seen this before" — the
 // generic grammar/vocab decks and the A1 sentence bank are intentionally
 // excluded since they're meant to stand alone.
-const TRACKED_TOPIC_ORDER = ['trennbare-verben', 'mein-tag', 'mein-zuhause', 'ueber-mich', 'mein-leben'];
+// Scripts added in the app join the end, in the order they were created.
+const TRACKED_TOPIC_ORDER = [
+  'trennbare-verben',
+  'mein-tag',
+  'mein-zuhause',
+  'ueber-mich',
+  'mein-leben',
+  ...topics.filter((t) => t.custom).map((t) => t.id),
+];
 
 function normalizeKey(card: Card): string {
   const raw = card.type === 'verb' ? card.infinitive : card.type === 'sentence' ? card.de : card.word;

@@ -29,9 +29,26 @@ export type UiIconName =
   | 'notebook'
   | 'repeat'
   | 'search'
-  | 'library';
+  | 'library'
+  | 'plus'
+  | 'pencil'
+  | 'trash';
 
 const paths: Record<UiIconName, ReactElement> = {
+  plus: <path d="M12 5v14M5 12h14" />,
+  pencil: (
+    <>
+      <path d="m15.5 5.5 3 3" />
+      <path d="M4 20l1-4.5L16 4.5a2.1 2.1 0 0 1 3 3L8 18.5z" />
+    </>
+  ),
+  trash: (
+    <>
+      <path d="M4.5 7h15" />
+      <path d="M9.5 7V4.5h5V7" />
+      <path d="M6.5 7l1 12.5h9l1-12.5" />
+    </>
+  ),
   repeat: (
     <>
       <path d="M4 12a8 8 0 0 1 13.7-5.6L20 8.5" />

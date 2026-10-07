@@ -136,6 +136,8 @@ export interface Topic {
   group: TopicGroup;
   /** Illustration shown on the topic's tile and progress row. */
   icon: IconName;
+  /** Added by the learner in the script editor (editable, saved on the device). */
+  custom?: boolean;
 }
 
 // ---------------------------------------------------------------------
@@ -149,7 +151,8 @@ export type DrillKind =
   | 'word-order'
   | 'meaning'
   | 'auxiliary'
-  | 'participle';
+  | 'participle'
+  | 'missing-word';
 
 export interface DrillOption {
   id: string;

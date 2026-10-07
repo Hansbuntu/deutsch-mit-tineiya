@@ -12,6 +12,7 @@ const COPY: Record<DrillKind, { eyebrow: string; title: string }> = {
   meaning: { eyebrow: 'Meaning', title: 'What does it mean?' },
   auxiliary: { eyebrow: 'Perfekt', title: 'haben or sein?' },
   participle: { eyebrow: 'Perfekt', title: 'Pick the past participle' },
+  'missing-word': { eyebrow: 'Sentence', title: 'Fill the gap' },
 };
 
 export function DrillPanel({ drill, onAnswer }: { drill: Drill; onAnswer: (correct: boolean) => void }) {

@@ -24,6 +24,7 @@ and deploys to GitHub Pages on every push to `main`.
 | Speaking practice | `/thema/:topicId/sprechen` | Shows an English prompt; tap the mic, say the German sentence, tap **Done**, and it's checked against the target. |
 | Review | `/wiederholen` | Spaced review of cards you've studied — missed ones first — in Flip (self-graded) or Type mode. Home shows "N cards to review today" and the tab carries a count. See [Review](#review). |
 | Practice generator | `/generieren` | Random full-sentence practice filtered by level and source, in Flip, Type or Listen (dictation) mode. `#/generieren?mode=listen` opens straight into listening — Home links to it as "Listening practice". |
+| Script editor | `/skript/neu`, `/skript/:topicId` | Add a new TikTok script in the app — paste the German, type the English for each sentence, optionally list words to learn — and it becomes a topic with cards, drills, the passage, speaking and listening practice. Opened from the **Add a script** tile under Your TikTok scripts; every TikTok script's topic page — the four built-in ones included — has an **Edit script** button. See [Your own scripts](#your-own-scripts). |
 | Word list | `/woerter` | Every word in the app (about 1,100, deduplicated) — search German or English, filter by der/die/das, verbs or other, sort by frequency or A–Z, tap for the example sentence, play the audio. |
 | Progress | `/fortschritt` | Quiet stats: progress through the frequency list (ring), days active, cards learned out of the total, notebook pages digitized, a per-topic progress row for every topic, and "Save all audio" for offline use. |
 
@@ -44,7 +45,7 @@ hidden on touch devices.
 
 ### Drills
 
-Multiple choice, never typing. Seven kinds:
+Multiple choice, never typing. Eight kinds:
 
 - **conjugation** — fill in the conjugated verb form (regular and stem-changing:
   fangen → fängst/fängt, fahren → fährst/fährt, nehmen → nimmst/nimmt)
@@ -58,6 +59,10 @@ Multiple choice, never typing. Seven kinds:
 - **auxiliary** — Perfekt: "Ich ___ nach Berlin gefahren." haben or sein?
 - **participle** — Perfekt: "Ich habe Wasser ___." with a hand-picked trap form
   (getrunken / getrinkt / trinken)
+- **missing-word** — "Fill the gap": a sentence with its longest word blanked,
+  the wrong options taken from other sentences in the same topic. Used for any
+  sentence card that has no other drill — the A1 sentences and every sentence
+  of a script added in the app
 
 While a drill asks about something the card shows — the English meaning, or
 the article (and its example sentence) — the card hides it until you answer.
@@ -186,7 +191,7 @@ src/
                            Seg (segmented control), OfflineAudio, Icon (UI icons),
                            SceneIcon (card illustrations)
   pages/                   Home, Session, Passage, SpeakSession, Review, Generator,
-                           Words, Progress (all but Home load on first visit)
+                           Words, Progress, ScriptEditor (all but Home load on first visit)
   service-worker.js        offline support — a template vite.config.ts builds into dist/sw.js
 public/audio/              2,276 pre-generated MP3 pronunciation clips (~33 MB)
 scripts/generate-audio.mjs builds those clips
@@ -247,7 +252,9 @@ reference/                 original build brief + design reference (archived)
   the next rank, and check the word against the curated files for duplicates.
   Anything with an example sentence automatically joins the generator's pool
   and the word list.
-- **New TikTok script:** add the text to `passages.ts`, extracted cards to
+- **New TikTok script:** the quickest way is in the app (Home → Add a script —
+  see [Your own scripts](#your-own-scripts)). To build one in permanently, with
+  pictures and studio audio: add the text to `passages.ts`, extracted cards to
   `tiktokVocab.ts`, 2–3 `SentenceCard`s to `coreSentences.ts`, and its topic id
   to `TRACKED_TOPIC_ORDER` in `lib/repeats.ts` (in posting order).
 - **After adding any cards:** run `npm run generate-audio` so their
@@ -257,6 +264,42 @@ reference/                 original build brief + design reference (archived)
   change.
 - **Speaking practice for a new topic:** add `SentenceCard`s to it; the
   "Practice speaking →" link appears automatically.
+
+## Your own scripts
+
+New TikTok scripts can be added without touching the code: **Home → Your
+TikTok scripts → Add a script** (`/skript/neu`).
+
+- **What you enter:** a title, a picture, the German script (blank line between
+  paragraphs; sentences split after . ! ?), the English for each sentence, and
+  optionally words to learn (with der/die/das for nouns).
+- **What it becomes:** a topic in Your TikTok scripts with a sentence card for
+  every sentence that has English (each with a "Fill the gap" drill), a card for
+  each listed word (nouns get der/die/das, other words "What does it mean?"),
+  the full passage, speaking practice (the first five sentences), and entries in
+  the practice generator and word list. It also joins the "you've seen this
+  before" tracking across TikTok topics.
+- **Editing:** the topic page has **Edit script**. Sentences you didn't change
+  keep their progress — card ids come from a hash of the sentence text — so
+  only an edited sentence starts fresh. Delete asks to confirm first.
+- **The four built-in scripts** can be edited the same way. The edit is saved
+  under the script's own topic id and applied on top of the original: its word
+  cards, pictures, studio audio and grammar drills stay; the title, picture and
+  passage change; a sentence taken out of the script loses its card, and a new
+  or reworded sentence with English gets one. Instead of Delete there's
+  **Restore original**, which drops the edit.
+- **Where it's stored:** `localStorage` (`deutsch-mit-tineiya:my-scripts`), on
+  this device only, and included in the progress backup — the backup is how it
+  moves to another phone. A new script's unsaved draft is kept too, so leaving
+  the page halfway doesn't lose it.
+- **Pronunciation:** there are no pre-generated clips for these, so sound
+  buttons use the device's own German voice (`speechSynthesis`). To get the
+  studio voice, build the script in permanently (see [Extending it](#extending-it)).
+- **How it works:** `data/userScripts.ts` turns each saved script into a topic,
+  a passage and cards (or, for a built-in script, applies the edit to it);
+  `data/installUserScripts.ts` adds them to the content
+  lists before anything else loads (it's the first import in `main.tsx`).
+  Saving reloads the app so every screen picks the change up.
 
 ## Progress tracking
 

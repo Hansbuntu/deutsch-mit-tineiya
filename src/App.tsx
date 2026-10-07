@@ -12,6 +12,7 @@ const SpeakSession = lazy(() => import('./pages/SpeakSession').then((m) => ({ de
 const Generator = lazy(() => import('./pages/Generator').then((m) => ({ default: m.Generator })));
 const Review = lazy(() => import('./pages/Review').then((m) => ({ default: m.Review })));
 const Words = lazy(() => import('./pages/Words').then((m) => ({ default: m.Words })));
+const ScriptEditor = lazy(() => import('./pages/ScriptEditor').then((m) => ({ default: m.ScriptEditor })));
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -38,6 +39,8 @@ function App() {
                 <Route path="/wiederholen" element={<Review />} />
                 <Route path="/generieren" element={<Generator />} />
                 <Route path="/woerter" element={<Words />} />
+                <Route path="/skript/neu" element={<ScriptEditor />} />
+                <Route path="/skript/:topicId" element={<ScriptEditor />} />
                 <Route path="/fortschritt" element={<Progress />} />
               </Routes>
             </Suspense>

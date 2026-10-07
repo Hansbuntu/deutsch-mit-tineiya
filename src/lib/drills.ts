@@ -90,6 +90,40 @@ function buildMeaningDrill(card: VocabCard): Drill | null {
   };
 }
 
+const wordsOf = (text: string) => text.match(/\p{L}[\p{L}-]*/gu) ?? [];
+
+/**
+ * "Fill the gap" for any sentence with no drill of its own (the A1 bank, script lines,
+ * scripts added in the app): the longest word is blanked, and the wrong options are
+ * words of a similar length from the same topic's other sentences.
+ */
+function buildMissingWordDrill(card: SentenceCard): Drill | null {
+  const candidates = [...new Set(wordsOf(card.de))].filter((w) => w.length >= 4).sort((a, b) => b.length - a.length);
+  for (const target of candidates) {
+    const split = splitOnWord(card.de, target);
+    if (!split) continue; // e.g. a word starting with an umlaut, which  can't bound
+    const pool = new Set<string>();
+    for (const other of allCards) {
+      if (other.type !== 'sentence' || other.id === card.id) continue;
+      if (!other.topicIds.some((t) => card.topicIds.includes(t))) continue;
+      for (const w of wordsOf(other.de)) if (w.length >= 4 && w.toLowerCase() !== target.toLowerCase()) pool.add(w);
+    }
+    const distractors = shuffle([...pool])
+      .sort((a, b) => Math.abs(a.length - target.length) - Math.abs(b.length - target.length))
+      .slice(0, 2);
+    if (distractors.length < 2) return null;
+    return {
+      id: `gap-${card.id}`,
+      kind: 'missing-word',
+      cardId: card.id,
+      promptParts: split,
+      options: toOptions(shuffle([target, ...distractors])),
+      correctOptionId: target,
+    };
+  }
+  return null;
+}
+
 const SEIN_RULE = 'Most verbs take haben. Verbs of movement or change of state — gehen, fahren, aufstehen, bleiben — take sein.';
 
 /**
@@ -152,6 +186,9 @@ export function generateDrillForCard(card: Card, sessionSeenVerbs: VerbCard[]): 
   }
   if (card.type === 'sentence' && card.perfekt) {
     return buildPerfektDrill(card);
+  }
+  if (card.type === 'sentence') {
+    return buildMissingWordDrill(card);
   }
   return null;
 }

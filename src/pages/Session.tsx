@@ -12,6 +12,7 @@ import { shuffle } from '../lib/text';
 import { shouldIgnoreShortcut } from '../lib/keys';
 import { setLastTopicId } from '../lib/lastTopic';
 import { hasSpeaking } from '../lib/speaking';
+import { isBuiltInScript } from '../data/userScripts';
 import type { VerbCard, DrillKind } from '../data/types';
 
 /** What the card keeps back while each kind of drill is unanswered — whatever would give the answer away. */
@@ -23,6 +24,7 @@ const HIDE_FOR_DRILL: Record<DrillKind, FlashcardHide> = {
   'word-order': 'sentence',
   auxiliary: 'sentence',
   participle: 'sentence',
+  'missing-word': 'sentence',
 };
 
 export function Session() {
@@ -149,6 +151,12 @@ export function Session() {
               <Link to={`/thema/${topicId}/sprechen`} className="btn btn-sm">
                 <Icon name="mic" />
                 Practice speaking
+              </Link>
+            )}
+            {(topic.custom || isBuiltInScript(topicId)) && (
+              <Link to={`/skript/${topicId}`} className="btn btn-sm">
+                <Icon name="pencil" />
+                Edit script
               </Link>
             )}
           </div>
